@@ -11,7 +11,7 @@ const ToggleComponent = () => {
   const [activeTab, setActiveTab] = useState("highlights");
 
   return (
-    <Box width="90%">
+    <Container width="90%">
       <Box bg="#e1e1e2" width="100%" borderRadius="full" padding="0">
         <HStack space={0}>
           <CustomButton
@@ -30,7 +30,7 @@ const ToggleComponent = () => {
       </Box>
       {/* Render content based on active tab */}
       <Content activeTab={activeTab} />
-    </Box>
+    </Container>
   );
 };
 
