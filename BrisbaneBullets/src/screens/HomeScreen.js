@@ -1,5 +1,5 @@
 import React from "react";
-import { VStack } from "native-base";
+import { VStack } from "@gluestack-ui/themed-native-base";
 import ToggleButton from "../components/ToggleButton";
 
 const HomeScreen = () => {

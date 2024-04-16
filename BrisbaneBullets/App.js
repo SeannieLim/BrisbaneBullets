@@ -1,7 +1,7 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { SafeAreaView, StyleSheet, Text, View } from "react-native";
-import { NativeBaseProvider } from "native-base";
+import { NativeBaseProvider } from "@gluestack-ui/themed-native-base";
 import HomeScreen from "./src/screens/HomeScreen";
 
 export default function App() {

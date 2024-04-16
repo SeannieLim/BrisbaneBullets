@@ -1,11 +1,17 @@
 import React, { useState } from "react";
-import { Box, Button, Container, HStack, Text } from "native-base";
+import {
+  Box,
+  Button,
+  Container,
+  HStack,
+  Text,
+} from "@gluestack-ui/themed-native-base";
 
 const ToggleComponent = () => {
   const [activeTab, setActiveTab] = useState("highlights");
 
   return (
-    <Container width="100%">
+    <Box width="90%">
       <Box bg="#e1e1e2" width="100%" borderRadius="full" padding="0">
         <HStack space={0}>
           <CustomButton
@@ -24,7 +30,7 @@ const ToggleComponent = () => {
       </Box>
       {/* Render content based on active tab */}
       <Content activeTab={activeTab} />
-    </Container>
+    </Box>
   );
 };
 
