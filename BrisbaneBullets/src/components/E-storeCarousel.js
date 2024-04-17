@@ -45,7 +45,7 @@ const EStoreCarousel = () => {
   useEffect(() => {
     intervalRef.current = setInterval(() => {
       updateIndex(currentIndex + 1);
-    }, 4000); // Change slide every 3000ms (3 seconds)
+    }, 4000); // Change slide every 4000ms (4 seconds)
 
     return () => clearInterval(intervalRef.current); // Cleanup interval on component unmount
   }, [currentIndex]);
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     position: "absolute",
-    bottom: 10, // Adjust this to position the dots properly
+    bottom: 10, // position of the dots from the bottom
     width: "100%",
     zIndex: 1,
   },
