@@ -1,11 +1,11 @@
 import React from "react";
 import { VStack } from "@gluestack-ui/themed-native-base";
-import ToggleButton from "../components/ToggleButton";
+import EStoreCarousel from "../components/E-storeCarousel";
 
 const HomeScreen = () => {
   return (
     <VStack space={4} alignItems="center">
-      <ToggleButton />
+      <EStoreCarousel />
     </VStack>
   );
 };
