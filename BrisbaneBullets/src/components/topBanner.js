@@ -74,7 +74,7 @@ export function TopBanner() {
         <View style={styles.top}>
             <LinearGradient colors={['#164CA8', '#091E42']} style={styles.container}>
                 <ScrollView horizontal snapToInterval={contWidth} ref={scrollViewRef} onScroll={handleScroll}
-                            pagingEnabled showsHorizontalScrollIndicator={false}>
+                            pagingEnabled showsHorizontalScrollIndicator={false} scrollEventThrottle={16}>
                     {/*Past game*/}
                     <View style={styles.mainContainer}>
                         <View style={styles.itemContainer}>
