@@ -1,5 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
-import { ScrollView, View, Image, StyleSheet, Dimensions } from "react-native";
+import {
+  ScrollView,
+  View,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  Dimensions,
+} from "react-native";
 
 const WindowWidth = Dimensions.get("window").width;
 
@@ -25,7 +32,9 @@ const EStoreCarousel = () => {
   const intervalRef = useRef();
 
   const onScroll = (event) => {
+    //determine the horizontal scroll position
     const scrollX = event.nativeEvent.contentOffset.x;
+    //calculates the index of the current slide (rounded)
     const index = Math.round(scrollX / WindowWidth);
     setCurrentIndex(index);
   };
@@ -76,12 +85,13 @@ const EStoreCarousel = () => {
         </ScrollView>
         <View style={styles.paginationContainer}>
           {carouselItems.map((_, index) => (
-            <View
+            <TouchableOpacity
               key={index}
               style={[
                 styles.paginationDot,
                 { opacity: currentIndex === index ? 1 : 0.3 },
               ]}
+              onPress={() => scrollToIndex(index)} //click on dots to change image
             />
           ))}
         </View>
