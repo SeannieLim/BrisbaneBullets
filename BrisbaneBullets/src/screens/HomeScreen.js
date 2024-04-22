@@ -14,16 +14,16 @@ const videoTabs = [
 
 export default function HomeScreen({navigation}) {
     return (
-        <View>
+        <View style={styles.container}>
             <TopBanner/>
-
-            {/*<ToggleComponent tabs={videoTabs} />*/}
 
             {/*<VStack space={4} alignItems="center">*/}
             {/*    <EStoreCarousel />*/}
             {/*</VStack>*/}
 
-            <HorizontalScrollContainer />
+            <HorizontalScrollContainer style={styles.scroll}/>
+
+            <ToggleComponent tabs={videoTabs} style={styles.toggle}/>
 
             {/*//add to test components*/}
             {/*<><NewsCard /><Box>*/}
