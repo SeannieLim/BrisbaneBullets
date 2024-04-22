@@ -6,7 +6,7 @@ export default function App() {
 
   const socials = [
     { img: require('./assets/Facebook.png'), url:'fb://page/283400235032395', webUrl: 'https://www.facebook.com/BrisbaneBullets/'}, 
-    { img: require('./assets/X.png'),  url:'https://twitter.com/BrisbaneBullets', webUrl:'https://twitter.com/BrisbaneBullets'}, 
+    { img: require('./assets/X.png'),  url:'twitter://user?screen_name=BrisbaneBullets', webUrl:'https://twitter.com/BrisbaneBullets'}, 
     { img: require('./assets/Instagram.png'),  url:'instagram://user?username=brisbanebullets', webUrl:'https://www.instagram.com/brisbanebullets/'}, 
     { img: require('./assets/Youtube.png'), url:'youtube://www.youtube.com/channel/UCJaGGZG2kamXywgks_xWx0A', webUrl:'https://www.youtube.com/channel/UCJaGGZG2kamXywgks_xWx0A'}]
 
