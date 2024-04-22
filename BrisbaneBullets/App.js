@@ -1,15 +1,14 @@
 import React from 'react';
 import { StyleSheet, ScrollView, View, Image, TouchableOpacity, Linking } from 'react-native';
-//import { Button, ButtonText, ButtonIcon,} from "@gluestack-ui/themed"
-
+import { LinearGradient } from 'expo-linear-gradient';
 
 export default function App() {
 
   const socials = [
-    { img: require('./assets/facebook.png'), url:'https://www.facebook.com/BrisbaneBullets/', webUrl: 'https://www.facebook.com/BrisbaneBullets/'}, 
+    { img: require('./assets/Facebook.png'), url:'fb://page/283400235032395', webUrl: 'https://www.facebook.com/BrisbaneBullets/'}, 
     { img: require('./assets/X.png'),  url:'https://twitter.com/BrisbaneBullets', webUrl:'https://twitter.com/BrisbaneBullets'}, 
-    { img: require('./assets/Instagram.png'),  url:'https://www.instagram.com/brisbanebullets/', webUrl:'https://www.instagram.com/brisbanebullets/'}, 
-    { img: require('./assets/Youtube.png'), url:'https://www.youtube.com/channel/UCJaGGZG2kamXywgks_xWx0A', webUrl:'https://www.youtube.com/channel/UCJaGGZG2kamXywgks_xWx0A'}]
+    { img: require('./assets/Instagram.png'),  url:'instagram://user?username=brisbanebullets', webUrl:'https://www.instagram.com/brisbanebullets/'}, 
+    { img: require('./assets/Youtube.png'), url:'youtube://www.youtube.com/channel/UCJaGGZG2kamXywgks_xWx0A', webUrl:'https://www.youtube.com/channel/UCJaGGZG2kamXywgks_xWx0A'}]
 
     const handleClick = async (social) => {
       const supported = await Linking.canOpenURL(social.url);
@@ -28,14 +27,14 @@ export default function App() {
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {socials.map((social, index) => (
           <TouchableOpacity key={index} style={styles.button} onPress={() => handleClick(social)}>
-            {/*<Button size="lg"
-              variant="solid"
-              action="primary"
-              isDisabled={false}
-              isFocusVisible={false}
-              >*/}
+             <LinearGradient
+              colors={['#164CA8', '#091E42']}
+              style={styles.button}
+              start={{ x: 0.5, y: 0 }}
+              end={{ x: 0.5, y: 1 }}
+            >
               <Image source={social.img} style={styles.img} resizeMode="contain" />
-            {/*</Button>*/}
+              </LinearGradient>
           </TouchableOpacity>
         ))}
       </ScrollView>
@@ -54,13 +53,17 @@ const styles = StyleSheet.create({
   },
   
   button: {
-    width: 95,
-    height: 95,
+    width: 87,
+    height: 57,
+    borderRadius: 15,
+    justifyContent: 'center',
+    alignItems: "center",
+    marginRight: 10,
   },
 
   img: {
     flex: 1,
     width: 90,
-    height: 70,
+    height: 60,
 }
 });
