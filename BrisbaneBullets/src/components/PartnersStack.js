@@ -12,7 +12,7 @@ export function PartnersStack() {
         <View style={styles.container}>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {partners.map((partner, index) => (
-                <Box key={index} style={styles.box}><Image source={partner.img} style={styles.img} resizeMode="contain"></Image></Box>
+                <Box key={index} style={styles.box}><Image source={partner.img} style={styles.img} resizeMode="contain" alt="logos"></Image></Box>
             ))}
             </ScrollView>
         </View>
