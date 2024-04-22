@@ -81,7 +81,7 @@ export function TopBanner() {
                             {/*Left team*/}
                             <View style={styles.teamContainer}>
                                 <Image source={mockTeams[0].img} style={[styles.image, styles.leftImage]}
-                                       accessibilityLabel="Team Logo"/>
+                                       alt="Team Logo"/>
                                 <Text
                                     style={[styles.score, (comparisonResult === 1 || comparisonResult === 0) && boldTextStyle]}>
                                     {mockTeams[0].score}
@@ -101,7 +101,7 @@ export function TopBanner() {
                                     {mockTeams[1].score}
                                 </Text>
                                 <Image source={mockTeams[1].img} style={[styles.image, styles.rightImage]}
-                                       accessibilityLabel="Team Logo"/>
+                                       alt="Team Logo"/>
                             </View>
                         </View>
                         <View style={styles.actionButton}>
@@ -116,7 +116,7 @@ export function TopBanner() {
                             {/*Left team*/}
                             <View style={styles.teamContainer}>
                                 <Image source={mockTeams[3].img} style={[styles.image, styles.leftImage]}
-                                       accessibilityLabel="Team Logo"/>
+                                       alt="Team Logo"/>
                                 <Text
                                     style={[styles.score, (comparisonResult === 1 || comparisonResult === 0) && boldTextStyle]}>
                                     {mockTeams[3].score}
@@ -136,7 +136,7 @@ export function TopBanner() {
                                     {mockTeams[2].score}
                                 </Text>
                                 <Image source={mockTeams[2].img} style={[styles.image, styles.rightImage]}
-                                       accessibilityLabel="Team Logo"/>
+                                       alt="Team Logo"/>
                             </View>
                         </View>
                         <View style={styles.liveStatus}>
@@ -159,7 +159,7 @@ export function TopBanner() {
                             {/*Left team*/}
                             <View style={styles.teamContainer}>
                                 <Image source={mockTeams[4].img} style={[styles.image, styles.leftImage]}
-                                       accessibilityLabel="Team Logo"/>
+                                       alt="Team Logo"/>
                             </View>
 
                             {/*Game details*/}
@@ -172,7 +172,7 @@ export function TopBanner() {
                             {/*Right team*/}
                             <View style={styles.teamContainer}>
                                 <Image source={mockTeams[5].img} style={[styles.image, styles.rightImage]}
-                                       accessibilityLabel="Team Logo"/>
+                                       alt="Team Logo"/>
                             </View>
                         </View>
                         <View style={styles.actionButton}>
