@@ -6,6 +6,7 @@ import {StyleSheet} from "react-native";
 import ToggleComponent from "../components/ToggleButton";
 import CustomButton from "../components/CustomButton";
 import NewsCard from "../components/NewsCard";
+import {PartnersStack} from "../components/PartnersStack";
 
 const videoTabs = [
   { label: "Highlights", content: "Highlights content" },
@@ -30,6 +31,8 @@ export default function HomeScreen({navigation}) {
             {/*    <CustomButton btnText='Ticket' />*/}
             {/*    <CustomButton btnText='Shop Now' />*/}
             {/*</Box></>*/}
+
+            <PartnersStack />
 
 
         </View>
