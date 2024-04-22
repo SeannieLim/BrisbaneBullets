@@ -5,6 +5,7 @@ export default function HomeScreen({navigation}) {
     return (
         <View>
             <TopBanner/>
+
         </View>
     )
 }
