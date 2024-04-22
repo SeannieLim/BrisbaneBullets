@@ -3,6 +3,7 @@ import {View, VStack} from "@gluestack-ui/themed";
 import EStoreCarousel from "../components/E-storeCarousel";
 import HorizontalScrollContainer from "../components/HorizontalScrollContainer";
 import {StyleSheet} from "react-native";
+
 export default function HomeScreen({navigation}) {
     return (
         <View>
@@ -13,6 +14,7 @@ export default function HomeScreen({navigation}) {
             {/*</VStack>*/}
 
             <HorizontalScrollContainer />
+
 
         </View>
     )
