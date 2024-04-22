@@ -9,7 +9,7 @@ import {
 
 const ToggleComponent = ({ tabs }) => {
     // Use the first tab as the default active tab
-    const [activeTab, setActiveTab] = useState(tabs[0]? tabs[0].label : ' ');
+    const [activeTab, setActiveTab] = useState(tabs[0]?.label);
 
     return (
         <Container width="90%" key={activeTab}>
