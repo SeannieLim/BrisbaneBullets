@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
 
   img: {
-    flex: 1,
+    flex: 0.7,
     width: 90,
     height: 60,
 }
