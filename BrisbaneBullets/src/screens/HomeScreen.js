@@ -1,9 +1,11 @@
 import {TopBanner} from "../components/topBanner";
-import {View, VStack} from "@gluestack-ui/themed";
+import {View, VStack, Box} from "@gluestack-ui/themed";
 import EStoreCarousel from "../components/E-storeCarousel";
 import HorizontalScrollContainer from "../components/HorizontalScrollContainer";
 import {StyleSheet} from "react-native";
 import ToggleComponent from "../components/ToggleButton";
+import CustomButton from "../components/CustomButton";
+import NewsCard from "../components/NewsCard";
 
 const videoTabs = [
   { label: "Highlights", content: "Highlights content" },
@@ -22,6 +24,12 @@ export default function HomeScreen({navigation}) {
             {/*</VStack>*/}
 
             <HorizontalScrollContainer />
+
+            {/*//add to test components*/}
+            {/*<><NewsCard /><Box>*/}
+            {/*    <CustomButton btnText='Ticket' />*/}
+            {/*    <CustomButton btnText='Shop Now' />*/}
+            {/*</Box></>*/}
 
 
         </View>
