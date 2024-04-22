@@ -1,74 +1,62 @@
 import React, { useState } from "react";
 import {
-  Box,
-  Button,
-  Container,
-  HStack,
-  Text,
+    Box,
+    Button,
+    Container,
+    HStack,
+    Text,
 } from "@gluestack-ui/themed-native-base";
 
-const ToggleComponent = () => {
-  const [activeTab, setActiveTab] = useState("highlights");
+const ToggleComponent = ({ tabs }) => {
+    // Use the first tab as the default active tab
+    const [activeTab, setActiveTab] = useState(tabs[0]?.label);
 
-  return (
-    <Container width="90%">
-      <Box bg="#e1e1e2" width="100%" borderRadius="full" padding="0">
-        <HStack space={0}>
-          <CustomButton
-            active={activeTab === "highlights"}
-            onPress={() => setActiveTab("highlights")}
-          >
-            Highlights
-          </CustomButton>
-          <CustomButton
-            active={activeTab === "pressConferences"}
-            onPress={() => setActiveTab("pressConferences")}
-          >
-            Press Conferences
-          </CustomButton>
-        </HStack>
-      </Box>
-      {/* Render content based on active tab */}
-      <Content activeTab={activeTab} />
-    </Container>
-  );
+    return (
+        <Container width="90%" key={activeTab}>
+            <Box bg="#e1e1e2" width="100%" borderRadius="full" padding="0">
+                <HStack space={0}>
+                    {tabs.map((tab) => (
+                        <CustomButton
+                            key={tab.label}
+                            active={activeTab === tab.label}
+                            onPress={() => setActiveTab(tab.label)}
+                        >
+                            {tab.label}
+                        </CustomButton>
+                    ))}
+                </HStack>
+            </Box>
+            {/* Render content based on active tab */}
+            <Content activeTab={activeTab} tabs={tabs} />
+        </Container>
+    );
 };
 
 const CustomButton = ({ active, onPress, children }) => {
-  return (
-    <Button
-      flex={1}
-      bg={active ? "#164CA8" : "transparent"}
-      borderRadius="full"
-      _text={{
-        color: active ? "white" : "#164CA8",
-        // fontFamily: "",
-        fontWeight: "bold",
-        letterSpacing: "lg",
-      }}
-      _pressed={{ bg: "#164CA8", _text: { color: "white" } }}
-      onPress={onPress}
-    >
-      {children}
-    </Button>
-  );
+    return (
+        <Button
+            flex={1}
+            bg={active ? "#164CA8" : "transparent"}
+            borderRadius="full"
+            _text={{
+                color: active ? "white" : "#164CA8",
+                fontWeight: "bold",
+                letterSpacing: "lg",
+            }}
+            onPress={onPress}
+        >
+            {children}
+        </Button>
+    );
 };
 
-const Content = ({ activeTab }) => {
-  if (activeTab === "highlights") {
-    return (
-      <Box p={4}>
-        <Text>Highlights content</Text>
-      </Box>
-    );
-  } else if (activeTab === "pressConferences") {
-    return (
-      <Box p={4}>
-        <Text>Press Conferences content</Text>
-      </Box>
-    );
-  }
-  return null;
+const Content = ({ activeTab, tabs }) => {
+    const activeContent = tabs.find((tab) => tab.label === activeTab)?.content;
+    return activeContent ? (
+        <Box p={4}>
+            <Text>{activeContent}</Text>
+        </Box>
+    ) : null;
 };
 
 export default ToggleComponent;
