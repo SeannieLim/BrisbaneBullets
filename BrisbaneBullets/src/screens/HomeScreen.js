@@ -7,6 +7,7 @@ import ToggleComponent from "../components/ToggleButton";
 import CustomButton from "../components/CustomButton";
 import NewsCard from "../components/NewsCard";
 import {PartnersStack} from "../components/PartnersStack";
+import SocialMediaStack from "../components/SocialMediaStack";
 
 const videoTabs = [
   { label: "Highlights", content: "Highlights content" },
@@ -33,6 +34,7 @@ export default function HomeScreen({navigation}) {
             {/*</Box></>*/}
 
             <PartnersStack />
+            <SocialMediaStack />
 
 
         </View>
