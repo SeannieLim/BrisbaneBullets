@@ -33,7 +33,7 @@ export default function BottomTabNavigator({ navigation, route }) {
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ focused }) => (
-                        <TabBarIcon focused={focused} name="calendar-clear-outline" />
+                        <TabBarIcon focused={focused} name="calendar-outline" />
                     ),
                 }}
             />

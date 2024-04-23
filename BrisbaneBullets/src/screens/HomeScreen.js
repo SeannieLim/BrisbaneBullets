@@ -8,6 +8,8 @@ import CustomButton from "../components/CustomButton";
 import NewsCard from "../components/NewsCard";
 import {PartnersStack} from "../components/PartnersStack";
 import SocialMediaStack from "../components/SocialMediaStack";
+import AdsBanner from "../components/AdsBanner";
+import AllButton from "../components/AllButton";
 
 const videoTabs = [
   { label: "Highlights", content: "Highlights content" },
@@ -35,6 +37,8 @@ export default function HomeScreen({navigation}) {
 
             <PartnersStack />
             <SocialMediaStack />
+            <AdsBanner imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png" />
+            <AllButton />
 
 
         </View>
