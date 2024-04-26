@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     box: {
         borderColor: 'white',
         borderWidth: 0.5,
-        width: windowWidth * 0.24,
+        width: windowWidth * 0.26,
         marginHorizontal: 5,
         marginTop: 15,
     },
@@ -27,6 +27,6 @@ const styles = StyleSheet.create({
         color: 'white',
         paddingVertical: 5,
         fontWeight: '400',
-        fontSize: scaleFontSize(13)
+        fontSize: scaleFontSize(12)
     }
 })

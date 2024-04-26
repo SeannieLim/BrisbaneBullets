@@ -61,9 +61,10 @@ export default function HomeScreen({navigation}) {
                     </Box>
                     <AdsBanner
                         imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png"/>
-                    <Box style={styles.spacing}>
-                    <PartnersStack />
+                    <Box style={styles.headingContainer}>
+                        <Heading style={styles.heading}>Partners</Heading>
                     </Box>
+                    <PartnersStack />
                 </Box>
 
                 {/*//add to test components*/}
