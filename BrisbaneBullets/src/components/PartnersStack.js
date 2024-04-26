@@ -8,15 +8,17 @@ export function PartnersStack() {
         img: require('../../assets/partners/hostplus.png')
     }, {img: require('../../assets/partners/qld.png')}, {img: require('../../assets/partners/csq.png')}, {img: require('../../assets/partners/all.png')}, {img: require('../../assets/partners/poly.png')},]
 
-    return (<View>
-        <View style={styles.container}>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            {partners.map((partner, index) => (
-                <Box key={index} style={styles.box}><Image source={partner.img} style={styles.img} resizeMode="contain" alt="logos"></Image></Box>
-            ))}
-            </ScrollView>
-        </View>
-    </View>)
+    return (
+        <View>
+            <View style={styles.container}>
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    {partners.map((partner, index) => (
+                        <Box key={index} style={styles.box}><Image source={partner.img} style={styles.img}
+                                                                   resizeMode="contain" alt="logos"></Image></Box>
+                    ))}
+                </ScrollView>
+            </View>
+        </View>)
 }
 
 const styles = StyleSheet.create({

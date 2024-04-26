@@ -1,23 +1,33 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, View } from 'react-native';
+import {TouchableOpacity, Text, StyleSheet, View, Dimensions} from 'react-native';
+import {scaleFontSize} from "../constants/Layout";
 
-const AllButton = ({ onPress }) => {
+const windowWidth = Dimensions.get("window").width;
+
+const AllButton = ({onPress}) => {
     return (
-        <TouchableOpacity style={styles.button} onPress={onPress}>
-            <Text style={styles.text}>All</Text>
-            <Text style={[styles.icon]}>{'>'}</Text>
-        </TouchableOpacity>
+        <View style={styles.container}>
+            <TouchableOpacity style={styles.button} onPress={onPress}>
+                <Text style={styles.text}>All</Text>
+                <Text style={[styles.icon]}>{'>'}</Text>
+            </TouchableOpacity>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: "center",
+        alignContent: "center",
+    },
     button: {
         backgroundColor: '#fab81b',
-        padding: 0,
-        borderRadius: 10,
+        // padding: 0,
+        borderRadius: 13,
         flexDirection: 'row',
-        width: 44,
-        height: 14,
+        width: windowWidth * 0.12,
+        height: windowWidth * 0.05,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -25,7 +35,7 @@ const styles = StyleSheet.create({
         color: '#000000',
         textAlign: 'center',
         //fontFamily: 'Montserrat',
-        fontSize: 10,
+        fontSize: scaleFontSize(12),
         marginRight: 3,
     },
     icon: {

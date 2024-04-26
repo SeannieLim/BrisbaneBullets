@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 350,
     height: 170,
-    marginHorizontal: 7
+    marginRight: 10
   },
   newsImg: {
     width: 130,

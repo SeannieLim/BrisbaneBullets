@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, Image, StyleSheet } from 'react-native';
+import {View, Image, StyleSheet, Dimensions} from 'react-native';
 
-const AdsBanner = ({ imageUrl }) => {
+const windowWidth = Dimensions.get("window").width;
+
+const AdBox = ({ imageUrl }) => {
     return (
         <View style={styles.container}>
             {imageUrl ? (
@@ -15,8 +17,8 @@ const AdsBanner = ({ imageUrl }) => {
 
 const styles = StyleSheet.create({
     container: {
-        width: 280,
-        height: 32,
+        width: windowWidth * 0.85,
+        height: windowWidth * 0.09,
         backgroundColor: '#f0f0f0',
         overflow: 'hidden',
     },
@@ -31,4 +33,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default AdsBanner;
+export default AdBox;

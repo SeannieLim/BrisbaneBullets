@@ -199,10 +199,10 @@ export function TopBanner() {
 }
 
 const styles = StyleSheet.create({
-    top: {
-        position: 'absolute',
-        top: 0,
-    },
+    // top: {
+    //     position: 'absolute',
+    //     top: 0,
+    // },
     container: {
         width: windowWidth,
         height: 250,

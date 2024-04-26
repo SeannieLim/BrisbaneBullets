@@ -23,13 +23,14 @@ export default function SocialMediaStack() {
     }
 
     return (
+
         <View style={styles.container}>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
                 {socials.map((social, index) => (
                     <TouchableOpacity key={index} style={styles.button} onPress={() => handleClick(social)}>
                         <LinearGradient
                             colors={['#164CA8', '#091E42']}
-                            style={styles.button}
+                            style={styles.gradient}
                             start={{ x: 0.5, y: 0 }}
                             end={{ x: 0.5, y: 1 }}
                         >
@@ -50,16 +51,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-
     button: {
-        width: 87,
+        marginRight: 10
+    },
+    gradient: {
+        width: 80,
         height: 57,
         borderRadius: 15,
         justifyContent: 'center',
         alignItems: "center",
-        marginRight: 10,
     },
-
     img: {
         flex: 0.7,
         width: 90,

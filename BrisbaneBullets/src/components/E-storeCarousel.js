@@ -103,7 +103,6 @@ const EStoreCarousel = () => {
 const styles = StyleSheet.create({
   carouselContainer: {
     paddingTop: 20,
-    paddingBottom: 10,
   },
   imageContainer: {
     height: 300, // Set height to match the image height
