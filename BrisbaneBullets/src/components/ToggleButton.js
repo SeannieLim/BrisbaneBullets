@@ -12,7 +12,7 @@ const ToggleComponent = ({ tabs }) => {
     const [activeTab, setActiveTab] = useState(tabs[0]?.label);
 
     return (
-        <Container width="90%" key={activeTab}>
+        <Container width="100%" key={activeTab}>
             <Box bg="#e1e1e2" width="100%" borderRadius="full" padding="0">
                 <HStack space={0}>
                     {tabs.map((tab) => (
