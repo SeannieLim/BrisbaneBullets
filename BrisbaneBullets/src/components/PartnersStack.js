@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         height: 80,
         borderRadius: 15,
         justifyContent: 'center',
-        alignItems: "center",
+        alignItems: 'center',
         marginRight: 15,
     },
     img: {
