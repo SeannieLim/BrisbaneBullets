@@ -2,9 +2,10 @@ import React, { useRef, useLayoutEffect } from "react";
 import { WebView } from "react-native-webview";
 import { View, StyleSheet, TouchableOpacity, Text, Share } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { AntDesign, Entypo } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
+import { scaleFontSize } from "../constants/Layout";
 
-const B_StoreScreen = ({ route }) => {
+const LiveScreen = ({ route }) => {
   const { uri } = route.params;
   const webviewRef = useRef(null);
   const navigation = useNavigation();
@@ -12,7 +13,12 @@ const B_StoreScreen = ({ route }) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerStyle: { height: 100, backgroundColor: "#164CA8" },
-      headerTitle: "",
+      headerTitle: "Match",
+      headerTitleStyle: {
+        color: "white",
+        // fontWeight: "bold",
+        fontSize: scaleFontSize(20),
+      },
       headerTintColor: "#fab81b",
       // headerBackTitle: "Back",
       headerBackTitleVisible: false,
@@ -21,12 +27,6 @@ const B_StoreScreen = ({ route }) => {
 
       headerRight: () => (
         <View style={styles.headerButtons}>
-          <TouchableOpacity onPress={goBack} style={styles.headerButton}>
-            <AntDesign name="leftcircle" size={30} color="white" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={goForward} style={styles.headerButton}>
-            <AntDesign name="rightcircle" size={30} color="white" />
-          </TouchableOpacity>
           <TouchableOpacity onPress={onShare} style={styles.headerButton}>
             <Entypo name="share-alternative" size={26} color="white" />
           </TouchableOpacity>
@@ -34,14 +34,6 @@ const B_StoreScreen = ({ route }) => {
       ),
     });
   }, [navigation]);
-
-  const goBack = () => {
-    webviewRef.current.goBack();
-  };
-
-  const goForward = () => {
-    webviewRef.current.goForward();
-  };
 
   const onShare = async () => {
     try {
@@ -77,4 +69,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default B_StoreScreen;
+export default LiveScreen;
