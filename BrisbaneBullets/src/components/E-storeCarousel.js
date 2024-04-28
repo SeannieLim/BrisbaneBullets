@@ -7,6 +7,8 @@ import {
   StyleSheet,
   Dimensions,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import ShopNowButton from "../components/ShopNowButton";
 
 const WindowWidth = Dimensions.get("window").width;
 
@@ -30,6 +32,13 @@ const EStoreCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollViewRef = useRef();
   const intervalRef = useRef();
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+    navigation.navigate("WebViewScreen", {
+      uri: "https://store.brisbanebullets.com.au/",
+    });
+  };
 
   const onScroll = (event) => {
     //determine the horizontal scroll position
@@ -80,6 +89,9 @@ const EStoreCarousel = () => {
                 }
                 style={styles.itemImage}
               />
+              <View style={styles.buttonOverlay}>
+                <ShopNowButton onPress={handlePress} />
+              </View>
             </View>
           ))}
         </ScrollView>
@@ -105,15 +117,24 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   imageContainer: {
-    height: 300, // Set height to match the image height
+    height: 200, // Set height to match the image height
   },
   itemContainer: {
     width: WindowWidth,
   },
   itemImage: {
     width: WindowWidth,
-    height: 300,
+    height: 200,
     resizeMode: "cover",
+  },
+  buttonOverlay: {
+    position: "absolute",
+    bottom: 30,
+    width: "100%",
+    zIndex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 1,
   },
   paginationContainer: {
     flexDirection: "row",
@@ -124,8 +145,8 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   paginationDot: {
-    height: 8,
-    width: 8,
+    height: 6,
+    width: 6,
     borderRadius: 4,
     backgroundColor: "#1e1e1e",
     marginHorizontal: 4,
