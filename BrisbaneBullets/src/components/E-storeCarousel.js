@@ -35,7 +35,7 @@ const EStoreCarousel = () => {
   const navigation = useNavigation();
 
   const handlePress = () => {
-    navigation.navigate("WebViewScreen", {
+    navigation.navigate("B-StoreScreen", {
       uri: "https://store.brisbanebullets.com.au/",
     });
   };

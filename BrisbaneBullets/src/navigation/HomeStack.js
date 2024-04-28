@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
-import WebViewScreen from "../screens/WebViewScreen";
+import B_StoreScreen from "../screens/B-StoreScreen";
 
 const HomeStack = createStackNavigator();
 
@@ -9,13 +9,13 @@ function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen
-        name="Home"
+        name="HomeScreen"
         component={HomeScreen}
         options={{ headerShown: false }}
       />
       <HomeStack.Screen
-        name="WebViewScreen"
-        component={WebViewScreen}
+        name="B-StoreScreen"
+        component={B_StoreScreen}
         options={{ headerShown: true }}
       />
     </HomeStack.Navigator>

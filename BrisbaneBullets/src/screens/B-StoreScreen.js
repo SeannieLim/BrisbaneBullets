@@ -4,17 +4,19 @@ import { View, StyleSheet, TouchableOpacity, Text, Share } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign, Entypo } from "@expo/vector-icons";
 
-const WebViewScreen = ({ route }) => {
+const B_StoreScreen = ({ route }) => {
   const { uri } = route.params;
   const webviewRef = useRef(null);
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
-    console.log("WebView URI: ", uri);
     navigation.setOptions({
       headerStyle: { height: 100, backgroundColor: "#164CA8" },
       headerTitle: "",
       headerTintColor: "#fab81b",
+      // headerBackTitle: "Back",
+      headerBackTitleVisible: false,
+      headerLeftContainerStyle: { paddingLeft: 10 },
 
       headerRight: () => (
         <View style={styles.headerButtons}>
@@ -43,7 +45,7 @@ const WebViewScreen = ({ route }) => {
   const onShare = async () => {
     try {
       await Share.share({
-        message: `Check this out: ${uri}`,
+        url: uri,
       });
     } catch (error) {
       console.error("Error sharing", error);
@@ -74,4 +76,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default WebViewScreen;
+export default B_StoreScreen;
