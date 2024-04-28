@@ -14,6 +14,7 @@ const LiveScreen = ({ route }) => {
     navigation.setOptions({
       headerStyle: { height: 100, backgroundColor: "#164CA8" },
       headerTitle: "Match",
+      headerTitleAlign: "center",
       headerTitleStyle: {
         color: "white",
         // fontWeight: "bold",
