@@ -1,29 +1,76 @@
-import React from "react";
-
+import React, { useRef, useLayoutEffect } from "react";
 import { WebView } from "react-native-webview";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, TouchableOpacity, Text, Share } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { AntDesign, Entypo } from "@expo/vector-icons";
 
 const WebViewScreen = ({ route }) => {
   const { uri } = route.params;
+  const webviewRef = useRef(null);
+  const navigation = useNavigation();
+
+  useLayoutEffect(() => {
+    console.log("WebView URI: ", uri);
+    navigation.setOptions({
+      headerStyle: { height: 100, backgroundColor: "#164CA8" },
+      headerTitle: "",
+      headerTintColor: "#fab81b",
+
+      headerRight: () => (
+        <View style={styles.headerButtons}>
+          <TouchableOpacity onPress={goBack} style={styles.headerButton}>
+            <AntDesign name="leftcircle" size={30} color="white" />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={goForward} style={styles.headerButton}>
+            <AntDesign name="rightcircle" size={30} color="white" />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={onShare} style={styles.headerButton}>
+            <Entypo name="share-alternative" size={26} color="white" />
+          </TouchableOpacity>
+        </View>
+      ),
+    });
+  }, [navigation]);
+
+  const goBack = () => {
+    webviewRef.current.goBack();
+  };
+
+  const goForward = () => {
+    webviewRef.current.goForward();
+  };
+
+  const onShare = async () => {
+    try {
+      await Share.share({
+        message: `Check this out: ${uri}`,
+      });
+    } catch (error) {
+      console.error("Error sharing", error);
+    }
+  };
 
   return (
-    <View style={styles.frame}>
-      <WebView source={{ uri }} style={styles.webview} />
-    </View>
+    <WebView
+      // added originWhitelist to fix the warning (can't open url: about:srcdoc)
+      originWhitelist={["*"]}
+      ref={webviewRef}
+      source={{ uri }}
+      style={styles.webview}
+    />
   );
 };
 
 const styles = StyleSheet.create({
-  frame: {
-    flex: 1,
-    margin: 10, // Adjust frame margins as needed
-    borderWidth: 1, // Frame border width
-    borderColor: "lightgray", // Frame border color
-    borderRadius: 10, // Frame border radius for rounded corners
-    overflow: "hidden", // Hide overflow to respect border radius
-  },
   webview: {
     flex: 1,
+  },
+  headerButtons: {
+    flexDirection: "row",
+  },
+  headerButton: {
+    paddingHorizontal: 10,
+    paddingVertical: 5,
   },
 });
 
