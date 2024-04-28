@@ -101,7 +101,7 @@ const EStoreCarousel = () => {
               key={index}
               style={[
                 styles.paginationDot,
-                { opacity: currentIndex === index ? 1 : 0.3 },
+                { opacity: currentIndex === index ? 1 : 0.6 },
               ]}
               onPress={() => scrollToIndex(index)} //click on dots to change image
             />
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     height: 6,
     width: 6,
     borderRadius: 4,
-    backgroundColor: "#1e1e1e",
+    backgroundColor: "white",
     marginHorizontal: 4,
   },
 });
