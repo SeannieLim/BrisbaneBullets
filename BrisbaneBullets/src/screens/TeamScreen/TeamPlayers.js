@@ -6,8 +6,9 @@ const windowHeight = Dimensions.get('window').height;
 
 const players = [{
   id:"1",
-  jerseyNumber: 0,
-  playerName: "Rocco"
+  jerseyNumber: 17,
+  playerName: "Rocco",
+  playerImage : "img"
 }]
 
 const Square = () => {
@@ -15,7 +16,7 @@ const Square = () => {
 };
 
 const TeamPlayers = () => {
-  // Create an array of data representing each square
+  // Create an array of data representing each square (Mapping)
   const squaresData = Array.from({ length: 15 }, (_, index) => index + 1);
 
   return (

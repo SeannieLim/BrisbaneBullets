@@ -33,10 +33,9 @@ export const MyStyles = StyleSheet.create({
         shadowOpacity: 0.25, // Shadow opacity
         shadowRadius: 4, // Shadow radius
         elevation: 5, // Elevation for Android
-    },
+    }
 
   
-    
     
 
 
