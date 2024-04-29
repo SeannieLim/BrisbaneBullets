@@ -72,7 +72,7 @@ const Content = ({ activeTab, tabs }) => {
 const styles = StyleSheet.create({
   shadow: {
     shadowColor: "#000", // Shadow color
-    shadowOffset: { width: 0, height: 2 }, // Shadow offset
+    shadowOffset: { width: 3, height: 5 }, // Shadow offset
     shadowOpacity: 0.25, // Shadow opacity
     shadowRadius: 4, // Shadow radius
     elevation: 5, // Elevation for Android
