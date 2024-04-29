@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
+
 import {
   Box,
   Button,
   Container,
   HStack,
-  Text,
 } from "@gluestack-ui/themed-native-base";
 
 const ToggleComponent = ({ tabs }) => {
@@ -12,23 +13,31 @@ const ToggleComponent = ({ tabs }) => {
   const [activeTab, setActiveTab] = useState(tabs[0]?.label);
 
   return (
-    <Container width="90%" key={activeTab}>
-      <Box bg="#e1e1e2" width="100%" borderRadius="full" padding="0">
-        <HStack space={0}>
-          {tabs.map((tab) => (
-            <CustomButton
-              key={tab.label}
-              active={activeTab === tab.label}
-              onPress={() => setActiveTab(tab.label)}
-            >
-              {tab.label}
-            </CustomButton>
-          ))}
-        </HStack>
-      </Box>
+    <View>
+      <Container width="90%" key={activeTab}>
+        <Box
+          bg="#FCFDFF"
+          width="100%"
+          borderRadius="full"
+          padding="0"
+          style={styles.shadow}
+        >
+          <HStack space={0}>
+            {tabs.map((tab) => (
+              <CustomButton
+                key={tab.label}
+                active={activeTab === tab.label}
+                onPress={() => setActiveTab(tab.label)}
+              >
+                {tab.label}
+              </CustomButton>
+            ))}
+          </HStack>
+        </Box>
+      </Container>
       {/* Render content based on active tab */}
       <Content activeTab={activeTab} tabs={tabs} />
-    </Container>
+    </View>
   );
 };
 
@@ -41,11 +50,14 @@ const CustomButton = ({ active, onPress, children }) => {
       _text={{
         color: active ? "white" : "#164CA8",
         fontWeight: "bold",
-        letterSpacing: "lg",
+        letterSpacing: "sm",
         textAlign: "center",
       }}
       onPress={onPress}
-      style={{ height: "auto", alignItems: "center", justifyContent: "center" }}
+      width="auto"
+      // Optionally, you can add padding to the button to provide some space around the text
+      py={2} // Adjust the vertical padding as needed
+      px={4} // Adjust the horizontal padding as needed
     >
       {children}
     </Button>
@@ -54,11 +66,18 @@ const CustomButton = ({ active, onPress, children }) => {
 
 const Content = ({ activeTab, tabs }) => {
   const activeContent = tabs.find((tab) => tab.label === activeTab)?.content;
-  return activeContent ? (
-    <Box p={4}>
-      <Text>{activeContent}</Text>
-    </Box>
-  ) : null;
+  return activeContent ? <>{activeContent}</> : null;
 };
+
+const styles = StyleSheet.create({
+  shadow: {
+    shadowColor: "#000", // Shadow color
+    shadowOffset: { width: 0, height: 2 }, // Shadow offset
+    shadowOpacity: 0.25, // Shadow opacity
+    shadowRadius: 4, // Shadow radius
+    elevation: 5, // Elevation for Android
+    backgroundColor: "#FFFFFF",
+  },
+});
 
 export default ToggleComponent;
