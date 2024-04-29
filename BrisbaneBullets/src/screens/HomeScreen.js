@@ -74,7 +74,6 @@ export default function HomeScreen({navigation}) {
 
                         {/*//add to test components*/}
                         {/*<><NewsCard /><Box>*/}
-                        {/*    <CustomButton btnText='Ticket' />*/}
                         {/*    <CustomButton btnText='Shop Now' />*/}
                         {/*</Box></>*/}
 

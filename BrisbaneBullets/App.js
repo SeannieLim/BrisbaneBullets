@@ -11,6 +11,8 @@ import "react-native-gesture-handler";
 import {GluestackUIProvider, Text} from "@gluestack-ui/themed";
 import {config} from "@gluestack-ui/config"; // Importing configuration object for GlueStack to access styling configurations and theme settings
 import {StatusBar} from 'expo-status-bar';
+import StandingsScreen from "./src/screens/StandingsScreen";
+import { Ionicons } from '@expo/vector-icons';
 
 const Stack = createStackNavigator();
 
@@ -28,7 +30,18 @@ export default function App(props) {
                             component={BottomTabNavigator}
                             options={{headerShown: false}}
                         />
-                        {/*<Stack.Screen name="Stock Details" component={DetailScreen} />*/}
+                        <Stack.Screen name="Standings" component={StandingsScreen} options={{
+                            headerStyle: {
+                                backgroundColor: 'white',
+                            },
+                            headerTitleStyle: {
+                                fontSize: 20,
+                            },
+                            headerTintColor: '#113B81',
+                            headerBackImage: () => (
+                                <Ionicons name="chevron-back-outline" size={27} color="#FAB81B" pl={4}/>
+                            ),
+                        }} />
                     </Stack.Navigator>
                 </NavigationContainer>
                 {/*</SafeAreaView>*/}

@@ -1,37 +1,33 @@
-import {View, Text, Box, HStack} from "@gluestack-ui/themed";
-import {Dimensions, SafeAreaView, StyleSheet, TouchableOpacity} from "react-native";
+import {useState} from 'react';
+import {View, Text, Box, HStack, VStack, Image} from "@gluestack-ui/themed";
+import {Dimensions, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity} from "react-native";
 import {scaleFontSize} from "../constants/Layout";
 import {Ionicons} from '@expo/vector-icons';
 import {Entypo} from '@expo/vector-icons';
 import ToggleComponent from "../components/ToggleButton";
+import UpcomingGames from "../components/upcomingGames";
+import PastGames from "../components/pastGames";
 
 const windowWidth = Dimensions.get("window").width;
 
 const videoTabs = [
-    {label: "Upcoming Games"},
-    {label: "Past Games"},
+    {label: "Upcoming Games", content: <UpcomingGames />},
+    {label: "Past Games", content: <PastGames/> }
 ];
-
-const data = [
-    {date: 'Fri, May 19', time: '8:30pm AEDT'}, {date: 'Fri, May 26', time: '4:30pm AEDT'}, {
-        date: 'Fri, Jun 02',
-        time: '6:30pm AEDT'
-    }
-]
-
 
 export default function ScheduleScreen({navigation}) {
 
-    const navigateStandings = () => {
-        // Implement your share functionality here
-    };
+    const [isUpcoming, setIsUpcoming] = useState(true);
 
+    const navigateStandings = () => {
+        navigation.navigate('Standings');
+    };
     return (
         <View style={styles.container}>
-            <SafeAreaView>
+            <SafeAreaView style={{flex: 1}}>
                 <Box style={styles.header}>
                     <Text style={styles.heading}>Schedule</Text>
-                    <Box style={styles.iconContainer}>
+                    <HStack>
                         <Box style={styles.circleBackground}>
                             <TouchableOpacity onPress={navigateStandings}>
                                 <Ionicons name="podium" size={23} color="white" style={{paddingBottom: 2,}}/>
@@ -42,24 +38,13 @@ export default function ScheduleScreen({navigation}) {
                                 <Entypo name="ticket" size={26} color="white"/>
                             </TouchableOpacity>
                         </Box>
-                    </Box>
+                    </HStack>
                 </Box>
 
-                <Box style={{paddingVertical: windowWidth * 0.05}}>
-                    <ToggleComponent tabs={videoTabs}/>
+                <Box style={{paddingVertical: windowWidth * 0.05, flex: 1, overflowY: 'scroll'}}>
+                    <ToggleComponent tabs={videoTabs} />
                 </Box>
 
-                <HStack justifyContent='center'>
-                    <Box flex={1}>
-                        <Text style={styles.details}>{data[0].date}</Text>
-                    </Box>
-                    <Box style={styles.boxBackground}>
-                        <Text style={styles.title}>ROUND 20</Text>
-                    </Box>
-                    <Box flex={1} alignItems='flex-end'>
-                        <Text style={styles.details}>{data[0].time}</Text>
-                    </Box>
-                </HStack>
             </SafeAreaView>
         </View>
     )
@@ -80,10 +65,6 @@ const styles = StyleSheet.create({
             'row',
         justifyContent:
             'space-between'
-    }
-    ,
-    iconContainer: {
-        flexDirection: 'row',
     }
     ,
     heading: {
@@ -108,33 +89,5 @@ const styles = StyleSheet.create({
             '#113B81',
         marginLeft:
             windowWidth * 0.02,
-    }
-    ,
-    boxBackground: {
-        alignItems: 'center',
-        justifyContent:
-            'center',
-        width:
-            130,
-        height:
-            40,
-        borderRadius:
-            15,
-        backgroundColor:
-            '#113B81',
-    }
-    ,
-    title: {
-        color: 'white',
-        fontWeight:
-            '800',
-        fontSize:
-            scaleFontSize(16)
-    }
-    ,
-    details: {
-        fontWeight:
-            '500',
-        fontSize: scaleFontSize(13),
     }
 })

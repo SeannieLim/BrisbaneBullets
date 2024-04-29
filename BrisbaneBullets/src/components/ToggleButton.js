@@ -1,38 +1,40 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import {
     Box,
     Button,
     Container,
     HStack,
-    Text,
+    View,
 } from "@gluestack-ui/themed-native-base";
 
-const ToggleComponent = ({ tabs }) => {
+const ToggleComponent = ({tabs}) => {
     // Use the first tab as the default active tab
     const [activeTab, setActiveTab] = useState(tabs[0]?.label);
 
     return (
-        <Container width="100%" key={activeTab}>
-            <Box bg="#e1e1e2" width="100%" borderRadius="full" padding="0">
-                <HStack space={0}>
-                    {tabs.map((tab) => (
-                        <CustomButton
-                            key={tab.label}
-                            active={activeTab === tab.label}
-                            onPress={() => setActiveTab(tab.label)}
-                        >
-                            {tab.label}
-                        </CustomButton>
-                    ))}
-                </HStack>
-            </Box>
+        <View>
+            <Container width="90%" key={activeTab}>
+                <Box bg="#e1e1e2" width="100%" borderRadius="full" padding="0">
+                    <HStack space={0}>
+                        {tabs.map((tab) => (
+                            <CustomButton
+                                key={tab.label}
+                                active={activeTab === tab.label}
+                                onPress={() => setActiveTab(tab.label)}
+                            >
+                                {tab.label}
+                            </CustomButton>
+                        ))}
+                    </HStack>
+                </Box>
+            </Container>
             {/* Render content based on active tab */}
-            <Content activeTab={activeTab} tabs={tabs} />
-        </Container>
+            <Content activeTab={activeTab} tabs={tabs}/>
+        </View>
     );
 };
 
-const CustomButton = ({ active, onPress, children }) => {
+const CustomButton = ({active, onPress, children}) => {
     return (
         <Button
             flex={1}
@@ -50,12 +52,10 @@ const CustomButton = ({ active, onPress, children }) => {
     );
 };
 
-const Content = ({ activeTab, tabs }) => {
+const Content = ({activeTab, tabs}) => {
     const activeContent = tabs.find((tab) => tab.label === activeTab)?.content;
     return activeContent ? (
-        <Box p={4}>
-            <Text>{activeContent}</Text>
-        </Box>
+        <>{activeContent}</>
     ) : null;
 };
 
