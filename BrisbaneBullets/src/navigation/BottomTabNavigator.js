@@ -23,7 +23,7 @@ export default function BottomTabNavigator({ navigation, route }) {
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ focused }) => (
-                        <TabBarIcon focused={focused} name="home" />
+                        <TabBarIcon focused={focused} library='Feather' name="home" />
                     ),
                 }}
             />
@@ -33,7 +33,7 @@ export default function BottomTabNavigator({ navigation, route }) {
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ focused }) => (
-                        <TabBarIcon focused={focused} name="calendar-clear-outline" />
+                        <TabBarIcon focused={focused} library='Feather' name="calendar" />
                     ),
                 }}
             />
@@ -43,7 +43,7 @@ export default function BottomTabNavigator({ navigation, route }) {
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ focused }) => (
-                        <TabBarIcon focused={focused} name="ticket-outline" />
+                        <TabBarIcon focused={focused} library='FontAwesome' name="ticket" />
                     ),
                 }}
             />
@@ -53,7 +53,7 @@ export default function BottomTabNavigator({ navigation, route }) {
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ focused }) => (
-                        <TabBarIcon focused={focused} name="people-outline" />
+                        <TabBarIcon focused={focused} library='FontAwesome' name="group" />
                     ),
                 }}
             />
@@ -63,7 +63,7 @@ export default function BottomTabNavigator({ navigation, route }) {
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ focused }) => (
-                        <TabBarIcon focused={focused} name="ellipsis-horizontal-outline" />
+                        <TabBarIcon focused={focused} library='Feather' size={30} name="more-horizontal" />
                     ),
                 }}
             />

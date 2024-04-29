@@ -22,15 +22,15 @@ const mockTeams = [
 ]
 
 const mockPastGame = [
-    {date: 'Fri, Feb 19', match: 'Final'}
+    {date: 'Fri, Feb 19', match: 'Final', id:'1'}
 ]
 
 const mockCurrentGame = [
-    {match: '2nd', time: '7:01'}
+    {match: '2nd', time: '7:01', id:'2'}
 ]
 
 const mockUpcomingGame = [
-    {date: 'Fri, May 27', time: '10:00 AM GMT+10', location: 'Spark Arena'}
+    {date: 'Fri, May 27', time: '10:00 AM GMT+10', location: 'Spark Arena', id: '3'}
 ]
 
 function compareScore(one, two) {
@@ -86,7 +86,7 @@ export function TopBanner() {
                 <ScrollView horizontal ref={scrollViewRef} onScroll={handleScroll}
                             pagingEnabled showsHorizontalScrollIndicator={false} scrollEventThrottle={16}>
                     {/*Past game*/}
-                    <View key={0} style={styles.mainContainer}>
+                    <View key={mockPastGame[0].id} style={styles.mainContainer}>
                         <View style={styles.itemContainer}>
                             {/*Left team*/}
                             <View style={styles.teamContainer}>
@@ -122,7 +122,7 @@ export function TopBanner() {
                     </View>
 
                     {/*Current game*/}
-                    <View key={1} style={styles.mainContainer}>
+                    <View key={mockCurrentGame[0].id} style={styles.mainContainer}>
                         {/*Past game*/}
                         <View style={styles.itemContainer}>
                             {/*Left team*/}
@@ -169,7 +169,7 @@ export function TopBanner() {
                     </View>
 
                     {/*Upcoming game*/}
-                    <View key={2} style={styles.mainContainer}>
+                    <View key={mockUpcomingGame[0].id} style={styles.mainContainer}>
                         {/*Past game*/}
                         <View style={styles.itemContainer}>
                             {/*Left team*/}
@@ -358,5 +358,4 @@ const styles = StyleSheet.create({
         marginHorizontal:
             4,
     }
-    ,
 });

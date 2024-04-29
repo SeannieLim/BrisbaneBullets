@@ -3,7 +3,7 @@ import {View, Text, Box, HStack, VStack, Image} from "@gluestack-ui/themed";
 import {Dimensions, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity} from "react-native";
 import {scaleFontSize} from "../constants/Layout";
 import {Ionicons} from '@expo/vector-icons';
-import {Entypo} from '@expo/vector-icons';
+import {FontAwesome} from '@expo/vector-icons';
 import ToggleComponent from "../components/ToggleButton";
 import UpcomingGames from "../components/upcomingGames";
 import PastGames from "../components/pastGames";
@@ -35,7 +35,7 @@ export default function ScheduleScreen({navigation}) {
                         </Box>
                         <Box style={styles.circleBackground}>
                             <TouchableOpacity onPress={navigateStandings}>
-                                <Entypo name="ticket" size={26} color="white"/>
+                                <FontAwesome name="ticket" size={26} color="white"/>
                             </TouchableOpacity>
                         </Box>
                     </HStack>
