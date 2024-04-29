@@ -7,12 +7,12 @@ import {
     Text,
 } from "@gluestack-ui/themed-native-base";
 
-const ToggleComponent = ({ tabs }) => {
+const ToggleComponent = ({ tabs, style }) => {
     // Use the first tab as the default active tab
     const [activeTab, setActiveTab] = useState(tabs[0]?.label);
 
     return (
-        <Container width="100%" key={activeTab}>
+        <Container width="80%" key={activeTab} style={style}> {/* Apply style here */}
             <Box bg="#FCFDFF" width="100%" borderRadius="full" padding="0">
                 <HStack space={0}>
                     {tabs.map((tab) => (
@@ -41,10 +41,15 @@ const CustomButton = ({ active, onPress, children }) => {
             _text={{
                 color: active ? "white" : "#164CA8",
                 fontWeight: "bold",
-                letterSpacing: "lg",
+                //Adjusted letter-spacing
+                letterSpacing: "sm", // Adjust letter spacing here,
             }}
-            onPress={onPress}
             
+            onPress={onPress}
+            width="auto"
+            // Optionally, you can add padding to the button to provide some space around the text
+            py={2} // Adjust the vertical padding as needed
+            px={4} // Adjust the horizontal padding as needed
         >
             {children}
         </Button>
