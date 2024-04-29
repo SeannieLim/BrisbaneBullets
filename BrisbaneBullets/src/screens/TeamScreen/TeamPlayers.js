@@ -3,6 +3,7 @@ import { View, StyleSheet, Dimensions } from 'react-native';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
+
 const players = [{
   id:"1",
   jerseyNumber: 0,
