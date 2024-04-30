@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
-import roccoImage from './assets/teamPageImages/Rocco Zikarsky.png';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -9,7 +8,7 @@ const players = [{
   id:"1",
   jerseyNumber: 11,
   playerName: "Rocco Zikarsky",
-  playerImage: roccoImage
+  playerImage: './assets/teamPageImages/Rocco Zikarsky.png'
 }, {
   id:"2",
   jerseyNumber: 12,
@@ -86,7 +85,7 @@ const players = [{
 const Square = ({ player }) => {
   return (
     <View style={styles.square}>
-      <Image source={{ uri: `file://${player.playerImagePath}` }} style={styles.playerImage} />
+      <Image key ={player.id} source={{uri: player.playerImage}} style={styles.playerImage} />
       <Text>{player.jerseyNumber}</Text>
     </View>
   );
