@@ -86,8 +86,10 @@ const Square = ({ player }) => {
   console.log('Player Image:', player.playerImage);
   return (
     <View style={styles.square}>
-      <Image source={player.playerImage} style={styles.playerImage} />
-      <Text>{player.jerseyNumber}</Text>
+      <Image source={player.playerImage} style={styles.playerImage} onError={(error) => console.error('Image loading error:', error)} />
+      <View style={styles.textContainer}>
+        <Text style={styles.jerseyNumber}>{player.jerseyNumber}</Text>
+      </View>
     </View>
   );
 };
@@ -138,9 +140,20 @@ const styles = StyleSheet.create({
     elevation: 5, // Elevation for Android
   },
   playerImage: {
-    width: 50, 
-    height: 50, 
+    width: 20, 
+    height: 20, 
     resizeMode: 'contain',
+    position: 'absolute', // Position the image absolutely within the container
+  },
+  textContainer: {
+    position: 'absolute', // Position the text container absolutely within the container
+    top: 10, 
+    left: 10,
+    alignItems: 'center',
+  },
+  jerseyNumber: {
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 });
 
