@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, Image, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -83,14 +84,26 @@ const players = [{
 ]
 
 const Square = ({ player }) => {
-  console.log('Player Image:', player.playerImage);
+  const navigation = useNavigation();
+
+  const navigateToProfile = () => {
+    navigation.navigate('PlayerProfile', { playerId: player.id, players: players });
+  };
+
   return (
-    <View style={styles.square}>
-      <Image source={player.playerImage} style={styles.playerImage} />
-      <View /*style={styles.textContainer}*/>
-        <Text /*style={styles.jerseyNumber}*/>{player.jerseyNumber}</Text>
+    <TouchableOpacity onPress={navigateToProfile}>
+      <View style={styles.square}>
+        <View style={styles.imageContainer}>
+          <Image 
+            source={player.playerImage} 
+            style={styles.playerImage} 
+          />
+        </View>
+        <View style={styles.textContainer}>
+          <Text style={styles.jerseyNumber}>{player.jerseyNumber}</Text>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
@@ -139,17 +152,24 @@ const styles = StyleSheet.create({
     shadowRadius: 4, // Shadow radius
     elevation: 5, // Elevation for Android
     position: 'relative', // Add relative positioning to the square container
+    overflow: 'hidden',
+  },
+  imageContainer: {
+    width: '100%',
+    height: '100%',
+    borderRadius: 15, 
+    overflow: 'hidden', 
   },
   playerImage: {
-    width: 100, 
-    height: 100, 
-    resizeMode: 'contain',
+    width: '100%', 
+    height: '100%', 
+    resizeMode: 'cover',
    
   },
   textContainer: {
     position: 'absolute', // Position the text container absolutely within the container
-    bottom: 10, // Align the text container to the bottom of the square container
-    left: 10, // Align the text container to the left of the square container
+    top: 10, 
+    left: 10, 
     alignItems: 'center',
   },
   jerseyNumber: {
