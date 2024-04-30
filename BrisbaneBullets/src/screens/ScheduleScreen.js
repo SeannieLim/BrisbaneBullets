@@ -17,8 +17,6 @@ const videoTabs = [
 
 export default function ScheduleScreen({navigation}) {
 
-    const [isUpcoming, setIsUpcoming] = useState(true);
-
     const navigateStandings = () => {
         navigation.navigate('Standings');
     };

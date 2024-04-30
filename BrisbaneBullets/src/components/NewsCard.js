@@ -18,8 +18,6 @@ const mockNews = [
   },
 ];
 
-
-
 const NewsCard = () => {
   const handleShare = () => {
     // Implement your share functionality here
