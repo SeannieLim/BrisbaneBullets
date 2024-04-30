@@ -6,6 +6,7 @@ import {
     HStack,
     Text,
 } from "@gluestack-ui/themed-native-base";
+import { Linking } from "react-native";
 
 const ToggleComponent = ({ tabs, style }) => {
     // Use the first tab as the default active tab
@@ -19,7 +20,13 @@ const ToggleComponent = ({ tabs, style }) => {
                         <CustomButton
                             key={tab.label}
                             active={activeTab === tab.label}
-                            onPress={() => setActiveTab(tab.label)}
+                            onPress={() => {
+                                if (tab.label === "Advance Statistics") {
+                                    Linking.openURL("https://www.brisbanebullets.com.au/Statistics");
+                                } else {
+                                    setActiveTab(tab.label);
+                                }
+                            }}
                         >
                             {tab.label}
                         </CustomButton>
