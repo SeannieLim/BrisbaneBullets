@@ -1,24 +1,30 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { Dimensions, ImageBackground, View, StyleSheet, Text } from 'react-native';
 import {
   Button,
   ButtonText,
   ButtonIcon,
-  ButtonSpinner,
-  ButtonGroup,
-} from "@gluestack-ui/themed"
+  Switch
+} from "@gluestack-ui/themed";
 
 
-
-
+const windowWidth = Dimensions.get("window").width;
 
 export default function App() {
+  console.log("ImageBackground source:", require("./assets/BB-logo.png")); // Log the source prop
+
   return (
     <View style={styles.container}>
+      <View style={styles.backgroundImageContainer}>
+        <ImageBackground
+          source={require("./assets/BB-logo.png")}
+          style={styles.backgroundImage}
+          resizeMode="contain"
+        >
       <View style={[styles.boxContainer, styles.marginBottom]}>
-          <Button style={[styles.topButton, { backgroundColor: '#164CA8' }]}>
-            <ButtonText style={styles.buttonText}>Push Notification </ButtonText>
-          </Button>
+          <View style={[styles.topButton, { backgroundColor: '#164CA8' }]}>
+            <Text style={styles.buttonText}>Push Notification </Text>
+          </View>
           <Button style={[styles.bottomButton, { backgroundColor: '#164CA8' }]}>
             <ButtonText style={styles.buttonText}>Membership </ButtonText>
           </Button>
@@ -26,9 +32,6 @@ export default function App() {
       <View style={[styles.boxContainer, styles.marginTop]}>
         <Button style={[styles.topButton, { backgroundColor: '#164CA8' }]}>
           <ButtonText style={styles.buttonText}>Privacy Policy</ButtonText>
-          <ButtonIcon
-          as={}
-          />
         </Button>
         <Button style={[styles.midButton, { backgroundColor: '#164CA8' }]}>
           <ButtonText style={styles.buttonText}>Feedback and Support </ButtonText>
@@ -36,6 +39,13 @@ export default function App() {
         <Button style={[styles.bottomButton, { backgroundColor: '#164CA8' }]}>
           <ButtonText style={styles.buttonText}>Terms and Condition </ButtonText>
         </Button>
+      </View>
+      <View style={styles.boxContainer}>
+        <Button  style={[styles.others, { backgroundColor: '#164CA8' }]}>
+          <ButtonText style={styles.othersText}>Crowd Canvas </ButtonText>
+        </Button>
+      </View>  
+      </ImageBackground>
       </View>
     </View>
 
@@ -45,10 +55,23 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#fff',
+
+  },
+  backgroundImageContainer: {
+    justifyContent: 'center',
+    alignItems:1,
+    flex: 1,
+    width: windowWidth
+  },
+  backgroundImage:{
+    width: '70%',
+    height:'70%',
+    justifyContent:'center',
+    alignItems: 'center',
+
   },
   boxContainer: {
     flexDirection: 'column',
@@ -87,5 +110,21 @@ const styles = StyleSheet.create({
   },
   marginBottom: {
     marginBottom: 10, 
+  },
+  others: {
+    marginTop: 10, 
+    width: 60,
+    height: 70,
+    marginVertical: 0.3,
+    borderRadius: 15, 
+
+  },
+  othersText: {
+    color:"white",
+    justifyContent:"flex-end",
+
+  },
+  crowdCanvas: {
+
   },
 });
