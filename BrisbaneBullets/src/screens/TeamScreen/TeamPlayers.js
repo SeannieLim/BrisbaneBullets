@@ -39,8 +39,8 @@ const TeamPlayers = () => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    marginTop: windowHeight * 0.015,
-    marginLeft: windowWidth * 0.1,
+    marginTop: windowHeight * 0.012,
+    marginLeft: windowWidth * 0.12,
   },
   leftColumn: {
     flex: 1,
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   rightColumn: {
     flex: 1,
     flexDirection: 'column',
-    marginRight: windowWidth * 0.05
+    marginRight: windowWidth * 0.08
   },
   square: {
     width: 140,
