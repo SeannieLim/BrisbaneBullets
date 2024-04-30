@@ -8,77 +8,77 @@ const players = [{
   id:"1",
   jerseyNumber: 11,
   playerName: "Rocco Zikarsky",
-  playerImage: require('../../../assets/teamPageImages/Rocco Zikarsky.png')
+  playerImage: require('../../../assets/teamPageImages/RoccoZikarsky.png')
 }, {
   id:"2",
   jerseyNumber: 12,
   playerName: "Aron Baynes",
-  playerImage : require('../../../assets/teamPageImages/Aron Baynes.jpeg')
+  playerImage : require('../../../assets/teamPageImages/AronBaynes.jpeg')
 }, {
   id:"3",
   jerseyNumber: 23,
   playerName: "Casey Prather",
-  playerImage : require('../../../assets/teamPageImages/Casey Prather.jpeg')
+  playerImage : require('../../../assets/teamPageImages/CaseyPrather.jpeg')
 }, {
   id:"4",
   jerseyNumber: 34,
   playerName: "Chris Smith",
-  playerImage : require('../../../assets/teamPageImages/Chris Smith.png')
+  playerImage : require('../../../assets/teamPageImages/ChrisSmith.png')
 }, {
   id:"5",
   jerseyNumber: 0,
   playerName: "DJ Mitchell",
-  playerImage : require('../../../assets/teamPageImages/DJ Mitchell.png')
+  playerImage : require('../../../assets/teamPageImages/DJMitchell.png')
 }, {
   id:"6",
   jerseyNumber: 4,
   playerName: "Gabe Hadley",
-  playerImage : require('../../../assets/teamPageImages/Gabe Hadley.jpeg')
+  playerImage : require('../../../assets/teamPageImages/GabeHadley.jpeg')
 }, {
   id:"7",
   jerseyNumber: 2,
   playerName: "Isaac White",
-  playerImage : require('../../../assets/teamPageImages/Isaac White.jpeg')
+  playerImage : require('../../../assets/teamPageImages/IsaacWhite.jpeg')
 }, {
   id:"8",
   jerseyNumber: 13,
   playerName: "Josh Bannan",
-  playerImage : require('../../../assets/teamPageImages/Josh Bannan.png')
+  playerImage : require('../../../assets/teamPageImages/JoshBannan.png')
 }, {
   id:"9",
   jerseyNumber: 8,
   playerName: "Mitch Norton",
-  playerImage : require('../../../assets/teamPageImages/Mitch Norton.jpeg')
+  playerImage : require('../../../assets/teamPageImages/MitchNorton.jpeg')
 }, {
   id:"10",
   jerseyNumber: 20,
   playerName: "Nathan Sobey",
-  playerImage : require('../../../assets/teamPageImages/Nathan Sobey.png')
+  playerImage : require('../../../assets/teamPageImages/NathanSobey.png')
 }, {
   id:"11",
   jerseyNumber: 26,
   playerName: "Sam McDaniel",
-  playerImage : require('../../../assets/teamPageImages/Sam McDaniel.png')
+  playerImage : require('../../../assets/teamPageImages/SamMcDaniel.png')
 }, {
   id:"12",
   jerseyNumber: 32,
   playerName: "Matthew Johns",
-  playerImage : require('../../../assets/teamPageImages/Matthew Johns.png')
+  playerImage : require('../../../assets/teamPageImages/MatthewJohns.png')
 }, {
   id:"13",
   jerseyNumber: 3,
   playerName: "Shannon Scott",
-  playerImage : require('../../../assets/teamPageImages/Shannon Scott.jpeg')
+  playerImage : require('../../../assets/teamPageImages/ShannonScott.jpeg')
 }, {
   id:"14",
   jerseyNumber: 6,
   playerName: "Tristan Devers",
-  playerImage : require('../../../assets/teamPageImages/Tristan Devers.png')
+  playerImage : require('../../../assets/teamPageImages/TristanDevers.png')
 }, {
   id:"15",
   jerseyNumber: 24,
   playerName: "Tyrell Harrison",
-  playerImage : require('../../../assets/teamPageImages/Tyrrel Harrison.png')
+  playerImage : require('../../../assets/teamPageImages/TyrrelHarrison.png')
 }
 ]
 
@@ -87,8 +87,8 @@ const Square = ({ player }) => {
   return (
     <View style={styles.square}>
       <Image source={player.playerImage} style={styles.playerImage} />
-      <View style={styles.textContainer}>
-        <Text style={styles.jerseyNumber}>{player.jerseyNumber}</Text>
+      <View /*style={styles.textContainer}*/>
+        <Text /*style={styles.jerseyNumber}*/>{player.jerseyNumber}</Text>
       </View>
     </View>
   );
@@ -138,17 +138,18 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25, // Shadow opacity
     shadowRadius: 4, // Shadow radius
     elevation: 5, // Elevation for Android
+    position: 'relative', // Add relative positioning to the square container
   },
   playerImage: {
-    width: 20, 
-    height: 20, 
+    width: 100, 
+    height: 100, 
     resizeMode: 'contain',
-    position: 'absolute', // Position the image absolutely within the container
+   
   },
   textContainer: {
     position: 'absolute', // Position the text container absolutely within the container
-    top: 10, 
-    left: 10,
+    bottom: 10, // Align the text container to the bottom of the square container
+    left: 10, // Align the text container to the left of the square container
     alignItems: 'center',
   },
   jerseyNumber: {
