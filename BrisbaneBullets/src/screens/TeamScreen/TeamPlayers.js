@@ -86,7 +86,7 @@ const Square = ({ player }) => {
   console.log('Player Image:', player.playerImage);
   return (
     <View style={styles.square}>
-      <Image source={player.playerImage} style={styles.playerImage} onError={(error) => console.error('Image loading error:', error)} />
+      <Image source={player.playerImage} style={styles.playerImage} />
       <View style={styles.textContainer}>
         <Text style={styles.jerseyNumber}>{player.jerseyNumber}</Text>
       </View>
