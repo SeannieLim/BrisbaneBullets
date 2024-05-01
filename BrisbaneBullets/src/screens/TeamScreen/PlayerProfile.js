@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ScrollView,Button } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import MyStyles from './TeamStyles';
 import { AntDesign } from '@expo/vector-icons';
@@ -42,8 +42,14 @@ const PlayerProfile = ({ route }) => {
 
       <ToggleComponent tabs={ProfileStats} style={MyStyles.ProfileStatsToggle} />
 
+      
       <PlayerDetails player = {player}/>
-      <Text>Hello</Text>
+
+      <Text style={MyStyles.socialMedia}>Social Media</Text>
+  <TouchableOpacity style={MyStyles.buttonContainer}  >
+  <Text style={MyStyles.buttonText}>@{player.playerName}</Text>
+  <Image source={require('../../../assets/social-media/X.png')} style={MyStyles.icon} />
+</TouchableOpacity>
       
 
       

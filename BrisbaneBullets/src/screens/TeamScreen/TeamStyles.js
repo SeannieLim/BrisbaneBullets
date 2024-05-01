@@ -13,7 +13,7 @@ const MyStyles = StyleSheet.create({
     },
     mainContainer : {
         flex : 1,
-        backgroundColor : '#FFFFFF',
+        backgroundColor : 'white',
 
     },
 
@@ -116,11 +116,7 @@ scrollViewContent: {
     borderRadius: 15,
     marginTop: windowHeight * 0.03,
     marginRight: windowWidth * 0.01,
-    shadowColor: '#000', // Shadow color
-    shadowOffset: { width: 0, height: 4 }, // Shadow offset
-    shadowOpacity: 0.25, // Shadow opacity
-    shadowRadius: 4, // Shadow radius
-    elevation: 5, // Elevation for Android
+    borderWidth: 1
   },
   playerDetailsText: {
     fontSize: scaleFontSize(12),
@@ -189,7 +185,43 @@ scrollViewContent: {
     letterSpacing: 1,
     marginBottom: windowHeight * 0.04,
   },
+  buttonContainer: {
+    flexDirection: 'row', // Arrange items horizontally
+    alignItems: 'center', // Align items vertically
+    backgroundColor: '#164CA8', // Transparent background
+    borderRadius: 25, // Round border
+    paddingVertical: 8, // Vertical padding
+    paddingHorizontal: 10, // Horizontal padding
+    width: 135,
+    height: 35,
+    marginLeft: windowWidth * 0.09,
+    marginTop: windowHeight * 0.01,
+    shadowColor: '#000', // Shadow color
+    shadowOffset: { width: 2, height: 1 }, // Shadow offset
+    shadowOpacity: 0.25, // Shadow opacity
+    shadowRadius: 4, // Shadow radius
+    elevation: 5, // Elevation for Android
+    position: 'relative', // Add relative positioning to the square container
+  },
+  buttonText: {
+    fontSize: scaleFontSize(10),
+    color: '#FFFFFF', // Text color
+    fontWeight: 'bold',
+  },
+  icon: {
+    width: 13, // Set width of the icon
+    height: 13, // Set height of the icon
+    marginLeft: 2, // Add some space between icon and text
+  },
+  socialMedia : {
+    fontSize: scaleFontSize(17),
+    fontWeight: 'bold',
+    letterSpacing: 1,
+    marginLeft: windowWidth * 0.1,
+    marginTop: windowHeight * 0.02
 
+  }
+  
   
 
   
