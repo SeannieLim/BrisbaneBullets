@@ -1,7 +1,9 @@
 import * as React from "react";
-import {FontAwesome} from '@expo/vector-icons';
-import {DarkTheme} from "@react-navigation/native";
+import { FontAwesome } from '@expo/vector-icons';
+import { DarkTheme } from "@react-navigation/native";
 import { Feather } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+
 
 export default function TabBarIcon(props) {
 
@@ -11,7 +13,7 @@ export default function TabBarIcon(props) {
         <IconComponent
             name={props.name}
             size={25}
-            style={{marginBottom: -3}}
+            style={{ marginBottom: -3 }}
             color={props.focused ? DarkTheme.colors.primary : DarkTheme.colors.text}
         />
     );
