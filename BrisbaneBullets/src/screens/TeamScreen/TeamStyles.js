@@ -116,7 +116,13 @@ scrollViewContent: {
     borderRadius: 15,
     marginTop: windowHeight * 0.03,
     marginRight: windowWidth * 0.01,
-    borderWidth: 1
+    shadowColor: '#000', // Shadow color
+    shadowOffset: { width: 2, height: 1 }, // Shadow offset
+    shadowOpacity: 0.25, // Shadow opacity
+    shadowRadius: 4, // Shadow radius
+    elevation: 5, // Elevation for Android
+    position: 'relative', // Add relative positioning to the square container
+    marginBottom: windowHeight * 0.01
   },
   playerDetailsText: {
     fontSize: scaleFontSize(12),
