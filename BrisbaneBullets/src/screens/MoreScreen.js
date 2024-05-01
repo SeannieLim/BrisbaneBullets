@@ -9,6 +9,7 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import { scaleFontSize } from "../constants/Layout";
 import { Button, ButtonText, Box } from "@gluestack-ui/themed";
 
@@ -16,6 +17,13 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 export default function MoreScreen({ navigation }) {
+  // const navigation = useNavigation();
+
+  const handlePress = () => {
+    navigation.navigate("Membership", {
+      uri: "https://brisbanebullets.memberlink.net.au/memberhome",
+    });
+  };
   return (
     <View style={styles.container}>
       <SafeAreaView style={{ flex: 1 }}>
@@ -29,17 +37,18 @@ export default function MoreScreen({ navigation }) {
             resizeMode="center"
             opacity={0.5}
           >
-            <View style={[styles.boxContainer, styles.marginBottom]}>
+            <Box style={[styles.boxContainer, styles.marginBottom]}>
               <View style={[styles.topButton, { backgroundColor: "#164CA8" }]}>
                 <Text style={styles.buttonText}>Push Notification </Text>
               </View>
               <Button
                 style={[styles.bottomButton, { backgroundColor: "#164CA8" }]}
+                onPress={handlePress}
               >
                 <ButtonText style={styles.buttonText}>Membership </ButtonText>
               </Button>
-            </View>
-            <View style={[styles.boxContainer, styles.marginTop]}>
+            </Box>
+            <Box style={[styles.boxContainer, styles.marginTop]}>
               <Button
                 style={[styles.topButton, { backgroundColor: "#164CA8" }]}
               >
@@ -61,7 +70,7 @@ export default function MoreScreen({ navigation }) {
                   Terms and Conditions
                 </ButtonText>
               </Button>
-            </View>
+            </Box>
             <View style={styles.othersContainer}>
               <View style={styles.shadow}>
                 <Button style={styles.othersButton}>
