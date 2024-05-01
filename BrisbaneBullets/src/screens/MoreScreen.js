@@ -27,7 +27,7 @@ export default function MoreScreen({ navigation }) {
           <ImageBackground
             source={require("../../assets/Logo/BB-logo.png")}
             resizeMode="center"
-            opacity={"0.5"}
+            opacity={0.5}
           >
             <View style={[styles.boxContainer, styles.marginBottom]}>
               <View style={[styles.topButton, { backgroundColor: "#164CA8" }]}>
@@ -51,26 +51,27 @@ export default function MoreScreen({ navigation }) {
                 style={[styles.midButton, { backgroundColor: "#164CA8" }]}
               >
                 <ButtonText style={styles.buttonText}>
-                  Feedback and Support{" "}
+                  Feedback and Support
                 </ButtonText>
               </Button>
               <Button
                 style={[styles.bottomButton, { backgroundColor: "#164CA8" }]}
               >
                 <ButtonText style={styles.buttonText}>
-                  Terms and Condition{" "}
+                  Terms and Conditions
                 </ButtonText>
               </Button>
             </View>
             <View style={styles.othersContainer}>
-              <Button style={styles.others}>
-                <ButtonText style={styles.othersText}>Crowd Canvas </ButtonText>
-                <Image
-                  source={require("../../assets/CrowdCanvas.png")}
-                  style={{ width: 80, height: 90 }}
-                  resizeMode="contain"
-                />
-              </Button>
+              <View style={styles.shadow}>
+                <Button style={styles.othersButton}>
+                  <Image
+                    source={require("../../assets/CrowdCanvas.png")}
+                    style={styles.othersImage}
+                  />
+                  <Text style={styles.othersText}>Crowd Canvas </Text>
+                </Button>
+              </View>
             </View>
           </ImageBackground>
         </View>
@@ -103,9 +104,9 @@ const styles = StyleSheet.create({
   },
   boxContainer: {
     // marginLeft: windowWidth * 0.08,
-    marginTop: windowWidth * 0.05,
+    // marginTop: windowWidth * 0.05,
     flexDirection: "column",
-    // justifyContent: "center",
+    justifyContent: "center",
     // alignItems: "center",
   },
   topButton: {
@@ -141,23 +142,43 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   othersContainer: {
-    marginLeft: windowWidth * 0.08,
     marginTop: windowWidth * 0.05,
     flexDirection: "column",
     // justifyContent: "center",
     // alignItems: "center",
   },
-  others: {
-    marginTop: 10,
-    width: 60,
-    height: 70,
-    marginVertical: 0.3,
-    borderRadius: 15,
+  othersButton: {
+    backgroundColor: "white",
+    width: 150,
+    height: 150,
+    borderRadius: 20,
+    overflow: "hidden",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  shadow: {
+    backgroundColor: "transparent",
+    shadowColor: "#000", // Shadow color
+    shadowOffset: { width: 3, height: 5 }, // Shadow offset
+    shadowOpacity: 0.25, // Shadow opacity
+    shadowRadius: 4, // Shadow radius
+    elevation: 10, // Elevation for Android
+  },
+  othersImage: {
+    position: "absolute",
+    // width: "100%",
+    // height: "100%",
+    width: "150%",
+    height: "150%",
+    resizeMode: "cover",
+    // justifyContent: "center",
+    // alignItems: "center",
   },
   othersText: {
     color: "white",
-    justifyContent: "flex-end",
-    paddingTop: 30,
-    paddingLeft: 5,
+    // justifyContent: "end",
+    // alignItems: "center",
+    fontWeight: "bold",
+    zIndex: 1,
   },
 });
