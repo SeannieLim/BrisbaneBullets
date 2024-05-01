@@ -145,6 +145,4 @@ const styles = StyleSheet.create({
   spacing: {
     marginTop: windowWidth * 0.04,
   }
-
-
 });

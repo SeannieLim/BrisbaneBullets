@@ -3,7 +3,6 @@ import { View, VStack, Box, Text, HStack, Image } from "@gluestack-ui/themed";
 import { Dimensions, ImageBackground, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 import NewsCard from "../components/NewsCard";
 import AdsBanner from "../components/AdsBanner";
-import { Entypo } from '@expo/vector-icons';
 
 const windowWidth = Dimensions.get("window").width;
 const mockNews = [

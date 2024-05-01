@@ -4,7 +4,7 @@ import { HStack, VStack, Box, Image } from "@gluestack-ui/themed";
 import { Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-const NewsCard = (props) => {
+const NewsCard = (props, style) => {
   const navigation = useNavigation();
   const { news } = props
   const handleCardPress = () => {
@@ -17,7 +17,7 @@ const NewsCard = (props) => {
 
   return (
     <TouchableOpacity onPress={() => navigation.navigate('NewsDetailScreen', { newsId: news.id })}>
-      <Box style={{ ...styles.box, ...styles.newsCardContainer }} bg='#164CA8' rounded={15}>
+      <Box style={{ style, ...styles.box, ...styles.newsCardContainer }} bg='#164CA8' rounded={15}>
         <HStack maxWidth={'100%'} p={8}>
           <Image style={styles.newsImg} source={news.img} alt={news.imgAlt} />
           <VStack justifyContent='space-between' pl={7} flexBasis="60%">
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 350,
     height: 160,
-    marginRight: 10,
+    marginHorizontal: 3
   },
   newsImg: {
     width: 130,
@@ -62,8 +62,8 @@ const styles = StyleSheet.create({
   newsCardContainer: {
     shadowColor: 'black',
     shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: 0.35,
-    shadowRadius: 4,
+    shadowOpacity: 0.25,
+    shadowRadius: 2,
     elevation: 5,
   },
 });
