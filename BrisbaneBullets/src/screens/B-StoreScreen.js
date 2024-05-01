@@ -1,80 +1,8 @@
-import React, { useRef, useLayoutEffect } from "react";
-import { WebView } from "react-native-webview";
-import { View, StyleSheet, TouchableOpacity, Text, Share } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { AntDesign, Entypo } from "@expo/vector-icons";
+import React from "react";
+import WebViewTemplate from "../components/WebViewTemplate";
 
-const B_StoreScreen = ({ route }) => {
-  const { uri } = route.params;
-  const webviewRef = useRef(null);
-  const navigation = useNavigation();
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerStyle: { height: 100, backgroundColor: "#164CA8" },
-      headerTitle: "",
-      headerTintColor: "#fab81b",
-      // headerBackTitle: "Back",
-      headerBackTitleVisible: false,
-      headerLeftContainerStyle: { paddingLeft: 10 },
-      headerRightContainerStyle: { paddingRight: 10 },
-
-      headerRight: () => (
-        <View style={styles.headerButtons}>
-          <TouchableOpacity onPress={goBack} style={styles.headerButton}>
-            <AntDesign name="leftcircle" size={30} color="white" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={goForward} style={styles.headerButton}>
-            <AntDesign name="rightcircle" size={30} color="white" />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={onShare} style={styles.headerButton}>
-            <Entypo name="share-alternative" size={26} color="white" />
-          </TouchableOpacity>
-        </View>
-      ),
-    });
-  }, [navigation]);
-
-  const goBack = () => {
-    webviewRef.current.goBack();
-  };
-
-  const goForward = () => {
-    webviewRef.current.goForward();
-  };
-
-  const onShare = async () => {
-    try {
-      await Share.share({
-        url: uri,
-      });
-    } catch (error) {
-      console.error("Error sharing", error);
-    }
-  };
-
-  return (
-    <WebView
-      // added originWhitelist to fix the warning (can't open url: about:srcdoc)
-      originWhitelist={["*"]}
-      ref={webviewRef}
-      source={{ uri }}
-      style={styles.webview}
-    />
-  );
-};
-
-const styles = StyleSheet.create({
-  webview: {
-    flex: 1,
-  },
-  headerButtons: {
-    flexDirection: "row",
-  },
-  headerButton: {
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-  },
-});
+const B_StoreScreen = () => (
+  <WebViewTemplate uri="https://store.brisbanebullets.com.au/" />
+);
 
 export default B_StoreScreen;
