@@ -1,5 +1,5 @@
 import React from "react";
-import {createStackNavigator} from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
 import B_StoreScreen from "../screens/B-StoreScreen";
 import LiveScreen from "../screens/LiveScreen";
@@ -18,16 +18,16 @@ function HomeStackScreen() {
         component={HomeScreen}
         options={{ headerShown: false }}
       />
-      {<HomeStack.Screen
+      <HomeStack.Screen
         name="LiveScreen"
-      component={LiveScreen}
-      options={{ headerShown: true }}
+        component={LiveScreen}
+        options={{ headerShown: true }}
       />
       <HomeStack.Screen
         name="B-StoreScreen"
         component={B_StoreScreen}
         options={{ headerShown: true }}
-      />}
+      />
       <HomeStack.Screen
         name="News"
         component={NewsScreen}
