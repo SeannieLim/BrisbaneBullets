@@ -1,5 +1,5 @@
 import {View,Text,Dimensions,ScrollView, ImageBackground, Linking} from "react-native";
-import {MyStyles} from '../screens/TeamScreen/TeamStyles';
+import MyStyles from '../screens/TeamScreen/TeamStyles';
 import ToggleComponent from "../components/TeamToggle";
 import TeamPlayers from "../screens/TeamScreen/TeamPlayers";
 

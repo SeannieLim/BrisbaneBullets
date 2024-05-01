@@ -5,7 +5,7 @@ import { scaleFontSize } from "../../constants/Layout";
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-export const MyStyles = StyleSheet.create({
+const MyStyles = StyleSheet.create({
 
     backgroundImageContainer: {
         flex: 1,
@@ -13,7 +13,7 @@ export const MyStyles = StyleSheet.create({
     },
     mainContainer : {
         flex : 1,
-        backgroundColor : 'white',
+        backgroundColor : '#FFFFFF',
 
     },
 
@@ -29,17 +29,174 @@ export const MyStyles = StyleSheet.create({
     teamPageToggle :{
         marginLeft: windowWidth * 0.09,
         shadowColor: '#000', // Shadow color
-        shadowOffset: { width: 0, height: 2 }, // Shadow offset
+        shadowOffset: { width: 0, height: 4 }, // Shadow offset
         shadowOpacity: 0.25, // Shadow opacity
         shadowRadius: 4, // Shadow radius
         elevation: 5, // Elevation for Android
-    }
+    },
+    headerContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginLeft: windowWidth * 0.02,
+        marginTop: windowHeight * 0.07,
+    },
 
-  
+    BackArrow: {
+        color: '#FAB81B',
+    },
+
+    playerName: {
+        flex: 1,
+        fontSize: scaleFontSize(22),
+        fontWeight: 'bold',
+        color: '#113B81',
+        textAlign : 'center',
+        letterSpacing : 1,
+        marginRight: windowWidth * 0.08
+
+    },
+    
+    imageBox:{
+    width: 350,  // Width of the box
+    height: 250, // Height of the box
+    backgroundColor: '#164CA7', // Background color of the box
+    borderRadius: 15, // Border radius (optional)
+    marginLeft: windowWidth * 0.09,
+    marginTop: windowHeight * 0.06,
+    shadowColor: '#000', // Shadow color
+    shadowOffset: { width: 3, height: 6 }, // Shadow offset
+    shadowOpacity: 0.25, // Shadow opacity
+    shadowRadius: 4, // Shadow radius
+    elevation: 5, // Elevation for Android
+    position: 'relative', // Add relative positioning to the square container
+
+    },
+     textContainer: {
+    position: 'absolute', // Position the text container absolutely within the container
+    top: 10, 
+    left: 15, 
+    alignItems: 'center',
+  },
+  jerseyNumber: {
+    fontWeight: 'bold',
+    fontSize: scaleFontSize(32),
+    color: '#FFFFFF'
+  },
+  playerProfileImage:{
+    position: 'absolute',
+    left: 50,
+    bottom : -197,
+    width: '600%', 
+    height: '650%',
+
+  },
+
+  ProfileStatsToggle:{
+    marginLeft: windowWidth * 0.11,
+    marginTop: windowHeight * 0.01,
+    shadowColor: '#000', // Shadow color
+    shadowOffset: { width: 0, height: 4 }, // Shadow offset
+    shadowOpacity: 0.25, // Shadow opacity
+    shadowRadius: 4, // Shadow radius
+    elevation: 5, // Elevation for Android
+},
+
+scrollViewContent: {
+    flexGrow: 1,
+    flexDirection: 'row', // Arrange containers horizontally
+    marginLeft: windowWidth * 0.07
+  },
+  container: {
+    width: 107, // Set a fixed width for each container
+    justifyContent: 'center', // Align items vertically at the center
+    alignItems: 'center', // Align items horizontally at the center
+    backgroundColor: '#FFFFFF',
+    marginHorizontal: 10,
+    height: 107, // Set a fixed height for each container
+    borderRadius: 15,
+    marginTop: windowHeight * 0.03,
+    marginRight: windowWidth * 0.01,
+    shadowColor: '#000', // Shadow color
+    shadowOffset: { width: 0, height: 4 }, // Shadow offset
+    shadowOpacity: 0.25, // Shadow opacity
+    shadowRadius: 4, // Shadow radius
+    elevation: 5, // Elevation for Android
+  },
+  playerDetailsText: {
+    fontSize: scaleFontSize(12),
+    fontWeight: 'bold',
+    color: '#113B81',
+    letterSpacing: 1,
+    marginTop : windowHeight * 0.002,
     
 
+  }, countryIconContainer: {
+    alignItems: 'center', // Center the icon horizontally
 
+  },
+
+  countryIcon:{
+    marginTop : windowHeight * 0.009,
+    marginBottom: windowHeight * 0.009,
+    borderRadius:3
+  },
+  Country: {
+    alignItems: 'center', // Center the icon horizontally
+    color: '#686060',
+    fontSize: scaleFontSize(9),
+    fontWeight: 'bold',
+    letterSpacing: 1
+  },
+
+  circle: {
+  width: 45, // Set the width of the circle
+  height: 45, // Set the height of the circle
+  borderRadius: 25, // Half of the width and height to create a perfect circle
+  justifyContent: 'center', // Center the content vertically
+  alignItems: 'center', // Center the content horizontally
+  backgroundColor: '#164CA7',
+  marginTop: windowHeight * 0.008,
+  marginBottom: windowHeight * 0.006
+  },
+
+  positionCode:{
+    color: '#FFFFFF',
+    fontSize: scaleFontSize(23),
+    fontWeight: 'bold'
+  },
+  positionText:{
+    alignItems: 'center', // Center the icon horizontally
+    color: '#686060',
+    fontSize: scaleFontSize(9),
+    fontWeight: 'bold',
+    letterSpacing: 1,
+    marginTop: windowHeight * 0.001
+  },
+  playerTextContainer: {
+    flex: 1,
+    justifyContent: 'center', // Center vertically
+    alignItems: 'center', // Center horizontally
+    marginTop: windowHeight * 0.012,
+    color: '#113B81',
+    fontSize: scaleFontSize(12),
+    fontWeight: 'bold',
+    letterSpacing: 1
+  },
+  PlayerText: {
+    fontSize: scaleFontSize(18), // Adjust font size as needed
+    color: '#000000',
+    fontWeight: 'bold',
+    letterSpacing: 1,
+    marginBottom: windowHeight * 0.04,
+  },
+
+  
+
+  
+  
   
 
   
 });
+
+export default MyStyles

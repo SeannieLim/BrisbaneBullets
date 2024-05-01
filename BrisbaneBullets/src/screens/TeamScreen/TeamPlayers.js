@@ -8,87 +8,202 @@ const windowHeight = Dimensions.get('window').height;
 
 const players = [{
   id:"1",
-  jerseyNumber: 11,
+  jerseyNumber: 17,
   playerName: "Rocco Zikarsky",
-  playerImage: require('../../../assets/teamPageImages/RoccoZikarsky.png')
+  playerImage: require('../../../assets/teamPageImages/RoccoZikarsky.png'),
+  playerProfileImage: require('../../../assets/teamPageImages/Image1.png'),
+  CountryCode: 'AU',
+  Country: 'Australia',
+  positionCode: 'C',
+  position: 'Center',
+  Height: '2.17M',
+  Weight: '107kg',
+  DOB: '24/8/2004'
 }, {
   id:"2",
   jerseyNumber: 12,
   playerName: "Aron Baynes",
-  playerImage : require('../../../assets/teamPageImages/AronBaynes.jpeg')
+  playerImage : require('../../../assets/teamPageImages/AronBaynes.jpeg'),
+  playerProfileImage: require('../../../assets/teamPageImages/Image1.png'),
+  CountryCode: 'AU',
+  Country: 'Australia',
+  positionCode: 'C',
+  position: 'Center',
+  Height: '2.17M',
+  Weight: '107kg',
+  DOB: '24/8/2004'
 }, {
   id:"3",
   jerseyNumber: 23,
   playerName: "Casey Prather",
-  playerImage : require('../../../assets/teamPageImages/CaseyPrather.jpeg')
+  playerImage : require('../../../assets/teamPageImages/CaseyPrather.jpeg'),
+  playerProfileImage: require('../../../assets/teamPageImages/Image1.png'),
+  CountryCode: 'AU',
+  Country: 'Australia',
+  positionCode: 'C',
+  position: 'Center',
+  Height: '2.17M',
+  Weight: '107kg',
+  DOB: '24/8/2004'
 }, {
   id:"4",
   jerseyNumber: 34,
   playerName: "Chris Smith",
-  playerImage : require('../../../assets/teamPageImages/ChrisSmith.png')
+  playerImage : require('../../../assets/teamPageImages/ChrisSmith.png'),
+  playerProfileImage: require('../../../assets/teamPageImages/Image1.png'),
+  CountryCode: 'AU',
+  Country: 'Australia',
+  positionCode: 'C',
+  position: 'Center',
+  Height: '2.17M',
+  Weight: '107kg',
+  DOB: '24/8/2004'
 }, {
   id:"5",
   jerseyNumber: 0,
   playerName: "DJ Mitchell",
-  playerImage : require('../../../assets/teamPageImages/DJMitchell.png')
+  playerImage : require('../../../assets/teamPageImages/DJMitchell.png'),
+  playerProfileImage: require('../../../assets/teamPageImages/Image1.png'),
+  CountryCode: 'AU',
+  Country: 'Australia',
+  positionCode: 'C',
+  position: 'Center',
+  Height: '2.17M',
+  Weight: '107kg',
+  DOB: '24/8/2004'
 }, {
   id:"6",
   jerseyNumber: 4,
   playerName: "Gabe Hadley",
-  playerImage : require('../../../assets/teamPageImages/GabeHadley.jpeg')
+  playerImage : require('../../../assets/teamPageImages/GabeHadley.jpeg'),
+  playerProfileImage: require('../../../assets/teamPageImages/Image1.png'),
+  CountryCode: 'AU',
+  Country: 'Australia',
+  positionCode: 'C',
+  position: 'Center',
+  Height: '2.17M',
+  Weight: '107kg',
+  DOB: '24/8/2004'
 }, {
   id:"7",
   jerseyNumber: 2,
   playerName: "Isaac White",
-  playerImage : require('../../../assets/teamPageImages/IsaacWhite.jpeg')
+  playerImage : require('../../../assets/teamPageImages/IsaacWhite.jpeg'),
+  playerProfileImage: require('../../../assets/teamPageImages/Image1.png'),
+  CountryCode: 'AU',
+  Country: 'Australia',
+  positionCode: 'C',
+  position: 'Center',
+  Height: '2.17M',
+  Weight: '107kg',
+  DOB: '24/8/2004'
 }, {
   id:"8",
   jerseyNumber: 13,
   playerName: "Josh Bannan",
-  playerImage : require('../../../assets/teamPageImages/JoshBannan.png')
+  playerImage : require('../../../assets/teamPageImages/JoshBannan.png'),
+  playerProfileImage: require('../../../assets/teamPageImages/Image1.png'),
+  CountryCode: 'AU',
+  Country: 'Australia'
 }, {
   id:"9",
   jerseyNumber: 8,
   playerName: "Mitch Norton",
-  playerImage : require('../../../assets/teamPageImages/MitchNorton.jpeg')
+  playerImage : require('../../../assets/teamPageImages/MitchNorton.jpeg'),
+  playerProfileImage: require('../../../assets/teamPageImages/Image1.png'),
+  CountryCode: 'AU',
+  Country: 'Australia',
+  positionCode: 'C',
+  position: 'Center',
+  Height: '2.17M',
+  Weight: '107kg',
+  DOB: '24/8/2004'
 }, {
   id:"10",
   jerseyNumber: 20,
   playerName: "Nathan Sobey",
-  playerImage : require('../../../assets/teamPageImages/NathanSobey.png')
+  playerImage : require('../../../assets/teamPageImages/NathanSobey.png'),
+  playerProfileImage: require('../../../assets/teamPageImages/Image1.png'),
+  CountryCode: 'AU',
+  Country: 'Australia',
+  positionCode: 'C',
+  position: 'Center',
+  Height: '2.17M',
+  Weight: '107kg',
+  DOB: '24/8/2004'
 }, {
   id:"11",
   jerseyNumber: 26,
   playerName: "Sam McDaniel",
-  playerImage : require('../../../assets/teamPageImages/SamMcDaniel.png')
+  playerImage : require('../../../assets/teamPageImages/SamMcDaniel.png'),
+  playerProfileImage: require('../../../assets/teamPageImages/Image1.png'),
+  CountryCode: 'AU',
+  Country: 'Australia',
+  positionCode: 'C',
+  position: 'Center',
+  Height: '2.17M',
+  Weight: '107kg',
+  DOB: '24/8/2004'
 }, {
   id:"12",
   jerseyNumber: 32,
   playerName: "Matthew Johns",
-  playerImage : require('../../../assets/teamPageImages/MatthewJohns.png')
+  playerImage : require('../../../assets/teamPageImages/MatthewJohns.png'),
+  playerProfileImage: require('../../../assets/teamPageImages/Image1.png'),
+  CountryCode: 'AU',
+  Country: 'Australia',
+  positionCode: 'C',
+  position: 'Center',
+  Height: '2.17M',
+  Weight: '107kg',
+  DOB: '24/8/2004'
 }, {
   id:"13",
   jerseyNumber: 3,
   playerName: "Shannon Scott",
-  playerImage : require('../../../assets/teamPageImages/ShannonScott.jpeg')
+  playerImage : require('../../../assets/teamPageImages/ShannonScott.jpeg'),
+  playerProfileImage: require('../../../assets/teamPageImages/Image1.png'),
+  CountryCode: 'AU',
+  Country: 'Australia',
+  positionCode: 'C',
+  position: 'Center',
+  Height: '2.17M',
+  Weight: '107kg',
+  DOB: '24/8/2004'
 }, {
   id:"14",
   jerseyNumber: 6,
   playerName: "Tristan Devers",
-  playerImage : require('../../../assets/teamPageImages/TristanDevers.png')
+  playerImage : require('../../../assets/teamPageImages/TristanDevers.png'),
+  playerProfileImage: require('../../../assets/teamPageImages/Image1.png'),
+  CountryCode: 'AU',
+  Country: 'Australia',
+  positionCode: 'C',
+  position: 'Center',
+  Height: '2.17M',
+  Weight: '107kg',
+  DOB: '24/8/2004'
 }, {
   id:"15",
   jerseyNumber: 24,
   playerName: "Tyrell Harrison",
-  playerImage : require('../../../assets/teamPageImages/TyrrelHarrison.png')
-}
-]
+  playerImage : require('../../../assets/teamPageImages/TyrrelHarrison.png'),
+  playerProfileImage: require('../../../assets/teamPageImages/Image1.png'),
+  CountryCode: 'AU',
+  Country: 'Australia',
+  positionCode: 'C',
+  position: 'Center',
+  Height: '2.17M',
+  Weight: '107kg',
+  DOB: '24/8/2004'
+}];
+
 
 const Square = ({ player }) => {
   const navigation = useNavigation();
 
   const navigateToProfile = () => {
-    navigation.navigate('PlayerProfile', {players: players });
+    navigation.navigate('PlayerProfile', {player });
   };
 
   return (
@@ -160,6 +275,7 @@ const styles = StyleSheet.create({
     height: '100%',
     borderRadius: 15, 
     overflow: 'hidden', 
+  
   },
   playerImage: {
     width: '100%', 
@@ -169,7 +285,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     position: 'absolute', // Position the text container absolutely within the container
-    top: 10, 
+    top: 15, 
     left: 10, 
     alignItems: 'center',
   },
