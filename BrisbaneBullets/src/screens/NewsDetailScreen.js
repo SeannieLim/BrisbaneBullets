@@ -1,6 +1,9 @@
 import React from 'react';
 import { View, Text, Box, HStack, VStack, Image } from "@gluestack-ui/themed";
 import { Dimensions, ScrollView, StyleSheet, TouchableOpacity, SafeAreaView } from "react-native";
+import { FontAwesome5 } from '@expo/vector-icons';
+
+
 
 const windowWidth = Dimensions.get("window").width;
 const mockNewsDetails = [
@@ -84,7 +87,11 @@ export default function NewsDetailScreen({ route, navigation }) {
       <ScrollView>
         <View style={styles.container}>
           <Text fontWeight='bold' fontSize={30} mt={10}>{newsItem.title}</Text>
-          <Box borderTopWidth={2} borderBlockColor='gray' pt={10}>
+          <HStack space={2} alignItems="center" mt={10} mb={5}>
+            <FontAwesome5 name="calendar-alt" size={24} color="#164CA8" />
+            <Text pl={10}>{newsItem.date}</Text>
+          </HStack>
+          <Box borderTopWidth={2} borderBlockColor='#D9D9D9' pt={10}>
             <Text fontWeight='bold' fontSize={20}>{newsItem.subTitle}</Text>
             <Text mt={10}>{newsItem.content}</Text>
           </Box>
