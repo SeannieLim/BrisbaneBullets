@@ -1,10 +1,8 @@
 import React from 'react';
-import { Dimensions, ImageBackground, View, StyleSheet, Text } from 'react-native';
+import { Dimensions, ImageBackground, View, StyleSheet, Text, Image } from 'react-native';
 import {
   Button,
   ButtonText,
-  ButtonIcon,
-  Switch
 } from "@gluestack-ui/themed";
 
 
@@ -41,8 +39,9 @@ export default function App() {
         </Button>
       </View>
       <View style={styles.boxContainer}>
-        <Button  style={[styles.others, { backgroundColor: '#164CA8' }]}>
+        <Button  style={styles.others}>
           <ButtonText style={styles.othersText}>Crowd Canvas </ButtonText>
+          <Image source={require('./assets/CrowdCanvas.png')} style={{ width: 80, height: 90 }} resizeMode="contain" />
         </Button>
       </View>  
       </ImageBackground>
@@ -117,14 +116,12 @@ const styles = StyleSheet.create({
     height: 70,
     marginVertical: 0.3,
     borderRadius: 15, 
-
   },
   othersText: {
     color:"white",
     justifyContent:"flex-end",
-
+    paddingTop: 30,
+    paddingLeft: 5,
   },
-  crowdCanvas: {
-
-  },
+  
 });
