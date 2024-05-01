@@ -69,6 +69,7 @@ const MyStyles = StyleSheet.create({
     shadowRadius: 4, // Shadow radius
     elevation: 5, // Elevation for Android
     position: 'relative', // Add relative positioning to the square container
+    overflow: 'visible'
     },
      textContainer: {
     position: 'absolute', // Position the text container absolutely within the container
@@ -82,12 +83,10 @@ const MyStyles = StyleSheet.create({
     color: '#FFFFFF'
   },
   playerProfileImage:{
-    position: 'absolute',
-    left: 50,
-    bottom: -197,
-    width: '600%', 
-    height: '650%',
-
+    left: 60,
+    width: '70%',
+    height: '83%',
+    overflow: 'visible',
   },
 
   ProfileStatsToggle:{

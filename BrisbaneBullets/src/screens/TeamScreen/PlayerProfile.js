@@ -31,10 +31,10 @@ const PlayerProfile = ({ route }) => {
       </View>
 
       <View style={MyStyles.imageBox}>
-      <Image
-            source={player.playerProfileImage}
-            style={MyStyles.playerProfileImage}
-          />
+        <Image
+          source={player.playerProfileImage}
+          style={MyStyles.playerProfileImage}
+        />
         <View style={MyStyles.textContainer}>
           <Text style={MyStyles.jerseyNumber}>{player.jerseyNumber}</Text>
         </View>
