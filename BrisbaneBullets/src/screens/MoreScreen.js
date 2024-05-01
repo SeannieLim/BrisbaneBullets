@@ -7,11 +7,12 @@ import {
   StyleSheet,
   Text,
   Image,
-  TouchableOpacity,
+  Switch,
 } from "react-native";
+import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { scaleFontSize } from "../constants/Layout";
-import { Button, ButtonText, Box } from "@gluestack-ui/themed";
+import { Button, ButtonText, Box, ButtonGroup } from "@gluestack-ui/themed";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -28,6 +29,8 @@ export default function MoreScreen({ navigation }) {
   const handlePrivacyPress = () => {
     nav.navigate("PrivacyPolicy");
   };
+  const [isEnabled, setIsEnabled] = React.useState(false);
+  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   return (
     <View style={styles.container}>
@@ -36,48 +39,80 @@ export default function MoreScreen({ navigation }) {
           <Text style={styles.heading}>More</Text>
         </Box>
 
-        <View style={styles.backgroundImageContainer}>
+        <View style={styles.contentContainer}>
           <ImageBackground
             source={require("../../assets/Logo/BB-logo.png")}
             resizeMode="center"
             opacity={0.5}
+            style={styles.backgroundImageContainer}
           >
-            <Box style={[styles.boxContainer, styles.marginBottom]}>
-              <View style={styles.topButton}>
-                <Text style={styles.buttonText}>Push Notification </Text>
-              </View>
-              <Button
-                style={styles.bottomButton}
-                onPress={handleMembershipPress}
+            <View style={styles.shadow}>
+              <ButtonGroup
+                isAttached="true"
+                space="sm"
+                style={styles.boxContainer}
               >
-                <ButtonText style={styles.buttonText}>Membership </ButtonText>
-              </Button>
-            </Box>
-            <Box style={[styles.boxContainer, styles.marginTop]}>
-              <Button style={styles.topButton} onPress={handlePrivacyPress}>
-                <ButtonText style={styles.buttonText}>
-                  Privacy Policy
-                </ButtonText>
-              </Button>
-              <Button style={styles.midButton}>
-                <ButtonText style={styles.buttonText}>
-                  Feedback and Support
-                </ButtonText>
-              </Button>
-              <Button style={styles.bottomButton}>
-                <ButtonText style={styles.buttonText}>
-                  Terms and Conditions
-                </ButtonText>
-              </Button>
-            </Box>
+                <Button style={styles.item}>
+                  <ButtonText style={styles.buttonText}>
+                    Push Notification
+                  </ButtonText>
+                  <View style={styles.switchContainer}>
+                    <Switch
+                      trackColor={{ false: "white", true: "#fab81b" }}
+                      thumbColor={isEnabled ? "white" : "#164CA8"}
+                      ios_backgroundColor="white"
+                      onValueChange={toggleSwitch}
+                      value={isEnabled}
+                    />
+                  </View>
+                </Button>
+                <Button style={styles.item} onPress={handleMembershipPress}>
+                  <ButtonText style={styles.buttonText}>Membership </ButtonText>
+                  <Entypo name="chevron-small-right" size={26} color="white" />
+                </Button>
+              </ButtonGroup>
+            </View>
+            <View style={styles.shadow}>
+              <ButtonGroup
+                isAttached="true"
+                space="sm"
+                style={styles.boxContainer}
+              >
+                <Button style={styles.item} onPress={handlePrivacyPress}>
+                  <ButtonText style={styles.buttonText}>
+                    Privacy Policy
+                  </ButtonText>
+                  <Entypo name="chevron-small-right" size={26} color="white" />
+                </Button>
+                <Button style={styles.item}>
+                  <ButtonText style={styles.buttonText}>
+                    Feedback and Support
+                  </ButtonText>
+                  <Entypo name="chevron-small-right" size={26} color="white" />
+                </Button>
+                <Button style={styles.item}>
+                  <ButtonText style={styles.buttonText}>
+                    Terms and Conditions
+                  </ButtonText>
+                  <Entypo name="chevron-small-right" size={26} color="white" />
+                </Button>
+              </ButtonGroup>
+            </View>
             <View style={styles.othersContainer}>
               <View style={styles.shadow}>
-                <Button style={styles.othersButton}>
+                <Button
+                  style={styles.othersButton}
+                  onPress={handleMembershipPress}
+                >
                   <Image
                     source={require("../../assets/CrowdCanvas.png")}
                     style={styles.othersImage}
                   />
-                  <Text style={styles.othersText}>Crowd Canvas </Text>
+                  <View style={styles.textOverlay}>
+                    <ButtonText style={styles.othersText}>
+                      Crowd Canvas
+                    </ButtonText>
+                  </View>
                 </Button>
               </View>
             </View>
@@ -104,59 +139,44 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontSize: scaleFontSize(33),
   },
+  contentContainer: {
+    marginTop: windowWidth * 0.08,
+    flex: 1,
+  },
   backgroundImageContainer: {
-    justifyContent: "center",
-    alignItems: "center",
     flex: 1,
     backgroundColor: "white",
   },
   boxContainer: {
-    // marginLeft: windowWidth * 0.08,
-    // marginTop: windowWidth * 0.05,
+    backgroundColor: "white",
+    borderRadius: 10,
+    marginTop: 10,
+    marginBottom: 10,
+    overflow: "hidden",
     flexDirection: "column",
-    justifyContent: "center",
-    // alignItems: "center",
   },
-  topButton: {
-    backgroundColor: "#164CA8",
-    width: 260,
-    height: 30,
-    marginVertical: 0.3,
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
-    justifyContent: "center",
+  switchContainer: {
+    flex: 1,
+    alignItems: "flex-end",
   },
-  midButton: {
+  item: {
     backgroundColor: "#164CA8",
-    width: 260,
-    height: 30,
-    marginVertical: 0.3,
-  },
-
-  bottomButton: {
-    backgroundColor: "#164CA8",
-    width: 260,
-    height: 30,
-    marginVertical: 0.3,
-    borderBottomLeftRadius: 15,
-    borderBottomRightRadius: 15,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    paddingHorizontal: 20,
+    marginVertical: 0.5,
+    height: windowWidth * 0.1,
+    borderRadius: 0,
   },
   buttonText: {
     color: "white",
-    fontSize: 16,
-    paddingLeft: 15,
-  },
-  marginTop: {
-    marginTop: 10,
-  },
-  marginBottom: {
-    marginBottom: 10,
+    fontSize: scaleFontSize(16),
+    fontWeight: "light",
   },
   othersContainer: {
     marginTop: windowWidth * 0.05,
-    flexDirection: "column",
-    // justifyContent: "center",
-    // alignItems: "center",
+    // flexDirection: "column",
   },
   othersButton: {
     backgroundColor: "white",
@@ -164,8 +184,26 @@ const styles = StyleSheet.create({
     height: 150,
     borderRadius: 20,
     overflow: "hidden",
-    justifyContent: "center",
+    position: "relative",
+  },
+  othersImage: {
+    position: "absolute",
+    width: "150%",
+    height: "150%",
+    resizeMode: "cover",
+  },
+  textOverlay: {
+    justifyContent: "flex-end",
     alignItems: "center",
+    bottom: 10,
+    position: "absolute",
+    zIndex: 1,
+  },
+  othersText: {
+    color: "white",
+    fontWeight: "bold",
+    width: "100%",
+    fontSize: scaleFontSize(16),
   },
   shadow: {
     backgroundColor: "transparent",
@@ -174,22 +212,5 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25, // Shadow opacity
     shadowRadius: 4, // Shadow radius
     elevation: 10, // Elevation for Android
-  },
-  othersImage: {
-    position: "absolute",
-    // width: "100%",
-    // height: "100%",
-    width: "150%",
-    height: "150%",
-    resizeMode: "cover",
-    // justifyContent: "center",
-    // alignItems: "center",
-  },
-  othersText: {
-    color: "white",
-    // justifyContent: "end",
-    // alignItems: "center",
-    fontWeight: "bold",
-    zIndex: 1,
   },
 });

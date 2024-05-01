@@ -134,7 +134,6 @@ const styles = StyleSheet.create({
     zIndex: 1,
     alignItems: "center",
     justifyContent: "center",
-    zIndex: 1,
   },
   paginationContainer: {
     flexDirection: "row",
