@@ -57,7 +57,7 @@ const CustomButton = ({ active, onPress, children }) => {
       width="auto"
       // Optionally, you can add padding to the button to provide some space around the text
       py={2} // Adjust the vertical padding as needed
-      px={4} // Adjust the horizontal padding as needed
+      px={2} // Adjust the horizontal padding as needed
     >
       {children}
     </Button>
