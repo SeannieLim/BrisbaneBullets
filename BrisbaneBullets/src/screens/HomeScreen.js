@@ -11,10 +11,26 @@ import SocialMediaStack from "../components/SocialMediaStack";
 import AdsBanner from "../components/AdsBanner";
 import AllButton from "../components/AllButton";
 import { scaleFontSize } from "../constants/Layout";
-
 const videoTabs = [
   { label: "Highlights" },
   { label: "Press Conference" },
+];
+
+const mockNews = [
+  {
+    id: 1,
+    title: 'Brisbane Bullets welcome Deng Adel',
+    date: 'Apr 15, 2024',
+    img: require('../../assets/News/newsImg7.png'),
+    imgAlt: 'newsImage'
+  },
+  {
+    id: 2,
+    title: 'Club Statement - Chris Smith',
+    date: 'Apr 11, 2024',
+    img: require('../../assets/News/newsImg6.png'),
+    imgAlt: 'newsImage'
+  },
 ];
 
 const windowWidth = Dimensions.get("window").width;
@@ -30,7 +46,7 @@ export default function HomeScreen({ navigation }) {
       <TopBanner style={styles.banner} />
 
       <View style={styles.backgroundImageContainer}>
-        <ImageBackground source={require('../../assets/Logo/BB-logo.png')} resizeMode="center" opacity={'0.5'}>
+        <ImageBackground source={require('../../assets/Logo/BB-logo.png')} resizeMode="center" opacity={0.5}>
 
           <ScrollView>
             <Box style={styles.box}>
@@ -41,8 +57,11 @@ export default function HomeScreen({ navigation }) {
                 <Heading style={styles.heading}>Latest News</Heading>
                 <AllButton onPress={handleAllPress} />
               </Box>
-              <NewsCard />
-
+              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                {mockNews.map((newsItem, index) => (
+                  <NewsCard key={newsItem.id} news={newsItem} />
+                ))}
+              </ScrollView>
               <Box style={styles.headingContainer}>
                 <Heading style={styles.heading}>Latest Videos</Heading>
                 <AllButton />
