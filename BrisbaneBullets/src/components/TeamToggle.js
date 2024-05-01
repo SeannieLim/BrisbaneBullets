@@ -7,10 +7,16 @@ import {
     Text,
 } from "@gluestack-ui/themed-native-base";
 import { Linking } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 
 const ToggleComponent = ({ tabs, style }) => {
     // Use the first tab as the default active tab
     const [activeTab, setActiveTab] = useState(tabs[0]?.label);
+
+    const navigation = useNavigation();
+    const navigateToStats = () => {
+        navigation.navigate('PlayerStats');
+    };
 
     return (
         <Container width="80%" key={activeTab} style={style}> {/* Apply style here */}
@@ -23,6 +29,8 @@ const ToggleComponent = ({ tabs, style }) => {
                             onPress={() => {
                                 if (tab.label === "Advance Statistics") {
                                     Linking.openURL("https://www.brisbanebullets.com.au/Statistics");
+                                } else if (tab.label === "Stats") {
+                                    navigateToStats();
                                 } else {
                                     setActiveTab(tab.label);
                                 }

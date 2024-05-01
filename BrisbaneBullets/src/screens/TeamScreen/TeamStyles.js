@@ -69,7 +69,6 @@ const MyStyles = StyleSheet.create({
     shadowRadius: 4, // Shadow radius
     elevation: 5, // Elevation for Android
     position: 'relative', // Add relative positioning to the square container
-
     },
      textContainer: {
     position: 'absolute', // Position the text container absolutely within the container
@@ -85,7 +84,7 @@ const MyStyles = StyleSheet.create({
   playerProfileImage:{
     position: 'absolute',
     left: 50,
-    bottom : -197,
+    bottom: -197,
     width: '600%', 
     height: '650%',
 
@@ -226,8 +225,13 @@ scrollViewContent: {
     marginLeft: windowWidth * 0.1,
     marginTop: windowHeight * 0.02
 
+  },
+  bio: {
+    fontSize: scaleFontSize(17),
+    letterSpacing: 1,
+    marginLeft: windowWidth * 0.1,
+    marginTop: windowHeight * 0.02
   }
-  
   
 
   

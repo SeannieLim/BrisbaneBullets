@@ -31,12 +31,12 @@ const PlayerProfile = ({ route }) => {
       </View>
 
       <View style={MyStyles.imageBox}>
-        <View style={MyStyles.textContainer}>
-          <Text style={MyStyles.jerseyNumber}>{player.jerseyNumber}</Text>
-          <Image
+      <Image
             source={player.playerProfileImage}
             style={MyStyles.playerProfileImage}
           />
+        <View style={MyStyles.textContainer}>
+          <Text style={MyStyles.jerseyNumber}>{player.jerseyNumber}</Text>
         </View>
       </View>
 
@@ -51,9 +51,9 @@ const PlayerProfile = ({ route }) => {
   <Image source={require('../../../assets/social-media/X.png')} style={MyStyles.icon} />
 </TouchableOpacity>
       
-   <Text style={MyStyles.socialMedia}>Bio</Text>
-      
-    </ScrollView>
+  <Text style={MyStyles.socialMedia}>Bio</Text>
+  <Text style={MyStyles.bio}>The recently turned 17-year-old who already stands 7'3 tall has a remarkable potential for Brisbane Bullets.</Text>
+  </ScrollView>
   );
 };
 
