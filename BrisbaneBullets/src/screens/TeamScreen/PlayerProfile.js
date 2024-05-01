@@ -51,7 +51,7 @@ const PlayerProfile = ({ route }) => {
   <Image source={require('../../../assets/social-media/X.png')} style={MyStyles.icon} />
 </TouchableOpacity>
       
-
+   <Text style={MyStyles.socialMedia}>Bio</Text>
       
     </ScrollView>
   );
