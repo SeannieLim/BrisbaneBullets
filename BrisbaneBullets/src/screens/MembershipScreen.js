@@ -6,7 +6,6 @@ import { Entypo } from "@expo/vector-icons";
 import { scaleFontSize } from "../constants/Layout";
 
 const MembershipScreen = ({ route }) => {
-  const { uri } = route.params;
   const webviewRef = useRef(null);
   const navigation = useNavigation();
 
@@ -51,7 +50,7 @@ const MembershipScreen = ({ route }) => {
       // added originWhitelist to fix the warning (can't open url: about:srcdoc)
       originWhitelist={["*"]}
       ref={webviewRef}
-      source={{ uri }}
+      source={{ uri: "https://brisbanebullets.memberlink.net.au/memberhome" }}
       style={styles.webview}
     />
   );

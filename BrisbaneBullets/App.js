@@ -33,6 +33,7 @@ export default function App(props) {
               name="PrivacyPolicy"
               component={PrivacyPolicyScreen}
               options={{
+                headerTitle: "Privacy Policy",
                 headerStyle: {
                   backgroundColor: "white",
                 },

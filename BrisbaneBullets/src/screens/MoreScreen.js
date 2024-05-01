@@ -20,15 +20,10 @@ const windowHeight = Dimensions.get("window").height;
 export default function MoreScreen({ navigation }) {
   const nav = useNavigation();
 
-  const handleMembershipPress = () => {
-    nav.navigate("MembershipScreen", {
-      uri: "https://brisbanebullets.memberlink.net.au/memberhome",
-    });
+  const handleNav = (screenName) => {
+    nav.navigate(screenName);
   };
 
-  const handlePrivacyPress = () => {
-    nav.navigate("PrivacyPolicy");
-  };
   const [isEnabled, setIsEnabled] = React.useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
@@ -66,7 +61,10 @@ export default function MoreScreen({ navigation }) {
                     />
                   </View>
                 </Button>
-                <Button style={styles.item} onPress={handleMembershipPress}>
+                <Button
+                  style={styles.item}
+                  onPress={() => handleNav("MembershipScreen")}
+                >
                   <ButtonText style={styles.buttonText}>Membership </ButtonText>
                   <Entypo name="chevron-small-right" size={26} color="white" />
                 </Button>
@@ -78,7 +76,10 @@ export default function MoreScreen({ navigation }) {
                 space="sm"
                 style={styles.boxContainer}
               >
-                <Button style={styles.item} onPress={handlePrivacyPress}>
+                <Button
+                  style={styles.item}
+                  onPress={() => handleNav("PrivacyPolicy")}
+                >
                   <ButtonText style={styles.buttonText}>
                     Privacy Policy
                   </ButtonText>
