@@ -1,3 +1,4 @@
+// https://www.brisbanebullets.com.au/pages/privacy-policy
 import React, { useRef, useLayoutEffect } from "react";
 import { WebView } from "react-native-webview";
 import { View, StyleSheet, TouchableOpacity, Text, Share } from "react-native";
@@ -5,7 +6,7 @@ import { useNavigation } from "@react-navigation/native";
 import { Entypo } from "@expo/vector-icons";
 import { scaleFontSize } from "../constants/Layout";
 
-const MembershipScreen = ({ route }) => {
+const PrivacyPolicyScreen = ({ route }) => {
   const { uri } = route.params;
   const webviewRef = useRef(null);
   const navigation = useNavigation();
@@ -13,7 +14,7 @@ const MembershipScreen = ({ route }) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerStyle: { height: 100, backgroundColor: "#164CA8" },
-      headerTitle: "Membership",
+      headerTitle: "PrivacyPolicy",
       headerTitleAlign: "center",
       headerTitleStyle: {
         color: "white",
@@ -70,4 +71,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MembershipScreen;
+export default PrivacyPolicyScreen;

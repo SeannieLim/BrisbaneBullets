@@ -17,10 +17,10 @@ const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 export default function MoreScreen({ navigation }) {
-  // const navigation = useNavigation();
+  const nav = useNavigation();
 
-  const handlePress = () => {
-    navigation.navigate("Membership", {
+  const handleMembershipPress = () => {
+    nav.navigate("MembershipScreen", {
       uri: "https://brisbanebullets.memberlink.net.au/memberhome",
     });
   };
@@ -38,34 +38,28 @@ export default function MoreScreen({ navigation }) {
             opacity={0.5}
           >
             <Box style={[styles.boxContainer, styles.marginBottom]}>
-              <View style={[styles.topButton, { backgroundColor: "#164CA8" }]}>
+              <View style={styles.topButton}>
                 <Text style={styles.buttonText}>Push Notification </Text>
               </View>
               <Button
-                style={[styles.bottomButton, { backgroundColor: "#164CA8" }]}
-                onPress={handlePress}
+                style={styles.bottomButton}
+                onPress={handleMembershipPress}
               >
                 <ButtonText style={styles.buttonText}>Membership </ButtonText>
               </Button>
             </Box>
             <Box style={[styles.boxContainer, styles.marginTop]}>
-              <Button
-                style={[styles.topButton, { backgroundColor: "#164CA8" }]}
-              >
+              <Button style={styles.topButton}>
                 <ButtonText style={styles.buttonText}>
                   Privacy Policy
                 </ButtonText>
               </Button>
-              <Button
-                style={[styles.midButton, { backgroundColor: "#164CA8" }]}
-              >
+              <Button style={styles.midButton}>
                 <ButtonText style={styles.buttonText}>
                   Feedback and Support
                 </ButtonText>
               </Button>
-              <Button
-                style={[styles.bottomButton, { backgroundColor: "#164CA8" }]}
-              >
+              <Button style={styles.bottomButton}>
                 <ButtonText style={styles.buttonText}>
                   Terms and Conditions
                 </ButtonText>
@@ -119,6 +113,7 @@ const styles = StyleSheet.create({
     // alignItems: "center",
   },
   topButton: {
+    backgroundColor: "#164CA8",
     width: 260,
     height: 30,
     marginVertical: 0.3,
@@ -127,12 +122,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   midButton: {
+    backgroundColor: "#164CA8",
     width: 260,
     height: 30,
     marginVertical: 0.3,
   },
 
   bottomButton: {
+    backgroundColor: "#164CA8",
     width: 260,
     height: 30,
     marginVertical: 0.3,
