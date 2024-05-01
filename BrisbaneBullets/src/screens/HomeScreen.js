@@ -72,16 +72,17 @@ export default function HomeScreen({ navigation }) {
               <PartnersStack />
             </Box>
 
-            {/*//add to test components*/}
-            {/*<><NewsCard /><Box>*/}
-            {/*    <CustomButton btnText='Ticket' />*/}
-            {/*    <CustomButton btnText='Shop Now' />*/}
-            {/*</Box></>*/}
-          </ScrollView>
-        </ImageBackground>
-      </View>
-    </View>
-  );
+                        {/*//add to test components*/}
+                        {/*<><NewsCard /><Box>*/}
+                        {/*    <CustomButton btnText='Shop Now' />*/}
+                        {/*</Box></>*/}
+
+                    </ScrollView>
+                </ImageBackground>
+            </View>
+        </View>
+
+    )
 }
 
 const styles = StyleSheet.create({
