@@ -11,8 +11,9 @@ import "react-native-gesture-handler";
 import { GluestackUIProvider, Text } from "@gluestack-ui/themed";
 import { config } from "@gluestack-ui/config"; // Importing configuration object for GlueStack to access styling configurations and theme settings
 import { StatusBar } from "expo-status-bar";
-
+import PrivacyPolicyScreen from "./src/screens/PrivacyPolicyScreen";
 const Stack = createStackNavigator();
+import { Ionicons } from "@expo/vector-icons";
 
 export default function App(props) {
   return (
@@ -27,6 +28,27 @@ export default function App(props) {
               name=" "
               component={BottomTabNavigator}
               options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="PrivacyPolicy"
+              component={PrivacyPolicyScreen}
+              options={{
+                headerStyle: {
+                  backgroundColor: "white",
+                },
+                headerTitleStyle: {
+                  fontSize: 20,
+                },
+                headerTintColor: "#113B81",
+                headerBackImage: () => (
+                  <Ionicons
+                    name="chevron-back-outline"
+                    size={27}
+                    color="#FAB81B"
+                    pl={4}
+                  />
+                ),
+              }}
             />
             {/*<Stack.Screen name="Stock Details" component={DetailScreen} />*/}
           </Stack.Navigator>

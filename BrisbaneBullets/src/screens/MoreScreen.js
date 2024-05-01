@@ -24,6 +24,11 @@ export default function MoreScreen({ navigation }) {
       uri: "https://brisbanebullets.memberlink.net.au/memberhome",
     });
   };
+
+  const handlePrivacyPress = () => {
+    nav.navigate("PrivacyPolicy");
+  };
+
   return (
     <View style={styles.container}>
       <SafeAreaView style={{ flex: 1 }}>
@@ -49,7 +54,7 @@ export default function MoreScreen({ navigation }) {
               </Button>
             </Box>
             <Box style={[styles.boxContainer, styles.marginTop]}>
-              <Button style={styles.topButton}>
+              <Button style={styles.topButton} onPress={handlePrivacyPress}>
                 <ButtonText style={styles.buttonText}>
                   Privacy Policy
                 </ButtonText>
