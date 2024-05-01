@@ -100,10 +100,7 @@ export default function MoreScreen({ navigation }) {
             </View>
             <View style={styles.othersContainer}>
               <View style={styles.shadow}>
-                <Button
-                  style={styles.othersButton}
-                  onPress={handleMembershipPress}
-                >
+                <Button style={styles.othersButton}>
                   <Image
                     source={require("../../assets/CrowdCanvas.png")}
                     style={styles.othersImage}
