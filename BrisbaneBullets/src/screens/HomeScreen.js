@@ -2,7 +2,12 @@ import { TopBanner } from "../components/topBanner";
 import { View, VStack, Box, Text, Heading } from "@gluestack-ui/themed";
 import EStoreCarousel from "../components/E-storeCarousel";
 import HorizontalScrollContainer from "../components/HorizontalScrollContainer";
-import { Dimensions, ImageBackground, ScrollView, StyleSheet } from "react-native";
+import {
+  Dimensions,
+  ImageBackground,
+  ScrollView,
+  StyleSheet,
+} from "react-native";
 import ToggleComponent from "../components/ToggleButton";
 import CustomButton from "../components/CustomButton";
 import NewsCard from "../components/NewsCard";
@@ -11,10 +16,6 @@ import SocialMediaStack from "../components/SocialMediaStack";
 import AdsBanner from "../components/AdsBanner";
 import AllButton from "../components/AllButton";
 import { scaleFontSize } from "../constants/Layout";
-const videoTabs = [
-  { label: "Highlights" },
-  { label: "Press Conference" },
-];
 
 const mockNews = [
   {
@@ -32,6 +33,8 @@ const mockNews = [
     imgAlt: 'newsImage'
   },
 ];
+
+const videoTabs = [{ label: "Highlights" }, { label: "Press Conference" }];
 
 const windowWidth = Dimensions.get("window").width;
 
@@ -126,14 +129,14 @@ const styles = StyleSheet.create({
     marginTop: windowWidth * 0.05,
   },
   headingContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginVertical: windowWidth * 0.04,
-    alignContent: 'center',
+    alignContent: "center",
   },
   heading: {
-    color: '#1E1E1E',
+    color: "#1E1E1E",
     paddingRight: windowWidth * 0.03,
-    fontSize: scaleFontSize(20)
+    fontSize: scaleFontSize(20),
   },
   lowerBox: {
     marginLeft: windowWidth * 0.08,
@@ -144,5 +147,6 @@ const styles = StyleSheet.create({
   },
   spacing: {
     marginTop: windowWidth * 0.04,
-  }
+  },
 });
+

@@ -9,31 +9,40 @@ export function PartnersStack() {
     }, {img: require('../../assets/partners/qld.png')}, {img: require('../../assets/partners/csq.png')}, {img: require('../../assets/partners/all.png')}, {img: require('../../assets/partners/poly.png')},]
 
     return (
-        <View>
-            <View style={styles.container}>
-                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                    {partners.map((partner, index) => (
-                        <Box key={index} style={styles.box}><Image source={partner.img} style={styles.img}
-                                                                   resizeMode="contain" alt="logos"></Image></Box>
-                    ))}
-                </ScrollView>
-            </View>
-        </View>)
+        <View style={styles.container}>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                {partners.map((partner, index) => (
+                    <Box key={index} style={styles.box}><Image source={partner.img} style={styles.img}
+                                                               resizeMode="contain" alt="logos"></Image></Box>
+                ))}
+            </ScrollView>
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     box: {
-        backgroundColor: '#f5f5f5',
+        backgroundColor: 'white',
         width: 110,
         height: 80,
         borderRadius: 15,
+        marginBottom: 20,
+        marginLeft: 1,
+        marginRight: 14,
         justifyContent: 'center',
         alignItems: 'center',
-        marginRight: 15,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 3,
+            height: 5,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 5,
+        elevation: 4,
     },
     img: {
         flex: 1,
