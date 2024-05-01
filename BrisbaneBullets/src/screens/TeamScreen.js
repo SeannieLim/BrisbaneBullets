@@ -1,7 +1,7 @@
 import {View,Text,Dimensions,ScrollView, ImageBackground, Linking} from "react-native";
 import {MyStyles} from '../screens/TeamScreen/TeamStyles';
 import ToggleComponent from "../components/TeamToggle";
-import TeamPlayers from "../screens/TeamScreen/TeamPlayers"
+import TeamPlayers from "../screens/TeamScreen/TeamPlayers";
 
 
 const teamTabs = [
@@ -21,6 +21,8 @@ export default function TeamScreen({navigation}) {
     };
     
     return (
+     
+
         <View style={MyStyles.mainContainer}>
             <View style={MyStyles.ImageBackground}><ImageBackground source={require('../../assets/Logo/BB-logo.png')} resizeMode="center" opacity={'0.5'}>
             <ScrollView>
@@ -31,6 +33,5 @@ export default function TeamScreen({navigation}) {
             </ImageBackground>
             </View>
         </View>
-        
     )
 }

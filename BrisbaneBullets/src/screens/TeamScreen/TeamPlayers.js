@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
+
 const players = [{
   id:"1",
   jerseyNumber: 11,
@@ -87,7 +88,7 @@ const Square = ({ player }) => {
   const navigation = useNavigation();
 
   const navigateToProfile = () => {
-    navigation.navigate('PlayerProfile', { playerId: player.id, players: players });
+    navigation.navigate('PlayerProfile', {players: players });
   };
 
   return (
@@ -129,7 +130,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     marginTop: windowHeight * 0.015,
-    marginLeft: windowWidth * 0.1,
+    marginLeft: windowWidth * 0.12,
   },
   leftColumn: {
     flex: 1,
@@ -147,7 +148,7 @@ const styles = StyleSheet.create({
     marginVertical : windowHeight * 0.010,
     borderRadius: 15,
     shadowColor: '#000', // Shadow color
-    shadowOffset: { width: 0, height: 2 }, // Shadow offset
+    shadowOffset: { width: 1, height: 2 }, // Shadow offset
     shadowOpacity: 0.25, // Shadow opacity
     shadowRadius: 4, // Shadow radius
     elevation: 5, // Elevation for Android

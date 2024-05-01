@@ -12,6 +12,7 @@ import {GluestackUIProvider, Text} from "@gluestack-ui/themed";
 import {config} from "@gluestack-ui/config"; // Importing configuration object for GlueStack to access styling configurations and theme settings
 import {StatusBar} from 'expo-status-bar';
 
+
 const Stack = createStackNavigator();
 
 export default function App(props) {
@@ -29,6 +30,7 @@ export default function App(props) {
                             options={{headerShown: false}}
                         />
                         {/*<Stack.Screen name="Stock Details" component={DetailScreen} />*/}
+               
                     </Stack.Navigator>
                 </NavigationContainer>
                 {/*</SafeAreaView>*/}
