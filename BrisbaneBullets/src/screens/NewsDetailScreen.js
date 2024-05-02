@@ -143,8 +143,8 @@ function MoreNews({ navigation }) {
         <HStack>
           {mockMoreNews.map((newsItem) => (
             <TouchableOpacity key={newsItem.id} onPress={() => handlePress(newsItem.id)}>
-              <View mr={5}>
-                <Image source={newsItem.img} alt={newsItem.imgAlt} borderRadius={10} />
+              <View mr={5} styles={styles.moreImgBorder}>
+                <Image source={newsItem.img} alt={newsItem.imgAlt} />
               </View>
             </TouchableOpacity>
           ))
@@ -177,4 +177,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  moreImgBorder: {
+    borderRadius: 10,
+  }
 });

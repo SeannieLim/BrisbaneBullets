@@ -45,13 +45,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    width: 350,
+    width: 330,
     height: 160,
     marginHorizontal: 3
   },
   newsImg: {
-    width: 130,
-    height: 140,
+    width: 120,
+    height: 130,
     borderRadius: 15,
   },
   textColor: {
