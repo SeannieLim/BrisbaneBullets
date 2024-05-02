@@ -1,5 +1,6 @@
 import React from "react";
-import { Platform, StyleSheet, View, SafeAreaView } from "react-native";
+import { Platform, StyleSheet, View } from "react-native";
+
 import {
   NavigationContainer,
   DarkTheme,
@@ -8,9 +9,11 @@ import {
 import { createStackNavigator } from "@react-navigation/stack";
 import BottomTabNavigator from "./src/navigation/BottomTabNavigator";
 import "react-native-gesture-handler";
-import { GluestackUIProvider, Text } from "@gluestack-ui/themed";
+import { GluestackUIProvider } from "@gluestack-ui/themed";
 import { config } from "@gluestack-ui/config"; // Importing configuration object for GlueStack to access styling configurations and theme settings
 import { StatusBar } from "expo-status-bar";
+import StandingsScreen from "./src/screens/StandingsScreen";
+
 import PrivacyPolicyScreen from "./src/screens/PrivacyPolicyScreen";
 const Stack = createStackNavigator();
 import { Ionicons } from "@expo/vector-icons";
@@ -51,7 +54,7 @@ export default function App(props) {
                 ),
               }}
             />
-            {/*<Stack.Screen name="Stock Details" component={DetailScreen} />*/}
+            <Stack.Screen name="Standings" component={StandingsScreen} />
           </Stack.Navigator>
         </NavigationContainer>
         {/*</SafeAreaView>*/}

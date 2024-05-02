@@ -12,9 +12,9 @@ const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = "Home";
 
 export default function BottomTabNavigator({ navigation, route }) {
-  //   useEffect(() => {
-  //     navigation.setOptions({ headerTitle: getHeaderTitle(route) });
-  //   }, [navigation, route]);
+    //   useEffect(() => {
+    //     navigation.setOptions({ headerTitle: getHeaderTitle(route) });
+    //   }, [navigation, route]);
 
   return (
     <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
@@ -24,7 +24,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} name="home" />
+              <TabBarIcon focused={focused} library='Feather' name="home" />
           ),
         }}
       />
@@ -34,7 +34,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} name="calendar-outline" />
+              <TabBarIcon focused={focused} library='Feather' name="calendar" />
           ),
         }}
       />
@@ -44,7 +44,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} name="ticket-outline" />
+              <TabBarIcon focused={focused} library='FontAwesome' name="ticket" />
           ),
         }}
       />
@@ -54,7 +54,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} name="people-outline" />
+              <TabBarIcon focused={focused} library='FontAwesome' name="group" />
           ),
         }}
       />
@@ -64,7 +64,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} name="ellipsis-horizontal-outline" />
+              <TabBarIcon focused={focused} library='Feather' size={30} name="more-horizontal" />
           ),
         }}
       />

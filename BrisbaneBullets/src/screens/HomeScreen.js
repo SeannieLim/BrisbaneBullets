@@ -17,31 +17,54 @@ import AdsBanner from "../components/AdsBanner";
 import AllButton from "../components/AllButton";
 import { scaleFontSize } from "../constants/Layout";
 
+const mockNews = [
+  {
+    id: 1,
+    title: 'Brisbane Bullets welcome Deng Adel',
+    date: 'Apr 15, 2024',
+    img: require('../../assets/News/newsImg7.png'),
+    imgAlt: 'newsImage'
+  },
+  {
+    id: 2,
+    title: 'Club Statement - Chris Smith',
+    date: 'Apr 11, 2024',
+    img: require('../../assets/News/newsImg6.png'),
+    imgAlt: 'newsImage'
+  },
+];
+
 const videoTabs = [{ label: "Highlights" }, { label: "Press Conference" }];
 
 const windowWidth = Dimensions.get("window").width;
 
 export default function HomeScreen({ navigation }) {
+  const handleAllPress = () => {
+    // Navigate to the All News screen when the All button is pressed
+    navigation.navigate('News');
+  };
   return (
     <View style={styles.container}>
+
       <TopBanner style={styles.banner} />
 
       <View style={styles.backgroundImageContainer}>
-        <ImageBackground
-          source={require("../../assets/Logo/BB-logo.png")}
-          resizeMode="center"
-          opacity={0.5}
-        >
+        <ImageBackground source={require('../../assets/Logo/BB-logo.png')} resizeMode="center" opacity={0.5}>
+
           <ScrollView>
             <Box style={styles.box}>
-              <AdsBanner imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png" />
+
+              <AdsBanner
+                imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png" />
               <Box style={styles.headingContainer}>
                 <Heading style={styles.heading}>Latest News</Heading>
-                <AllButton />
+                <AllButton onPress={handleAllPress} />
               </Box>
-
-              <NewsCard />
-
+              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                {mockNews.map((newsItem, index) => (
+                  <NewsCard key={newsItem.id} news={newsItem} />
+                ))}
+              </ScrollView>
               <Box style={styles.headingContainer}>
                 <Heading style={styles.heading}>Latest Videos</Heading>
                 <AllButton />
@@ -65,7 +88,8 @@ export default function HomeScreen({ navigation }) {
               <Box style={styles.socialMedia}>
                 <SocialMediaStack />
               </Box>
-              <AdsBanner imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png" />
+              <AdsBanner
+                imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png" />
               <Box style={styles.headingContainer}>
                 <Heading style={styles.heading}>Partners</Heading>
               </Box>
@@ -77,25 +101,27 @@ export default function HomeScreen({ navigation }) {
             {/*    <CustomButton btnText='Ticket' />*/}
             {/*    <CustomButton btnText='Shop Now' />*/}
             {/*</Box></>*/}
+
           </ScrollView>
         </ImageBackground>
       </View>
     </View>
-  );
+
+  )
 }
 
 const styles = StyleSheet.create({
   backgroundImageContainer: {
     flex: 1,
     width: windowWidth,
-    backgroundColor: "white",
+    backgroundColor: 'white',
   },
   container: {
     flex: 1,
-    position: "relative",
+    position: 'relative',
   },
   banner: {
-    position: "absolute",
+    position: 'absolute',
     top: 0,
   },
   box: {
@@ -123,3 +149,4 @@ const styles = StyleSheet.create({
     marginTop: windowWidth * 0.04,
   },
 });
+
