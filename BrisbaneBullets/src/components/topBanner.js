@@ -264,9 +264,8 @@ export function TopBanner() {
                 {/* Pagination dots */}
                 <View style={styles.paginationContainer}>
                     {[...Array(3).keys()].map((index) => (
-                        <TouchableOpacity onPress={() => scrollToIndex(index)}>
+                        <TouchableOpacity key={index} onPress={() => scrollToIndex(index)}>
                             <View
-                                key={index}
                                 style={[
                                     styles.paginationDot,
                                     {opacity: currentIndex === index ? 1 : 0.3},
