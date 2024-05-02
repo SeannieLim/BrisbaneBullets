@@ -230,7 +230,22 @@ scrollViewContent: {
     letterSpacing: 1,
     marginLeft: windowWidth * 0.1,
     marginTop: windowHeight * 0.02
-  }
+  },
+  statsText: {
+    fontSize: scaleFontSize(18), // Adjust font size as needed
+    color: '#000000',
+    fontWeight: 'bold',
+    letterSpacing: 1,
+    alignItems: 'center',
+  },
+  statsValueText: {
+    fontSize: scaleFontSize(18), // Adjust font size as needed
+    color: '#000000',
+    letterSpacing: 1,
+    alignItems: 'center',
+    left: 3,
+    marginBottom: windowHeight * 0.04
+  },
   
 
   
