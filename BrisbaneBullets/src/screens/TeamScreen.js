@@ -11,7 +11,7 @@ const teamTabs = [
 
 
 export default function TeamScreen({navigation}) {
-
+    
     return (
      
 

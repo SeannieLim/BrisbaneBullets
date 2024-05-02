@@ -5,7 +5,7 @@ import MyStyles from './TeamStyles';
 import { AntDesign } from '@expo/vector-icons';
 import ToggleComponent from '../../components/TeamToggle';
 import CountryFlag from "react-native-country-flag";
-import PlayerDetails from './PlayerDetails';
+import PlayerDetails from './PlayerDetails';  
 
 const ProfileStats = [
   { label: "Profile" },

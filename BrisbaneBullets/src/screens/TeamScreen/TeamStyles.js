@@ -61,7 +61,7 @@ const MyStyles = StyleSheet.create({
     height: 250, // Height of the box
     backgroundColor: '#164CA7', // Background color of the box
     borderRadius: 15, // Border radius (optional)
-    marginLeft: windowWidth * 0.09,
+    marginLeft: windowWidth * 0.05,
     marginTop: windowHeight * 0.06,
     shadowColor: '#000', // Shadow color
     shadowOffset: { width: 3, height: 6 }, // Shadow offset
