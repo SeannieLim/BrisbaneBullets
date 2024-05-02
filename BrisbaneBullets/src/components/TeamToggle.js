@@ -1,37 +1,42 @@
 import React, { useState } from "react";
 import { Container, Box, HStack, Button, Text } from "@gluestack-ui/themed-native-base";
 import { Linking } from "react-native";
-import PlayerStatsBox from '../screens/TeamScreen/PlayerStatsBox'; // Import PlayerStatsBox component
+import { useNavigation } from '@react-navigation/native';
 
 const ToggleComponent = ({ tabs, style }) => {
     // Use the first tab as the default active tab
     const [activeTab, setActiveTab] = useState(tabs[0]?.label);
 
-    const handleTabPress = (tabLabel) => {
-        if (tabLabel === "Advance Statistics") {
-            Linking.openURL("https://www.brisbanebullets.com.au/Statistics");
-        } else {
-            setActiveTab(tabLabel);
-        }
+    const navigation = useNavigation();
+    const navigateToStats = () => {
+        navigation.navigate('PlayerStats');
     };
 
     return (
-        <Container width="80%" key={activeTab} style={style}>
+        <Container width="80%" key={activeTab} style={style}> {/* Apply style here */}
             <Box bg="#FCFDFF" width="100%" borderRadius="full" padding="0">
                 <HStack space={0}>
                     {tabs.map((tab) => (
                         <CustomButton
                             key={tab.label}
                             active={activeTab === tab.label}
-                            onPress={() => handleTabPress(tab.label)}
+                            onPress={() => {
+                                if (tab.label === "Advance Statistics") {
+                                    Linking.openURL("https://www.brisbanebullets.com.au/Statistics");
+                                } else if (tab.label === "Stats") {
+                                    navigateToStats();
+                                } else {
+                                    setActiveTab(tab.label);
+                                }
+                            }}
                         >
                             {tab.label}
                         </CustomButton>
                     ))}
                 </HStack>
             </Box>
-            {/* Render PlayerStatsBox component only if "Stats" tab is active */}
-            {activeTab === "Stats" && <PlayerStatsBox />}
+            {/* Render content based on active tab */}
+            <Content activeTab={activeTab} tabs={tabs} />
         </Container>
     );
 };
@@ -55,6 +60,15 @@ const CustomButton = ({ active, onPress, children }) => {
             {children}
         </Button>
     );
+};
+
+const Content = ({ activeTab, tabs }) => {
+    const activeContent = tabs.find((tab) => tab.label === activeTab)?.content;
+    return activeContent ? (
+        <Box p={4}>
+            <Text>{activeContent}</Text>
+        </Box>
+    ) : null;
 };
 
 export default ToggleComponent;
