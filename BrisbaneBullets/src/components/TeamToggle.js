@@ -12,6 +12,15 @@ const ToggleComponent = ({ tabs, style }) => {
         navigation.navigate('PlayerStats');
     };
 
+    const navigateToAdvanceStats = () => {
+        navigation.navigate('AdvanceStatistics');
+    };
+
+    const navigateToPlayersProfile = () => {
+        navigation.navigate('TeamScreen');
+    };
+
+
     return (
         <Container width="80%" key={activeTab} style={style}> {/* Apply style here */}
             <Box bg="#FCFDFF" width="100%" borderRadius="full" padding="0">
@@ -21,11 +30,14 @@ const ToggleComponent = ({ tabs, style }) => {
                             key={tab.label}
                             active={activeTab === tab.label}
                             onPress={() => {
-                                if (tab.label === "Advance Statistics") {
-                                    Linking.openURL("https://www.brisbanebullets.com.au/Statistics");
+                                if (tab.label === "AdvanceStatistics") {
+                                    navigateToAdvanceStats();
                                 } else if (tab.label === "Stats") {
                                     navigateToStats();
-                                } else {
+                                } else if (tab.label === "Players"){
+                                    navigateToPlayersProfile();
+                                }
+                                else {
                                     setActiveTab(tab.label);
                                 }
                             }}

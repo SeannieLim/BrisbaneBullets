@@ -5,7 +5,7 @@ import TeamPlayers from "../screens/TeamScreen/TeamPlayers";
 
 
 const teamTabs = [
-    {label: "Players"},
+    {label: "Team"},
     {label: "Advance Statistics"},
 ];
 
