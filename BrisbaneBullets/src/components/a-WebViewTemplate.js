@@ -4,7 +4,7 @@ import { View, StyleSheet, TouchableOpacity, Text, Share } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign, Entypo } from "@expo/vector-icons";
 
-const WebViewTemplate = ({ uri }) => {
+const A_WebViewTemplate = ({ uri }) => {
   const webviewRef = useRef(null);
   const navigation = useNavigation();
 
@@ -70,4 +70,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default WebViewTemplate;
+export default A_WebViewTemplate;

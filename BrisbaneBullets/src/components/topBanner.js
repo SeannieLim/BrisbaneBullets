@@ -74,7 +74,7 @@ export function TopBanner() {
 
   const handleWatchPress = () => {
     // Navigate to the LiveScreen with some params if necessary
-    navigation.navigate("LiveScreen", { uri: "https://www.getespn.com.au/" });
+    navigation.navigate("LiveScreen");
   };
 
   // Need to update after getting data access
