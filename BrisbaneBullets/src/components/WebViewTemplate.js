@@ -65,8 +65,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
   },
   headerButton: {
-    paddingHorizontal: 10,
-    paddingVertical: 5,
+    marginHorizontal: 10,
+    marginVertical: 5,
   },
 });
 
