@@ -259,7 +259,7 @@ export function TopBanner() {
               </View>
             </View>
             <HStack>
-              <CustomButton btnText="Ticket" routeName="B-StoreScreen" />
+              <CustomButton btnText="Ticket" routeName="" />
             </HStack>
           </View>
         </ScrollView>

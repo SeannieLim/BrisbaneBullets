@@ -33,11 +33,6 @@ const EStoreCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollViewRef = useRef();
   const intervalRef = useRef();
-  // const navigation = useNavigation();
-
-  // const handlePress = () => {
-  //   navigation.navigate("B-StoreScreen");
-  // };
 
   const onScroll = (event) => {
     //determine the horizontal scroll position
@@ -127,21 +122,22 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   buttonOverlay: {
+    flexDirection: "row",
+    justifyContent: "center",
     position: "absolute",
-    bottom: 30,
+    bottom: 20, // position of the dots from the bottom
     width: "100%",
-    height: "100%",
+    height: 50,
     zIndex: 1,
-    // alignItems: "center",
-    // justifyContent: "center",
   },
   paginationContainer: {
     flexDirection: "row",
     justifyContent: "center",
     position: "absolute",
-    bottom: 10, // position of the dots from the bottom
+    bottom: 10,
     width: "100%",
     zIndex: 1,
+    height: 10,
   },
   paginationDot: {
     height: 6,

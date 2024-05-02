@@ -9,25 +9,24 @@ const CustomButton = ({ btnText, routeName }) => {
   const handleBtn = () => {
     navigation.navigate(routeName);
   };
-  // Implement your share functionality here
 
   return (
-    // <TouchableOpacity>
     <Button
       variant="solid"
       bgColor="#FAB81B"
-      // width="65%"
-      // height={"43%"}
       borderRadius={50}
       isDisabled={false}
       style={styles.button}
       onPress={handleBtn}
     >
-      <ButtonText fontSize={15} color="$textDark900" textAlign="center">
+      <ButtonText
+        fontSize={scaleFontSize(15)}
+        color="$textDark900"
+        textAlign="center"
+      >
         {btnText}
       </ButtonText>
     </Button>
-    // </TouchableOpacity>
   );
 };
 
@@ -36,5 +35,7 @@ const styles = StyleSheet.create({
   button: {
     alignSelf: "center",
     marginTop: 15,
+    marginBottom: 15,
+    height: "70%",
   },
 });

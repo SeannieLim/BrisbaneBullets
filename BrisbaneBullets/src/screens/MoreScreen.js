@@ -41,7 +41,7 @@ export default function MoreScreen({ navigation }) {
             opacity={0.5}
             style={styles.backgroundImageContainer}
           >
-            <View style={styles.shadow}>
+            <View style={styles.shadowBox1}>
               <ButtonGroup
                 isAttached="true"
                 space="sm"
@@ -70,7 +70,7 @@ export default function MoreScreen({ navigation }) {
                 </Button>
               </ButtonGroup>
             </View>
-            <View style={styles.shadow}>
+            <View style={styles.shadowBox1}>
               <ButtonGroup
                 isAttached="true"
                 space="sm"
@@ -100,7 +100,7 @@ export default function MoreScreen({ navigation }) {
               </ButtonGroup>
             </View>
             <View style={styles.othersContainer}>
-              <View style={styles.shadow}>
+              <View style={styles.shadowBox2}>
                 <Button style={styles.othersButton}>
                   <Image
                     source={require("../../assets/CrowdCanvas.png")}
@@ -145,13 +145,31 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
   },
+
   boxContainer: {
-    backgroundColor: "white",
-    borderRadius: 10,
-    marginTop: 10,
-    marginBottom: 10,
     overflow: "hidden",
     flexDirection: "column",
+    borderRadius: 10,
+  },
+  shadowBox1: {
+    backgroundColor: "white",
+    borderRadius: 10,
+    shadowColor: "#000", // Shadow color
+    shadowOffset: { width: 3, height: 5 }, // Shadow offset
+    shadowOpacity: 0.25, // Shadow opacity
+    shadowRadius: 4, // Shadow radius
+    elevation: 10, // Elevation for Android
+    marginVertical: 5,
+  },
+  shadowBox2: {
+    backgroundColor: "white",
+    borderRadius: 20,
+    shadowColor: "#000", // Shadow color
+    shadowOffset: { width: 3, height: 5 }, // Shadow offset
+    shadowOpacity: 0.25, // Shadow opacity
+    shadowRadius: 4, // Shadow radius
+    elevation: 10, // Elevation for Android
+    margin: 5,
   },
   switchContainer: {
     flex: 1,
@@ -173,8 +191,8 @@ const styles = StyleSheet.create({
     fontWeight: "light",
   },
   othersContainer: {
-    marginTop: windowWidth * 0.05,
-    // flexDirection: "column",
+    marginVertical: 10,
+    flexDirection: "row",
   },
   othersButton: {
     backgroundColor: "white",
@@ -182,7 +200,6 @@ const styles = StyleSheet.create({
     height: 150,
     borderRadius: 20,
     overflow: "hidden",
-    position: "relative",
   },
   othersImage: {
     position: "absolute",
@@ -202,13 +219,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     width: "100%",
     fontSize: scaleFontSize(16),
-  },
-  shadow: {
-    backgroundColor: "transparent",
-    shadowColor: "#000", // Shadow color
-    shadowOffset: { width: 3, height: 5 }, // Shadow offset
-    shadowOpacity: 0.25, // Shadow opacity
-    shadowRadius: 4, // Shadow radius
-    elevation: 10, // Elevation for Android
   },
 });
