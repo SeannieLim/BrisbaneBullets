@@ -90,11 +90,11 @@ export default function NewsScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: windowWidth * 0.05,
+    paddingHorizontal: windowWidth * 0.08,
     backgroundColor: 'white',
   },
   flatListContent: {
     paddingVertical: 10,
-    paddingHorizontal: 10,
+    paddingHorizontal: 5,
   },
 });

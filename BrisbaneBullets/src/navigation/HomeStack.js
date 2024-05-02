@@ -47,8 +47,18 @@ function HomeStackScreen() {
       <HomeStack.Screen
         name="NewsDetailScreen"
         component={NewsDetailScreen}
-        options={{ headerShown: true }}
-      />
+        options={{
+          headerStyle: {
+            backgroundColor: '#113B81',
+          },
+          headerTitleStyle: {
+            fontSize: 20,
+          },
+          headerTintColor: 'white',
+          headerBackImage: () => (
+            <Ionicons name="chevron-back-outline" size={27} color="#FAB81B" pl={4} />
+          ),
+        }} />
     </HomeStack.Navigator>
   );
 }

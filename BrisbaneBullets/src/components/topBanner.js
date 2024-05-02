@@ -1,10 +1,10 @@
-import {useEffect, useRef, useState} from "react";
-import {scaleFontSize} from "../constants/Layout";
-import {Dimensions, ScrollView, StyleSheet, TouchableOpacity} from "react-native";
-import {LinearGradient} from "expo-linear-gradient";
-import {HStack, Image, Text, View, Box} from "@gluestack-ui/themed";
-import {ActionButton} from "./actionButton";
-import {useNavigation} from "@react-navigation/native";
+import { useEffect, useRef, useState } from "react";
+import { scaleFontSize } from "../constants/Layout";
+import { Dimensions, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { HStack, Image, Text, View, Box } from "@gluestack-ui/themed";
+import { ActionButton } from "./actionButton";
+import { useNavigation } from "@react-navigation/native";
 import CustomButton from "./CustomButton";
 
 const windowWidth = Dimensions.get("window").width;
@@ -42,12 +42,12 @@ const mockTeams = [
     },
 ];
 
-const mockPastGame = [{date: "Fri, Feb 19", match: "Final"}];
+const mockPastGame = [{ date: "Fri, Feb 19", match: "Final" }];
 
-const mockCurrentGame = [{match: "2nd", time: "7:01"}];
+const mockCurrentGame = [{ match: "2nd", time: "7:01" }];
 
 const mockUpcomingGame = [
-    {date: "Fri, May 27", time: "10:00 AM GMT+10", location: "Spark Arena"},
+    { date: "Fri, May 27", time: "10:00 AM GMT+10", location: "Spark Arena" },
 ];
 
 function compareScore(one, two) {
@@ -69,7 +69,7 @@ export function TopBanner() {
 
     const handleWatchPress = () => {
         // Navigate to the LiveScreen with some params if necessary
-        navigation.navigate("LiveScreen", {uri: "https://www.getespn.com.au/"});
+        navigation.navigate("LiveScreen", { uri: "https://www.getespn.com.au/" });
     };
 
     // Need to update after getting data access
@@ -108,7 +108,7 @@ export function TopBanner() {
         <View style={styles.top}>
             <LinearGradient colors={["#164CA8", "#091E42"]} style={styles.container}>
                 <ScrollView horizontal ref={scrollViewRef} onScroll={handleScroll}
-                            pagingEnabled showsHorizontalScrollIndicator={false} scrollEventThrottle={16}>
+                    pagingEnabled showsHorizontalScrollIndicator={false} scrollEventThrottle={16}>
                     {/*Past game*/}
                     <View key={mockPastGame[0].id} style={styles.mainContainer}>
                         <View style={styles.itemContainer}>
@@ -156,7 +156,7 @@ export function TopBanner() {
                         </View>
                         <HStack>
                             <TouchableOpacity>
-                                <ActionButton value={'Recap'}/>
+                                <ActionButton value={'Recap'} />
                             </TouchableOpacity>
                         </HStack>
                     </View>
@@ -213,13 +213,13 @@ export function TopBanner() {
                         </View>
                         <HStack>
                             <TouchableOpacity>
-                                <ActionButton value={'Game Centre'}/>
+                                <ActionButton value={'Game Centre'} />
                             </TouchableOpacity>
                             <TouchableOpacity>
-                                <ActionButton value={'Watch'} onPress={handleWatchPress}/>
+                                <ActionButton value={'Watch'} onPress={handleWatchPress} />
                             </TouchableOpacity>
                             <TouchableOpacity>
-                                <ActionButton value={'Crowd Canvas'}/>
+                                <ActionButton value={'Crowd Canvas'} />
                             </TouchableOpacity>
                         </HStack>
                     </View>
@@ -256,7 +256,7 @@ export function TopBanner() {
                             </View>
                         </View>
                         <HStack>
-                            <CustomButton btnText='Ticket'/>
+                            <CustomButton btnText='Ticket' />
                         </HStack>
                     </View>
                 </ScrollView>
@@ -264,12 +264,11 @@ export function TopBanner() {
                 {/* Pagination dots */}
                 <View style={styles.paginationContainer}>
                     {[...Array(3).keys()].map((index) => (
-                        <TouchableOpacity onPress={() => scrollToIndex(index)}>
+                        <TouchableOpacity key={index} onPress={() => scrollToIndex(index)}>
                             <View
-                                key={index}
                                 style={[
                                     styles.paginationDot,
-                                    {opacity: currentIndex === index ? 1 : 0.3},
+                                    { opacity: currentIndex === index ? 1 : 0.3 },
                                 ]}
                             />
                         </TouchableOpacity>

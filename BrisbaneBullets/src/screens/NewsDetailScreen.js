@@ -136,23 +136,23 @@ function MoreNews({ navigation }) {
 
   return (
     <View py={10}>
-      <Box w={'40%'} borderBottomWidth={2} borderBlockColor='gray' pt={10} mb={10}>
+      <Box w={'45%'} borderBottomWidth={2} borderBlockColor='gray' pt={10} mb={10}>
         <Text fontWeight='bold' fontSize={20}>More News</Text>
       </Box>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} px={10}>
         <HStack>
           {mockMoreNews.map((newsItem) => (
             <TouchableOpacity key={newsItem.id} onPress={() => handlePress(newsItem.id)}>
-              <View mr={5} styles={styles.moreImgBorder}>
-                <Image source={newsItem.img} alt={newsItem.imgAlt} />
+              <View mr={10}>
+                <Image source={newsItem.img} alt={newsItem.imgAlt} style={styles.moreImg} />
               </View>
             </TouchableOpacity>
-          ))
-          }
+          ))}
         </HStack>
       </ScrollView>
     </View>
   );
+
 }
 
 const styles = StyleSheet.create({
@@ -177,7 +177,9 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
-  moreImgBorder: {
+  moreImg: {
+    width: 150,
+    height: 100,
     borderRadius: 10,
   }
 });
