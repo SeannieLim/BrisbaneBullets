@@ -91,7 +91,7 @@ const MyStyles = StyleSheet.create({
 
   ProfileStatsToggle:{
     marginLeft: windowWidth * 0.11,
-    marginTop: windowHeight * 0.01,
+    marginTop: windowHeight * 0.03,
     shadowColor: '#000', // Shadow color
     shadowOffset: { width: 0, height: 4 }, // Shadow offset
     shadowOpacity: 0.25, // Shadow opacity
