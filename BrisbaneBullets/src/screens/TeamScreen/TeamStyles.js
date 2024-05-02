@@ -57,8 +57,8 @@ const MyStyles = StyleSheet.create({
     },
     
     imageBox:{
-    width: 350,  // Width of the box
-    height: 250, // Height of the box
+    width: windowWidth * 0.9,  // Width of the box
+    height: windowHeight * 0.3, // Height of the box
     backgroundColor: '#164CA7', // Background color of the box
     borderRadius: 15, // Border radius (optional)
     marginLeft: windowWidth * 0.05,
