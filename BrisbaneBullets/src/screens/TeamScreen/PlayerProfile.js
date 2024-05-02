@@ -21,6 +21,8 @@ const PlayerProfile = ({ route }) => {
     navigation.goBack();
   };
 
+  const buttonWidth = player.playerName.length * 9.5
+
   return (
     <ScrollView style={MyStyles.mainContainer}>
       <View style={MyStyles.headerContainer}>
@@ -46,7 +48,7 @@ const PlayerProfile = ({ route }) => {
       <PlayerDetails player = {player}/>
 
       <Text style={MyStyles.socialMedia}>Social Media</Text>
-  <TouchableOpacity style={MyStyles.buttonContainer}  >
+  <TouchableOpacity style={[MyStyles.buttonContainer, { width: buttonWidth }]}   >
   <Text style={MyStyles.buttonText}>@{player.playerName}</Text>
   <Image source={require('../../../assets/social-media/X.png')} style={MyStyles.icon} />
 </TouchableOpacity>

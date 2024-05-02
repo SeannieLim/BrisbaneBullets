@@ -189,14 +189,13 @@ scrollViewContent: {
     letterSpacing: 1,
     marginBottom: windowHeight * 0.04,
   },
-  buttonContainer: {
+buttonContainer : {
     flexDirection: 'row', // Arrange items horizontally
     alignItems: 'center', // Align items vertically
     backgroundColor: '#164CA8', // Transparent background
     borderRadius: 25, // Round border
     paddingVertical: 8, // Vertical padding
     paddingHorizontal: 10, // Horizontal padding
-    width: 135,
     height: 35,
     marginLeft: windowWidth * 0.09,
     marginTop: windowHeight * 0.01,
