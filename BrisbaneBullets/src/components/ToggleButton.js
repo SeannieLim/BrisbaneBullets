@@ -18,7 +18,7 @@ const ToggleComponent = ({ tabs }) => {
         <Box
           bg="#FCFDFF"
           width="100%"
-          borderRadius="full"
+          borderRadius={50}
           padding="0"
           style={styles.shadow}
         >
@@ -46,7 +46,7 @@ const CustomButton = ({ active, onPress, children }) => {
     <Button
       flex={1}
       bg={active ? "#164CA8" : "transparent"}
-      borderRadius="full"
+      borderRadius="20"
       _text={{
         color: active ? "white" : "#164CA8",
         fontWeight: "bold",
@@ -71,12 +71,12 @@ const Content = ({ activeTab, tabs }) => {
 
 const styles = StyleSheet.create({
   shadow: {
+    backgroundColor: "white",
     shadowColor: "#000", // Shadow color
     shadowOffset: { width: 3, height: 5 }, // Shadow offset
     shadowOpacity: 0.25, // Shadow opacity
     shadowRadius: 4, // Shadow radius
     elevation: 5, // Elevation for Android
-    backgroundColor: "#FFFFFF",
   },
 });
 

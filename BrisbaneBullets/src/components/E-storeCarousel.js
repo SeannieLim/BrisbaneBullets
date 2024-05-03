@@ -8,7 +8,8 @@ import {
   Dimensions,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import ShopNowButton from "../components/ShopNowButton";
+// import ShopNowButton from "../components/ShopNowButton";
+import CustomButton from "../components/CustomButton";
 
 const WindowWidth = Dimensions.get("window").width;
 
@@ -32,11 +33,6 @@ const EStoreCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollViewRef = useRef();
   const intervalRef = useRef();
-  const navigation = useNavigation();
-
-  const handlePress = () => {
-    navigation.navigate("B-StoreScreen");
-  };
 
   const onScroll = (event) => {
     //determine the horizontal scroll position
@@ -88,7 +84,7 @@ const EStoreCarousel = () => {
                 style={styles.itemImage}
               />
               <View style={styles.buttonOverlay}>
-                <ShopNowButton onPress={handlePress} />
+                <CustomButton btnText="SHOP NOW" routeName="B-StoreScreen" />
               </View>
             </View>
           ))}
@@ -126,20 +122,22 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   buttonOverlay: {
-    position: "absolute",
-    bottom: 30,
-    width: "100%",
-    zIndex: 1,
-    alignItems: "center",
+    flexDirection: "row",
     justifyContent: "center",
+    position: "absolute",
+    bottom: 20, // position of the dots from the bottom
+    width: "100%",
+    height: 50,
+    zIndex: 1,
   },
   paginationContainer: {
     flexDirection: "row",
     justifyContent: "center",
     position: "absolute",
-    bottom: 10, // position of the dots from the bottom
+    bottom: 10,
     width: "100%",
     zIndex: 1,
+    height: 10,
   },
   paginationDot: {
     height: 6,

@@ -1,6 +1,5 @@
-import {useState} from 'react';
-import {View, Text, Box, HStack, VStack, Image} from "@gluestack-ui/themed";
-import {Dimensions, SafeAreaView, ScrollView, StyleSheet, TouchableOpacity} from "react-native";
+import {View, Text, Box, HStack} from "@gluestack-ui/themed";
+import {Dimensions, SafeAreaView, StyleSheet, TouchableOpacity} from "react-native";
 import {scaleFontSize} from "../constants/Layout";
 import {Ionicons} from '@expo/vector-icons';
 import {FontAwesome} from '@expo/vector-icons';
