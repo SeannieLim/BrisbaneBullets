@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, VStack, Box, Text, HStack, Image } from "@gluestack-ui/themed";
-import { Dimensions, ImageBackground, ScrollView, StyleSheet, TouchableOpacity } from "react-native";
+import { Dimensions, ImageBackground, ScrollView, StyleSheet, TouchableOpacity, FlatList } from "react-native";
 import NewsCard from "../components/NewsCard";
 import AdsBanner from "../components/AdsBanner";
 
@@ -58,45 +58,43 @@ const mockNews = [
 ];
 export default function NewsScreen({ navigation }) {
   const handleCardPress = (newsId) => {
-    navigation.navigate('NewsDetailScreen', { newsId }); // Pass the newsId to NewsDetailScreen
+    navigation.navigate('NewsDetailScreen', { newsId });
   };
-  const handleShare = () => {
-    // Implement share functionality here
-  };
+
+  const renderNewsItem = ({ item, index }) => (
+    <React.Fragment key={item.id}>
+      {/* Render NewsCard */}
+      <Box my={10}>
+        <NewsCard key={item.id} news={item} onPress={() => handleCardPress(item.id)} />
+      </Box>
+      {index > 0 && (index + 1) % 3 === 0 && (
+        <AdsBanner
+          imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png"
+        />
+      )}
+    </React.Fragment>
+  );
+
   return (
     <View style={styles.container}>
-      <View style={styles.backgroundImageContainer}>
-        <ScrollView>
-          {mockNews.map((newsItem, index) => (
-            <React.Fragment key={newsItem.id}>
-              {/* Render NewsCard */}
-              <Box my={10}>
-                <NewsCard news={newsItem} onPress={() => handleCardPress(newsItem.id)} />
-              </Box>
-              {/* Display AdsBanner after every 3rd NewsCard */}
-              {index > 0 && (index + 1) % 3 === 0 && (
-                <AdsBanner
-                  imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png"
-                />
-              )}
-            </React.Fragment>
-          ))}
-        </ScrollView>
-      </View>
+      <FlatList
+        data={mockNews}
+        renderItem={renderNewsItem}
+        keyExtractor={(item) => item.id.toString()}
+        contentContainerStyle={styles.flatListContent}
+      />
     </View>
   );
 }
+
 const styles = StyleSheet.create({
-  backgroundImageContainer: {
-    flex: 1,
-    width: windowWidth,
-    backgroundColor: 'white',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignContent: 'center'
+    paddingHorizontal: windowWidth * 0.08,
+    backgroundColor: 'white',
+  },
+  flatListContent: {
+    paddingVertical: 10,
+    paddingHorizontal: 5,
   },
 });
