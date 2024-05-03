@@ -6,11 +6,10 @@ export const useNotifications = () => useContext(NotificationContext);
 
 export const NotificationProvider = ({ children }) => {
   const [notifications, setNotifications] = useState([
-    //mock notifications
     { id: 1, title: "Brisbane v.s Sydney @ 8 p.m. tonight!", read: false },
     {
       id: 2,
-      title: "Season tickets on sale from Mar 25 to April 2! ",
+      title: "Season tickets on sale from Mar 25 to April 2!",
       read: false,
     },
     {
@@ -21,21 +20,28 @@ export const NotificationProvider = ({ children }) => {
     },
   ]);
 
-  const markAsRead = (id) => {
+  const markAsRead = (ids) => {
     setNotifications(
       notifications.map((notification) =>
-        notification.id === id ? { ...notification, read: true } : notification
+        ids.includes(notification.id)
+          ? { ...notification, read: true }
+          : notification
       )
     );
   };
 
-  const getUnreadCount = () => {
-    return notifications.filter((notification) => !notification.read).length;
+  const deleteNotifications = (ids) => {
+    setNotifications(
+      notifications.filter((notification) => !ids.includes(notification.id))
+    );
   };
+
+  const getUnreadCount = () =>
+    notifications.filter((notification) => !notification.read).length;
 
   return (
     <NotificationContext.Provider
-      value={{ notifications, markAsRead, getUnreadCount }}
+      value={{ notifications, markAsRead, deleteNotifications, getUnreadCount }}
     >
       {children}
     </NotificationContext.Provider>
