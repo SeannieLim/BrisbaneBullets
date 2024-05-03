@@ -1,5 +1,5 @@
 import {React, useState } from 'react';
-import { StyleSheet, TouchableOpacity, Linking, ImageBackground, Text, Dimensions } from 'react-native';
+import { StyleSheet, TouchableOpacity, ScrollView, Linking, ImageBackground, Text, Dimensions, SafeAreaView } from 'react-native';
 import { Box,  VStack, View } from "@gluestack-ui/themed";
 import {scaleFontSize} from "../constants/Layout";
 
@@ -31,6 +31,7 @@ const VideoBox = () =>{
 
     return(
     <View style={styles.box}> 
+    <SafeAreaView style={{flex: 1}}>
         <Box style={styles.header}>
           <Text style={styles.heading}>Videos</Text>
         </Box>
@@ -42,7 +43,11 @@ const VideoBox = () =>{
       />
       </TouchableOpacity >
         <Box style={styles.description} />
+        <Text style={styles.textColor} numberOfLines={3} ellipsizeMode="tail">
+             {mockVideos.map((video)=>{video.title})}
+            </Text>
       </VStack>
+      </SafeAreaView>
     </View>
 
     );
@@ -54,7 +59,27 @@ const VideoBox = () =>{
 
 const AllVideos = () => {
   return (
-    <VideoBox/>
+    <AllVideos/>
+    // <View style={styles.container}>
+    //   <View style={styles.backgroundImageContainer}>
+    //     <ScrollView>
+    //       {mockVideos.map((videosItem, index) => (
+    //         <React.Fragment key={videosItem.id}>
+    //           {/* Render Videos */}
+    //           <Box my={10}>
+    //             <VideoBox videos={videosItem} onPress={() => handleCardPress(newsItem.id)} />
+    //           </Box>
+    //           {/* Display AdsBanner after every 3rd NewsCard */}
+    //           {index > 0 && (index + 1) % 3 === 0 && (
+    //             <AdsBanner
+    //               imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png"
+    //             />
+    //           )}
+    //         </React.Fragment>
+    //       ))}
+    //     </ScrollView>
+    //   </View>
+    // </View>*/
   );
 };
 
@@ -68,8 +93,8 @@ const styles = StyleSheet.create({
         backgroundColor:"pink",
     },
     header: {
-      paddingTop: windowWidth * 0.1,
-      paddingBottom: windowWidth *0.08,
+      paddingTop: windowWidth * 0.03,
+      paddingBottom: windowWidth *0.03,
       flexDirection: 'row',
       justifyContent:'center'
   },
