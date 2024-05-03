@@ -1,41 +1,39 @@
 import React, { useState } from "react";
 import { Container, Box, HStack, Button, Text } from "@gluestack-ui/themed-native-base";
-import { Linking } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 
-//Receive Data from
-const ProfileStatsToggle = ({ tabs, style, player}) => {
+const ProfileStatsToggle = ({ tabs, style, player }) => {
     // Use the first tab as the default active tab
     const [activeTab, setActiveTab] = useState(tabs[0]?.label);
     const navigation = useNavigation();
+
     const navigateToStats = () => {
-        navigation.navigate('PlayerStats',{player});
+        setActiveTab("Stats"); // Update activeTab to "Stats"
+        navigation.navigate('PlayerStats', { player });
     }
 
     const navigateToPlayersProfile = () => {
-        navigation.navigate('PlayerProfile',{player});
+        setActiveTab("Profile"); // Update activeTab to "Profile"
+        navigation.navigate('PlayerProfile', { player });
     };
 
+    const handleTabPress = (tabLabel) => {
+        if (tabLabel === "Stats") {
+            navigateToStats();
+        } else if (tabLabel === "Profile") {
+            navigateToPlayersProfile();
+        }
+    };
 
     return (
-        <Container width="80%" key={activeTab} style={style}> {/* Apply style here */}
+        <Container width="80%" key={activeTab} style={style}>
             <Box bg="#FCFDFF" width="100%" borderRadius="full" padding="0">
                 <HStack space={0}>
                     {tabs.map((tab) => (
                         <CustomButton
                             key={tab.label}
                             active={activeTab === tab.label}
-                            onPress={() => {
-                                if (tab.label === "Stats") {
-                                    navigateToStats();
-                                } else if (tab.label === "Profile") {
-                                    navigateToPlayersProfile();
-                                }
-
-
-                               setActiveTab(prevTab => prevTab !== tab.label ? tab.label : prevTab);
-                            }}
-                            
+                            onPress={() => handleTabPress(tab.label)}
                         >
                             {tab.label}
                         </CustomButton>
