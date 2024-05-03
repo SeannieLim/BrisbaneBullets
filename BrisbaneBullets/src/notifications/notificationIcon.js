@@ -39,10 +39,12 @@ const styles = StyleSheet.create({
     height: 15,
     justifyContent: "center",
     alignItems: "center",
+    zIndex: 1,
   },
   badgeText: {
     color: "white",
-    fontSize: 12,
+    fontWeight: "bold",
+    fontSize: 10,
   },
 });
 

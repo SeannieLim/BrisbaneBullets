@@ -6,9 +6,19 @@ export const useNotifications = () => useContext(NotificationContext);
 
 export const NotificationProvider = ({ children }) => {
   const [notifications, setNotifications] = useState([
-    { id: 1, title: "New Message", read: false },
-    { id: 2, title: "Another Message", read: false },
-    // Add initial notifications here
+    //mock notifications
+    { id: 1, title: "Brisbane v.s Sydney @ 8 p.m. tonight!", read: false },
+    {
+      id: 2,
+      title: "Season tickets on sale from Mar 25 to April 2! ",
+      read: false,
+    },
+    {
+      id: 3,
+      title:
+        "Welcome to Brisbane Bullets app! Don’t forget to turn on notifications~",
+      read: false,
+    },
   ]);
 
   const markAsRead = (id) => {
