@@ -13,6 +13,7 @@ import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { scaleFontSize } from "../constants/Layout";
 import { Button, ButtonText, Box, ButtonGroup } from "@gluestack-ui/themed";
+import { GlobalStyles } from "../GlobalStyles";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -29,7 +30,7 @@ export default function MoreScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <SafeAreaView style={{ flex: 1 }}>
+      <SafeAreaView style={GlobalStyles.safeArea}>
         <Box style={styles.header}>
           <Text style={styles.heading}>More</Text>
         </Box>
