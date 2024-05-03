@@ -6,6 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 import ProfileStatsToggle from '../../components/ProfileStatsToggle'
 import CountryFlag from "react-native-country-flag";
 import PlayerDetails from './PlayerDetails';  
+import TextTruncate from '../../components/TextTruncate';
 
 const ProfileStats = [
   { label: "Profile" },
@@ -19,7 +20,7 @@ const PlayerProfile = ({ route }) => {
   const goBackToTeamScreen = () => {
     navigation.goBack();
   };
-
+ console.log(player)
   
 
   const buttonWidth = player.playerName.length * 9.5
@@ -56,7 +57,10 @@ const PlayerProfile = ({ route }) => {
 </TouchableOpacity>
       
   <Text style={MyStyles.socialMedia}>Bio</Text>
-  <Text style={MyStyles.bio}>The recently turned 17-year-old who already stands 7'3 tall has a remarkable potential for Brisbane Bullets.</Text>
+
+
+  <TextTruncate text ={player.Bio} numberOfLines={3} />
+  
   </ScrollView>
   );
 };

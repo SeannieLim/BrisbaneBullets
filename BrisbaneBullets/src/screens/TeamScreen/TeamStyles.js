@@ -10,7 +10,7 @@ const MyStyles = StyleSheet.create({
     backgroundImageContainer: {
         flex: 1,
         width: windowWidth,
-    },
+    },  
     mainContainer : {
         flex : 1,
         backgroundColor : 'white',
@@ -249,6 +249,7 @@ buttonContainer : {
   statsContainer:{
     MarginLeft: windowWidth * 0.02
   }
+  
   
 
   

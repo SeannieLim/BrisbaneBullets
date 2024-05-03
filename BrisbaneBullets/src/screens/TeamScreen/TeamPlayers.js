@@ -18,7 +18,16 @@ const players = [{
   position: 'Center',
   Height: '2.17M',
   Weight: '107kg',
-  DOB: '24/8/2004'
+  DOB: '24/8/2004',
+  Bio : `He recently turned 17-year-old who already stands 7'3 tall has a remarkable potential and he is going to begin that professional journey in NBL24 with the Brisbane Bullets.
+
+  Despite being aged just 16, was one of the hottest properties and with the world at his feet but decided to join the NBL Next Star program to start his professional career and signed with the Brisbane Bullets.
+  
+  Penned a two-year Next Star deal to join the Bullets given he won't be eligible for the NBA Draft until 2025 and having only just turned 17, the big man is one of the most exciting talents to come through Australian basketball in a long time.
+  
+  Has starred in Queensland representative teams and been part of the NBA Global Academy in Canberra while also having played at the Centre of Excellence in the NBL1 East during 2023, ahead of now joining the Bullets ahead of his first NBL season.
+  
+  Given his pure size and with the ability to move well given his size and his ability to play above the rim at both ends of the floor, it's obvious why there is so much excitement surrounding him`
 }, {
   id:"2",
   jerseyNumber: 12,
@@ -31,7 +40,16 @@ const players = [{
   position: 'Center',
   Height: '2.17M',
   Weight: '107kg',
-  DOB: '24/8/2004'
+  DOB: '24/8/2004',
+  Bio : `He recently turned 17-year-old who already stands 7'3 tall has a remarkable potential and he is going to begin that professional journey in NBL24 with the Brisbane Bullets.
+
+  Despite being aged just 16, was one of the hottest properties and with the world at his feet but decided to join the NBL Next Star program to start his professional career and signed with the Brisbane Bullets.
+  
+  Penned a two-year Next Star deal to join the Bullets given he won't be eligible for the NBA Draft until 2025 and having only just turned 17, the big man is one of the most exciting talents to come through Australian basketball in a long time.
+  
+  Has starred in Queensland representative teams and been part of the NBA Global Academy in Canberra while also having played at the Centre of Excellence in the NBL1 East during 2023, ahead of now joining the Bullets ahead of his first NBL season.
+  
+  Given his pure size and with the ability to move well given his size and his ability to play above the rim at both ends of the floor, it's obvious why there is so much excitement surrounding him`
 }, {
   id:"3",
   jerseyNumber: 23,
@@ -44,7 +62,16 @@ const players = [{
   position: 'Center',
   Height: '2.17M',
   Weight: '107kg',
-  DOB: '24/8/2004'
+  DOB: '24/8/2004',
+  Bio : `He recently turned 17-year-old who already stands 7'3 tall has a remarkable potential and he is going to begin that professional journey in NBL24 with the Brisbane Bullets.
+
+  Despite being aged just 16, was one of the hottest properties and with the world at his feet but decided to join the NBL Next Star program to start his professional career and signed with the Brisbane Bullets.
+  
+  Penned a two-year Next Star deal to join the Bullets given he won't be eligible for the NBA Draft until 2025 and having only just turned 17, the big man is one of the most exciting talents to come through Australian basketball in a long time.
+  
+  Has starred in Queensland representative teams and been part of the NBA Global Academy in Canberra while also having played at the Centre of Excellence in the NBL1 East during 2023, ahead of now joining the Bullets ahead of his first NBL season.
+  
+  Given his pure size and with the ability to move well given his size and his ability to play above the rim at both ends of the floor, it's obvious why there is so much excitement surrounding him`
 }, {
   id:"4",
   jerseyNumber: 34,
@@ -57,7 +84,16 @@ const players = [{
   position: 'Center',
   Height: '2.17M',
   Weight: '107kg',
-  DOB: '24/8/2004'
+  DOB: '24/8/2004',
+  Bio : `He recently turned 17-year-old who already stands 7'3 tall has a remarkable potential and he is going to begin that professional journey in NBL24 with the Brisbane Bullets.
+
+  Despite being aged just 16, was one of the hottest properties and with the world at his feet but decided to join the NBL Next Star program to start his professional career and signed with the Brisbane Bullets.
+  
+  Penned a two-year Next Star deal to join the Bullets given he won't be eligible for the NBA Draft until 2025 and having only just turned 17, the big man is one of the most exciting talents to come through Australian basketball in a long time.
+  
+  Has starred in Queensland representative teams and been part of the NBA Global Academy in Canberra while also having played at the Centre of Excellence in the NBL1 East during 2023, ahead of now joining the Bullets ahead of his first NBL season.
+  
+  Given his pure size and with the ability to move well given his size and his ability to play above the rim at both ends of the floor, it's obvious why there is so much excitement surrounding him`
 }, {
   id:"5",
   jerseyNumber: 0,
@@ -70,7 +106,16 @@ const players = [{
   position: 'Center',
   Height: '2.17M',
   Weight: '107kg',
-  DOB: '24/8/2004'
+  DOB: '24/8/2004',
+  Bio : `He recently turned 17-year-old who already stands 7'3 tall has a remarkable potential and he is going to begin that professional journey in NBL24 with the Brisbane Bullets.
+
+  Despite being aged just 16, was one of the hottest properties and with the world at his feet but decided to join the NBL Next Star program to start his professional career and signed with the Brisbane Bullets.
+  
+  Penned a two-year Next Star deal to join the Bullets given he won't be eligible for the NBA Draft until 2025 and having only just turned 17, the big man is one of the most exciting talents to come through Australian basketball in a long time.
+  
+  Has starred in Queensland representative teams and been part of the NBA Global Academy in Canberra while also having played at the Centre of Excellence in the NBL1 East during 2023, ahead of now joining the Bullets ahead of his first NBL season.
+  
+  Given his pure size and with the ability to move well given his size and his ability to play above the rim at both ends of the floor, it's obvious why there is so much excitement surrounding him`
 }, {
   id:"6",
   jerseyNumber: 4,
@@ -83,7 +128,16 @@ const players = [{
   position: 'Center',
   Height: '2.17M',
   Weight: '107kg',
-  DOB: '24/8/2004'
+  DOB: '24/8/2004',
+  Bio : `He recently turned 17-year-old who already stands 7'3 tall has a remarkable potential and he is going to begin that professional journey in NBL24 with the Brisbane Bullets.
+
+  Despite being aged just 16, was one of the hottest properties and with the world at his feet but decided to join the NBL Next Star program to start his professional career and signed with the Brisbane Bullets.
+  
+  Penned a two-year Next Star deal to join the Bullets given he won't be eligible for the NBA Draft until 2025 and having only just turned 17, the big man is one of the most exciting talents to come through Australian basketball in a long time.
+  
+  Has starred in Queensland representative teams and been part of the NBA Global Academy in Canberra while also having played at the Centre of Excellence in the NBL1 East during 2023, ahead of now joining the Bullets ahead of his first NBL season.
+  
+  Given his pure size and with the ability to move well given his size and his ability to play above the rim at both ends of the floor, it's obvious why there is so much excitement surrounding him`
 }, {
   id:"7",
   jerseyNumber: 2,
@@ -96,7 +150,16 @@ const players = [{
   position: 'Center',
   Height: '2.17M',
   Weight: '107kg',
-  DOB: '24/8/2004'
+  DOB: '24/8/2004',
+  Bio : `He recently turned 17-year-old who already stands 7'3 tall has a remarkable potential and he is going to begin that professional journey in NBL24 with the Brisbane Bullets.
+
+  Despite being aged just 16, was one of the hottest properties and with the world at his feet but decided to join the NBL Next Star program to start his professional career and signed with the Brisbane Bullets.
+  
+  Penned a two-year Next Star deal to join the Bullets given he won't be eligible for the NBA Draft until 2025 and having only just turned 17, the big man is one of the most exciting talents to come through Australian basketball in a long time.
+  
+  Has starred in Queensland representative teams and been part of the NBA Global Academy in Canberra while also having played at the Centre of Excellence in the NBL1 East during 2023, ahead of now joining the Bullets ahead of his first NBL season.
+  
+  Given his pure size and with the ability to move well given his size and his ability to play above the rim at both ends of the floor, it's obvious why there is so much excitement surrounding him`
 }, {
   id:"8",
   jerseyNumber: 13,
@@ -104,7 +167,16 @@ const players = [{
   playerImage : require('../../../assets/teamPageImages/JoshBannan.png'),
   playerProfileImage: require('../../../assets/teamPageImages/Image1.png'),
   CountryCode: 'AU',
-  Country: 'Australia'
+  Country: 'Australia',
+  Bio : `He recently turned 17-year-old who already stands 7'3 tall has a remarkable potential and he is going to begin that professional journey in NBL24 with the Brisbane Bullets.
+
+  Despite being aged just 16, was one of the hottest properties and with the world at his feet but decided to join the NBL Next Star program to start his professional career and signed with the Brisbane Bullets.
+  
+  Penned a two-year Next Star deal to join the Bullets given he won't be eligible for the NBA Draft until 2025 and having only just turned 17, the big man is one of the most exciting talents to come through Australian basketball in a long time.
+  
+  Has starred in Queensland representative teams and been part of the NBA Global Academy in Canberra while also having played at the Centre of Excellence in the NBL1 East during 2023, ahead of now joining the Bullets ahead of his first NBL season.
+  
+  Given his pure size and with the ability to move well given his size and his ability to play above the rim at both ends of the floor, it's obvious why there is so much excitement surrounding him`
 }, {
   id:"9",
   jerseyNumber: 8,
@@ -117,7 +189,16 @@ const players = [{
   position: 'Center',
   Height: '2.17M',
   Weight: '107kg',
-  DOB: '24/8/2004'
+  DOB: '24/8/2004',
+  Bio : `He recently turned 17-year-old who already stands 7'3 tall has a remarkable potential and he is going to begin that professional journey in NBL24 with the Brisbane Bullets.
+
+  Despite being aged just 16, was one of the hottest properties and with the world at his feet but decided to join the NBL Next Star program to start his professional career and signed with the Brisbane Bullets.
+  
+  Penned a two-year Next Star deal to join the Bullets given he won't be eligible for the NBA Draft until 2025 and having only just turned 17, the big man is one of the most exciting talents to come through Australian basketball in a long time.
+  
+  Has starred in Queensland representative teams and been part of the NBA Global Academy in Canberra while also having played at the Centre of Excellence in the NBL1 East during 2023, ahead of now joining the Bullets ahead of his first NBL season.
+  
+  Given his pure size and with the ability to move well given his size and his ability to play above the rim at both ends of the floor, it's obvious why there is so much excitement surrounding him`
 }, {
   id:"10",
   jerseyNumber: 20,
@@ -130,7 +211,16 @@ const players = [{
   position: 'Center',
   Height: '2.17M',
   Weight: '107kg',
-  DOB: '24/8/2004'
+  DOB: '24/8/2004',
+  Bio : `He recently turned 17-year-old who already stands 7'3 tall has a remarkable potential and he is going to begin that professional journey in NBL24 with the Brisbane Bullets.
+
+  Despite being aged just 16, was one of the hottest properties and with the world at his feet but decided to join the NBL Next Star program to start his professional career and signed with the Brisbane Bullets.
+  
+  Penned a two-year Next Star deal to join the Bullets given he won't be eligible for the NBA Draft until 2025 and having only just turned 17, the big man is one of the most exciting talents to come through Australian basketball in a long time.
+  
+  Has starred in Queensland representative teams and been part of the NBA Global Academy in Canberra while also having played at the Centre of Excellence in the NBL1 East during 2023, ahead of now joining the Bullets ahead of his first NBL season.
+  
+  Given his pure size and with the ability to move well given his size and his ability to play above the rim at both ends of the floor, it's obvious why there is so much excitement surrounding him`
 }, {
   id:"11",
   jerseyNumber: 26,
@@ -143,7 +233,16 @@ const players = [{
   position: 'Center',
   Height: '2.17M',
   Weight: '107kg',
-  DOB: '24/8/2004'
+  DOB: '24/8/2004',
+  Bio : `He recently turned 17-year-old who already stands 7'3 tall has a remarkable potential and he is going to begin that professional journey in NBL24 with the Brisbane Bullets.
+
+  Despite being aged just 16, was one of the hottest properties and with the world at his feet but decided to join the NBL Next Star program to start his professional career and signed with the Brisbane Bullets.
+  
+  Penned a two-year Next Star deal to join the Bullets given he won't be eligible for the NBA Draft until 2025 and having only just turned 17, the big man is one of the most exciting talents to come through Australian basketball in a long time.
+  
+  Has starred in Queensland representative teams and been part of the NBA Global Academy in Canberra while also having played at the Centre of Excellence in the NBL1 East during 2023, ahead of now joining the Bullets ahead of his first NBL season.
+  
+  Given his pure size and with the ability to move well given his size and his ability to play above the rim at both ends of the floor, it's obvious why there is so much excitement surrounding him`
 }, {
   id:"12",
   jerseyNumber: 32,
@@ -156,7 +255,16 @@ const players = [{
   position: 'Center',
   Height: '2.17M',
   Weight: '107kg',
-  DOB: '24/8/2004'
+  DOB: '24/8/2004',
+  Bio : `He recently turned 17-year-old who already stands 7'3 tall has a remarkable potential and he is going to begin that professional journey in NBL24 with the Brisbane Bullets.
+
+  Despite being aged just 16, was one of the hottest properties and with the world at his feet but decided to join the NBL Next Star program to start his professional career and signed with the Brisbane Bullets.
+  
+  Penned a two-year Next Star deal to join the Bullets given he won't be eligible for the NBA Draft until 2025 and having only just turned 17, the big man is one of the most exciting talents to come through Australian basketball in a long time.
+  
+  Has starred in Queensland representative teams and been part of the NBA Global Academy in Canberra while also having played at the Centre of Excellence in the NBL1 East during 2023, ahead of now joining the Bullets ahead of his first NBL season.
+  
+  Given his pure size and with the ability to move well given his size and his ability to play above the rim at both ends of the floor, it's obvious why there is so much excitement surrounding him`
 }, {
   id:"13",
   jerseyNumber: 3,
@@ -169,7 +277,16 @@ const players = [{
   position: 'Center',
   Height: '2.17M',
   Weight: '107kg',
-  DOB: '24/8/2004'
+  DOB: '24/8/2004',
+  Bio : `He recently turned 17-year-old who already stands 7'3 tall has a remarkable potential and he is going to begin that professional journey in NBL24 with the Brisbane Bullets.
+
+  Despite being aged just 16, was one of the hottest properties and with the world at his feet but decided to join the NBL Next Star program to start his professional career and signed with the Brisbane Bullets.
+  
+  Penned a two-year Next Star deal to join the Bullets given he won't be eligible for the NBA Draft until 2025 and having only just turned 17, the big man is one of the most exciting talents to come through Australian basketball in a long time.
+  
+  Has starred in Queensland representative teams and been part of the NBA Global Academy in Canberra while also having played at the Centre of Excellence in the NBL1 East during 2023, ahead of now joining the Bullets ahead of his first NBL season.
+  
+  Given his pure size and with the ability to move well given his size and his ability to play above the rim at both ends of the floor, it's obvious why there is so much excitement surrounding him`
 }, {
   id:"14",
   jerseyNumber: 6,
@@ -182,7 +299,16 @@ const players = [{
   position: 'Center',
   Height: '2.17M',
   Weight: '107kg',
-  DOB: '24/8/2004'
+  DOB: '24/8/2004',
+  Bio : `He recently turned 17-year-old who already stands 7'3 tall has a remarkable potential and he is going to begin that professional journey in NBL24 with the Brisbane Bullets.
+
+  Despite being aged just 16, was one of the hottest properties and with the world at his feet but decided to join the NBL Next Star program to start his professional career and signed with the Brisbane Bullets.
+  
+  Penned a two-year Next Star deal to join the Bullets given he won't be eligible for the NBA Draft until 2025 and having only just turned 17, the big man is one of the most exciting talents to come through Australian basketball in a long time.
+  
+  Has starred in Queensland representative teams and been part of the NBA Global Academy in Canberra while also having played at the Centre of Excellence in the NBL1 East during 2023, ahead of now joining the Bullets ahead of his first NBL season.
+  
+  Given his pure size and with the ability to move well given his size and his ability to play above the rim at both ends of the floor, it's obvious why there is so much excitement surrounding him`
 }, {
   id:"15",
   jerseyNumber: 24,
@@ -195,7 +321,16 @@ const players = [{
   position: 'Center',
   Height: '2.17M',
   Weight: '107kg',
-  DOB: '24/8/2004'
+  DOB: '24/8/2004',
+  Bio : `He recently turned 17-year-old who already stands 7'3 tall has a remarkable potential and he is going to begin that professional journey in NBL24 with the Brisbane Bullets.
+
+  Despite being aged just 16, was one of the hottest properties and with the world at his feet but decided to join the NBL Next Star program to start his professional career and signed with the Brisbane Bullets.
+  
+  Penned a two-year Next Star deal to join the Bullets given he won't be eligible for the NBA Draft until 2025 and having only just turned 17, the big man is one of the most exciting talents to come through Australian basketball in a long time.
+  
+  Has starred in Queensland representative teams and been part of the NBA Global Academy in Canberra while also having played at the Centre of Excellence in the NBL1 East during 2023, ahead of now joining the Bullets ahead of his first NBL season.
+  
+  Given his pure size and with the ability to move well given his size and his ability to play above the rim at both ends of the floor, it's obvious why there is so much excitement surrounding him`
 }];
 
 
