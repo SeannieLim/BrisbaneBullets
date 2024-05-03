@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity, ScrollView,Button } from 'react-na
 import { useRoute, useNavigation } from '@react-navigation/native';
 import MyStyles from './TeamStyles';
 import { AntDesign } from '@expo/vector-icons';
-import ToggleComponent from '../../components/TeamToggle';
+import ProfileStatsToggle from '../../components/ProfileStatsToggle'
 import CountryFlag from "react-native-country-flag";
 import PlayerDetails from './PlayerDetails';  
 
@@ -15,11 +15,12 @@ const ProfileStats = [
 const PlayerProfile = ({ route }) => {
   const { player } = route.params;
   const navigation = useNavigation();
-
   // Back to TeamScreen
   const goBackToTeamScreen = () => {
     navigation.goBack();
   };
+
+  
 
   const buttonWidth = player.playerName.length * 9.5
 
@@ -42,7 +43,8 @@ const PlayerProfile = ({ route }) => {
         </View>
       </View>
 
-      <ToggleComponent tabs={ProfileStats} style={MyStyles.ProfileStatsToggle} />
+      {/* Data pass through player */}
+      <ProfileStatsToggle tabs={ProfileStats} style={MyStyles.ProfileStatsToggle} player={player}/>
 
       
       <PlayerDetails player = {player}/>

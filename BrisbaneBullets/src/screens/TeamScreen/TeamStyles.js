@@ -245,6 +245,10 @@ buttonContainer : {
     left: 3,
     marginBottom: windowHeight * 0.04
   },
+
+  statsContainer:{
+    MarginLeft: windowWidth * 0.02
+  }
   
 
   
