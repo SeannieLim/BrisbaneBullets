@@ -73,10 +73,7 @@ export default function NotiScreen() {
         )}
         {!editMode && (
           <View
-            style={[
-              styles.unreadIndicator,
-              item.read ? { display: "none" } : {},
-            ]}
+            style={[styles.unreadIndicator, { opacity: item.read ? 0 : 1 }]}
           />
         )}
 
@@ -84,65 +81,84 @@ export default function NotiScreen() {
           {item.title}
         </Text>
       </View>
-      <Text style={styles.timeStamp}>{item.timeStamp || "Now"}</Text>
+      <Text style={styles.timeStamp}>{item.timeStamp}</Text>
     </TouchableOpacity>
   );
 
   return (
     <Box style={styles.container}>
       <Box style={styles.topButtonContainer}>
-        {editMode && (
-          <Button
-            style={styles.button}
-            onPress={() => {
-              const allIds = notifications.map((n) => n.id);
-              const areAllSelected =
-                allIds.length === selectedIds.length &&
-                allIds.every((id) => selectedIds.includes(id));
-              setSelectedIds(areAllSelected ? [] : allIds);
-            }}
-          >
-            <ButtonText style={styles.buttonText}>All</ButtonText>
-          </Button>
-        )}
-        <Button style={styles.button} onPress={toggleEditMode} color="grey">
-          <ButtonText style={styles.buttonText}>
-            {editMode ? "Done" : "Edit"}
-          </ButtonText>
-        </Button>
-      </Box>
-      <View style={styles.backgroundImageContainer}>
-        <ImageBackground
-          source={require("../../assets/Logo/BB-logo.png")}
-          resizeMode="center"
-          opacity={0.5}
-        >
-          <Box style={styles.container}>
-            <FlatList
-              data={notifications}
-              renderItem={renderItem}
-              keyExtractor={(item) => item.id}
-              contentContainerStyle={styles.listContainer}
-            />
-          </Box>
+        <View style={styles.editModeActions}>
           {editMode && (
-            <Box style={styles.bottomButtonContainer}>
-              <View style={styles.editModeActions}>
-                <Button
-                  style={styles.button}
-                  title="Mark as Read"
-                  onPress={handleMarkAsRead}
-                />
-                <Button
-                  style={styles.button}
-                  title="Delete"
-                  onPress={handleDelete}
-                />
-              </View>
-            </Box>
+            <>
+              <Button
+                style={styles.topButton}
+                onPress={() => {
+                  const allIds = notifications.map((n) => n.id);
+                  const areAllSelected =
+                    allIds.length === selectedIds.length &&
+                    allIds.every((id) => selectedIds.includes(id));
+                  setSelectedIds(areAllSelected ? [] : allIds);
+                }}
+              >
+                <ButtonText style={styles.topButtonText}>All</ButtonText>
+              </Button>
+
+              <Button
+                style={styles.topButton}
+                onPress={toggleEditMode}
+                color="grey"
+              >
+                <ButtonText style={styles.topButtonText}>Done</ButtonText>
+              </Button>
+            </>
           )}
-        </ImageBackground>
-      </View>
+
+          {!editMode && notifications.length > 0 && (
+            <Button
+              style={styles.topButton}
+              onPress={toggleEditMode}
+              color="grey"
+            >
+              <ButtonText style={styles.topButtonText}>Edit</ButtonText>
+            </Button>
+          )}
+        </View>
+      </Box>
+      <ImageBackground
+        source={require("../../assets/Logo/BB-logo.png")}
+        resizeMode="center"
+        opacity={0.5}
+        style={styles.backgroundImageContainer}
+      >
+        <Box style={styles.container}>
+          <FlatList
+            data={notifications}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+            contentContainerStyle={styles.listContainer}
+            ListEmptyComponent={
+              <Text style={styles.emptyMessage}>
+                No notifications to display
+              </Text>
+            }
+          />
+        </Box>
+        {editMode && (
+          <Box style={styles.bottomButtonContainer}>
+            <View style={styles.editModeActions}>
+              <Button style={styles.bottomButton} onPress={handleMarkAsRead}>
+                <ButtonText style={styles.bottomButtonText}>
+                  Mark as Read
+                </ButtonText>
+              </Button>
+              <Button style={styles.bottomButton} onPress={handleDelete}>
+                <ButtonText style={styles.bottomButtonText}>Delete</ButtonText>
+              </Button>
+            </View>
+          </Box>
+        )}
+      </ImageBackground>
     </Box>
   );
 }
@@ -164,11 +180,11 @@ const styles = StyleSheet.create({
     height: 50,
     flexDirection: "row",
     padding: 10,
-    justifyContent: "flex-end",
+    // justifyContent: "space-between",
     alignContent: "center",
   },
   bottomButtonContainer: {
-    backgroundColor: "grey",
+    backgroundColor: "lightgrey",
     height: 50,
     flexDirection: "row",
     padding: 10,
@@ -180,13 +196,23 @@ const styles = StyleSheet.create({
     flex: 1, // Take available space
     justifyContent: "space-between", // Space out buttons evenly
   },
-  button: {
+  topButton: {
     flexDirection: "row",
     backgroundColor: "lightgrey",
     borderRadius: 15,
     height: 30,
   },
-  buttonText: {
+  bottomButton: {
+    flexDirection: "row",
+    backgroundColor: "transparent",
+    borderRadius: 15,
+    height: 30,
+  },
+  topButtonText: {
+    color: "grey",
+    fontSize: 14,
+  },
+  bottomButtonText: {
     color: "grey",
     fontSize: 14,
   },
@@ -203,7 +229,7 @@ const styles = StyleSheet.create({
     // paddingHorizontal: 16,
     borderBottomWidth: 1,
     borderBottomColor: "lightgrey",
-    flexDirection: "column",
+    // flexDirection: "column",
   },
   titleContainer: {
     flex: 1,
@@ -235,6 +261,7 @@ const styles = StyleSheet.create({
     color: "#999",
     marginHorizontal: windowWidth * 0.03,
     textAlign: "right",
+    padding: 1,
   },
   unreadIndicator: {
     width: 10,
@@ -242,5 +269,11 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: "orange",
     marginRight: 10,
+  },
+  emptyMessage: {
+    textAlign: "center",
+    color: "#999",
+    fontSize: 16,
+    marginTop: 30,
   },
 });

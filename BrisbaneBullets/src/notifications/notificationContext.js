@@ -6,16 +6,23 @@ export const useNotifications = () => useContext(NotificationContext);
 
 export const NotificationProvider = ({ children }) => {
   const [notifications, setNotifications] = useState([
-    { id: 1, title: "Brisbane v.s Sydney @ 8 p.m. tonight!", read: false },
+    {
+      id: 1,
+      title: "Brisbane v.s Sydney @ 8 p.m. tonight!",
+      timeStamp: "Now",
+      read: false,
+    },
     {
       id: 2,
       title: "Season tickets on sale from Mar 25 to April 2!",
+      timeStamp: "Yesterday",
       read: false,
     },
     {
       id: 3,
       title:
         "Welcome to Brisbane Bullets app! Don’t forget to turn on notifications~",
+      timeStamp: "Yesterday",
       read: false,
     },
   ]);
