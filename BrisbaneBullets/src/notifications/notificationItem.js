@@ -1,21 +1,34 @@
 // NotificationItem.js
 import React from "react";
-import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
+import {
+  Dimensions,
+  TouchableOpacity,
+  View,
+  Text,
+  StyleSheet,
+} from "react-native";
+const windowWidth = Dimensions.get("window").width;
 
-const NotificationItem = ({ item, editMode, toggleSelect, markAsRead }) => (
+const NotificationItem = ({
+  item,
+  editMode,
+  toggleSelect,
+  markAsRead,
+  selectedIds,
+}) => (
   <TouchableOpacity
     style={[styles.item, item.read ? styles.read : styles.unread]}
-    onPress={() => (editMode ? toggleSelect(item.id) : markAsRead(item.id))}
+    onPress={() => (editMode ? toggleSelect(item.id) : markAsRead([item.id]))}
   >
     <View style={styles.titleContainer}>
       {editMode && (
         <View
           style={[
             styles.selectionIndicator,
-            item.selected && styles.selectedStyle,
+            selectedIds.includes(item.id) && styles.selectedStyle,
           ]}
         >
-          {item.selected && <Text>✓</Text>}
+          {selectedIds.includes(item.id) && <Text>✓</Text>}
         </View>
       )}
       {!editMode && (
@@ -23,6 +36,7 @@ const NotificationItem = ({ item, editMode, toggleSelect, markAsRead }) => (
           style={[styles.unreadIndicator, { opacity: item.read ? 0 : 1 }]}
         />
       )}
+
       <Text style={[styles.title, { color: item.read ? "#999" : "#000" }]}>
         {item.title}
       </Text>
