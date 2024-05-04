@@ -1,7 +1,8 @@
 import {React, useState } from 'react';
 import { StyleSheet, TouchableOpacity, ScrollView, Linking, ImageBackground, Text, Dimensions, SafeAreaView } from 'react-native';
-import { Box,  VStack, View } from "@gluestack-ui/themed";
+import { Box, View } from "@gluestack-ui/themed";
 import {scaleFontSize} from "../constants/Layout";
+import { MaterialIcons } from '@expo/vector-icons';
 
 const windowWidth = Dimensions.get("window").width;
 const mockVideos=[
@@ -14,14 +15,28 @@ const mockVideos=[
 },
 {
   id: 7,
-  title: 'Zikarsky to compete at Albert Schweitzer Tournament..',
+  title: 'This title has no meaning it is just for testing purpose blah blah blah blah blah blah blah blah blah blah blah blah',
   date: 'Mar 21,2024',
   img: require('../../assets/News/newsImg3.png'),
+  imgAlt: 'newsImage'
+},
+{
+  id: 6,
+  title: 'Dummy textssssssssss ssssssssssssssssss sssssssssssssssssssssssssss ssssssssssssssssssssssssssssssss',
+  date: 'Mar 28, 2024',
+  img: require('../../assets/News/newsImg2.png'),
+  imgAlt: 'newsImage'
+},
+{
+  id: 6,
+  title: 'NBL24 MVP Awards Gala winners announced',
+  date: 'Mar 28, 2024',
+  img: require('../../assets/News/newsImg2.png'),
   imgAlt: 'newsImage'
 },]
 
 
-const VideoBox = () =>{
+const VideoBox = ({video}) =>{
     const [videos, setVideos] =useState([]);
     const onPress={handlePress}
     const handlePress=()=>{
@@ -30,28 +45,26 @@ const VideoBox = () =>{
     }
 
     return(
-    <View style={styles.box}> 
-    <SafeAreaView style={{flex: 1}}>
-        <Box style={styles.header}>
-          <Text style={styles.heading}>Videos</Text>
-        </Box>
-      <VStack space="none" reversed={false} style={styles.vstack}>
-      <TouchableOpacity onPress={handlePress} style={styles.video}>
-      <ImageBackground
-        source={require('../../assets/News/newsImg7.png')}
-        style={styles.imageBackground}
-      />
-      </TouchableOpacity >
-        <Box style={styles.description} />
-        <Text style={styles.textColor} numberOfLines={3} ellipsizeMode="tail">
-             {mockVideos.map((video)=>{video.title})}
-            </Text>
-      </VStack>
-      </SafeAreaView>
-    </View>
-
+        <View style={styles.videoContainer}>
+            <TouchableOpacity onPress={handlePress} style={styles.video}>
+                <ImageBackground
+                    source={video.img}
+                    style={styles.imageBackground}
+                />
+                 <View style={styles.iconContainer}>
+                 <MaterialIcons name="play-circle-filled" size={48} color="#FAB81B" />
+            </View>
+            </TouchableOpacity>
+            <View style={styles.description}>
+                <Text style={styles.title} numberOfLines={2} ellipsizeMode="tail">
+                    {video.title}
+                </Text>
+                <Text style={styles.date} numberOfLines={1} ellipsizeMode="tail">
+                    {video.date}
+                </Text>
+            </View>
+        </View>
     );
-
 
 };
 
@@ -59,38 +72,45 @@ const VideoBox = () =>{
 
 const AllVideos = () => {
   return (
-    <AllVideos/>
-    // <View style={styles.container}>
-    //   <View style={styles.backgroundImageContainer}>
-    //     <ScrollView>
-    //       {mockVideos.map((videosItem, index) => (
-    //         <React.Fragment key={videosItem.id}>
-    //           {/* Render Videos */}
-    //           <Box my={10}>
-    //             <VideoBox videos={videosItem} onPress={() => handleCardPress(newsItem.id)} />
-    //           </Box>
-    //           {/* Display AdsBanner after every 3rd NewsCard */}
-    //           {index > 0 && (index + 1) % 3 === 0 && (
-    //             <AdsBanner
-    //               imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png"
-    //             />
-    //           )}
-    //         </React.Fragment>
-    //       ))}
-    //     </ScrollView>
-    //   </View>
-    // </View>*/
+    <View style={styles.backGround}>  
+    {/*Renders content within the safe area boundaries of a device (only applicable for IOS11 or later) */}
+    <SafeAreaView style={{flex: 1}}>
+    <Box style={styles.header}>
+          {/* Heading of the page */}
+          <Text style={styles.heading}>Videos</Text>
+        </Box>
+    <ScrollView>
+      {/* Rendering the data through mocVideos */}
+      {mockVideos.map((video, index) => (
+        <VideoBox key={index} video={video} />
+      ))}
+    </ScrollView>
+    </SafeAreaView>
+    </View>
   );
 };
 
 export default AllVideos;
 
 const styles = StyleSheet.create({
-
-    box:{
-        height:"100%",
+      videoContainer:{
+      marginBottom: 20,
+      justifyContent: "center",
+      alignItems: 'center',
+    },
+    iconContainer:{
+      position: 'absolute',
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: '100%',
+      height: '100%',
+    },
+    backGround:{
+      flex:1,
+      justifyContent:"center",
+      alignItems: 'center',
         // justifyContent: "center",
-        backgroundColor:"pink",
+      backgroundColor:"white",
     },
     header: {
       paddingTop: windowWidth * 0.03,
@@ -111,28 +131,41 @@ const styles = StyleSheet.create({
       borderTopRightRadius: 15,
     },
     vstack: {
-        alignItems: "center", 
-        display:"block",
+      alignItems: "center", 
+      display:"block",
     },
     video:{
-        width:"85%",
-        height:"35%",
-        borderTopLeftRadius: 15,
-        borderTopRightRadius: 15,
-        backgroundColor:"#164CA8",
+      width:"95%",
+      height:150,
+      borderTopLeftRadius: 15,
+      borderTopRightRadius: 15,
+      backgroundColor:"#164CA8",
 
     },
     description:{
-        width:"85%",
-        height:"20%",
-        borderBottomLeftRadius: 15,
-        borderBottomRightRadius: 15,
-        backgroundColor:"white",
-        shadowColor: 'black',
-        shadowOffset: { width: 0, height: 5 },
-        shadowOpacity: 0.05,
-        shadowRadius: 1,
-        elevation: 1,
+      width:"95%",
+      height:70,
+      borderBottomLeftRadius: 15,
+      borderBottomRightRadius: 15,
+      backgroundColor:"#F5F5F5",
+      shadowColor: 'black',
+      shadowOffset: { width: 0, height: 5 },
+      shadowOpacity: 0.25,
+      shadowRadius: 2,
+      elevation: 5,
+      
+    },
+    title:{
+      paddingLeft:15,
+      paddingRight:15,
+      paddingTop:5,
+    },
+    date:{
+      position: 'absolute',
+      bottom: 4, 
+      left: 15,
+      fontSize:12,
+      color:"#707070",
     },
 
 })
