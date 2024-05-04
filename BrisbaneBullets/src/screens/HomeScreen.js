@@ -1,7 +1,6 @@
 import { TopBanner } from "../components/topBanner";
 import { View, VStack, Box, Text, Heading } from "@gluestack-ui/themed";
 import EStoreCarousel from "../components/E-storeCarousel";
-import HorizontalScrollContainer from "../components/HorizontalScrollContainer";
 import {
   Dimensions,
   ImageBackground,
@@ -16,6 +15,9 @@ import SocialMediaStack from "../components/SocialMediaStack";
 import AdsBanner from "../components/AdsBanner";
 import AllButton from "../components/AllButton";
 import { scaleFontSize } from "../constants/Layout";
+import HighlightVideo from "../components/HighlightVideo";
+import PressConferenceVideo from "../components/PressConferenceVideo";
+
 
 const mockNews = [
   {
@@ -34,8 +36,10 @@ const mockNews = [
   },
 ];
 
-const videoTabs = [{ label: "Highlights" }, { label: "Press Conference" }];
-
+const videoTabs = [
+  { label: "Highlights", content: <HighlightVideo /> },
+  { label: "Press Conference", content: <PressConferenceVideo /> }
+];
 const windowWidth = Dimensions.get("window").width;
 
 export default function HomeScreen({ navigation }) {
@@ -71,10 +75,6 @@ export default function HomeScreen({ navigation }) {
               </Box>
 
               <ToggleComponent tabs={videoTabs} />
-
-              <Box style={styles.spacing}>
-                <HorizontalScrollContainer />
-              </Box>
             </Box>
 
             <EStoreCarousel />
