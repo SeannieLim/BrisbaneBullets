@@ -86,44 +86,36 @@ export default function NotiScreen() {
   );
 
   return (
+    // previous code
     <Box style={styles.container}>
       <Box style={styles.topButtonContainer}>
         <View style={styles.editModeActions}>
           {editMode && (
-            <>
-              <Button
-                style={styles.topButton}
-                onPress={() => {
-                  const allIds = notifications.map((n) => n.id);
-                  const areAllSelected =
-                    allIds.length === selectedIds.length &&
-                    allIds.every((id) => selectedIds.includes(id));
-                  setSelectedIds(areAllSelected ? [] : allIds);
-                }}
-              >
-                <ButtonText style={styles.topButtonText}>All</ButtonText>
-              </Button>
-
-              <Button
-                style={styles.topButton}
-                onPress={toggleEditMode}
-                color="grey"
-              >
-                <ButtonText style={styles.topButtonText}>Done</ButtonText>
-              </Button>
-            </>
-          )}
-
-          {!editMode && notifications.length > 0 && (
             <Button
               style={styles.topButton}
-              onPress={toggleEditMode}
-              color="grey"
+              onPress={() => {
+                const allIds = notifications.map((n) => n.id);
+                const areAllSelected =
+                  allIds.length === selectedIds.length &&
+                  allIds.every((id) => selectedIds.includes(id));
+                setSelectedIds(areAllSelected ? [] : allIds);
+              }}
             >
-              <ButtonText style={styles.topButtonText}>Edit</ButtonText>
+              <ButtonText style={styles.topButtonText}>All</ButtonText>
             </Button>
           )}
         </View>
+        {notifications.length > 0 && (
+          <Button
+            style={styles.topButton}
+            onPress={toggleEditMode}
+            color="grey"
+          >
+            <ButtonText style={styles.topButtonText}>
+              {editMode ? "Done" : "Edit"}
+            </ButtonText>
+          </Button>
+        )}
       </Box>
       <ImageBackground
         source={require("../../assets/Logo/BB-logo.png")}
@@ -180,7 +172,7 @@ const styles = StyleSheet.create({
     height: 50,
     flexDirection: "row",
     padding: 10,
-    // justifyContent: "space-between",
+    justifyContent: "flex-end",
     alignContent: "center",
   },
   bottomButtonContainer: {
@@ -188,12 +180,11 @@ const styles = StyleSheet.create({
     height: 50,
     flexDirection: "row",
     padding: 10,
-    // justifyContent: "space-between",
     alignContent: "center",
   },
   editModeActions: {
     flexDirection: "row",
-    flex: 1, // Take available space
+    flex: 1,
     justifyContent: "space-between", // Space out buttons evenly
   },
   topButton: {
@@ -226,14 +217,11 @@ const styles = StyleSheet.create({
   item: {
     backgroundColor: "white",
     paddingVertical: 8,
-    // paddingHorizontal: 16,
     borderBottomWidth: 1,
     borderBottomColor: "lightgrey",
-    // flexDirection: "column",
   },
   titleContainer: {
     flex: 1,
-    // justifyContent: "center",/
     flexDirection: "row",
     alignItems: "center",
     marginHorizontal: windowWidth * 0.03,
@@ -249,7 +237,7 @@ const styles = StyleSheet.create({
     borderRadius: 10, // Making it circular
   },
   selectedStyle: {
-    backgroundColor: "#007bff", // Or any color that fits your design
+    backgroundColor: "#007bff",
   },
   title: {
     fontSize: 16,
