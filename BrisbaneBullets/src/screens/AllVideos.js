@@ -72,13 +72,9 @@ const VideoBox = ({video}) =>{
 
 const AllVideos = () => {
   return (
-    <View style={styles.backGround}>  
+    <View style={styles.backGround} pt={20}>  
     {/*Renders content within the safe area boundaries of a device (only applicable for IOS11 or later) */}
     <SafeAreaView style={{flex: 1}}>
-    <Box style={styles.header}>
-          {/* Heading of the page */}
-          <Text style={styles.heading}>Videos</Text>
-        </Box>
     <ScrollView>
       {/* Rendering the data through mocVideos */}
       {mockVideos.map((video, index) => (
@@ -97,6 +93,7 @@ const styles = StyleSheet.create({
       marginBottom: 20,
       justifyContent: "center",
       alignItems: 'center',
+      paddingHorizontal:windowWidth * 0.08,    
     },
     iconContainer:{
       position: 'absolute',
@@ -112,17 +109,6 @@ const styles = StyleSheet.create({
         // justifyContent: "center",
       backgroundColor:"white",
     },
-    header: {
-      paddingTop: windowWidth * 0.03,
-      paddingBottom: windowWidth *0.03,
-      flexDirection: 'row',
-      justifyContent:'center'
-  },
-    heading: {
-      color: '#113B81',
-      fontWeight:'600',
-      fontSize:scaleFontSize(29)
-    },
     imageBackground: {
       width: "100%",
       height: "100%",
@@ -135,7 +121,7 @@ const styles = StyleSheet.create({
       display:"block",
     },
     video:{
-      width:"95%",
+      width:"100%",
       height:150,
       borderTopLeftRadius: 15,
       borderTopRightRadius: 15,
@@ -143,7 +129,7 @@ const styles = StyleSheet.create({
 
     },
     description:{
-      width:"95%",
+      width:"100%",
       height:70,
       borderBottomLeftRadius: 15,
       borderBottomRightRadius: 15,

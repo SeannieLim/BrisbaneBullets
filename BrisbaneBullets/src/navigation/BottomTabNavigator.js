@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TabBarIcon from "../components/tabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
 import ScheduleScreen from "../screens/ScheduleScreen";
-import AllVideos from "../screens/AllVideos";
+import TicketScreen from "../screens/TicketScreen";
 import TeamScreen from "../screens/TeamScreen";
 import MoreScreen from "../screens/MoreScreen";
 import HomeStackScreen from "./HomeStack";
@@ -41,7 +41,7 @@ export default function BottomTabNavigator({ navigation, route }) {
       />
       <BottomTab.Screen
         name="Ticket"
-        component={AllVideos}
+        component={TicketScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (

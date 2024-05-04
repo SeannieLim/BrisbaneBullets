@@ -43,6 +43,10 @@ export default function HomeScreen({ navigation }) {
     // Navigate to the All News screen when the All button is pressed
     navigation.navigate('News');
   };
+  const handleAllVideoPress = () => {
+    // Navigate to the All News screen when the All button is pressed
+    navigation.navigate('Videos');
+  };
   return (
     <View style={styles.container}>
 
@@ -67,7 +71,7 @@ export default function HomeScreen({ navigation }) {
               </ScrollView>
               <Box style={styles.headingContainer}>
                 <Heading style={styles.heading}>Latest Videos</Heading>
-                <AllButton />
+                <AllButton onPress={handleAllVideoPress}/>
               </Box>
 
               <ToggleComponent tabs={videoTabs} />

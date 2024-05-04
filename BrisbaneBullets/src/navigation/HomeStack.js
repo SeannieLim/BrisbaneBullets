@@ -6,6 +6,7 @@ import LiveScreen from "../screens/LiveScreen";
 import StandingsScreen from "../screens/StandingsScreen";
 import NewsScreen from "../screens/NewsScreen";
 import NewsDetailScreen from "../screens/NewsDetailScreen";
+import AllVideos from "../screens/AllVideos";
 import { Ionicons } from '@expo/vector-icons';
 
 const HomeStack = createStackNavigator();
@@ -48,6 +49,22 @@ function HomeStackScreen() {
         name="NewsDetailScreen"
         component={NewsDetailScreen}
         options={{ headerShown: true }}
+      />
+      <HomeStack.Screen
+        name="Videos"
+        component={AllVideos}
+        options={{
+          headerStyle: {
+            backgroundColor: 'white',
+          },
+          headerTitleStyle: {
+            fontSize: 20,
+          },
+          headerTintColor: '#113B81',
+          headerBackImage: () => (
+            <Ionicons name="chevron-back-outline" size={27} color="#FAB81B" pl={4} />
+          ),
+        }}
       />
     </HomeStack.Navigator>
   );
