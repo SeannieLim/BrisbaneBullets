@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, Dimensions, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { ScrollView } from "react-native-gesture-handler";
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -359,19 +360,21 @@ const Square = ({ player }) => {
 
 const TeamPlayers = () => {
   return (
-    <View style={styles.container}>
-      {/* Map over the array of data and render each square */}
-      <View style={styles.leftColumn}>
-        {players.slice(0, 8).map((player, index) => (
-          <Square key={index} player={player} />
-        ))}
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <View style={styles.container}>
+        {/* Map over the array of data and render each square */}
+        <View style={styles.leftColumn}>
+          {players.slice(0, 8).map((player, index) => (
+            <Square key={index} player={player} />
+          ))}
+        </View>
+        <View style={styles.rightColumn}>
+          {players.slice(8).map((player, index) => (
+            <Square key={index + 8} player={player} />
+          ))}
+        </View>
       </View>
-      <View style={styles.rightColumn}>
-        {players.slice(8).map((player, index) => (
-          <Square key={index+8} player={player}/>
-        ))}
-      </View>
-    </View>
+    </ScrollView>
   );
 };
 

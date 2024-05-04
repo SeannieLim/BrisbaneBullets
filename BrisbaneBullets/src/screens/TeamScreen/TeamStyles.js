@@ -26,13 +26,16 @@ const MyStyles = StyleSheet.create({
         color: '#113B81'
 
     },
-    teamPageToggle :{
-        marginLeft: windowWidth * 0.09,
-        shadowColor: '#000', // Shadow color
-        shadowOffset: { width: 0, height: 4 }, // Shadow offset
-        shadowOpacity: 0.25, // Shadow opacity
-        shadowRadius: 4, // Shadow radius
-        elevation: 5, // Elevation for Android
+    // teamPageToggle :{
+    //     marginLeft: windowWidth * 0.09,
+    //     shadowColor: '#000', // Shadow color
+    //     shadowOffset: { width: 0, height: 4 }, // Shadow offset
+    //     shadowOpacity: 0.25, // Shadow opacity
+    //     shadowRadius: 4, // Shadow radius
+    //     elevation: 5, // Elevation for Android
+    // },
+    toggleContainer: {
+      marginHorizontal: windowWidth * 0.08,
     },
     headerContainer: {
         flexDirection: 'row',
@@ -61,8 +64,8 @@ const MyStyles = StyleSheet.create({
     height: windowHeight * 0.3, // Height of the box
     backgroundColor: '#164CA7', // Background color of the box
     borderRadius: 15, // Border radius (optional)
-    marginLeft: windowWidth * 0.05,
-    marginTop: windowHeight * 0.06,
+    // marginLeft: windowWidth * 0.05,
+    // marginTop: windowHeight * 0.06,
     shadowColor: '#000', // Shadow color
     shadowOffset: { width: 3, height: 6 }, // Shadow offset
     shadowOpacity: 0.25, // Shadow opacity
