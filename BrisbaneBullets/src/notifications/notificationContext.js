@@ -100,7 +100,6 @@ export const NotificationProvider = ({ children }) => {
     const token = await Notifications.getExpoPushTokenAsync({
       experienceId: `@${expoUsername}/BrisbaneBullets`,
       projectId: projectId,
-      owner: owner,
     });
 
     return token.data;
