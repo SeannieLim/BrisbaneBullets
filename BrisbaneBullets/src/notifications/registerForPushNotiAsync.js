@@ -13,7 +13,7 @@ async function registerForPushNotificationsAsync() {
     return;
   }
   token = (await Notifications.getExpoPushTokenAsync()).data;
-  console.log(token);
+  console.log("Push notification token:", token);
   return token;
 }
 

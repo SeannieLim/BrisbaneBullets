@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
   iconContainer: {
     position: "relative",
     alignItems: "center",
+    marginHorizontal: 10,
   },
   badge: {
     position: "absolute",
