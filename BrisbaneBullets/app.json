@@ -16,13 +16,18 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.BrisbaneBullets"
+      "bundleIdentifier": "com.anonymous.BrisbaneBullets",
+      "buildNumber": "1.0.0",
+      "infoPlist": {
+      "NSRemoteNotificationUsageDescription": "This app would like to send you notifications."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "useNextNotificationsApi": true
     },
     "web": {
       "favicon": "./assets/favicon.png"
