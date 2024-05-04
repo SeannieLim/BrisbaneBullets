@@ -9,20 +9,19 @@ export const TopButtonControl = ({
   selectedIds,
   setSelectedIds,
 }) => {
+  const toggleSelectAll = () => {
+    const allIds = notifications.map((n) => n.id);
+    const areAllSelected =
+      allIds.length === selectedIds.length &&
+      allIds.every((id) => selectedIds.includes(id));
+    setSelectedIds(areAllSelected ? [] : allIds);
+  };
+
   return (
     <Box style={styles.topButtonContainer}>
       <View style={styles.editModeActions}>
         {editMode && (
-          <Button
-            style={styles.topButton}
-            onPress={() => {
-              const allIds = notifications.map((n) => n.id);
-              const areAllSelected =
-                allIds.length === selectedIds.length &&
-                allIds.every((id) => selectedIds.includes(id));
-              setSelectedIds(areAllSelected ? [] : allIds);
-            }}
-          >
+          <Button style={styles.topButton} onPress={toggleSelectAll}>
             <ButtonText style={styles.topButtonText}>All</ButtonText>
           </Button>
         )}
@@ -37,6 +36,7 @@ export const TopButtonControl = ({
     </Box>
   );
 };
+
 export const BottomButtonControl = ({
   editMode,
   handleDelete,
@@ -77,8 +77,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   topButton: {
-    flexDirection: "row",
-    backgroundColor: "lightgrey",
+    backgroundColor: "#e1e1e2",
     borderRadius: 15,
     height: 30,
   },
@@ -87,7 +86,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   bottomButtonContainer: {
-    backgroundColor: "lightgrey",
+    backgroundColor: "#e1e1e2",
     height: 50,
     flexDirection: "row",
     padding: 10,

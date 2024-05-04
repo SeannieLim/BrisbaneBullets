@@ -1,19 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  VStack,
-  Box,
-  Text,
-  HStack,
-  Image,
-  Button,
-  ButtonText,
-} from "@gluestack-ui/themed";
+import { Box, Text } from "@gluestack-ui/themed";
 import {
   Dimensions,
   ImageBackground,
   StyleSheet,
-  TouchableOpacity,
   FlatList,
 } from "react-native";
 import { useNotifications } from "../notifications/notificationContext";
@@ -22,6 +12,7 @@ import {
   TopButtonControl,
   BottomButtonControl,
 } from "../notifications/editControl";
+
 const windowWidth = Dimensions.get("window").width;
 
 export default function NotiScreen() {
@@ -29,13 +20,18 @@ export default function NotiScreen() {
   const [editMode, setEditMode] = useState(false);
   const [selectedIds, setSelectedIds] = useState([]);
 
-  useEffect(() => {
-    if (!editMode) {
-      setSelectedIds([]); // Clear selections only when exiting edit mode
-    }
-  }, [editMode]);
+  const exitEditMode = () => {
+    setSelectedIds([]);
+    setEditMode(false);
+  };
 
-  const toggleEditMode = () => setEditMode(!editMode);
+  const toggleEditMode = () => {
+    if (editMode) {
+      exitEditMode();
+    } else {
+      setEditMode(true);
+    }
+  };
 
   const toggleSelect = (id) => {
     setSelectedIds((ids) =>

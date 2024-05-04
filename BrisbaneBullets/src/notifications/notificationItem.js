@@ -1,4 +1,3 @@
-// NotificationItem.js
 import React from "react";
 import {
   Dimensions,
@@ -7,6 +6,7 @@ import {
   Text,
   StyleSheet,
 } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 const windowWidth = Dimensions.get("window").width;
 
 const NotificationItem = ({
@@ -17,24 +17,33 @@ const NotificationItem = ({
   selectedIds,
 }) => (
   <TouchableOpacity
-    style={[styles.item, item.read ? styles.read : styles.unread]}
+    style={[
+      styles.item,
+      item.read ? styles.read : styles.unread,
+      editMode && styles.editModeBackground,
+    ]}
     onPress={() => (editMode ? toggleSelect(item.id) : markAsRead([item.id]))}
   >
     <View style={styles.titleContainer}>
-      {editMode && (
-        <View
-          style={[
-            styles.selectionIndicator,
-            selectedIds.includes(item.id) && styles.selectedStyle,
-          ]}
-        >
-          {selectedIds.includes(item.id) && <Text>✓</Text>}
+      {editMode ? (
+        <View style={styles.indicatorContainer}>
+          <View
+            style={[
+              styles.selectionIndicator,
+              selectedIds.includes(item.id) && styles.selectedStyle,
+            ]}
+          >
+            {selectedIds.includes(item.id) && (
+              <Ionicons name="checkmark" color="white" size={20} />
+            )}
+          </View>
         </View>
-      )}
-      {!editMode && (
-        <View
-          style={[styles.unreadIndicator, { opacity: item.read ? 0 : 1 }]}
-        />
+      ) : (
+        <View style={styles.indicatorContainer}>
+          <View
+            style={[styles.unreadIndicator, { opacity: item.read ? 0 : 1 }]}
+          />
+        </View>
       )}
 
       <Text style={[styles.title, { color: item.read ? "#999" : "#000" }]}>
@@ -54,38 +63,42 @@ const styles = StyleSheet.create({
   },
   read: {
     backgroundColor: "white",
-    color: "grey",
   },
   unread: {
-    backgroundColor: "#e0e0e0",
+    backgroundColor: "#e1e1e2",
   },
+  editModeBackground: { backgroundColor: "white" },
   item: {
     backgroundColor: "white",
     paddingVertical: 8,
-    // paddingHorizontal: 16,
     borderBottomWidth: 1,
     borderBottomColor: "lightgrey",
-    // flexDirection: "column",
   },
   titleContainer: {
     flex: 1,
-    // justifyContent: "center",/
     flexDirection: "row",
     alignItems: "center",
     marginHorizontal: windowWidth * 0.03,
   },
-  selectionIndicator: {
-    width: 20,
-    height: 20,
-    justifyContent: "center",
+  indicatorContainer: {
+    flexDirection: "row",
     alignItems: "center",
+    justifyContent: "center",
+    width: 25,
+    height: 20,
     marginRight: 10,
+  },
+  selectionIndicator: {
+    width: 25,
+    height: 25,
     borderWidth: 1,
     borderColor: "#ccc",
-    borderRadius: 10, // Making it circular
+    borderRadius: 12.5, // Making it circular
+    alignItems: "center",
+    justifyContent: "center",
   },
   selectedStyle: {
-    backgroundColor: "#007bff", // Or any color that fits your design
+    backgroundColor: "#164CA8",
   },
   title: {
     fontSize: 16,
@@ -103,8 +116,8 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     borderRadius: 5,
-    backgroundColor: "orange",
-    marginRight: 10,
+    backgroundColor: "#fab81b",
+    // marginRight: 10,
   },
 });
 
