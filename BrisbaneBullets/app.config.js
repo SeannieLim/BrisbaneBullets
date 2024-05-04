@@ -6,7 +6,7 @@ export default ({ config }) => ({
   extra: {
     ...config.extra,
     eas: {
-      projectId: process.env.PROJECT_ID,
+      projectId: "3e9ffb5d-1cae-4cb6-bdab-3d8d00971a21",
     },
     expoUsername: process.env.EXPO_USERNAME,
   },

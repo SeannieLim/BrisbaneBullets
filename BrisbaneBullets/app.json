@@ -27,7 +27,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "useNextNotificationsApi": true,
+      "versionCode": 1,
       "package": "com.anonymous.BrisbaneBullets"
     },
     "web": {
