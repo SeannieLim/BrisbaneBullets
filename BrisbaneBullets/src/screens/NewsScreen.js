@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, VStack, Box, Text, HStack, Image } from "@gluestack-ui/themed";
-import { Dimensions, ImageBackground, ScrollView, StyleSheet, TouchableOpacity, FlatList } from "react-native";
+import { View, Box } from "@gluestack-ui/themed";
+import { Dimensions, StyleSheet, FlatList } from "react-native";
 import NewsCard from "../components/NewsCard";
 import AdsBanner from "../components/AdsBanner";
 
@@ -58,7 +58,7 @@ const mockNews = [
 ];
 export default function NewsScreen({ navigation }) {
   const handleCardPress = (newsId) => {
-    navigation.navigate('NewsDetailScreen', { newsId });
+    navigation.navigate('NewsDetail', { newsId: id });
   };
 
   const renderNewsItem = ({ item, index }) => (

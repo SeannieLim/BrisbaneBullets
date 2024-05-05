@@ -1,5 +1,7 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, Dimensions } from 'react-native';
+import {
+  StyleSheet, TouchableOpacity, Text, Dimensions, Share
+} from 'react-native';
 import { HStack, VStack, Box, Image } from "@gluestack-ui/themed";
 import { Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
@@ -10,15 +12,29 @@ const NewsCard = (props, style) => {
   const navigation = useNavigation();
   const { news } = props
   const handleCardPress = () => {
-    navigation.navigate('NewsDetailScreen');
+    navigation.navigate('NewsDetail', { newsId: news.id })
   };
 
-  const handleShare = () => {
-    // Implement your share functionality here
-  };
 
+  const handleShare = async (news) => {
+    try {
+      // Base URL
+      const baseUrl = 'https://www.brisbanebullets.com.au/news/';
+      // Replace spaces in the news title with hyphens (-)
+      const formattedTitle = news.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      // Construct the final URL
+      const url = `${baseUrl}${formattedTitle}`;
+      // Share the URL
+      await Share.share({
+        url: url,
+      });
+
+    } catch (error) {
+      console.error("Error sharing", error);
+    }
+  };
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('NewsDetailScreen', { newsId: news.id })}>
+    <TouchableOpacity onPress={() => handleCardPress(news)}>
       <Box style={{ style, ...styles.box, ...styles.newsCardContainer }} bg='#164CA8' rounded={15}>
         <HStack maxWidth={'100%'} p={10}>
           <Image style={styles.newsImg} source={news.img} alt={news.imgAlt} />
@@ -30,7 +46,7 @@ const NewsCard = (props, style) => {
               <Text style={styles.textColor} pb='5'>
                 {news.date}
               </Text>
-              <TouchableOpacity onPress={handleShare}>
+              <TouchableOpacity onPress={() => handleShare(news)}>
                 <Entypo name="share-alternative" size={20} color="white" />
               </TouchableOpacity>
             </HStack>

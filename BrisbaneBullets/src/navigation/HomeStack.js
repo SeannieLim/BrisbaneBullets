@@ -45,7 +45,7 @@ function HomeStackScreen() {
         }}
       />
       <HomeStack.Screen
-        name="NewsDetailScreen"
+        name="NewsDetail"
         component={NewsDetailScreen}
         options={{
           headerStyle: {
