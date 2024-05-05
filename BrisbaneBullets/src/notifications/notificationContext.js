@@ -18,23 +18,15 @@ export const NotificationProvider = ({ children }) => {
   const [notifications, setNotifications] = useState([]);
 
   // Function to add a notification
-  const addNotification = (title, timeStamp) => {
-    console.log("Received timeStamp:", timeStamp);
+  const addNotification = (title, rawTimeStamp) => {
+    console.log("Received raw timeStamp:", rawTimeStamp);
 
-    let parsedDate = moment(timeStamp, [
-      "YYYY-MM-DDTHH:mm:ss.SSSZ", // ISO format
-      "M/D/YYYY, h:mm:ss A", // U.S. format with AM/PM
-      "M/D/YYYY, h:mm:ss a", // U.S. format with am/pm
-    ]);
+    // Determine if the timestamp is in seconds (iOS) or milliseconds (Android), ensure the timestamp is in milliseconds
+    const timeStamp =
+      rawTimeStamp > 1000000000000 ? rawTimeStamp : rawTimeStamp * 1000;
 
-    // Check if the date is valid using moment's isValid() method
-    if (!parsedDate.isValid()) {
-      console.error("Failed to parse date, using current date as fallback");
-      parsedDate = moment(); // Fallback to current date if parsing fails
-    }
-
-    console.log("Parsed Date : ", parsedDate);
-    const actualDate = parsedDate.toDate();
+    let actualDate = new Date(timeStamp);
+    console.log("Normalized Date:", actualDate);
 
     let displayTimeStamp;
     if (isToday(actualDate)) {
@@ -52,9 +44,10 @@ export const NotificationProvider = ({ children }) => {
       id: uuid.v4(), // Use current timestamp as a unique ID
       title,
       timeStamp: displayTimeStamp,
-      actualDate: actualDate,
+      actualDate,
       read: false,
     };
+
     setNotifications((prevNotifications) => {
       const updatedNotifications = [newNotification, ...prevNotifications];
       //for testData
@@ -65,23 +58,27 @@ export const NotificationProvider = ({ children }) => {
   // // Test function to add notifications for different time scenarios
   const testAddNotification = () => {
     console.log("Testing notification addition");
+    const currentTimestamp = new Date().getTime(); // Get current timestamp for "today"
     const testData = [
-      { title: "Test Today", date: new Date() },
-      { title: "Test Yesterday", date: new Date(Date.now() - 86400000) }, // 24 hours ago
-      { title: "Test Two Days Ago", date: new Date(Date.now() - 172800000) }, // 48 hours ago
-      { title: "Test 1 month ago", date: "2024-04-01T18:12:49Z" },
+      { title: "Test Today", date: currentTimestamp },
+      { title: "Test Yesterday", date: currentTimestamp - 86400000 }, // 24 hours ago
+      { title: "Test Two Days Ago", date: currentTimestamp - 172800000 }, // 48 hours ago
+      {
+        title: "Test 1 month ago",
+        date: new Date("2024-04-01T18:12:49Z").getTime(),
+      },
       {
         title: "Brisbane v.s Sydney @ 8 p.m. tonight!",
-        date: "5/1/2024, 6:54:29 PM",
+        date: new Date("2024-03-01T18:12:49Z").getTime(),
       },
       {
         title: "Season tickets on sale from Mar 25 to April 2!",
-        date: "2024-02-25T00:00:00Z",
+        date: new Date("2024-02-25T00:00:00Z").getTime(),
       },
       {
         title:
           "Welcome to Brisbane Bullets app! Don’t forget to turn on notifications~",
-        date: "1/2/2024, 6:54:29 pm",
+        date: new Date("2024-01-25T00:00:00Z").getTime(),
       },
     ];
 
@@ -103,7 +100,7 @@ export const NotificationProvider = ({ children }) => {
           console.log("Notification received!", notification);
           addNotification(
             notification.request.content.title,
-            new Date(notification.date).toLocaleString()
+            notification.date
           );
         }
       );
