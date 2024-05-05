@@ -26,7 +26,7 @@ const ToggleTest = ({ tabs }) => {
 
   return (
     <View>
-      <Container width="90%" key={activeTab}>
+      <Container width="100%" key={activeTab}>
         <Box
           bg="#FCFDFF"
           width="100%"
