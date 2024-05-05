@@ -11,8 +11,6 @@ import "react-native-gesture-handler";
 import {GluestackUIProvider, Text} from "@gluestack-ui/themed";
 import {config} from "@gluestack-ui/config"; // Importing configuration object for GlueStack to access styling configurations and theme settings
 import {StatusBar} from 'expo-status-bar';
-import TeamPlayers from "./src/screens/TeamScreen/TeamPlayers";
-import TeamScreen from "./src/screens/TeamScreen";
 
 const Stack = createStackNavigator();
 
@@ -30,9 +28,6 @@ export default function App(props) {
                             component={BottomTabNavigator}
                             options={{headerShown: false}}
                         />
-
-                         <Stack.Screen name="TeamScreen" component={TeamScreen} />
-                        <Stack.Screen name="TeamPlayers" component={TeamPlayers} />
                     </Stack.Navigator>
                     
                 </NavigationContainer>

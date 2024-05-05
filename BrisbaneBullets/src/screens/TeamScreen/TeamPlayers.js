@@ -338,7 +338,7 @@ const players = [{
 const Square = ({ player }) => {
   const navigation = useNavigation();
   const navigateToProfile = () => {
-    navigation.navigate('PlayerProfile', {player });
+    navigation.navigate('PlayerProfile', { player });
   };
 
   return (

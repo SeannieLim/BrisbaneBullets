@@ -5,9 +5,8 @@ import MyStyles from './TeamStyles';
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
-const PlayerStats = ({route}) => {
+const PlayerStats = () => {
 
-  const { player } = route.params;
 
   return (
     <ScrollView style={MyStyles.mainContainer}>

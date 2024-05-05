@@ -2,19 +2,17 @@ import React, { useState } from "react";
 import { Container, Box, HStack, Button, Text } from "@gluestack-ui/themed-native-base";
 import { useNavigation } from '@react-navigation/native';
 
-const ProfileStatsToggle = ({ tabs, style, player }) => {
+const ProfileStatsToggle = ({ tabs, style }) => {
     // Use the first tab as the default active tab
     const [activeTab, setActiveTab] = useState(tabs[0]?.label);
     const navigation = useNavigation();
 
     const navigateToStats = () => {
         setActiveTab("Stats"); // Update activeTab to "Stats"
-        navigation.navigate('PlayerStats', { player });
     }
 
     const navigateToPlayersProfile = () => {
         setActiveTab("Profile"); // Update activeTab to "Profile"
-        navigation.navigate('PlayerProfile', { player });
     };
 
     const handleTabPress = (tabLabel) => {

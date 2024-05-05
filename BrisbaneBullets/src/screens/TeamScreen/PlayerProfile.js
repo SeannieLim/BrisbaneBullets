@@ -47,7 +47,7 @@ const PlayerProfile = ({ route }) => {
 
       <View style={MyStyles.toggleContainer}>
         {/* Data pass through player */}
-        <ProfileStatsToggle tabs={ProfileStats} style={MyStyles.ProfileStatsToggle} player={player}/>
+        <ProfileStatsToggle tabs={ProfileStats} style={MyStyles.ProfileStatsToggle}/>
       </View>
 
       <Text style={MyStyles.socialMedia}>Social Media</Text>
