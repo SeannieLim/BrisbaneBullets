@@ -101,7 +101,6 @@ const MyStyles = StyleSheet.create({
     shadowRadius: 4, // Shadow radius
     elevation: 5, // Elevation for Android
 },
-
 scrollViewContent: {
     flexGrow: 1,
     flexDirection: 'row', // Arrange containers horizontally

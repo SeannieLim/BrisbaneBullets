@@ -1,10 +1,15 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 import CountryFlag from "react-native-country-flag";
+import TextTruncate from '../../components/TextTruncate';
 import MyStyles from './TeamStyles';
 
+
 function PlayerDetails({player}){
+
+  const buttonWidth = player.playerName.length * 9.5
     return(
+      <View>
         <View style={MyStyles.scrollViewContent}>
         <ScrollView
           horizontal
@@ -36,6 +41,18 @@ function PlayerDetails({player}){
           </View>
         </ScrollView>
   </View>
+  
+  <View>
+  <Text style={MyStyles.socialMedia}>Social Media</Text>
+  <TouchableOpacity style={[MyStyles.buttonContainer, { width: buttonWidth }]}>
+    <Text style={MyStyles.buttonText}>@{player.playerName}</Text>
+    <Image source={require('../../../assets/social-media/X.png')} style={MyStyles.icon} />
+  </TouchableOpacity>
+
+  <Text style={MyStyles.socialMedia}>Bio</Text>
+  <TextTruncate text={player.Bio} numberOfLines={3} />
+</View>
+</View>
     )
      
     };

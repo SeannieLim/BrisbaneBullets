@@ -6,24 +6,20 @@ import { AntDesign } from '@expo/vector-icons';
 import ProfileStatsToggle from '../../components/ProfileStatsToggle'
 import CountryFlag from "react-native-country-flag";
 import PlayerDetails from './PlayerDetails';  
-import TextTruncate from '../../components/TextTruncate';
-
-const ProfileStats = [
-  { label: "Profile" },
-  { label: "Stats" },
-];
+import PlayerStats from './PlayerStats';
 
 const PlayerProfile = ({ route }) => {
   const { player } = route.params;
   const navigation = useNavigation();
   // Back to TeamScreen
   const goBackToTeamScreen = () => {
-    navigation.goBack();
+    navigation.navigate("TeamScreen");
   };
- console.log(player)
   
-
-  const buttonWidth = player.playerName.length * 9.5
+ const ProfileStats = [
+  { label: "Profile", content:  <PlayerDetails player = {player}/>},
+  { label: "Stats", content: <PlayerStats player = {player}/>  },
+];
 
   return (
     <ScrollView style={MyStyles.mainContainer}>
@@ -44,24 +40,10 @@ const PlayerProfile = ({ route }) => {
         </View>
       </View>
 
-      {/* Data pass through player */}
-      <ProfileStatsToggle tabs={ProfileStats} style={MyStyles.ProfileStatsToggle} player={player}/>
+        {/* Data pass through player */}
+        <ProfileStatsToggle tabs={ProfileStats} style={MyStyles.ProfileStatsToggle} player={player}/>
 
-      
-      <PlayerDetails player = {player}/>
-
-      <Text style={MyStyles.socialMedia}>Social Media</Text>
-  <TouchableOpacity style={[MyStyles.buttonContainer, { width: buttonWidth }]}   >
-  <Text style={MyStyles.buttonText}>@{player.playerName}</Text>
-  <Image source={require('../../../assets/social-media/X.png')} style={MyStyles.icon} />
-</TouchableOpacity>
-      
-  <Text style={MyStyles.socialMedia}>Bio</Text>
-
-
-  <TextTruncate text ={player.Bio} numberOfLines={3} />
-  
-  </ScrollView>
+    </ScrollView>
   );
 };
 

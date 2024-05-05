@@ -67,11 +67,7 @@ const CustomButton = ({ active, onPress, children }) => {
 
 const Content = ({ activeTab, tabs }) => {
     const activeContent = tabs.find((tab) => tab.label === activeTab)?.content;
-    return activeContent ? (
-        <Box p={4}>
-            <Text>{activeContent}</Text>
-        </Box>
-    ) : null;
+    return activeContent ? <>{activeContent}</> : null;
 };
 
 export default ProfileStatsToggle;
