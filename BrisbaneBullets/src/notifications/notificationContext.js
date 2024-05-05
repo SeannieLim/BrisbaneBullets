@@ -1,9 +1,9 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
+import { Alert } from "react-native";
 import * as Notifications from "expo-notifications";
 import Constants from "expo-constants";
 import uuid from "react-native-uuid"; // Import the UUID generator
 import { isToday, isYesterday, formatDistanceToNow } from "date-fns";
-import moment from "moment";
 import { Button } from "react-native";
 
 const NotificationContext = createContext();
@@ -93,8 +93,6 @@ export const NotificationProvider = ({ children }) => {
   useEffect(() => {
     async function setup() {
       const token = await registerForPushNotificationsAsync();
-      console.log("Received token for push notifications:", token);
-
       const subscription = Notifications.addNotificationReceivedListener(
         (notification) => {
           console.log("Notification received!", notification);
@@ -115,7 +113,7 @@ export const NotificationProvider = ({ children }) => {
   async function registerForPushNotificationsAsync() {
     const { status } = await Notifications.requestPermissionsAsync();
     if (status !== "granted") {
-      alert("Failed to get push token for push notification!");
+      console.log("Push notifications not granted");
       return;
     }
     const token = await Notifications.getExpoPushTokenAsync({
