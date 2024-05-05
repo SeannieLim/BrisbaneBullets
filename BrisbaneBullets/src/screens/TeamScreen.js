@@ -23,10 +23,12 @@ import {
             resizeMode="center"
             opacity={0.5}
           >
+            <ScrollView>
             <Text style={MyStyles.Heading}>Team</Text>
             <View style={MyStyles.toggleContainer}>
-              <ToggleTest tabs={teamTabs} />
+              <ToggleTest tabs={teamTabs}/>
             </View>
+            </ScrollView>
           </ImageBackground>
         </View>
       </View>

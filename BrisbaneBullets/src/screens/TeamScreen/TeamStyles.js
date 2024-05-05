@@ -36,6 +36,7 @@ const MyStyles = StyleSheet.create({
     // },
     toggleContainer: {
       marginHorizontal: windowWidth * 0.08,
+      marginTop: windowHeight * 0.02
     },
     headerContainer: {
         flexDirection: 'row',
@@ -64,8 +65,8 @@ const MyStyles = StyleSheet.create({
     height: windowHeight * 0.3, // Height of the box
     backgroundColor: '#164CA7', // Background color of the box
     borderRadius: 15, // Border radius (optional)
-    // marginLeft: windowWidth * 0.05,
-    // marginTop: windowHeight * 0.06,
+    marginLeft: windowWidth * 0.05,
+    marginTop: windowHeight * 0.06,
     shadowColor: '#000', // Shadow color
     shadowOffset: { width: 3, height: 6 }, // Shadow offset
     shadowOpacity: 0.25, // Shadow opacity
@@ -104,7 +105,6 @@ const MyStyles = StyleSheet.create({
 scrollViewContent: {
     flexGrow: 1,
     flexDirection: 'row', // Arrange containers horizontally
-    marginLeft: windowWidth * 0.07
   },
   container: {
     width: 107, // Set a fixed width for each container
@@ -199,8 +199,7 @@ buttonContainer : {
     paddingVertical: 8, // Vertical padding
     paddingHorizontal: 10, // Horizontal padding
     height: 35,
-    marginLeft: windowWidth * 0.09,
-    marginTop: windowHeight * 0.01,
+    marginTop: windowHeight * 0.015,
     shadowColor: '#000', // Shadow color
     shadowOffset: { width: 2, height: 1 }, // Shadow offset
     shadowOpacity: 0.25, // Shadow opacity
@@ -217,20 +216,20 @@ buttonContainer : {
     width: 13, // Set width of the icon
     height: 13, // Set height of the icon
     marginLeft: 2, // Add some space between icon and text
+    
   },
   socialMedia : {
     fontSize: scaleFontSize(17),
     fontWeight: 'bold',
     letterSpacing: 1,
-    marginLeft: windowWidth * 0.1,
     marginTop: windowHeight * 0.02
 
   },
   bio: {
     fontSize: scaleFontSize(17),
     letterSpacing: 1,
-    marginLeft: windowWidth * 0.1,
-    marginTop: windowHeight * 0.02
+    marginLeft: windowWidth * 0.01,
+    marginTop: windowHeight * 0.0
   },
   statsText: {
     fontSize: scaleFontSize(18), // Adjust font size as needed
@@ -238,6 +237,7 @@ buttonContainer : {
     fontWeight: 'bold',
     letterSpacing: 1,
     alignItems: 'center',
+    
   },
   statsValueText: {
     fontSize: scaleFontSize(18), // Adjust font size as needed
