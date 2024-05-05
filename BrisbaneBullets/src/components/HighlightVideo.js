@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, TouchableOpacity, Text, View, Dimensions, FlatList } from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, Share, Dimensions, FlatList } from 'react-native';
 import { HStack, VStack, Box, Image } from "@gluestack-ui/themed";
 import { Entypo } from '@expo/vector-icons';
 import { AntDesign } from '@expo/vector-icons';
@@ -32,8 +32,22 @@ const HighlightVideo = () => {
     // navigation.navigate('VideoDetailScreen');
   };
 
-  const handleShare = () => {
-    // Implement your share functionality here
+  const handleShare = async (videos) => {
+    try {
+      // Base URL
+      const baseUrl = 'https://www.brisbanebullets.com.au/videos/';
+      // Replace spaces in the news title with hyphens (-)
+      const formattedTitle = videos.title.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      // Construct the final URL
+      const url = `${baseUrl}${formattedTitle}`;
+      // Share the URL
+      await Share.share({
+        url: url,
+      });
+
+    } catch (error) {
+      console.error("Error sharing", error);
+    }
   };
 
   const renderItem = ({ item }) => (
@@ -52,7 +66,7 @@ const HighlightVideo = () => {
               <Text style={styles.textColor} pb='5'>
                 {item.time}
               </Text>
-              <TouchableOpacity onPress={handleShare}>
+              <TouchableOpacity onPress={() => handleShare(item)}>
                 <Entypo name="share-alternative" size={20} color="white" />
               </TouchableOpacity>
             </HStack>

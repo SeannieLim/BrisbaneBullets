@@ -1,5 +1,5 @@
 import { TopBanner } from "../components/topBanner";
-import { View, VStack, Box, Text, Heading } from "@gluestack-ui/themed";
+import { View, Box, Heading } from "@gluestack-ui/themed";
 import EStoreCarousel from "../components/E-storeCarousel";
 import {
   Dimensions,
@@ -65,7 +65,7 @@ export default function HomeScreen({ navigation }) {
                 <AllButton onPress={handleAllPress} />
               </Box>
               <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                {mockNews.map((newsItem, index) => (
+                {mockNews.map((newsItem) => (
                   <NewsCard key={newsItem.id} news={newsItem} />
                 ))}
               </ScrollView>

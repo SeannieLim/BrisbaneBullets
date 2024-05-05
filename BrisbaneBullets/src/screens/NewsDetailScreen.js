@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, Box, HStack, VStack, Image } from "@gluestack-ui/themed";
+import { View, Text, Box, HStack, Image } from "@gluestack-ui/themed";
 import { Dimensions, ScrollView, StyleSheet, TouchableOpacity, SafeAreaView } from "react-native";
 import { FontAwesome5 } from '@expo/vector-icons';
 
-
-
 const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
+
 const mockNewsDetails = [
   {
     id: 1,
@@ -80,12 +80,12 @@ export default function NewsDetailScreen({ route, navigation }) {
     // Implement your share functionality here
   };
   return (
-    <>
-      <View style={styles.imageContainer}>
-        <Image source={newsItem.img} style={styles.image} alt={newsItem.imgAlt} />
-      </View>
+    <SafeAreaView style={styles.container}>
       <ScrollView>
-        <View style={styles.container}>
+        <View style={styles.imageContainer}>
+          <Image source={newsItem.img} style={styles.image} alt={newsItem.imgAlt} />
+        </View>
+        <View style={styles.contentContainer}>
           <Text fontWeight='bold' fontSize={30} mt={10}>{newsItem.title}</Text>
           <HStack space={2} alignItems="center" mt={10} mb={5}>
             <FontAwesome5 name="calendar-alt" size={24} color="#164CA8" />
@@ -98,9 +98,10 @@ export default function NewsDetailScreen({ route, navigation }) {
           <MoreNews navigation={navigation} />
         </View>
       </ScrollView>
-    </>
+    </SafeAreaView>
   )
 }
+
 
 function MoreNews({ navigation }) {
   const mockMoreNews = [
@@ -131,7 +132,7 @@ function MoreNews({ navigation }) {
   ]
   const handlePress = (id) => {
     // Navigate to the news detail screen with the corresponding id
-    navigation.navigate('NewsDetailScreen', { newsId: id });
+    navigation.navigate('NewsDetail', { newsId: id });
   };
 
   return (
@@ -159,19 +160,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    justifyContent: 'center',
-    paddingHorizontal: windowWidth * 0.08,
-  },
-  box: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: windowWidth * 0.8,
-    marginHorizontal: 10
   },
   imageContainer: {
-    height: '30%',
-    marginTop: 10,
+    height: windowHeight * 0.28,
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  contentContainer: {
+    paddingHorizontal: windowWidth * 0.08,
   },
   image: {
     width: '100%',
