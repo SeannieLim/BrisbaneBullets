@@ -40,14 +40,14 @@ export default function BottomTabNavigator({ navigation, route }) {
                 }}
             />
             <BottomTab.Screen
-                name="Team"
-                component={TeamStackScreen}
+                name="Ticket"
+                component={TicketScreen}
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ focused }) => (
-                        <TabBarIcon focused={focused} name="people-outline" />
-                    ),
-                }}
+                    <TabBarIcon focused={focused} name="ticket-outline" />
+                ),
+            }}
             />
             <BottomTab.Screen
                 name="Team"
