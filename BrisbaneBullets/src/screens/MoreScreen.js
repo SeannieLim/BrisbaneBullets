@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   SafeAreaView,
   Dimensions,
@@ -14,6 +14,7 @@ import { useNavigation } from "@react-navigation/native";
 import { scaleFontSize } from "../constants/Layout";
 import { Button, ButtonText, Box, ButtonGroup } from "@gluestack-ui/themed";
 import { GlobalStyles } from "../GlobalStyles";
+import AppSettings from "../notifications/appSettings";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -25,7 +26,7 @@ export default function MoreScreen({ navigation }) {
     nav.navigate(screenName);
   };
 
-  const [isEnabled, setIsEnabled] = React.useState(false);
+  const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   return (
@@ -52,15 +53,7 @@ export default function MoreScreen({ navigation }) {
                   <ButtonText style={styles.buttonText}>
                     Push Notification
                   </ButtonText>
-                  <View style={styles.switchContainer}>
-                    <Switch
-                      trackColor={{ false: "white", true: "#fab81b" }}
-                      thumbColor={isEnabled ? "white" : "#164CA8"}
-                      ios_backgroundColor="white"
-                      onValueChange={toggleSwitch}
-                      value={isEnabled}
-                    />
-                  </View>
+                  <AppSettings />
                 </Button>
                 <Button
                   style={styles.item}
@@ -171,10 +164,6 @@ const styles = StyleSheet.create({
     shadowRadius: 4, // Shadow radius
     elevation: 10, // Elevation for Android
     margin: 5,
-  },
-  switchContainer: {
-    flex: 1,
-    alignItems: "flex-end",
   },
   item: {
     backgroundColor: "#164CA8",
