@@ -7,11 +7,10 @@ import ProfileStatsToggle from '../../components/ProfileStatsToggle'
 import CountryFlag from "react-native-country-flag";
 import PlayerDetails from './PlayerDetails';  
 import TextTruncate from '../../components/TextTruncate';
-import PlayerStats from './PlayerStats';
 
 const ProfileStats = [
-  { label: "Profile", content: <PlayerDetails player = {player}/> },
-  { label: "Stats", content: <PlayerStats player = {player}/> },
+  { label: "Profile" },
+  { label: "Stats" },
 ];
 
 const PlayerProfile = ({ route }) => {
@@ -19,7 +18,7 @@ const PlayerProfile = ({ route }) => {
   const navigation = useNavigation();
   // Back to TeamScreen
   const goBackToTeamScreen = () => {
-    navigation.navigate("TeamScreen");
+    navigation.goBack();
   };
  console.log(player)
   
@@ -27,7 +26,7 @@ const PlayerProfile = ({ route }) => {
   const buttonWidth = player.playerName.length * 9.5
 
   return (
-    <View style={MyStyles.mainContainer}>
+    <ScrollView style={MyStyles.mainContainer}>
       <View style={MyStyles.headerContainer}>
         <TouchableOpacity onPress={goBackToTeamScreen}>
           <AntDesign name="left" size={32} style={MyStyles.BackArrow} />
@@ -45,10 +44,11 @@ const PlayerProfile = ({ route }) => {
         </View>
       </View>
 
-      <View style={MyStyles.toggleContainer}>
-        {/* Data pass through player */}
-        <ProfileStatsToggle tabs={ProfileStats} style={MyStyles.ProfileStatsToggle}/>
-      </View>
+      {/* Data pass through player */}
+      <ProfileStatsToggle tabs={ProfileStats} style={MyStyles.ProfileStatsToggle} player={player}/>
+
+      
+      <PlayerDetails player = {player}/>
 
       <Text style={MyStyles.socialMedia}>Social Media</Text>
   <TouchableOpacity style={[MyStyles.buttonContainer, { width: buttonWidth }]}   >
@@ -61,7 +61,7 @@ const PlayerProfile = ({ route }) => {
 
   <TextTruncate text ={player.Bio} numberOfLines={3} />
   
-  </View>
+  </ScrollView>
   );
 };
 
