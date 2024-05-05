@@ -1,59 +1,17 @@
 import React from 'react';
 import { View, Text, ScrollView,TouchableOpacity,Image,Dimensions } from 'react-native';
 import MyStyles from './TeamStyles';
-import ProfileStatsToggle from '../../components/ProfileStatsToggle'
-import { useRoute, useNavigation } from '@react-navigation/native';
-import { AntDesign } from '@expo/vector-icons';
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
-
-const ProfileStats = [
-  { label: "Profile" },
-  { label: "Stats" },
-];
 
 const PlayerStats = ({route}) => {
 
   const { player } = route.params;
 
-  const navigation = useNavigation();
-  // Back to TeamScreen
-  const goBackToTeamScreen = () => {
-    navigation.goBack();
-  };
-
   return (
     <ScrollView style={MyStyles.mainContainer}>
-   
-      <View style={MyStyles.headerContainer}>
-        <TouchableOpacity onPress={goBackToTeamScreen}>
-          <AntDesign name="left" size={32} style={MyStyles.BackArrow} />
-        </TouchableOpacity>
-        <Text style={MyStyles.playerName}>{player.playerName}</Text>
-      </View>
-
-      <View style={MyStyles.imageBox}>
-        <Image
-          source={player.playerProfileImage}
-          style={MyStyles.playerProfileImage}
-        />
-        <View style={MyStyles.textContainer}>
-          <Text style={MyStyles.jerseyNumber}>{player.jerseyNumber}</Text>
-        </View>
-      </View>
-
-      <ProfileStatsToggle tabs={ProfileStats} style={MyStyles.ProfileStatsToggle}  player={player}/>
-
- 
-      <View style={{ 
-      backgroundColor: '#fff', 
-      padding: 20, 
-      top:20,
-      bottom: 20,
-      borderWidth: 0, // Set border width to zero to remove outer border
-      marginLeft: windowWidth * 0.1
-    }}>
+      
       <View style={{ flexDirection: 'row'}}>
         <View style={{ flex: 1 }}>
           <Text style={MyStyles.statsText}>GP</Text>
@@ -96,8 +54,6 @@ const PlayerStats = ({route}) => {
           <Text style={MyStyles.statsValueText}>1.5</Text>
         </View>
       </View>
-    </View>
-
     </ScrollView>
   );
 };
