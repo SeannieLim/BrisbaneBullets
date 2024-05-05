@@ -380,54 +380,53 @@ const TeamPlayers = () => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
+    flexDirection: "row",
     marginTop: windowHeight * 0.015,
-    marginLeft: windowWidth * 0.12,
+    flex: 1,
+    alignItems: "flex-start",
   },
   leftColumn: {
-    flex: 1,
-    flexDirection: 'column',
+    flex: 1, // Take up 50% of the available space
+    // flexDirection: "column",
+    marginLeft: windowWidth * 0.001, // Adjust margin if needed
   },
   rightColumn: {
-    flex: 1,
-    flexDirection: 'column',
-    marginRight: windowWidth * 0.05
+    flex: 1, // Take up 50% of the available space
+    // flexDirection: "column",
+    marginLeft: windowWidth * 0.1,
   },
   square: {
     width: 140,
     height: 120,
-    backgroundColor: 'lightblue',
-    marginVertical : windowHeight * 0.010,
+    backgroundColor: "lightblue",
+    marginVertical: windowHeight * 0.01,
     borderRadius: 15,
-    shadowColor: '#000', // Shadow color
+    shadowColor: "#000", // Shadow color
     shadowOffset: { width: 1, height: 2 }, // Shadow offset
     shadowOpacity: 0.25, // Shadow opacity
     shadowRadius: 4, // Shadow radius
     elevation: 5, // Elevation for Android
-    position: 'relative', // Add relative positioning to the square container
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   imageContainer: {
-    width: '100%',
-    height: '100%',
-    borderRadius: 15, 
-    overflow: 'hidden', 
-  
+    width: "100%",
+    height: "100%",
+    borderRadius: 15,
+    overflow: "hidden",
   },
   playerImage: {
-    width: '100%', 
-    height: '100%', 
-    resizeMode: 'cover',
-   
+    width: "100%",
+    height: "100%",
+    resizeMode: "cover",
   },
   textContainer: {
-    position: 'absolute', // Position the text container absolutely within the container
-    top: 15, 
-    left: 10, 
-    alignItems: 'center',
+    position: "absolute", // Position the text container absolutely within the container
+    top: 15,
+    left: 10,
+    alignItems: "center",
   },
   jerseyNumber: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     fontSize: 16,
   },
 });

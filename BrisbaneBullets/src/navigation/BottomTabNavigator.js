@@ -4,11 +4,10 @@ import TabBarIcon from "../components/tabBarIcon";
 import HomeScreen from "../screens/HomeScreen";
 import ScheduleScreen from "../screens/ScheduleScreen";
 import TicketScreen from "../screens/TicketScreen";
-import TeamScreen from "../screens/TeamScreen";
 import MoreScreen from "../screens/MoreScreen";
-import PlayerProfile from '../screens/TeamScreen/PlayerProfile'
-import PlayerStats from '../screens/TeamScreen/PlayerStats'
-import AdvanceStatistics from '../screens/TeamScreen/AdvanceStatistics'
+import PlayerProfileScreen from "../screens/TeamScreen/PlayerProfile";
+import PlayerStatsScreen from "../screens/TeamScreen/PlayerStats";
+import TeamStackScreen from "./TeamStackScreen";
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = "Home";
@@ -41,18 +40,18 @@ export default function BottomTabNavigator({ navigation, route }) {
                 }}
             />
             <BottomTab.Screen
-                name="Ticket"
-                component={TicketScreen}
+                name="Team"
+                component={TeamStackScreen}
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ focused }) => (
-                        <TabBarIcon focused={focused} name="ticket-outline" />
+                        <TabBarIcon focused={focused} name="people-outline" />
                     ),
                 }}
             />
             <BottomTab.Screen
                 name="Team"
-                component={TeamScreen}
+                component={TeamStackScreen}
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ focused }) => (
@@ -72,7 +71,7 @@ export default function BottomTabNavigator({ navigation, route }) {
             />
             <BottomTab.Screen
                 name="PlayerProfile"
-                component={PlayerProfile}
+                component={PlayerProfileScreen}
                 options={{
                     headerShown: false,
                     tabBarButton: () => null,
@@ -81,24 +80,13 @@ export default function BottomTabNavigator({ navigation, route }) {
             />
             <BottomTab.Screen
                 name="PlayerStats"
-                component={PlayerStats}
+                component={PlayerStatsScreen}
                 options={{
                     headerShown: false,
                     tabBarButton: () => null,
                     tabBarVisible: true
                 }}
             />
-
-        <BottomTab.Screen
-                name="AdvanceStatistics"
-                component={AdvanceStatistics}
-                options={{
-                    headerShown: false,
-                    tabBarButton: () => null,
-                    tabBarVisible: true
-                }}
-            />  
-            
         </BottomTab.Navigator>
     );
 }
