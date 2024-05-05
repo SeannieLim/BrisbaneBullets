@@ -111,6 +111,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignContent: "center",
   },
+  listContainer: {
+    width: windowWidth,
+    justifyContent: "center",
+  },
   emptyMessage: {
     textAlign: "center",
     color: "#999",
