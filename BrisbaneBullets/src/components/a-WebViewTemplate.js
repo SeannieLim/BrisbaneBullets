@@ -3,15 +3,21 @@ import { WebView } from "react-native-webview";
 import { View, StyleSheet, TouchableOpacity, Text, Share } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign, Entypo } from "@expo/vector-icons";
+import { scaleFontSize } from "../constants/Layout";
 
-const A_WebViewTemplate = ({ uri }) => {
+const A_WebViewTemplate = ({ uri, title }) => {
   const webviewRef = useRef(null);
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerStyle: { height: 100, backgroundColor: "#164CA8" },
-      headerTitle: "",
+      headerTitle: title,
+      headerTitleAlign: "center",
+      headerTitleStyle: {
+        color: "white",
+        fontSize: scaleFontSize(20),
+      },
       headerTintColor: "#fab81b",
       // headerBackTitle: "Back",
       headerBackTitleVisible: false,
