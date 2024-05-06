@@ -46,7 +46,7 @@ export const NotificationProvider = ({ children }) => {
           return;
         }
 
-        console.log("Notification received!", notification);
+        console.log("Notification received!");
         addNotification(notification.request.content.title, notification.date);
       }
     );

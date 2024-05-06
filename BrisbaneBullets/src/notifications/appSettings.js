@@ -28,14 +28,15 @@ const AppSettings = () => {
   }, []);
 
   async function handleAppStateChange(nextAppState) {
-    if (appState.match(/inactive|background/) && nextAppState === "active") {
-      console.log("App has come to the foreground");
-      await checkNotificationPermission(); // Check permissions when app comes to foreground
-    }
+    console.log("App state changed from", appState, "to", nextAppState);
     setAppState(nextAppState);
+    if (nextAppState === "active") {
+      // Only check permissions when app comes to the foreground, without showing alerts
+      checkNotificationPermission(false);
+    }
   }
 
-  async function checkNotificationPermission() {
+  async function checkNotificationPermission(showAlert) {
     const settings = await Notifications.getPermissionsAsync();
     const localSetting = await AsyncStorage.getItem("notificationsEnabled");
     const isEnabledLocally = localSetting !== "false";
@@ -47,11 +48,11 @@ const AppSettings = () => {
       await getNotificationToken();
       console.log("Notifications enabled and token set.");
     } else {
-      console.log(
-        "Notifications are disabled based on local settings or permissions."
-      );
-      if (appState === "active" && localSetting === "true") {
+      if (showAlert && isEnabledLocally) {
+        console.log("Notifications are disabled based on permissions.");
         showSettingsAlert();
+      } else {
+        console.log("Notifications are disabled based on local settings.");
       }
     }
   }
@@ -70,7 +71,7 @@ const AppSettings = () => {
       "notificationsEnabled",
       newValue ? "true" : "false"
     );
-    checkNotificationPermission(); // Recheck permissions immediately after toggling
+    checkNotificationPermission(true); // Recheck permissions with potential to show alert
   };
 
   const showSettingsAlert = () => {
@@ -84,6 +85,7 @@ const AppSettings = () => {
       { cancelable: false }
     );
   };
+
   return (
     <View style={styles.switchContainer}>
       <Switch
