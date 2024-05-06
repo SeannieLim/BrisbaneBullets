@@ -14,6 +14,7 @@
     "@gluestack-ui/config": "^1.1.18",
     "@gluestack-ui/themed": "^1.1.22",
     "@gluestack-ui/themed-native-base": "^0.1.107-alpha2",
+    "@react-native-async-storage/async-storage": "^1.23.1",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/native": "^6.1.17",

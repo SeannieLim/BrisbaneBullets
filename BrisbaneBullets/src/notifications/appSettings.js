@@ -9,6 +9,8 @@ import {
   AppState,
 } from "react-native";
 import * as Notifications from "expo-notifications";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+// import { NotificationContext } from "./notificationContext";
 
 const AppSettings = () => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -19,54 +21,58 @@ const AppSettings = () => {
       "change",
       handleAppStateChange
     );
-    // Initial check
-    checkNotificationPermission();
-    // Cleanup
+    checkNotificationPermission(); // Initial permission check on mount
     return () => {
-      subscription.remove();
+      subscription.remove(); // Clean up listener when the component unmounts
     };
   }, []);
 
-  const handleAppStateChange = (nextAppState) => {
-    if (nextAppState === "active") {
-      console.log("App has come to the foreground!");
-      checkNotificationPermission();
+  async function handleAppStateChange(nextAppState) {
+    if (appState.match(/inactive|background/) && nextAppState === "active") {
+      console.log("App has come to the foreground");
+      await checkNotificationPermission(); // Check permissions when app comes to foreground
     }
-  };
+    setAppState(nextAppState);
+  }
 
-  //   useEffect(() => {
-  //     checkNotificationPermission();
-  //   }, []);
-  const checkNotificationPermission = async () => {
+  async function checkNotificationPermission() {
     const settings = await Notifications.getPermissionsAsync();
-    const isGranted =
-      settings.granted ||
-      settings.ios?.status === Notifications.IosAuthorizationStatus.PROVISIONAL;
-    setIsEnabled(isGranted);
-    if (isGranted) {
-      getNotificationToken();
-    }
-  };
-  const getNotificationToken = async () => {
-    const { data: token } = await Notifications.getExpoPushTokenAsync();
-    console.log("Push notification token:", token);
-  };
+    const localSetting = await AsyncStorage.getItem("notificationsEnabled");
+    const isEnabledLocally = localSetting !== "false";
+    const enabled = settings.granted && isEnabledLocally;
 
-  const toggleSwitch = async () => {
-    if (!isEnabled) {
-      const { status } = await Notifications.requestPermissionsAsync({
-        ios: { allowAlert: true, allowBadge: true, allowSound: true },
-      });
-      if (status === "granted") {
-        setIsEnabled(true);
-        getNotificationToken();
-      } else {
+    setIsEnabled(enabled);
+
+    if (enabled) {
+      await getNotificationToken();
+      console.log("Notifications enabled and token set.");
+    } else {
+      console.log(
+        "Notifications are disabled based on local settings or permissions."
+      );
+      if (appState === "active" && localSetting === "true") {
         showSettingsAlert();
       }
-    } else {
-      setIsEnabled(false);
     }
+  }
+
+  async function getNotificationToken() {
+    try {
+      const tokenData = await Notifications.getExpoPushTokenAsync();
+      console.log("Push notification token:", tokenData.data);
+    } catch (error) {
+      console.error("Error getting a push token:", error);
+    }
+  }
+
+  const toggleSwitch = async (newValue) => {
+    await AsyncStorage.setItem(
+      "notificationsEnabled",
+      newValue ? "true" : "false"
+    );
+    checkNotificationPermission(); // Recheck permissions immediately after toggling
   };
+
   const showSettingsAlert = () => {
     Alert.alert(
       "Enable Notifications",
@@ -78,7 +84,6 @@ const AppSettings = () => {
       { cancelable: false }
     );
   };
-
   return (
     <View style={styles.switchContainer}>
       <Switch

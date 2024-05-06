@@ -1,10 +1,10 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
-import { Alert } from "react-native";
 import * as Notifications from "expo-notifications";
 import Constants from "expo-constants";
 import uuid from "react-native-uuid"; // Import the UUID generator
 import { isToday, isYesterday, formatDistanceToNow } from "date-fns";
 import { Button } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const NotificationContext = createContext();
 
@@ -16,6 +16,63 @@ export const NotificationProvider = ({ children }) => {
   const { projectId } = Constants.expoConfig.extra.eas;
 
   const [notifications, setNotifications] = useState([]);
+  const [isEnabled, setIsEnabled] = useState(false);
+  const [pushToken, setPushToken] = useState(null);
+
+  // Register for push notifications and handle received notifications
+  useEffect(() => {
+    const fetchSettingsAndRegister = async () => {
+      const localSetting = await AsyncStorage.getItem("notificationsEnabled");
+      const isEnabledLocally = localSetting !== "false";
+      setIsEnabled(isEnabledLocally);
+      if (isEnabledLocally) {
+        await registerForPushNotificationsAsync();
+      }
+    };
+    fetchSettingsAndRegister();
+  }, []);
+
+  // Notification listener with direct check to `AsyncStorage`
+  useEffect(() => {
+    const subscription = Notifications.addNotificationReceivedListener(
+      async (notification) => {
+        const localSetting = await AsyncStorage.getItem("notificationsEnabled");
+        const isEnabledLocally = localSetting !== "false";
+
+        if (!isEnabledLocally) {
+          console.log(
+            "Notification received but notifications are disabled locally"
+          );
+          return;
+        }
+
+        console.log("Notification received!", notification);
+        addNotification(notification.request.content.title, notification.date);
+      }
+    );
+
+    return () => {
+      Notifications.removeNotificationSubscription(subscription);
+    };
+  }, []);
+
+  // Function to register for push notifications
+  async function registerForPushNotificationsAsync() {
+    let { status } = await Notifications.getPermissionsAsync();
+    if (status !== "granted") {
+      status = (await Notifications.requestPermissionsAsync()).status;
+    }
+    if (status === "granted") {
+      const token = await Notifications.getExpoPushTokenAsync({
+        experienceId: `@${expoUsername}/${projectId}`,
+      });
+      setPushToken(token.data);
+      console.log("Push notification token:", token.data);
+    } else {
+      console.log("Push notifications permission not granted");
+      setIsEnabled(false);
+    }
+  }
 
   // Function to add a notification
   const addNotification = (title, rawTimeStamp) => {
@@ -25,19 +82,15 @@ export const NotificationProvider = ({ children }) => {
     const timeStamp =
       rawTimeStamp > 1000000000000 ? rawTimeStamp : rawTimeStamp * 1000;
 
-    let actualDate = new Date(timeStamp);
+    const actualDate = new Date(timeStamp);
     console.log("Normalized Date:", actualDate);
 
-    let displayTimeStamp;
-    if (isToday(actualDate)) {
-      displayTimeStamp = "Today";
-    } else if (isYesterday(actualDate)) {
-      displayTimeStamp = "Yesterday";
-    } else {
-      displayTimeStamp = formatDistanceToNow(actualDate, {
-        addSuffix: true,
-      });
-    }
+    const displayTimeStamp = isToday(actualDate)
+      ? "Today"
+      : isYesterday(actualDate)
+      ? "Yesterday"
+      : formatDistanceToNow(actualDate, { addSuffix: true });
+
     console.log("Current Date: ", new Date());
 
     const newNotification = {
@@ -89,41 +142,6 @@ export const NotificationProvider = ({ children }) => {
     });
   };
 
-  // Register for push notifications and handle received notifications
-  useEffect(() => {
-    async function setup() {
-      const token = await registerForPushNotificationsAsync();
-      const subscription = Notifications.addNotificationReceivedListener(
-        (notification) => {
-          console.log("Notification received!", notification);
-          addNotification(
-            notification.request.content.title,
-            notification.date
-          );
-        }
-      );
-
-      return () => Notifications.removeNotificationSubscription(subscription);
-    }
-
-    setup();
-  }, []);
-
-  // Function to register for push notifications
-  async function registerForPushNotificationsAsync() {
-    const { status } = await Notifications.requestPermissionsAsync();
-    if (status !== "granted") {
-      console.log("Push notifications not granted");
-      return;
-    }
-    const token = await Notifications.getExpoPushTokenAsync({
-      experienceId: `@${expoUsername}/BrisbaneBullets`,
-      projectId: projectId,
-    });
-
-    return token.data;
-  }
-
   // Function to mark notifications as read
   const markAsRead = (ids) => {
     setNotifications(
@@ -146,7 +164,14 @@ export const NotificationProvider = ({ children }) => {
 
   return (
     <NotificationContext.Provider
-      value={{ notifications, markAsRead, deleteNotifications, getUnreadCount }}
+      value={{
+        notifications,
+        isEnabled,
+        pushToken,
+        markAsRead,
+        deleteNotifications,
+        getUnreadCount,
+      }}
     >
       {children}
       <Button title="Test Date Notifications" onPress={testAddNotification} />
