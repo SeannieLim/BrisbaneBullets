@@ -4,9 +4,11 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import TabBarIcon from "../components/tabBarIcon";
 import ScheduleScreen from "../screens/ScheduleScreen";
 import TicketScreen from "../screens/TicketScreen";
-import TeamScreen from "../screens/TeamScreen";
 import HomeStackScreen from "./HomeStack";
 import MoreStackScreen from "./MoreStack";
+import TeamStackScreen from "./TeamStackScreen";
+import PlayerProfileScreen from "../screens/TeamScreens/PlayerProfile";
+import PlayerStatsScreen from "../screens/TeamScreens/PlayerStats";
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = "Home";
@@ -50,7 +52,7 @@ export default function BottomTabNavigator({ navigation, route }) {
       />
       <BottomTab.Screen
         name="Team"
-        component={TeamScreen}
+        component={TeamStackScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
@@ -66,6 +68,24 @@ export default function BottomTabNavigator({ navigation, route }) {
           tabBarIcon: ({ focused }) => (
               <TabBarIcon focused={focused} library='Feather' size={30} name="more-horizontal" />
           ),
+        }}
+      />
+      <BottomTab.Screen
+        name="PlayerProfile"
+        component={PlayerProfileScreen}
+        options={{
+          headerShown: false,
+          tabBarButton: () => null,
+          tabBarVisible: true
+        }}
+      />
+      <BottomTab.Screen
+        name="PlayerStats"
+        component={PlayerStatsScreen}
+        options={{
+          headerShown: false,
+          tabBarButton: () => null,
+          tabBarVisible: true
         }}
       />
     </BottomTab.Navigator>
