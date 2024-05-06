@@ -1,9 +1,8 @@
-import {View} from "@gluestack-ui/themed";
+import React from 'react';
+import A_WebViewTemplate from "../components/a-WebViewTemplate";
 
-export default function TicketScreen({navigation}) {
+export default function TicketScreen({ navigation }) {
     return (
-        <View>
-
-        </View>
+        <A_WebViewTemplate uri="https://premier.ticketek.com.au/" title="Ticket" />
     )
 }
