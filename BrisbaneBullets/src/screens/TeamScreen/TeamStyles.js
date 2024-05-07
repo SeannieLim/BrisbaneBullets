@@ -96,7 +96,8 @@ const MyStyles = StyleSheet.create({
   width: '100%',
   height: '100%', 
   maxWidth: '100%', 
-  alignSelf: 'center'
+  alignSelf: 'center',
+  borderRadius: 15,
   },
 
   ProfileStatsToggle:{
