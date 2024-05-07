@@ -17,7 +17,6 @@ export const NotificationProvider = ({ children }) => {
 
   const [notifications, setNotifications] = useState([]);
   const [isEnabled, setIsEnabled] = useState(false);
-
   const [pushToken, setPushToken] = useState(null);
 
   useEffect(() => {
@@ -73,39 +72,13 @@ export const NotificationProvider = ({ children }) => {
     const actualDate = new Date(timeStamp);
     console.log("Normalized Date:", actualDate);
 
-    const displayTimeStamp = (actualDate) => {
-      const now = Date.now();
-      const diffMs = now - actualDate.getTime(); // difference in milliseconds
-      const diffSec = diffMs / 1000;
-      const diffMin = diffSec / 60;
-      const diffHour = diffMin / 60;
-
-      // Helper function to correctly pluralize the time unit
-      const pluralize = (count, noun, suffix = "s") =>
-        `${count} ${noun}${count !== 1 ? suffix : ""}`;
-
-      if (diffSec < 60) {
-        return "Just now";
-      } else if (diffMin < 60) {
-        return pluralize(Math.floor(diffMin), "minute") + " ago";
-      } else if (diffHour < 24) {
-        return pluralize(Math.floor(diffHour), "hour") + " ago";
-      } else if (isYesterday(actualDate)) {
-        return "Yesterday";
-      } else {
-        return formatDistanceToNow(actualDate, { addSuffix: true });
-      }
-    };
-
-    console.log("Current Date: ", new Date());
-
     const newNotification = {
       id: uuid.v4(), // Use current timestamp as a unique ID
       title,
-      timeStamp: displayTimeStamp(actualDate),
       actualDate,
       read: false,
     };
+
     // Update state by adding the new notification to the start of the list
     await AsyncStorage.getItem("notifications").then((data) => {
       const notifications = data ? JSON.parse(data) : [];
@@ -137,6 +110,29 @@ export const NotificationProvider = ({ children }) => {
       setIsEnabled(false);
     }
   }
+
+  const displayTimeStamp = (actualDate) => {
+    const now = Date.now();
+    const diffMs = now - actualDate.getTime();
+    const diffSec = diffMs / 1000;
+    const diffMin = diffSec / 60;
+    const diffHour = diffMin / 60;
+
+    const pluralize = (count, noun, suffix = "s") =>
+      `${count} ${noun}${count !== 1 ? suffix : ""}`;
+
+    if (diffSec < 60) {
+      return "Just now";
+    } else if (diffMin < 60) {
+      return pluralize(Math.floor(diffMin), "minute") + " ago";
+    } else if (diffHour < 24) {
+      return pluralize(Math.floor(diffHour), "hour") + " ago";
+    } else if (isYesterday(actualDate)) {
+      return "Yesterday";
+    } else {
+      return formatDistanceToNow(actualDate, { addSuffix: true });
+    }
+  };
 
   // // Test function to add notifications for different time scenarios
   const testAddNotification = async () => {
@@ -266,6 +262,7 @@ export const NotificationProvider = ({ children }) => {
         markAsRead,
         deleteNotifications,
         getUnreadCount,
+        displayTimeStamp,
       }}
     >
       {children}

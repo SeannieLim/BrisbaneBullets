@@ -7,6 +7,8 @@ import {
   StyleSheet,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+
+import { useNotifications } from "./notificationContext";
 const windowWidth = Dimensions.get("window").width;
 
 const NotificationItem = ({
@@ -15,44 +17,50 @@ const NotificationItem = ({
   toggleSelect,
   markAsRead,
   selectedIds,
-}) => (
-  <TouchableOpacity
-    style={[
-      styles.item,
-      item.read ? styles.read : styles.unread,
-      editMode && styles.editModeBackground,
-    ]}
-    onPress={() => (editMode ? toggleSelect(item.id) : markAsRead([item.id]))}
-  >
-    <View style={styles.titleContainer}>
-      {editMode ? (
-        <View style={styles.indicatorContainer}>
-          <View
-            style={[
-              styles.selectionIndicator,
-              selectedIds.includes(item.id) && styles.selectedStyle,
-            ]}
-          >
-            {selectedIds.includes(item.id) && (
-              <Ionicons name="checkmark" color="white" size={20} />
-            )}
-          </View>
-        </View>
-      ) : (
-        <View style={styles.indicatorContainer}>
-          <View
-            style={[styles.unreadIndicator, { opacity: item.read ? 0 : 1 }]}
-          />
-        </View>
-      )}
+}) => {
+  const { displayTimeStamp } = useNotifications(); // Access the function from context
 
-      <Text style={[styles.title, { color: item.read ? "#999" : "#000" }]}>
-        {item.title}
+  return (
+    <TouchableOpacity
+      style={[
+        styles.item,
+        item.read ? styles.read : styles.unread,
+        editMode && styles.editModeBackground,
+      ]}
+      onPress={() => (editMode ? toggleSelect(item.id) : markAsRead([item.id]))}
+    >
+      <View style={styles.titleContainer}>
+        {editMode ? (
+          <View style={styles.indicatorContainer}>
+            <View
+              style={[
+                styles.selectionIndicator,
+                selectedIds.includes(item.id) && styles.selectedStyle,
+              ]}
+            >
+              {selectedIds.includes(item.id) && (
+                <Ionicons name="checkmark" color="white" size={20} />
+              )}
+            </View>
+          </View>
+        ) : (
+          <View style={styles.indicatorContainer}>
+            <View
+              style={[styles.unreadIndicator, { opacity: item.read ? 0 : 1 }]}
+            />
+          </View>
+        )}
+
+        <Text style={[styles.title, { color: item.read ? "#999" : "#000" }]}>
+          {item.title}
+        </Text>
+      </View>
+      <Text style={styles.timeStamp}>
+        {displayTimeStamp(new Date(item.actualDate))}
       </Text>
-    </View>
-    <Text style={styles.timeStamp}>{item.timeStamp}</Text>
-  </TouchableOpacity>
-);
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
   item: {
