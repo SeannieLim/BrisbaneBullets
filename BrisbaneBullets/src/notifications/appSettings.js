@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   View,
   Switch,
@@ -10,37 +10,20 @@ import {
 } from "react-native";
 import * as Notifications from "expo-notifications";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-// import { NotificationContext } from "./notificationContext";
+import { NotificationContext } from "./notificationContext";
 
 const AppSettings = () => {
-  const [isEnabled, setIsEnabled] = useState(false);
-  const [appState, setAppState] = useState(AppState.currentState);
+  const { isEnabled, setIsEnabled } = useContext(NotificationContext);
 
   useEffect(() => {
-    const subscription = AppState.addEventListener(
-      "change",
-      handleAppStateChange
-    );
-    checkNotificationPermission(); // Initial permission check on mount
-    return () => {
-      subscription.remove(); // Clean up listener when the component unmounts
-    };
+    checkNotificationPermission(true);
   }, []);
 
-  async function handleAppStateChange(nextAppState) {
-    console.log("App state changed from", appState, "to", nextAppState);
-    setAppState(nextAppState);
-    if (nextAppState === "active") {
-      // Only check permissions when app comes to the foreground, without showing alerts
-      checkNotificationPermission(false);
-    }
-  }
-
-  async function checkNotificationPermission(showAlert) {
-    const settings = await Notifications.getPermissionsAsync();
-    const localSetting = await AsyncStorage.getItem("notificationsEnabled");
-    const isEnabledLocally = localSetting !== "false";
-    const enabled = settings.granted && isEnabledLocally;
+  const checkNotificationPermission = async (showAlert) => {
+    const { status } = await Notifications.getPermissionsAsync();
+    const storedSetting = await AsyncStorage.getItem("notificationsEnabled");
+    const isEnabledLocally = storedSetting !== "false";
+    const enabled = status === "granted" && isEnabledLocally;
 
     setIsEnabled(enabled);
 
@@ -48,14 +31,14 @@ const AppSettings = () => {
       await getNotificationToken();
       console.log("Notifications enabled and token set.");
     } else {
+      console.log("Notifications are disabled based on permissions.");
       if (showAlert && isEnabledLocally) {
-        console.log("Notifications are disabled based on permissions.");
         showSettingsAlert();
       } else {
         console.log("Notifications are disabled based on local settings.");
       }
     }
-  }
+  };
 
   async function getNotificationToken() {
     try {

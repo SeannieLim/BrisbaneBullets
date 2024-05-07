@@ -1,18 +1,12 @@
-import React, {
-  createContext,
-  useState,
-  useContext,
-  useEffect,
-  useRef,
-} from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 import * as Notifications from "expo-notifications";
 import Constants from "expo-constants";
 import uuid from "react-native-uuid"; // Import the UUID generator
-import { isToday, isYesterday, formatDistanceToNow } from "date-fns";
+import { isYesterday, formatDistanceToNow } from "date-fns";
 import { Button } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const NotificationContext = createContext();
+export const NotificationContext = createContext();
 
 export const useNotifications = () => useContext(NotificationContext);
 
@@ -23,10 +17,15 @@ export const NotificationProvider = ({ children }) => {
 
   const [notifications, setNotifications] = useState([]);
   const [isEnabled, setIsEnabled] = useState(false);
+
   const [pushToken, setPushToken] = useState(null);
 
   useEffect(() => {
-    loadInitialSettings();
+    loadInitialSettings().then(() => {
+      console.log(
+        `Initial load: Notifications are ${isEnabled ? "enabled" : "disabled"}.`
+      );
+    });
   }, []);
 
   useEffect(() => {
@@ -36,28 +35,31 @@ export const NotificationProvider = ({ children }) => {
     return () => subscription.remove();
   }, [isEnabled]);
 
-  const loadInitialSettings = async () => {
-    const storedNotifications = await AsyncStorage.getItem("notifications");
+  async function loadInitialSettings() {
     const localSetting = await AsyncStorage.getItem("notificationsEnabled");
-    setIsEnabled(localSetting !== "false");
+    const storedNotifications = await AsyncStorage.getItem("notifications");
+    const isNotificationsEnabled = localSetting !== "false";
+    setIsEnabled(isNotificationsEnabled);
     setNotifications(
       storedNotifications ? JSON.parse(storedNotifications) : []
     );
-    if (localSetting !== "false") {
+    console.log(
+      `Notifications enabled state from storage: ${isNotificationsEnabled}`
+    );
+    if (isNotificationsEnabled) {
       await registerForPushNotificationsAsync();
     }
-  };
+  }
 
   const handleNotificationReceived = (notification) => {
     if (isEnabled) {
+      console.log("Processing notification.");
       addNotification(
         notification.request.content.title,
         notification.date || Date.now()
       );
     } else {
-      console.log(
-        "Notification received but notifications are disabled locally"
-      );
+      console.log("Ignoring notification due to disabled state.");
     }
   };
 
@@ -259,6 +261,7 @@ export const NotificationProvider = ({ children }) => {
       value={{
         notifications,
         isEnabled,
+        setIsEnabled,
         pushToken,
         markAsRead,
         deleteNotifications,
