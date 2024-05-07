@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView,Button } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import MyStyles from './TeamStyles';
@@ -11,6 +11,18 @@ import PlayerStats from './PlayerStats';
 const PlayerProfile = ({ route }) => {
   const { player } = route.params;
   const navigation = useNavigation();
+  const [showGif, setShowGif] = useState(true);
+
+  useEffect(() => {
+    const gifInterval = setInterval(() => {
+      setShowGif(false);
+      setTimeout(() => {
+        setShowGif(true);
+      }, 14000); // Adjust the time for how long you want the GIF to be displayed
+    }, 10000); // Interval for every 10 seconds
+    return () => clearInterval(gifInterval);
+  }, []);
+
   // Back to TeamScreen
   const goBackToTeamScreen = () => {
     navigation.navigate("TeamScreen");
@@ -31,10 +43,17 @@ const PlayerProfile = ({ route }) => {
       </View>
 
       <View style={MyStyles.imageBox}>
-        <Image
-          source={player.playerProfileImage}
-          style={MyStyles.playerProfileImage}
-        />
+        {showGif ? (
+          <Image
+            source={require('BrisbaneBullets\assets\teamPageImages\gif1.gif')} // Replace with the path to your GIF
+            style={MyStyles.playerProfileImage}
+          />
+        ) : (
+          <Image
+            source={player.playerProfileImage}
+            style={MyStyles.playerProfileImage}
+          />
+        )}
         <View style={MyStyles.textContainer}>
           <Text style={MyStyles.jerseyNumber}>{player.jerseyNumber}</Text>
         </View>
