@@ -45,8 +45,8 @@ const PlayerProfile = ({ route }) => {
       <View style={MyStyles.imageBox}>
         {showGif ? (
           <Image
-            source={require('BrisbaneBullets\assets\teamPageImages\gif1.gif')} // Replace with the path to your GIF
-            style={MyStyles.playerProfileImage}
+            source={require('../../../assets/teamPageImages/gif1.gif')} // Replace with the path to your GIF
+            style={MyStyles.playerProfileGif}
           />
         ) : (
           <Image

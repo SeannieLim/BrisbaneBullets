@@ -92,6 +92,12 @@ const MyStyles = StyleSheet.create({
     height: '83%',
     overflow: 'visible',
   },
+  playerProfileGif:{ 
+  width: '100%',
+  height: '100%', 
+  maxWidth: '100%', 
+  alignSelf: 'center'
+  },
 
   ProfileStatsToggle:{
     marginLeft: windowWidth * 0.11,
