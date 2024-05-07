@@ -58,7 +58,7 @@ const HighlightVideo = () => {
                     <Image style={styles.videoImg} source={item.img} alt={item.imgAlt}/>
                     <AntDesign name="playcircleo" size={40} color="white" position='absolute' bottom={'45%'}
                                right={'45%'}/>
-                    <LinearGradient colors={['rgba(0, 0, 0, 0)', 'rgba(22, 76, 168, 0.9)']} position='absolute' bottom={0}
+                    <LinearGradient colors={['rgba(0, 0, 0, 0)', '#164CA8']} position='absolute' bottom={0}
                                     left={0} right={0} style={styles.gradientContainer}>
                         <HStack pl={15} pr={15} justifyContent='space-between'>
                             <Box pb={5} maxWidth={'90%'}>
