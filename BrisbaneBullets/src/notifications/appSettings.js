@@ -5,7 +5,6 @@ import {
   Alert,
   Linking,
   StyleSheet,
-  Text,
   AppState,
 } from "react-native";
 import * as Notifications from "expo-notifications";
@@ -17,27 +16,22 @@ const AppSettings = () => {
   const [appState, setAppState] = useState(AppState.currentState);
 
   useEffect(() => {
+    const handleAppStateChange = (nextAppState) => {
+      if (appState.match(/inactive|background/) && nextAppState === "active") {
+        console.log("App has come to the foreground!");
+        checkNotificationPermission();
+      }
+      setAppState(nextAppState);
+    };
+
     const subscription = AppState.addEventListener(
       "change",
-      _handleAppStateChange
+      handleAppStateChange
     );
+    checkNotificationPermission(); // Initial permission check
 
-    return () => {
-      subscription.remove();
-    };
-  }, []);
-  useEffect(() => {
-    // Initial permission check
-    checkNotificationPermission();
-  }, [appState]); // Re-run when app state changes
-
-  const _handleAppStateChange = (nextAppState) => {
-    if (appState.match(/inactive|background/) && nextAppState === "active") {
-      console.log("App has come to the foreground!");
-      checkNotificationPermission();
-    }
-    setAppState(nextAppState);
-  };
+    return () => subscription.remove();
+  }, [appState]);
 
   const checkNotificationPermission = async () => {
     const settings = await Notifications.getPermissionsAsync();
@@ -55,17 +49,16 @@ const AppSettings = () => {
     }
   };
 
-  async function getNotificationToken() {
+  const getNotificationToken = async () => {
     try {
       const tokenData = await Notifications.getExpoPushTokenAsync();
       console.log("Push notification token:", tokenData.data);
     } catch (error) {
       console.error("Error getting a push token:", error);
     }
-  }
+  };
 
   const toggleSwitch = async (newValue) => {
-    // Save the new value immediately.
     await AsyncStorage.setItem(
       "notificationsEnabled",
       newValue ? "true" : "false"

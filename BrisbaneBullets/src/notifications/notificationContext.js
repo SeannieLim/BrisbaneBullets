@@ -111,6 +111,72 @@ export const NotificationProvider = ({ children }) => {
     }
   }
 
+  const markAsRead = async (ids) => {
+    // Ensure ids is always an array even if a single id is passed
+    if (!Array.isArray(ids)) {
+      ids = [ids];
+    }
+
+    console.log("Attempting to mark notifications as read with IDs:", ids);
+
+    setNotifications((currentNotifications) => {
+      const updatedNotifications = currentNotifications.map((notification) => {
+        if (ids.includes(notification.id)) {
+          console.log(
+            "Found notification with ID, updating read status:",
+            notification.id
+          );
+          return { ...notification, read: true };
+        }
+        return notification;
+      });
+
+      AsyncStorage.setItem(
+        "notifications",
+        JSON.stringify(updatedNotifications)
+      )
+        .then(() => {
+          console.log(
+            "AsyncStorage successfully updated with new read status."
+          );
+        })
+        .catch((error) => {
+          console.error("Failed to update AsyncStorage:", error);
+        });
+
+      return updatedNotifications;
+    });
+  };
+
+  const deleteNotifications = async (ids) => {
+    // If the ID is in an array, extract it to ensure proper comparison.
+    if (!Array.isArray(ids)) {
+      ids = [ids];
+    }
+
+    console.log("Attempting to delete notification with ID:", ids);
+
+    setNotifications((currentNotifications) => {
+      const filteredNotifications = currentNotifications.filter(
+        (notification) => !ids.includes(notification.id)
+      );
+
+      AsyncStorage.setItem(
+        "notifications",
+        JSON.stringify(filteredNotifications)
+      )
+        .then(() => {
+          console.log("AsyncStorage successfully updated after deletion.");
+        })
+        .catch((error) => {
+          console.error("Failed to update AsyncStorage after deletion:", error);
+        });
+
+      return filteredNotifications;
+    });
+  };
+
+  const getUnreadCount = () => notifications.filter((n) => !n.read).length;
   const displayTimeStamp = (actualDate) => {
     const now = Date.now();
     const diffMs = now - actualDate.getTime();
@@ -185,73 +251,6 @@ export const NotificationProvider = ({ children }) => {
     }
   };
 
-  const markAsRead = async (ids) => {
-    // Ensure ids is always an array even if a single id is passed
-    if (!Array.isArray(ids)) {
-      ids = [ids];
-    }
-
-    console.log("Attempting to mark notifications as read with IDs:", ids);
-
-    setNotifications((currentNotifications) => {
-      const updatedNotifications = currentNotifications.map((notification) => {
-        if (ids.includes(notification.id)) {
-          console.log(
-            "Found notification with ID, updating read status:",
-            notification.id
-          );
-          return { ...notification, read: true };
-        }
-        return notification;
-      });
-
-      AsyncStorage.setItem(
-        "notifications",
-        JSON.stringify(updatedNotifications)
-      )
-        .then(() => {
-          console.log(
-            "AsyncStorage successfully updated with new read status."
-          );
-        })
-        .catch((error) => {
-          console.error("Failed to update AsyncStorage:", error);
-        });
-
-      return updatedNotifications;
-    });
-  };
-
-  const deleteNotifications = async (ids) => {
-    // If the ID is in an array, extract it to ensure proper comparison.
-    if (!Array.isArray(ids)) {
-      ids = [ids];
-    }
-
-    console.log("Attempting to delete notification with ID:", ids);
-
-    setNotifications((currentNotifications) => {
-      const filteredNotifications = currentNotifications.filter(
-        (notification) => !ids.includes(notification.id)
-      );
-
-      AsyncStorage.setItem(
-        "notifications",
-        JSON.stringify(filteredNotifications)
-      )
-        .then(() => {
-          console.log("AsyncStorage successfully updated after deletion.");
-        })
-        .catch((error) => {
-          console.error("Failed to update AsyncStorage after deletion:", error);
-        });
-
-      return filteredNotifications;
-    });
-  };
-
-  const getUnreadCount = () => notifications.filter((n) => !n.read).length;
-
   return (
     <NotificationContext.Provider
       value={{
@@ -268,7 +267,7 @@ export const NotificationProvider = ({ children }) => {
       {children}
       <Button title="Test Date Notifications" onPress={testAddNotification} />
 
-      <Button
+      {/* <Button
         title="Log Current Notifications"
         onPress={() => {
           console.log(notifications);
@@ -276,7 +275,7 @@ export const NotificationProvider = ({ children }) => {
             console.log("AsyncStorage:", JSON.parse(data));
           });
         }}
-      />
+      /> */}
     </NotificationContext.Provider>
   );
 };
