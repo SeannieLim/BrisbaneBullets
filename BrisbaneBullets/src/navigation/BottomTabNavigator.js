@@ -14,9 +14,9 @@ const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = "Home";
 
 export default function BottomTabNavigator({ navigation, route }) {
-    //   useEffect(() => {
-    //     navigation.setOptions({ headerTitle: getHeaderTitle(route) });
-    //   }, [navigation, route]);
+  //   useEffect(() => {
+  //     navigation.setOptions({ headerTitle: getHeaderTitle(route) });
+  //   }, [navigation, route]);
 
   return (
     <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
@@ -26,7 +26,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-              <TabBarIcon focused={focused} library='Feather' name="home" />
+            <TabBarIcon focused={focused} library='Feather' name="home" />
           ),
         }}
       />
@@ -36,7 +36,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-              <TabBarIcon focused={focused} library='Feather' name="calendar" />
+            <TabBarIcon focused={focused} library='Feather' name="calendar" />
           ),
         }}
       />
@@ -44,9 +44,9 @@ export default function BottomTabNavigator({ navigation, route }) {
         name="Ticket"
         component={TicketScreen}
         options={{
-          headerShown: false,
+          headerShown: true,
           tabBarIcon: ({ focused }) => (
-              <TabBarIcon focused={focused} library='FontAwesome' name="ticket" />
+            <TabBarIcon focused={focused} library='FontAwesome' name="ticket" />
           ),
         }}
       />
@@ -56,7 +56,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-              <TabBarIcon focused={focused} library='FontAwesome' name="group" />
+            <TabBarIcon focused={focused} library='FontAwesome' name="group" />
           ),
         }}
       />
@@ -66,7 +66,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-              <TabBarIcon focused={focused} library='Feather' size={30} name="more-horizontal" />
+            <TabBarIcon focused={focused} library='Feather' size={30} name="more-horizontal" />
           ),
         }}
       />
