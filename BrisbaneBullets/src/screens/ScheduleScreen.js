@@ -19,6 +19,10 @@ export default function ScheduleScreen({navigation}) {
     const navigateStandings = () => {
         navigation.navigate('Standings');
     };
+
+    const navigateTicketek = () => {
+        navigation.navigate('Ticket');
+    };
     return (
         <View style={styles.container}>
             <SafeAreaView style={{flex: 1}}>
@@ -31,7 +35,7 @@ export default function ScheduleScreen({navigation}) {
                             </TouchableOpacity>
                         </Box>
                         <Box style={styles.circleBackground}>
-                            <TouchableOpacity onPress={navigateStandings}>
+                            <TouchableOpacity onPress={navigateTicketek}>
                                 <FontAwesome name="ticket" size={26} color="white"/>
                             </TouchableOpacity>
                         </Box>
