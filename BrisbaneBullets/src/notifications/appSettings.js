@@ -14,16 +14,36 @@ import { NotificationContext } from "./notificationContext";
 
 const AppSettings = () => {
   const { isEnabled, setIsEnabled } = useContext(NotificationContext);
+  const [appState, setAppState] = useState(AppState.currentState);
 
   useEffect(() => {
-    checkNotificationPermission(true);
-  }, []);
+    const subscription = AppState.addEventListener(
+      "change",
+      _handleAppStateChange
+    );
 
-  const checkNotificationPermission = async (showAlert) => {
-    const { status } = await Notifications.getPermissionsAsync();
+    return () => {
+      subscription.remove();
+    };
+  }, []);
+  useEffect(() => {
+    // Initial permission check
+    checkNotificationPermission();
+  }, [appState]); // Re-run when app state changes
+
+  const _handleAppStateChange = (nextAppState) => {
+    if (appState.match(/inactive|background/) && nextAppState === "active") {
+      console.log("App has come to the foreground!");
+      checkNotificationPermission();
+    }
+    setAppState(nextAppState);
+  };
+
+  const checkNotificationPermission = async () => {
+    const settings = await Notifications.getPermissionsAsync();
     const storedSetting = await AsyncStorage.getItem("notificationsEnabled");
     const isEnabledLocally = storedSetting !== "false";
-    const enabled = status === "granted" && isEnabledLocally;
+    const enabled = settings.granted && isEnabledLocally;
 
     setIsEnabled(enabled);
 
@@ -32,11 +52,6 @@ const AppSettings = () => {
       console.log("Notifications enabled and token set.");
     } else {
       console.log("Notifications are disabled based on permissions.");
-      if (showAlert && isEnabledLocally) {
-        showSettingsAlert();
-      } else {
-        console.log("Notifications are disabled based on local settings.");
-      }
     }
   };
 
@@ -50,13 +65,28 @@ const AppSettings = () => {
   }
 
   const toggleSwitch = async (newValue) => {
+    // Save the new value immediately.
     await AsyncStorage.setItem(
       "notificationsEnabled",
       newValue ? "true" : "false"
     );
-    checkNotificationPermission(true); // Recheck permissions with potential to show alert
-  };
 
+    // If trying to turn on, check system permissions.
+    if (newValue) {
+      const settings = await Notifications.getPermissionsAsync();
+      if (!settings.granted) {
+        // System permissions not granted; show alert.
+        showSettingsAlert();
+      } else {
+        // Permissions granted, enable notifications.
+        setIsEnabled(true);
+        await getNotificationToken();
+      }
+    } else {
+      // Directly disable without alert.
+      setIsEnabled(false);
+    }
+  };
   const showSettingsAlert = () => {
     Alert.alert(
       "Enable Notifications",
