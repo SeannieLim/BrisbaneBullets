@@ -5,6 +5,7 @@ import TabBarIcon from "../components/tabBarIcon";
 import ScheduleScreen from "../screens/ScheduleScreen";
 import TicketScreen from "../screens/TicketScreen";
 import MoreScreen from "../screens/MoreScreen";
+import HomeStackScreen from "./HomeStack";
 import TeamStackScreen from "./TeamStackScreen";
 import PlayerProfileScreen from "../screens/TeamScreen/PlayerProfile";
 import PlayerStatsScreen from "../screens/TeamScreen/PlayerStats";
@@ -21,7 +22,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         <BottomTab.Navigator initialRouteName={INITIAL_ROUTE_NAME}>
             <BottomTab.Screen
                 name="Home"
-                component={HomeScreen}
+                component={HomeStackScreen}
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ focused }) => (
