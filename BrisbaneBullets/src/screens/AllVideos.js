@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, TouchableOpacity, ScrollView, Linking, ImageBackground, Text, Dimensions, SafeAreaView } from 'react-native';
+import { StyleSheet, TouchableOpacity, ScrollView, Linking, ImageBackground, Text, Dimensions, SafeAreaView, Share  } from 'react-native';
 import { Box, View } from "@gluestack-ui/themed";
 import { MaterialIcons, Entypo  } from '@expo/vector-icons';
 import AdsBanner from "../components/AdsBanner";
@@ -12,7 +12,7 @@ const mockVideos=[
   date: 'Feb 16, 2024',
   img: require('../../assets/Videos/video1.jpg'),
   imgAlt: 'newsImage',
-  url:'https://www.youtube.com/watch?v=rKmiRRfW1PA&ab_channel=BrisbaneBullets'
+  url:'https://www.youtube.com/watch?v=rKmiRRfW1PA&ab_channel=BrisbaneBullets',
 },
 {
   id: 2,
@@ -20,7 +20,7 @@ const mockVideos=[
   date: 'Feb 09,2024',
   img: require('../../assets/Videos/video2.jpg'),
   imgAlt: 'newsImage',
-  url:'https://www.youtube.com/watch?v=BbgCIOvQAJE&ab_channel=BrisbaneBullets'
+  url:'https://www.youtube.com/watch?v=BbgCIOvQAJE&ab_channel=BrisbaneBullets',
 },
 {
   id: 3,
@@ -63,6 +63,17 @@ const VideoBox = ({video}) =>{
         const url = video.url
         Linking.openURL(url)
     }
+    const handleShare = async () => {
+      try {
+        const url = `${video.url}`;
+        await Share.share({
+          url: url,
+        });
+  
+      } catch (error) {
+        console.error("Error sharing", error);
+      }
+    };
 
     return(
         <View style={styles.videoContainer}>
@@ -82,7 +93,7 @@ const VideoBox = ({video}) =>{
                 <Text style={styles.date} numberOfLines={1} ellipsizeMode="tail">
                     {video.date}
                 </Text>
-                <TouchableOpacity style={styles.shareIcon} onPress={() => handleShare(item)}>
+                <TouchableOpacity style={styles.shareIcon} onPress={() => handleShare(videos)}>
                   <Entypo name="share-alternative" size={18} color="black" />
                  </TouchableOpacity>
             </View>
