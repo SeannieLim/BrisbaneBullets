@@ -262,10 +262,10 @@ export const NotificationProvider = ({ children }) => {
         deleteNotifications,
         getUnreadCount,
         displayTimeStamp,
+        testAddNotification,
       }}
     >
       {children}
-      <Button title="Test Date Notifications" onPress={testAddNotification} />
 
       {/* <Button
         title="Log Current Notifications"
