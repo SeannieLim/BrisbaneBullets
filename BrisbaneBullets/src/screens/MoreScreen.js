@@ -13,7 +13,7 @@ import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { scaleFontSize } from "../constants/Layout";
 import { Button, ButtonText, Box, ButtonGroup } from "@gluestack-ui/themed";
-import { GlobalStyles } from "../GlobalStyles";
+import { GlobalStyles } from "../constants/GlobalStyles";
 import AppSettings from "../notifications/appSettings";
 
 const windowWidth = Dimensions.get("window").width;

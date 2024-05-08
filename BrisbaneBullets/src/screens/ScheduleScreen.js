@@ -11,7 +11,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import ToggleComponent from "../components/ToggleButton";
 import UpcomingGames from "../components/upcomingGames";
 import PastGames from "../components/pastGames";
-import { GlobalStyles } from "../GlobalStyles";
+import { GlobalStyles } from "../constants/GlobalStyles";
 
 const windowWidth = Dimensions.get("window").width;
 

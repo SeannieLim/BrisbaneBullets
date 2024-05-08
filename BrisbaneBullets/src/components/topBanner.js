@@ -13,7 +13,7 @@ import { ActionButton } from "./actionButton";
 import { useNavigation } from "@react-navigation/native";
 import CustomButton from "./CustomButton";
 import NotificationIcon from "../notifications/notificationIcon";
-import { GlobalStyles } from "../GlobalStyles";
+import { GlobalStyles } from "../constants/GlobalStyles";
 import { useNotifications } from "../notifications/notificationContext";
 
 const windowWidth = Dimensions.get("window").width;
