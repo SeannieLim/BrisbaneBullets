@@ -30,7 +30,7 @@ export default function App(props) {
                     {/* <BottomTabNavigator /> */}
                     <Stack.Navigator>
                         <Stack.Screen
-                            name=" "
+                            name="home"
                             component={BottomTabNavigator}
                             options={{headerShown: false}}
                         />
@@ -58,6 +58,7 @@ export default function App(props) {
                         />
                         <Stack.Screen name="Standings" component={StandingsScreen}/>
                     </Stack.Navigator>
+                    
                 </NavigationContainer>
                 {/*</SafeAreaView>*/}
             </View>
