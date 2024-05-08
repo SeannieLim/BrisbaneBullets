@@ -8,6 +8,9 @@ import {
   Text,
   Image,
   Switch,
+  TouchableOpacity,
+  Platform,
+  Linking,
 } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -27,6 +30,23 @@ export default function MoreScreen({ navigation }) {
   const [isEnabled, setIsEnabled] = React.useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
+  const handleCrowdCanvas = () => {
+    const crowdCanvasUrl = 'crowdcanvas://'; // Deep link to CrowdCanvas app (sample link)
+    const appStoreUrl = Platform.select({
+      ios: 'https://apps.apple.com/au/app/crowdcanvas/id1526770094', //Crowd canvas App Store ID
+      android: 'https://play.google.com/store/apps/details?id=com.crowdcanvas.pixelplayer&hl=en_AU&gl=US&pli=1', // Google Play Store URL
+    });
+
+    // Try opening the CrowdCanvas app
+    Linking.canOpenURL(crowdCanvasUrl).then(supported => {
+      if (supported) {
+        Linking.openURL(crowdCanvasUrl); // Open CrowdCanvas app
+      } else {
+        // If CrowdCanvas app is not installed, prompt user to download from App Store
+        Linking.openURL(appStoreUrl);
+      }
+    }).catch(err => console.error('Error checking CrowdCanvas app:', err));
+  }
   return (
     <View style={styles.container}>
       <SafeAreaView style={{ flex: 1 }}>
@@ -101,7 +121,7 @@ export default function MoreScreen({ navigation }) {
             </View>
             <View style={styles.othersContainer}>
               <View style={styles.shadowBox2}>
-                <Button style={styles.othersButton}>
+                <Button style={styles.othersButton} onPress={handleCrowdCanvas}>
                   <Image
                     source={require("../../assets/CrowdCanvas.png")}
                     style={styles.othersImage}
