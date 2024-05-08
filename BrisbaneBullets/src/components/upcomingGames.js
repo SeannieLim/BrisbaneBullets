@@ -29,7 +29,7 @@ export default function UpcomingGames({navigation}) {
 
     return (
         <ScrollView contentContainerStyle={{flexGrow: 1}} showsVerticalScrollIndicator={false}>
-            <VStack pt={20}>
+            <VStack pt={25} >
                 {data.map((item, index) => (
                     <Box key={index} pb={20}>
                         <HStack justifyContent='center'>

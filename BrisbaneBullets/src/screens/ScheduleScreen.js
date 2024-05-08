@@ -10,14 +10,18 @@ import PastGames from "../components/pastGames";
 const windowWidth = Dimensions.get("window").width;
 
 const videoTabs = [
-    {label: "Upcoming Games", content: <UpcomingGames />},
-    {label: "Past Games", content: <PastGames/> }
+    {label: "Upcoming Games", content: <UpcomingGames/>},
+    {label: "Past Games", content: <PastGames/>}
 ];
 
 export default function ScheduleScreen({navigation}) {
 
     const navigateStandings = () => {
         navigation.navigate('Standings');
+    };
+
+    const navigateTicketek = () => {
+        navigation.navigate('Ticket');
     };
     return (
         <View style={styles.container}>
@@ -31,15 +35,17 @@ export default function ScheduleScreen({navigation}) {
                             </TouchableOpacity>
                         </Box>
                         <Box style={styles.circleBackground}>
-                            <TouchableOpacity onPress={navigateStandings}>
+                            <TouchableOpacity onPress={navigateTicketek}>
                                 <FontAwesome name="ticket" size={26} color="white"/>
                             </TouchableOpacity>
                         </Box>
                     </HStack>
                 </Box>
 
-                <Box style={{paddingVertical: windowWidth * 0.05, flex: 1, overflowY: 'scroll'}}>
-                    <ToggleComponent tabs={videoTabs} />
+                <Box style={styles.toggle}>
+
+                    <ToggleComponent tabs={videoTabs}/>
+
                 </Box>
 
             </SafeAreaView>
@@ -57,7 +63,7 @@ const styles = StyleSheet.create({
     }
     ,
     header: {
-        paddingTop: windowWidth * 0.03,
+        paddingVertical: windowWidth * 0.03,
         flexDirection:
             'row',
         justifyContent:
@@ -86,5 +92,10 @@ const styles = StyleSheet.create({
             '#113B81',
         marginLeft:
             windowWidth * 0.02,
+    },
+    toggle: {
+        paddingVertical: windowWidth * 0.02,
+        flex: 1,
+        overflowY: 'scroll',
     }
 })
