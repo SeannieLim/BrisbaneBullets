@@ -13,6 +13,7 @@ const mockVideos=[
   img: require('../../assets/Videos/video1.jpg'),
   imgAlt: 'videoImage',
   url:'https://www.youtube.com/watch?v=rKmiRRfW1PA&ab_channel=BrisbaneBullets',
+  length:'02:58',
 },
 {
   id: 2,
@@ -21,6 +22,7 @@ const mockVideos=[
   img: require('../../assets/Videos/video2.jpg'),
   imgAlt: 'videoImage',
   url:'https://www.youtube.com/watch?v=BbgCIOvQAJE&ab_channel=BrisbaneBullets',
+  length:'09:40',
 },
 {
   id: 3,
@@ -28,7 +30,8 @@ const mockVideos=[
   date: 'Feb 09, 2024',
   img: require('../../assets/Videos/video3.jpg'),
   imgAlt: 'videoImage',
-  url:'https://www.youtube.com/watch?v=KulBiky4lqY&ab_channel=BrisbaneBullets'
+  url:'https://www.youtube.com/watch?v=KulBiky4lqY&ab_channel=BrisbaneBullets',
+  length:'03:00',
 },
 {
   id: 4,
@@ -36,7 +39,8 @@ const mockVideos=[
   date: 'Feb 08, 2024',
   img: require('../../assets/Videos/video4.jpg'),
   imgAlt: 'videoImage',
-  url:'https://www.youtube.com/watch?v=eJVIvfmmTCk&ab_channel=BrisbaneBullets'
+  url:'https://www.youtube.com/watch?v=eJVIvfmmTCk&ab_channel=BrisbaneBullets',
+  length:'01:53',
 },
 {
   id: 5,
@@ -44,7 +48,8 @@ const mockVideos=[
   date: 'Feb 03, 2024',
   img: require('../../assets/Videos/video5.jpg'),
   imgAlt: 'videoImage',
-  url:'https://www.youtube.com/watch?v=kvtxECsp2GU&ab_channel=BrisbaneBullets'
+  url:'https://www.youtube.com/watch?v=kvtxECsp2GU&ab_channel=BrisbaneBullets',
+  length:'02:59',
 },
 {
   id: 6,
@@ -52,7 +57,8 @@ const mockVideos=[
   date: 'Feb 02, 2024',
   img: require('../../assets/Videos/video6.jpg'),
   imgAlt: 'videoImage',
-  url:'https://www.youtube.com/watch?v=9j9tXzd35D0&ab_channel=BrisbaneBullets'
+  url:'https://www.youtube.com/watch?v=9j9tXzd35D0&ab_channel=BrisbaneBullets',
+  length:'01:17',
 },
 {
   id: 7,
@@ -60,7 +66,8 @@ const mockVideos=[
   date: 'Jan 26, 2024',
   img: require('../../assets/Videos/video7.jpg'),
   imgAlt: 'videoImage',
-  url:'https://www.youtube.com/watch?v=0jhxCHlLXho&ab_channel=BrisbaneBullets'
+  url:'https://www.youtube.com/watch?v=0jhxCHlLXho&ab_channel=BrisbaneBullets',
+  length:'06:44',
 },]
 
 
@@ -92,7 +99,12 @@ const VideoBox = ({video}) =>{
                 />
                  <View style={styles.iconContainer}>
                  <MaterialIcons name="play-circle-filled" size={48} color="#FAB81B" />
+
             </View>
+            <View style={styles.length}>
+              <Text fontSize={5}>{video.length}</Text>
+              </View>
+            
             </TouchableOpacity>
             <View style={styles.description}>
                 <Text style={styles.title} numberOfLines={2} ellipsizeMode="tail">
@@ -141,11 +153,21 @@ const AllVideos = () => {
 export default AllVideos;
 
 const styles = StyleSheet.create({
-      videoContainer:{
+    videoContainer:{
       marginBottom: 20,
       justifyContent: "center",
       alignItems: 'center',
       paddingHorizontal:windowWidth * 0.08,    
+    },
+    length:{
+      position: 'absolute',
+      bottom: 6, 
+      left: 15,
+      fontSize:10,
+      color:"#707070",
+      backgroundColor:"white",
+      borderRadius:10,
+
     },
     ad:{
       justifyContent: "center",
@@ -188,7 +210,7 @@ const styles = StyleSheet.create({
     },
     description:{
       width:"100%",
-      height:70,
+      height:60,
       borderBottomLeftRadius: 15,
       borderBottomRightRadius: 15,
       backgroundColor:"#F5F5F5",
@@ -215,9 +237,6 @@ const styles = StyleSheet.create({
       position: 'absolute',
       bottom: 4, 
       right: 5,
-      borderRadius: 20,
-      color:"black",
-      // backgroundColor: 'rgba(60, 60, 60, .7)',
       padding: 8,
     },
 
