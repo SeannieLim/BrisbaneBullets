@@ -1,86 +1,94 @@
 import React, { useState } from "react";
-import { Container, Box, HStack, Button, Text } from "@gluestack-ui/themed-native-base";
-import { Linking } from "react-native";
-import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, View, Linking } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
-const ToggleComponent = ({ tabs, style }) => {
-    // Use the first tab as the default active tab
-    const [activeTab, setActiveTab] = useState(tabs[0]?.label);
+import {
+  Box,
+  Button,
+  Container,
+  HStack,
+} from "@gluestack-ui/themed-native-base";
 
-    const navigation = useNavigation();
-    const navigateToStats = () => {
-        navigation.navigate('PlayerStats');
-    };
+const ToggleTest = ({ tabs }) => {
+  const [activeTab, setActiveTab] = useState(tabs[0]?.label);
+  const navigation = useNavigation();
 
-    const navigateToAdvanceStats = () => {
-        navigation.navigate('AdvanceStatistics');
-    };
+  // Handle press action based on tab label
+  const handlePress = (tab) => {
+    if (tab.label === "Advance Statistics") {
+      // If the tab is "Advance Statistics", open a link
+      navigation.navigate("AdvanceStatsWebview"); // Put the actual URL here
+    } else {
+      // For other tabs, just change the active tab state
+      setActiveTab(tab.label);
+    }
+  };
 
-    const navigateToPlayersProfile = () => {
-        navigation.navigate('TeamScreen');
-    };
-
-
-    return (
-        <Container width="80%" key={activeTab} style={style}> {/* Apply style here */}
-            <Box bg="#FCFDFF" width="100%" borderRadius="full" padding="0">
-                <HStack space={0}>
-                    {tabs.map((tab) => (
-                        <CustomButton
-                            key={tab.label}
-                            active={activeTab === tab.label}
-                            onPress={() => {
-                                if (tab.label === "AdvanceStatistics") {
-                                    navigateToAdvanceStats();
-                                } else if (tab.label === "Stats") {
-                                    navigateToStats();
-                                } else if (tab.label === "Players"){
-                                    navigateToPlayersProfile();
-                                }
-                                else {
-                                    setActiveTab(tab.label);
-                                }
-                            }}
-                        >
-                            {tab.label}
-                        </CustomButton>
-                    ))}
-                </HStack>
-            </Box>
-            {/* Render content based on active tab */}
-            <Content activeTab={activeTab} tabs={tabs} />
-        </Container>
-    );
+  return (
+    <View>
+      <Container width="100%" key={activeTab}>
+        <Box
+          bg="#FCFDFF"
+          width="100%"
+          borderRadius={50}
+          padding="0"
+          style={styles.shadow}
+        >
+          <HStack space={0}>
+            {tabs.map((tab) => (
+              <CustomButton
+                key={tab.label}
+                active={activeTab === tab.label}
+                onPress={() => handlePress(tab)}
+              >
+                {tab.label}
+              </CustomButton>
+            ))}
+          </HStack>
+        </Box>
+      </Container>
+      {/* Render content based on active tab */}
+      <Content activeTab={activeTab} tabs={tabs} />
+    </View>
+  );
 };
 
 const CustomButton = ({ active, onPress, children }) => {
-    return (
-        <Button
-            flex={1}
-            bg={active ? "#164CA8" : "transparent"}
-            borderRadius="full"
-            _text={{
-                color: active ? "white" : "#164CA8",
-                fontWeight: "bold",
-                letterSpacing: "sm",
-            }}
-            onPress={onPress}
-            width="auto"
-            py={2}
-            px={4}
-        >
-            {children}
-        </Button>
-    );
+  return (
+    <Button
+      flex={1}
+      bg={active ? "#164CA8" : "transparent"}
+      borderRadius="20"
+      _text={{
+        color: active ? "white" : "#164CA8",
+        fontWeight: "bold",
+        letterSpacing: "sm",
+        textAlign: "center",
+      }}
+      onPress={onPress}
+      width="auto"
+      py={2}
+      px={2}
+    >
+      {children}
+    </Button>
+  );
 };
 
 const Content = ({ activeTab, tabs }) => {
-    const activeContent = tabs.find((tab) => tab.label === activeTab)?.content;
-    return activeContent ? (
-        <Box p={4}>
-            <Text>{activeContent}</Text>
-        </Box>
-    ) : null;
+  const activeContent = tabs.find((tab) => tab.label === activeTab)?.content;
+  return activeContent ? <>{activeContent}</> : null;
 };
 
-export default ToggleComponent;
+const styles = StyleSheet.create({
+  shadow: {
+    backgroundColor: "white",
+    shadowColor: "#000",
+    shadowOffset: { width: 3, height: 5 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+});
+
+export default ToggleTest;
