@@ -130,6 +130,7 @@ export default function NewsScreen({ navigation }) {
         renderItem={renderNewsItem}
         keyExtractor={(item) => item.id.toString()}
         contentContainerStyle={styles.flatListContent}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
