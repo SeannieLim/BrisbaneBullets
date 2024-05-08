@@ -12,56 +12,44 @@ const ToggleComponent = ({ tabs }) => {
   // Use the first tab as the default active tab
   const [activeTab, setActiveTab] = useState(tabs[0]?.label);
 
-  return (
-    <View>
-      <Container width="90%" key={activeTab}>
-        <Box
-          bg="#FCFDFF"
-          width="100%"
-          borderRadius={50}
-          padding="0"
-          style={styles.shadow}
-        >
-          <HStack space={0}>
-            {tabs.map((tab) => (
-              <CustomButton
-                key={tab.label}
-                active={activeTab === tab.label}
-                onPress={() => setActiveTab(tab.label)}
-              >
-                {tab.label}
-              </CustomButton>
-            ))}
-          </HStack>
-        </Box>
-      </Container>
-      {/* Render content based on active tab */}
-      <Content activeTab={activeTab} tabs={tabs} />
-    </View>
-  );
+    return (
+        <Container width="100%" key={activeTab}>
+            <Box bg="#FCFDFF" width="100%" borderRadius="full" padding="0">
+                <HStack space={0}>
+                    {tabs.map((tab) => (
+                        <CustomButton
+                            key={tab.label}
+                            active={activeTab === tab.label}
+                            onPress={() => setActiveTab(tab.label)}
+                        >
+                            {tab.label}
+                        </CustomButton>
+                    ))}
+                </HStack>
+            </Box>
+            {/* Render content based on active tab */}
+            <Content activeTab={activeTab} tabs={tabs} />
+        </Container>
+    );
 };
 
 const CustomButton = ({ active, onPress, children }) => {
-  return (
-    <Button
-      flex={1}
-      bg={active ? "#164CA8" : "transparent"}
-      borderRadius="20"
-      _text={{
-        color: active ? "white" : "#164CA8",
-        fontWeight: "bold",
-        letterSpacing: "sm",
-        textAlign: "center",
-      }}
-      onPress={onPress}
-      width="auto"
-      // Optionally, you can add padding to the button to provide some space around the text
-      py={2} // Adjust the vertical padding as needed
-      px={2} // Adjust the horizontal padding as needed
-    >
-      {children}
-    </Button>
-  );
+    return (
+        <Button
+            flex={1}
+            bg={active ? "#164CA8" : "transparent"}
+            borderRadius="full"
+            _text={{
+                color: active ? "white" : "#164CA8",
+                fontWeight: "bold",
+                letterSpacing: "lg",
+            }}
+            onPress={onPress}
+            
+        >
+            {children}
+        </Button>
+    );
 };
 
 const Content = ({ activeTab, tabs }) => {
