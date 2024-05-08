@@ -10,7 +10,7 @@ const mockVideos=[
   id: 1,
   title: 'New Zealand Breakers vs. Brisbane Bullets - Game Highlights - Round 20, NBL24',
   date: 'Feb 16, 2024',
-  img: require('../../assets/News/newsImg2.png'),
+  img: require('../../assets/Videos/video1.jpg'),
   imgAlt: 'newsImage',
   url:'https://www.youtube.com/watch?v=rKmiRRfW1PA&ab_channel=BrisbaneBullets'
 },
@@ -18,7 +18,7 @@ const mockVideos=[
   id: 2,
   title: 'Press Conference vs Adelaide 36ers',
   date: 'Feb 09,2024',
-  img: require('../../assets/News/newsImg3.png'),
+  img: require('../../assets/Videos/video2.jpg'),
   imgAlt: 'newsImage',
   url:'https://www.youtube.com/watch?v=BbgCIOvQAJE&ab_channel=BrisbaneBullets'
 },
@@ -26,7 +26,7 @@ const mockVideos=[
   id: 3,
   title: 'Brisbane Bullets vs. Adelaide 36ers - Game Highlights - Round 19, NBL24',
   date: 'Feb 09, 2024',
-  img: require('../../assets/News/newsImg2.png'),
+  img: require('../../assets/Videos/video3.jpg'),
   imgAlt: 'newsImage',
   url:'https://www.youtube.com/watch?v=KulBiky4lqY&ab_channel=BrisbaneBullets'
 },
@@ -34,9 +34,25 @@ const mockVideos=[
   id: 4,
   title: 'NBL24 with Brian Kerle',
   date: 'Feb 08, 2024',
-  img: require('../../assets/News/newsImg2.png'),
+  img: require('../../assets/Videos/video4.jpg'),
   imgAlt: 'newsImage',
   url:'https://www.youtube.com/watch?v=eJVIvfmmTCk&ab_channel=BrisbaneBullets'
+},
+{
+  id: 5,
+  title: 'Illawarra Hawks vs. Brisbane Bullets - Game Highlights - Round 18, NBL24',
+  date: 'Feb 03, 2024',
+  img: require('../../assets/Videos/video5.jpg'),
+  imgAlt: 'newsImage',
+  url:'https://www.youtube.com/watch?v=kvtxECsp2GU&ab_channel=BrisbaneBullets'
+},
+{
+  id: 6,
+  title: 'Post Training Media: Mitch Norton',
+  date: 'Feb 02, 2024',
+  img: require('../../assets/Videos/video6.jpg'),
+  imgAlt: 'newsImage',
+  url:'https://www.youtube.com/watch?v=9j9tXzd35D0&ab_channel=BrisbaneBullets'
 },]
 
 
@@ -89,9 +105,11 @@ const AllVideos = () => {
         <VideoBox key={index} video={video} />
         {/* Display AdsBanner after every 3rd NewsCard */}
         {index > 0 && (index + 1) % 3 === 0 && (
-          <AdsBanner style={styles.ad}
+          <View style={styles.ad}>
+          <AdsBanner 
             imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png"
           />
+          </View>
         )}
         </React.Fragment>
       ))}
@@ -113,6 +131,7 @@ const styles = StyleSheet.create({
     ad:{
       justifyContent: "center",
       alignItems: 'center',
+      marginBottom: 20,
 
     },
     iconContainer:{
