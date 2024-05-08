@@ -11,7 +11,7 @@ const mockVideos=[
   title: 'New Zealand Breakers vs. Brisbane Bullets - Game Highlights - Round 20, NBL24',
   date: 'Feb 16, 2024',
   img: require('../../assets/Videos/video1.jpg'),
-  imgAlt: 'newsImage',
+  imgAlt: 'videoImage',
   url:'https://www.youtube.com/watch?v=rKmiRRfW1PA&ab_channel=BrisbaneBullets',
 },
 {
@@ -19,7 +19,7 @@ const mockVideos=[
   title: 'Press Conference vs Adelaide 36ers',
   date: 'Feb 09,2024',
   img: require('../../assets/Videos/video2.jpg'),
-  imgAlt: 'newsImage',
+  imgAlt: 'videoImage',
   url:'https://www.youtube.com/watch?v=BbgCIOvQAJE&ab_channel=BrisbaneBullets',
 },
 {
@@ -27,7 +27,7 @@ const mockVideos=[
   title: 'Brisbane Bullets vs. Adelaide 36ers - Game Highlights - Round 19, NBL24',
   date: 'Feb 09, 2024',
   img: require('../../assets/Videos/video3.jpg'),
-  imgAlt: 'newsImage',
+  imgAlt: 'videoImage',
   url:'https://www.youtube.com/watch?v=KulBiky4lqY&ab_channel=BrisbaneBullets'
 },
 {
@@ -35,7 +35,7 @@ const mockVideos=[
   title: 'NBL24 with Brian Kerle',
   date: 'Feb 08, 2024',
   img: require('../../assets/Videos/video4.jpg'),
-  imgAlt: 'newsImage',
+  imgAlt: 'videoImage',
   url:'https://www.youtube.com/watch?v=eJVIvfmmTCk&ab_channel=BrisbaneBullets'
 },
 {
@@ -43,7 +43,7 @@ const mockVideos=[
   title: 'Illawarra Hawks vs. Brisbane Bullets - Game Highlights - Round 18, NBL24',
   date: 'Feb 03, 2024',
   img: require('../../assets/Videos/video5.jpg'),
-  imgAlt: 'newsImage',
+  imgAlt: 'videoImage',
   url:'https://www.youtube.com/watch?v=kvtxECsp2GU&ab_channel=BrisbaneBullets'
 },
 {
@@ -51,8 +51,16 @@ const mockVideos=[
   title: 'Post Training Media: Mitch Norton',
   date: 'Feb 02, 2024',
   img: require('../../assets/Videos/video6.jpg'),
-  imgAlt: 'newsImage',
+  imgAlt: 'videoImage',
   url:'https://www.youtube.com/watch?v=9j9tXzd35D0&ab_channel=BrisbaneBullets'
+},
+{
+  id: 7,
+  title: 'Press Conference vs Melbourne United',
+  date: 'Jan 26, 2024',
+  img: require('../../assets/Videos/video7.jpg'),
+  imgAlt: 'videoImage',
+  url:'https://www.youtube.com/watch?v=0jhxCHlLXho&ab_channel=BrisbaneBullets'
 },]
 
 
