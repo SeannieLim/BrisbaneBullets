@@ -1,38 +1,42 @@
-import {React, useState } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, TouchableOpacity, ScrollView, Linking, ImageBackground, Text, Dimensions, SafeAreaView } from 'react-native';
 import { Box, View } from "@gluestack-ui/themed";
-import {scaleFontSize} from "../constants/Layout";
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons, Entypo  } from '@expo/vector-icons';
+import AdsBanner from "../components/AdsBanner";
 
 const windowWidth = Dimensions.get("window").width;
 const mockVideos=[
 {
-  id: 6,
-  title: 'NBL24 MVP Awards Gala winners announced',
-  date: 'Mar 28, 2024',
+  id: 1,
+  title: 'New Zealand Breakers vs. Brisbane Bullets - Game Highlights - Round 20, NBL24',
+  date: 'Feb 16, 2024',
   img: require('../../assets/News/newsImg2.png'),
-  imgAlt: 'newsImage'
+  imgAlt: 'newsImage',
+  url:'https://www.youtube.com/watch?v=rKmiRRfW1PA&ab_channel=BrisbaneBullets'
 },
 {
-  id: 7,
-  title: 'This title has no meaning it is just for testing purpose blah blah blah blah blah blah blah blah blah blah blah blah',
-  date: 'Mar 21,2024',
+  id: 2,
+  title: 'Press Conference vs Adelaide 36ers',
+  date: 'Feb 09,2024',
   img: require('../../assets/News/newsImg3.png'),
-  imgAlt: 'newsImage'
+  imgAlt: 'newsImage',
+  url:'https://www.youtube.com/watch?v=BbgCIOvQAJE&ab_channel=BrisbaneBullets'
 },
 {
-  id: 6,
-  title: 'Dummy textssssssssss ssssssssssssssssss sssssssssssssssssssssssssss ssssssssssssssssssssssssssssssss',
-  date: 'Mar 28, 2024',
+  id: 3,
+  title: 'Brisbane Bullets vs. Adelaide 36ers - Game Highlights - Round 19, NBL24',
+  date: 'Feb 09, 2024',
   img: require('../../assets/News/newsImg2.png'),
-  imgAlt: 'newsImage'
+  imgAlt: 'newsImage',
+  url:'https://www.youtube.com/watch?v=KulBiky4lqY&ab_channel=BrisbaneBullets'
 },
 {
-  id: 6,
-  title: 'NBL24 MVP Awards Gala winners announced',
-  date: 'Mar 28, 2024',
+  id: 4,
+  title: 'NBL24 with Brian Kerle',
+  date: 'Feb 08, 2024',
   img: require('../../assets/News/newsImg2.png'),
-  imgAlt: 'newsImage'
+  imgAlt: 'newsImage',
+  url:'https://www.youtube.com/watch?v=eJVIvfmmTCk&ab_channel=BrisbaneBullets'
 },]
 
 
@@ -40,7 +44,7 @@ const VideoBox = ({video}) =>{
     const [videos, setVideos] =useState([]);
     const onPress={handlePress}
     const handlePress=()=>{
-        const url = "https://www.youtube.com/watch?v=KvN8U6cqiu0&ab_channel=PewDiePie"
+        const url = video.url
         Linking.openURL(url)
     }
 
@@ -62,6 +66,9 @@ const VideoBox = ({video}) =>{
                 <Text style={styles.date} numberOfLines={1} ellipsizeMode="tail">
                     {video.date}
                 </Text>
+                <TouchableOpacity style={styles.shareIcon} onPress={() => handleShare(item)}>
+                  <Entypo name="share-alternative" size={18} color="black" />
+                 </TouchableOpacity>
             </View>
         </View>
     );
@@ -75,10 +82,18 @@ const AllVideos = () => {
     <View style={styles.backGround} pt={20}>  
     {/*Renders content within the safe area boundaries of a device (only applicable for IOS11 or later) */}
     <SafeAreaView style={{flex: 1}}>
-    <ScrollView>
+    <ScrollView showsVerticalScrollIndicator={false}>
       {/* Rendering the data through mocVideos */}
       {mockVideos.map((video, index) => (
+        <React.Fragment key={index}>
         <VideoBox key={index} video={video} />
+        {/* Display AdsBanner after every 3rd NewsCard */}
+        {index > 0 && (index + 1) % 3 === 0 && (
+          <AdsBanner style={styles.ad}
+            imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png"
+          />
+        )}
+        </React.Fragment>
       ))}
     </ScrollView>
     </SafeAreaView>
@@ -94,6 +109,11 @@ const styles = StyleSheet.create({
       justifyContent: "center",
       alignItems: 'center',
       paddingHorizontal:windowWidth * 0.08,    
+    },
+    ad:{
+      justifyContent: "center",
+      alignItems: 'center',
+
     },
     iconContainer:{
       position: 'absolute',
@@ -152,6 +172,15 @@ const styles = StyleSheet.create({
       left: 15,
       fontSize:12,
       color:"#707070",
+    },
+    shareIcon: {
+      position: 'absolute',
+      bottom: 4, 
+      right: 5,
+      borderRadius: 20,
+      color:"black",
+      // backgroundColor: 'rgba(60, 60, 60, .7)',
+      padding: 8,
     },
 
 })
