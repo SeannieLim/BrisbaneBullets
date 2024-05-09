@@ -104,7 +104,8 @@ const VideoBox = ({video}) =>{
             <View style={styles.length}>
               <Text style={styles.lengthText}>{video.length}</Text>
               </View>
-
+            
+            </TouchableOpacity>
             <View style={styles.description}>
                 <Text style={styles.title} numberOfLines={2} ellipsizeMode="tail">
                     {video.title}
@@ -116,8 +117,6 @@ const VideoBox = ({video}) =>{
                   <Entypo name="share-alternative" size={18} color="black" />
                  </TouchableOpacity>
             </View>
-                        
-            </TouchableOpacity>
         </View>
     );
 
