@@ -26,7 +26,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} library='Feather' name="home" />
+            <TabBarIcon focused={focused} library="Feather" name="home" />
           ),
         }}
       />
@@ -36,7 +36,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} library='Feather' name="calendar" />
+            <TabBarIcon focused={focused} library="Feather" name="calendar" />
           ),
         }}
       />
@@ -46,7 +46,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         options={{
           headerShown: true,
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} library='FontAwesome' name="ticket" />
+            <TabBarIcon focused={focused} library="FontAwesome" name="ticket" />
           ),
         }}
       />
@@ -56,7 +56,7 @@ export default function BottomTabNavigator({ navigation, route }) {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} library='FontAwesome' name="group" />
+            <TabBarIcon focused={focused} library="FontAwesome" name="group" />
           ),
         }}
       />
@@ -66,11 +66,16 @@ export default function BottomTabNavigator({ navigation, route }) {
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
-            <TabBarIcon focused={focused} library='Feather' size={30} name="more-horizontal" />
+            <TabBarIcon
+              focused={focused}
+              library="Feather"
+              size={30}
+              name="more-horizontal"
+            />
           ),
         }}
       />
-      <BottomTab.Screen
+      {/* <BottomTab.Screen
         name="PlayerProfile"
         component={PlayerProfileScreen}
         options={{
@@ -87,7 +92,7 @@ export default function BottomTabNavigator({ navigation, route }) {
           tabBarButton: () => null,
           tabBarVisible: true
         }}
-      />
+      /> */}
     </BottomTab.Navigator>
   );
 }

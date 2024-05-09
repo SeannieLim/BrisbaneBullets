@@ -1,12 +1,21 @@
-import React, {useState, useEffect} from 'react';
-import { View, Text, Image, TouchableOpacity, ScrollView,Button } from 'react-native';
-import { useRoute, useNavigation } from '@react-navigation/native';
-import MyStyles from './TeamStyles';
-import { AntDesign } from '@expo/vector-icons';
-import ProfileStatsToggle from '../../components/ProfileStatsToggle'
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  ScrollView,
+  SafeAreaView,
+} from "react-native";
+import { useRoute, useNavigation } from "@react-navigation/native";
+import MyStyles from "./TeamStyles";
+import { GlobalStyles } from "../../constants/GlobalStyles";
+import { AntDesign } from "@expo/vector-icons";
+import ProfileStatsToggle from "../../components/ProfileStatsToggle";
 import CountryFlag from "react-native-country-flag";
-import PlayerDetails from './PlayerDetails';  
-import PlayerStats from './PlayerStats';
+import PlayerDetails from "./PlayerDetails";
+import PlayerStats from "./PlayerStats";
+import { Box } from "@gluestack-ui/themed-native-base";
 
 const PlayerProfile = ({ route }) => {
   const { player } = route.params;
@@ -27,42 +36,51 @@ const PlayerProfile = ({ route }) => {
   const goBackToTeamScreen = () => {
     navigation.navigate("TeamScreen");
   };
-  
- const ProfileStats = [
-  { label: "Profile", content:  <PlayerDetails player = {player}/>},
-  { label: "Stats", content: <PlayerStats player = {player}/>  },
-];
+
+  const ProfileStats = [
+    { label: "Profile", content: <PlayerDetails player={player} /> },
+    { label: "Stats", content: <PlayerStats player={player} /> },
+  ];
 
   return (
-    <ScrollView style={MyStyles.mainContainer}>
-      <View style={MyStyles.headerContainer}>
-        <TouchableOpacity onPress={goBackToTeamScreen}>
+    <View style={GlobalStyles.mainContainer}>
+      <SafeAreaView style={GlobalStyles.safeArea}>
+        {/* <TouchableOpacity onPress={goBackToTeamScreen}>
           <AntDesign name="left" size={32} style={MyStyles.BackArrow} />
-        </TouchableOpacity>
-        <Text style={MyStyles.playerName}>{player.playerName}</Text>
-      </View>
+        </TouchableOpacity> */}
+        {/* <Box style={GlobalStyles.screenHeader}>
+          <Text style={MyStyles.playerName}>{player.playerName}</Text>
+        </Box> */}
+        <ScrollView
+          contentContainerStyle={{ flexGrow: 1 }}
+          showsVerticalScrollIndicator={false}
+        >
+          <View style={MyStyles.imageBox}>
+            {showGif ? (
+              <Image
+                source={require("../../../assets/teamPageImages/gif1.gif")} // Replace with the path to your GIF
+                style={MyStyles.playerProfileGif}
+              />
+            ) : (
+              <Image
+                source={player.playerProfileImage}
+                style={MyStyles.playerProfileImage}
+              />
+            )}
+            <View style={MyStyles.textContainer}>
+              <Text style={MyStyles.jerseyNumber}>{player.jerseyNumber}</Text>
+            </View>
+          </View>
 
-      <View style={MyStyles.imageBox}>
-        {showGif ? (
-          <Image
-            source={require('../../../assets/teamPageImages/gif1.gif')} // Replace with the path to your GIF
-            style={MyStyles.playerProfileGif}
+          {/* Data pass through player */}
+          <ProfileStatsToggle
+            tabs={ProfileStats}
+            style={MyStyles.ProfileStatsToggle}
+            player={player}
           />
-        ) : (
-          <Image
-            source={player.playerProfileImage}
-            style={MyStyles.playerProfileImage}
-          />
-        )}
-        <View style={MyStyles.textContainer}>
-          <Text style={MyStyles.jerseyNumber}>{player.jerseyNumber}</Text>
-        </View>
-      </View>
-
-        {/* Data pass through player */}
-        <ProfileStatsToggle tabs={ProfileStats} style={MyStyles.ProfileStatsToggle} player={player}/>
-
-    </ScrollView>
+        </ScrollView>
+      </SafeAreaView>
+    </View>
   );
 };
 

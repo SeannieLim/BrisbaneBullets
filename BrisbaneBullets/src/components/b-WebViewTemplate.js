@@ -11,7 +11,7 @@ const B_WebViewTemplate = ({ uri, title }) => {
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerStyle: { height: 100, backgroundColor: "#164CA8" },
+      headerStyle: { backgroundColor: "#164CA8" },
       headerTitle: title,
       headerTitleAlign: "center",
       headerTitleStyle: {
@@ -19,10 +19,6 @@ const B_WebViewTemplate = ({ uri, title }) => {
         fontSize: scaleFontSize(20),
       },
       headerTintColor: "#fab81b",
-      headerBackTitleVisible: false,
-      headerLeftContainerStyle: { paddingLeft: 10 },
-      headerRightContainerStyle: { paddingRight: 10 },
-
       headerRight: () => (
         <View style={styles.headerButtons}>
           <TouchableOpacity onPress={onShare} style={styles.headerButton}>

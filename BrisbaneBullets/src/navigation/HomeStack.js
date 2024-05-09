@@ -45,12 +45,34 @@ function HomeStackScreen() {
       <HomeStack.Screen
         name="LiveScreen"
         component={LiveScreen}
-        options={{ headerShown: true }}
+        options={{
+          headerShown: true,
+          headerBackImage: () => (
+            <Ionicons
+              name="chevron-back-outline"
+              size={27}
+              color="#FAB81B"
+              pl={4}
+            />
+          ),
+          headerBackTitleVisible: false,
+        }}
       />
       <HomeStack.Screen
         name="B-StoreScreen"
         component={B_StoreScreen}
-        options={{ headerShown: true }}
+        options={{
+          headerShown: true,
+          headerBackImage: () => (
+            <Ionicons
+              name="chevron-back-outline"
+              size={27}
+              color="#FAB81B"
+              pl={4}
+            />
+          ),
+          headerBackTitleVisible: false,
+        }}
       />
       <HomeStack.Screen
         name="News"
