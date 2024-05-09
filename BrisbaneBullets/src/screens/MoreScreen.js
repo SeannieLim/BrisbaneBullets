@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   SafeAreaView,
   Dimensions,
@@ -7,8 +7,6 @@ import {
   StyleSheet,
   Text,
   Image,
-  Switch,
-  TouchableOpacity,
   Platform,
   Linking,
 } from "react-native";
@@ -16,6 +14,8 @@ import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { scaleFontSize } from "../constants/Layout";
 import { Button, ButtonText, Box, ButtonGroup } from "@gluestack-ui/themed";
+import { GlobalStyles } from "../constants/GlobalStyles";
+import AppSettings from "../notifications/appSettings";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -27,31 +27,34 @@ export default function MoreScreen({ navigation }) {
     nav.navigate(screenName);
   };
 
-  const [isEnabled, setIsEnabled] = React.useState(false);
+  const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   const handleCrowdCanvas = () => {
-    const crowdCanvasUrl = 'crowdcanvas://'; // Deep link to CrowdCanvas app (sample link)
+    const crowdCanvasUrl = "crowdcanvas://"; // Deep link to CrowdCanvas app (sample link)
     const appStoreUrl = Platform.select({
-      ios: 'https://apps.apple.com/au/app/crowdcanvas/id1526770094', //Crowd canvas App Store ID
-      android: 'https://play.google.com/store/apps/details?id=com.crowdcanvas.pixelplayer&hl=en_AU&gl=US&pli=1', // Google Play Store URL
+      ios: "https://apps.apple.com/au/app/crowdcanvas/id1526770094", //Crowd canvas App Store ID
+      android:
+        "https://play.google.com/store/apps/details?id=com.crowdcanvas.pixelplayer&hl=en_AU&gl=US&pli=1", // Google Play Store URL
     });
 
     // Try opening the CrowdCanvas app
-    Linking.canOpenURL(crowdCanvasUrl).then(supported => {
-      if (supported) {
-        Linking.openURL(crowdCanvasUrl); // Open CrowdCanvas app
-      } else {
-        // If CrowdCanvas app is not installed, prompt user to download from App Store
-        Linking.openURL(appStoreUrl);
-      }
-    }).catch(err => console.error('Error checking CrowdCanvas app:', err));
-  }
+    Linking.canOpenURL(crowdCanvasUrl)
+      .then((supported) => {
+        if (supported) {
+          Linking.openURL(crowdCanvasUrl); // Open CrowdCanvas app
+        } else {
+          // If CrowdCanvas app is not installed, prompt user to download from App Store
+          Linking.openURL(appStoreUrl);
+        }
+      })
+      .catch((err) => console.error("Error checking CrowdCanvas app:", err));
+  };
   return (
     <View style={styles.container}>
-      <SafeAreaView style={{ flex: 1 }}>
-        <Box style={styles.header}>
-          <Text style={styles.heading}>More</Text>
+      <SafeAreaView style={GlobalStyles.safeArea}>
+        <Box style={GlobalStyles.screenHeader}>
+          <Text style={GlobalStyles.screenHeading}>More</Text>
         </Box>
 
         <View style={styles.contentContainer}>
@@ -71,15 +74,7 @@ export default function MoreScreen({ navigation }) {
                   <ButtonText style={styles.buttonText}>
                     Push Notification
                   </ButtonText>
-                  <View style={styles.switchContainer}>
-                    <Switch
-                      trackColor={{ false: "white", true: "#fab81b" }}
-                      thumbColor={isEnabled ? "white" : "#164CA8"}
-                      ios_backgroundColor="white"
-                      onValueChange={toggleSwitch}
-                      value={isEnabled}
-                    />
-                  </View>
+                  <AppSettings />
                 </Button>
                 <Button
                   style={styles.item}
@@ -190,10 +185,6 @@ const styles = StyleSheet.create({
     shadowRadius: 4, // Shadow radius
     elevation: 10, // Elevation for Android
     margin: 5,
-  },
-  switchContainer: {
-    flex: 1,
-    alignItems: "flex-end",
   },
   item: {
     backgroundColor: "#164CA8",

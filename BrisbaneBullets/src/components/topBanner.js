@@ -5,12 +5,16 @@ import {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
+  SafeAreaView,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { HStack, Image, Text, View, Box } from "@gluestack-ui/themed";
 import { ActionButton } from "./actionButton";
 import { useNavigation } from "@react-navigation/native";
 import CustomButton from "./CustomButton";
+import NotificationIcon from "../notifications/notificationIcon";
+import { GlobalStyles } from "../constants/GlobalStyles";
+import { useNotifications } from "../notifications/notificationContext";
 
 const windowWidth = Dimensions.get("window").width;
 
@@ -71,6 +75,8 @@ function compareScore(one, two) {
 export function TopBanner() {
   //Get navigation prop for webview
   const navigation = useNavigation();
+  const { getUnreadCount } = useNotifications();
+  const unreadCount = getUnreadCount();
 
   const handleWatchPress = () => {
     // Navigate to the LiveScreen with some params if necessary
@@ -110,8 +116,10 @@ export function TopBanner() {
   };
 
   return (
-    <View style={styles.top}>
-      <LinearGradient colors={["#164CA8", "#091E42"]} style={styles.container}>
+    // <View style={styles.top}>
+    <LinearGradient colors={["#164CA8", "#091E42"]} style={styles.container}>
+      <SafeAreaView style={GlobalStyles.safeArea}>
+        <NotificationIcon unreadCount={unreadCount} navigation={navigation} />
         <ScrollView
           horizontal
           ref={scrollViewRef}
@@ -263,39 +271,36 @@ export function TopBanner() {
             </HStack>
           </View>
         </ScrollView>
-
-        {/* Pagination dots */}
-        <View style={styles.paginationContainer}>
-          {[...Array(3).keys()].map((index) => (
-            <TouchableOpacity key={index} onPress={() => scrollToIndex(index)}>
-              <View
-                style={[
-                  styles.paginationDot,
-                  { opacity: currentIndex === index ? 1 : 0.3 },
-                ]}
-              />
-            </TouchableOpacity>
-          ))}
-        </View>
-      </LinearGradient>
-    </View>
+      </SafeAreaView>
+      {/* Pagination dots */}
+      <View style={styles.paginationContainer}>
+        {[...Array(3).keys()].map((index) => (
+          <TouchableOpacity key={index} onPress={() => scrollToIndex(index)}>
+            <View
+              style={[
+                styles.paginationDot,
+                { opacity: currentIndex === index ? 1 : 0.3 },
+              ]}
+            />
+          </TouchableOpacity>
+        ))}
+      </View>
+    </LinearGradient>
+    // </View>
   );
 }
 
 const styles = StyleSheet.create({
-  // top: {
-  //     position: 'absolute',
-  //     top: 0,
-  // },
   container: {
     width: windowWidth,
-    height: 250,
+    height: 240,
   },
   mainContainer: {
     flex: 1,
     alignItems: "center",
-    paddingTop: 100,
+    // paddingTop: 100,
     width: windowWidth,
+    height: "100%",
   },
   itemContainer: {
     flexDirection: "row", // Align children horizontally

@@ -1,7 +1,7 @@
 import React, { useRef, useLayoutEffect } from "react";
 import B_WebViewTemplate from "../components/b-WebViewTemplate";
 
-const MembershipScreen = () => {
+const LiveScreen = () => {
   return <B_WebViewTemplate title="Match" uri="https://www.getespn.com.au/" />;
 };
-export default MembershipScreen;
+export default LiveScreen;

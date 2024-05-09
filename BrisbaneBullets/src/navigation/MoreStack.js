@@ -7,7 +7,7 @@ const MoreStack = createStackNavigator();
 
 function MoreStackScreen() {
   return (
-    <MoreStack.Navigator>
+    <MoreStack.Navigator initialRouteName={"MoreScreen"}>
       <MoreStack.Screen
         name="MoreScreen"
         component={MoreScreen}

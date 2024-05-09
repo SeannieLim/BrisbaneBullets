@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "BrisbaneBullets",
-    "slug": "BrisbaneBullets",
+    "slug": "brisbanebullets",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -16,13 +16,19 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.anonymous.BrisbaneBullets"
+      "bundleIdentifier": "com.anonymous.BrisbaneBullets",
+      "buildNumber": "1.0.0",
+      "infoPlist": {
+      "NSRemoteNotificationUsageDescription": "This app would like to send you notifications."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "versionCode": 1,
+      "package": "com.anonymous.BrisbaneBullets"
     },
     "web": {
       "favicon": "./assets/favicon.png"

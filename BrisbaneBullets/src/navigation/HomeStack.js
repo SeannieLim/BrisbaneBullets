@@ -6,6 +6,7 @@ import LiveScreen from "../screens/LiveScreen";
 // import StandingsScreen from "../screens/StandingsScreen";
 import NewsScreen from "../screens/NewsScreen";
 import NewsDetailScreen from "../screens/NewsDetailScreen";
+import NotiScreen from "../screens/NotificationScreen";
 import AllVideos from "../screens/AllVideos";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -13,11 +14,33 @@ const HomeStack = createStackNavigator();
 
 function HomeStackScreen() {
   return (
-    <HomeStack.Navigator>
+    <HomeStack.Navigator initialRouteName={"HomeScreen"}>
       <HomeStack.Screen
         name="HomeScreen"
         component={HomeScreen}
         options={{ headerShown: false }}
+      />
+      <HomeStack.Screen
+        name="Notification"
+        component={NotiScreen}
+        options={{
+          headerStyle: {
+            backgroundColor: "white",
+          },
+          headerTitleStyle: {
+            fontSize: 20,
+          },
+          headerTintColor: "#113B81",
+          headerBackTitleVisible: false,
+          headerBackImage: () => (
+            <Ionicons
+              name="chevron-back-outline"
+              size={27}
+              color="#FAB81B"
+              pl={4}
+            />
+          ),
+        }}
       />
       <HomeStack.Screen
         name="LiveScreen"
