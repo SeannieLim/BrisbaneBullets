@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import TeamScreen from "../screens/TeamScreen";
-import AdvanceStatsWebview from "../screens/AdvanceStatsWebView";
+import AdvanceStatsWebview from "../screens/AdvanceStatsWebview.js";
 
 const TeamStack = createStackNavigator();
 
