@@ -102,7 +102,7 @@ const VideoBox = ({video}) =>{
 
             </View>
             <View style={styles.length}>
-              <Text fontSize={5}>{video.length}</Text>
+              <Text style={styles.lengthText}>{video.length}</Text>
               </View>
             
             </TouchableOpacity>
@@ -163,11 +163,13 @@ const styles = StyleSheet.create({
       position: 'absolute',
       bottom: 6, 
       left: 15,
-      fontSize:10,
       color:"#707070",
-      backgroundColor:"white",
+      backgroundColor:"rgba(255, 255, 255, 0.7)",
       borderRadius:10,
-
+    },
+    lengthText:{
+      fontSize:12,
+      padding:2,
     },
     ad:{
       justifyContent: "center",
@@ -230,7 +232,7 @@ const styles = StyleSheet.create({
       position: 'absolute',
       bottom: 4, 
       left: 15,
-      fontSize:12,
+      fontSize:11,
       color:"#707070",
     },
     shareIcon: {
