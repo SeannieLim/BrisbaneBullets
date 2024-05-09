@@ -82,8 +82,8 @@ export default function NewsScreen({ navigation }) {
   const renderNewsItem = ({ item, index }) => (
     <React.Fragment key={item.id}>
       {/* Render NewsCard */}
-      <TouchableOpacity onPress={() => handleCardPress(item.id)} my={5}>
-        <View mt={5} mb={10} style={styles.newsContainer}>
+      <TouchableOpacity onPress={() => handleCardPress(item.id)}>
+        <View mt={10} mb={15} style={styles.newsContainer}>
           <Box style={styles.newsImg}>
             <Image
               source={item.img}
