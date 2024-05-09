@@ -1,13 +1,13 @@
 import React from "react";
-import {createStackNavigator} from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
 import B_StoreScreen from "../screens/B-StoreScreen";
 import LiveScreen from "../screens/LiveScreen";
-import StandingsScreen from "../screens/StandingsScreen";
+// import StandingsScreen from "../screens/StandingsScreen";
 import NewsScreen from "../screens/NewsScreen";
 import NewsDetailScreen from "../screens/NewsDetailScreen";
 import AllVideos from "../screens/AllVideos";
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from "@expo/vector-icons";
 
 const HomeStack = createStackNavigator();
 
@@ -34,36 +34,65 @@ function HomeStackScreen() {
         component={NewsScreen}
         options={{
           headerStyle: {
-            backgroundColor: 'white',
+            backgroundColor: "white",
           },
           headerTitleStyle: {
             fontSize: 20,
           },
-          headerTintColor: '#113B81',
+          headerTintColor: "#113B81",
           headerBackImage: () => (
-            <Ionicons name="chevron-back-outline" size={27} color="#FAB81B" pl={4} />
+            <Ionicons
+              name="chevron-back-outline"
+              size={27}
+              color="#FAB81B"
+              pl={4}
+            />
           ),
+          headerBackTitleVisible: false,
         }}
       />
       <HomeStack.Screen
-        name="NewsDetailScreen"
+        name="NewsDetail"
         component={NewsDetailScreen}
-        options={{ headerShown: true }}
+        options={{
+          headerStyle: {
+            backgroundColor: "#113B81",
+          },
+          headerTitleStyle: {
+            fontSize: 20,
+          },
+          headerTintColor: "white",
+          headerBackImage: () => (
+            <Ionicons
+              name="chevron-back-outline"
+              size={27}
+              color="#FAB81B"
+              pl={4}
+            />
+          ),
+          headerBackTitleVisible: false,
+        }}
       />
       <HomeStack.Screen
         name="Videos"
         component={AllVideos}
         options={{
           headerStyle: {
-            backgroundColor: 'white',
+            backgroundColor: "white",
           },
           headerTitleStyle: {
             fontSize: 20,
           },
-          headerTintColor: '#113B81',
+          headerTintColor: "#113B81",
           headerBackImage: () => (
-            <Ionicons name="chevron-back-outline" size={27} color="#FAB81B" pl={4} />
+            <Ionicons
+              name="chevron-back-outline"
+              size={27}
+              color="#FAB81B"
+              pl={4}
+            />
           ),
+          headerBackTitleVisible: false,
         }}
       />
     </HomeStack.Navigator>
