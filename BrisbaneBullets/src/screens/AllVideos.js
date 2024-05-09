@@ -104,8 +104,7 @@ const VideoBox = ({video}) =>{
             <View style={styles.length}>
               <Text style={styles.lengthText}>{video.length}</Text>
               </View>
-            
-            </TouchableOpacity>
+
             <View style={styles.description}>
                 <Text style={styles.title} numberOfLines={2} ellipsizeMode="tail">
                     {video.title}
@@ -117,6 +116,8 @@ const VideoBox = ({video}) =>{
                   <Entypo name="share-alternative" size={18} color="black" />
                  </TouchableOpacity>
             </View>
+                        
+            </TouchableOpacity>
         </View>
     );
 
@@ -163,13 +164,13 @@ const styles = StyleSheet.create({
       position: 'absolute',
       bottom: 6, 
       left: 15,
-      color:"#707070",
-      backgroundColor:"rgba(255, 255, 255, 0.7)",
+      backgroundColor:"rgba(60, 60, 60, 0.7)",
       borderRadius:10,
     },
     lengthText:{
-      fontSize:12,
+      fontSize:13,
       padding:2,
+      color:"white",
     },
     ad:{
       justifyContent: "center",
@@ -188,7 +189,6 @@ const styles = StyleSheet.create({
       flex:1,
       justifyContent:"center",
       alignItems: 'center',
-        // justifyContent: "center",
       backgroundColor:"white",
     },
     imageBackground: {
