@@ -14,11 +14,6 @@ const MyStyles = StyleSheet.create({
     // marginHorizontal: windowWidth * 0.08,
     flexGrow: 1
   },
-  mainContainer: {
-    flex: 1,
-    paddingHorizontal: windowWidth * 0.08,
-    backgroundColor: "white",
-  },
   headerContainer: {
     flexDirection: "row",
     alignItems: "center",

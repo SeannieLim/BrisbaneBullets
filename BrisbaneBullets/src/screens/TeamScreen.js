@@ -18,7 +18,7 @@ const teamTabs = [
 
 export default function TeamScreen({ navigation }) {
   return (
-    <ScrollView contentContainerStyle={MyStyles.mainContainer}>
+    <View style={GlobalStyles.mainContainer}>
       <SafeAreaView style={GlobalStyles.safeArea}>
         <ImageBackground
           source={require("../../assets/Logo/BB-logo.png")}
@@ -35,6 +35,6 @@ export default function TeamScreen({ navigation }) {
           </View>
         </ImageBackground>
       </SafeAreaView>
-    </ScrollView>
+    </View>
   );
 }
