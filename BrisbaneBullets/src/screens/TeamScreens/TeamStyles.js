@@ -12,7 +12,12 @@ const MyStyles = StyleSheet.create({
   },
   toggleContainer: {
     // marginHorizontal: windowWidth * 0.08,
-    marginTop: windowHeight * 0.02,
+    flexGrow: 1
+  },
+  mainContainer: {
+    flex: 1,
+    paddingHorizontal: windowWidth * 0.08,
+    backgroundColor: "white",
   },
   headerContainer: {
     flexDirection: "row",
