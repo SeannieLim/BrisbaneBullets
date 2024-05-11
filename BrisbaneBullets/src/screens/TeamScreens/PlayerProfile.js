@@ -56,17 +56,17 @@ const PlayerProfile = ({ route }) => {
           showsVerticalScrollIndicator={false}
         >
           <View style={MyStyles.imageBox}>
-            {showGif ? (
+            {/* {showGif ? (
               <Image
                 source={require("../../../assets/teamPageImages/gif1.gif")} // Replace with the path to your GIF
                 style={MyStyles.playerProfileGif}
               />
-            ) : (
+            ) : ( */}
               <Image
               source={player.playerHeadShot ? player.playerHeadShot : player.playerProfileImage}
               style={player.playerHeadShot ? MyStyles.playerHeadShot : MyStyles.playerProfileImage}
               />
-            )}
+            {/* )} */}
             <View style={MyStyles.textContainer}>
               <Text style={MyStyles.jerseyNumber}>{player.jerseyNumber}</Text>
             </View>
