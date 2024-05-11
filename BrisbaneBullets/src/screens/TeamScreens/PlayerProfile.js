@@ -63,8 +63,8 @@ const PlayerProfile = ({ route }) => {
               />
             ) : (
               <Image
-                source={player.playerProfileImage}
-                style={MyStyles.playerProfileImage}
+              source={player.playerHeadShot ? player.playerHeadShot : player.playerProfileImage}
+              style={player.playerHeadShot ? MyStyles.playerHeadShot : MyStyles.playerProfileImage}
               />
             )}
             <View style={MyStyles.textContainer}>

@@ -35,6 +35,7 @@ const MyStyles = StyleSheet.create({
   },
 
   imageBox: {
+    flex: 1,
     width: "100%", // Width of the box
     height: windowHeight * 0.3, // Height of the box
     backgroundColor: "#164CA8", // Background color of the box
@@ -47,6 +48,7 @@ const MyStyles = StyleSheet.create({
     elevation: 5, // Elevation for Android
     position: "relative", // Add relative positioning to the square container
     overflow: "hidden", // Hide the overflowing content
+    justifyContent: "flex-start", // Align content to the top
   },
   textContainer: {
     position: "absolute", // Position the text container absolutely within the container
@@ -64,6 +66,14 @@ const MyStyles = StyleSheet.create({
     height: "90%",
     alignSelf: "center",
     overflow: "visible",
+  },
+  playerHeadShot: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+    alignSelf: "center",
+    overflow: "visible",
+    marginTop: windowHeight* 0.2,
   },
   playerProfileGif: {
     width: "100%",
