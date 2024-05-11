@@ -65,6 +65,13 @@ const MyStyles = StyleSheet.create({
     alignSelf: "center",
     overflow: "visible",
   },
+  playerHeadShot: {
+    flex: 1,
+    width: "100%",
+    height: "100%",
+    alignSelf: "center",
+    overflow: "visible",
+  },
   playerProfileGif: {
     width: "100%",
     height: "100%",

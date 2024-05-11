@@ -28,7 +28,7 @@ const PlayerProfile = ({ route }) => {
       setTimeout(() => {
         setShowGif(true);
       }, 14000); // Adjust the time for how long you want the GIF to be displayed
-    }, 10000); // Interval for every 10 seconds
+    }, 5000); // Interval for every 10 seconds
     return () => clearInterval(gifInterval);
   }, []);
 
@@ -56,17 +56,17 @@ const PlayerProfile = ({ route }) => {
           showsVerticalScrollIndicator={false}
         >
           <View style={MyStyles.imageBox}>
-            {showGif ? (
+            {/* {showGif ? (
               <Image
                 source={require("../../../assets/teamPageImages/gif1.gif")} // Replace with the path to your GIF
                 style={MyStyles.playerProfileGif}
               />
-            ) : (
+            ) : ( */}
               <Image
                 source={player.playerProfileImage}
                 style={MyStyles.playerProfileImage}
               />
-            )}
+            {/* } */}
             <View style={MyStyles.textContainer}>
               <Text style={MyStyles.jerseyNumber}>{player.jerseyNumber}</Text>
             </View>
