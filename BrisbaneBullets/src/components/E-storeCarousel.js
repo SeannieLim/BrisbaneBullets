@@ -111,14 +111,16 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   imageContainer: {
-    height: 200, // Set height to match the image height
+    height: WindowWidth / (16 / 9), // Set height to match the image height
   },
   itemContainer: {
     width: WindowWidth,
+    height: WindowWidth / (16 / 9),
   },
   itemImage: {
     width: WindowWidth,
-    height: 200,
+    height: WindowWidth / (16 / 9),
+    // 16:9 aspect ratio
     resizeMode: "cover",
   },
   buttonOverlay: {
