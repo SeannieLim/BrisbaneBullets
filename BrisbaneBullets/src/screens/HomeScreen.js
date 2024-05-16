@@ -18,7 +18,6 @@ import { scaleFontSize } from "../constants/Layout";
 import HighlightVideo from "../components/HighlightVideo";
 import PressConferenceVideo from "../components/PressConferenceVideo";
 
-
 const mockNews = [
   {
     id: 1,
@@ -38,7 +37,7 @@ const mockNews = [
 
 const videoTabs = [
   { label: "Highlights", content: <HighlightVideo /> },
-  { label: "Press Conference", content: <PressConferenceVideo /> }
+  { label: "Press Conference", content: <PressConferenceVideo /> },
 ];
 const windowWidth = Dimensions.get("window").width;
 
@@ -49,7 +48,7 @@ export default function HomeScreen({ navigation }) {
   };
   const handleAllVideoPress = () => {
     // Navigate to the All News screen when the All button is pressed
-    navigation.navigate('Videos');
+    navigation.navigate("Videos");
   };
   return (
     <View style={styles.container}>
@@ -63,7 +62,9 @@ export default function HomeScreen({ navigation }) {
         >
           <ScrollView>
             <Box style={styles.box}>
-              <AdsBanner imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png" />
+              <AdsBanner
+              // imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png"
+              />
               <Box style={styles.headingContainer}>
                 <Heading style={styles.heading}>Latest News</Heading>
                 <AllButton onPress={handleAllPress} />
@@ -75,7 +76,7 @@ export default function HomeScreen({ navigation }) {
               </ScrollView>
               <Box style={styles.headingContainer}>
                 <Heading style={styles.heading}>Latest Videos</Heading>
-                <AllButton onPress={handleAllVideoPress}/>
+                <AllButton onPress={handleAllVideoPress} />
               </Box>
 
               <ToggleComponent tabs={videoTabs} />
@@ -90,7 +91,9 @@ export default function HomeScreen({ navigation }) {
               <Box style={styles.socialMedia}>
                 <SocialMediaStack />
               </Box>
-              <AdsBanner imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png" />
+              <AdsBanner
+              // imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png"
+              />
               <Box style={styles.headingContainer}>
                 <Heading style={styles.heading}>Partners</Heading>
               </Box>

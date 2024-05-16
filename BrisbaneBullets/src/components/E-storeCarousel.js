@@ -17,11 +17,11 @@ const WindowWidth = Dimensions.get("window").width;
 const carouselItems = [
   {
     title: "End of Season Sale",
-    imageUrl: require("../../assets/E-store/endofseason.webp"),
+    imageUrl: require("../../assets/E-store/B-STORE.jpg"),
   },
   {
     title: "Bullets Black T-Shirt",
-    imageUrl: require("../../assets/E-store/officialkit.webp"),
+    imageUrl: require("../../assets/E-store/endofseason.webp"),
   },
   {
     title: "Bullets Black T-Shirt",
