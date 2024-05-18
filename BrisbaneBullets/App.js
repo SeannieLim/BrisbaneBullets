@@ -16,6 +16,7 @@ import StandingsScreen from "./src/screens/StandingsScreen";
 import PrivacyPolicyScreen from "./src/screens/PrivacyPolicyScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { NotificationProvider } from "./src/notifications/notificationContext";
+import Dashboard from "./src/dashboard/Dashboard";
 
 export default function App(props) {
   const Stack = createStackNavigator();
@@ -57,6 +58,7 @@ export default function App(props) {
                 }}
               />
               <Stack.Screen name="Standings" component={StandingsScreen} />
+                <Stack.Screen name="Dashboard" component={Dashboard} />
             </Stack.Navigator>
           </NavigationContainer>
           {/*</SafeAreaView>*/}
