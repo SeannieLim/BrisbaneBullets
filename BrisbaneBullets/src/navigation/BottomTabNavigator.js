@@ -1,7 +1,7 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import TabBarIcon from "../components/tabBarIcon";
+import TabBarIcon from "../components/TabBarIcon";
 import ScheduleScreen from "../screens/ScheduleScreen";
 import TicketScreen from "../screens/TicketScreen";
 import HomeStackScreen from "./HomeStack";

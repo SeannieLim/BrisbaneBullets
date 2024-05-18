@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import {LinearGradient} from "expo-linear-gradient";
 import {HStack, Image, Text, View, Box} from "@gluestack-ui/themed";
-import {ActionButton} from "./actionButton";
+import {ActionButton} from "./ActionButton";
 import {useNavigation} from "@react-navigation/native";
 import CustomButton from "./CustomButton";
 import NotificationIcon from "../notifications/notificationIcon";
