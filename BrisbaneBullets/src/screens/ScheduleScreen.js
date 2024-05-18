@@ -9,8 +9,8 @@ import { scaleFontSize } from "../constants/Layout";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import ToggleComponent from "../components/ToggleButton";
-import UpcomingGames from "../components/upcomingGames";
-import PastGames from "../components/pastGames";
+import UpcomingGames from "../components/UpcomingGames";
+import PastGames from "../components/PastGames";
 import { GlobalStyles } from "../constants/GlobalStyles";
 
 const windowWidth = Dimensions.get("window").width;
