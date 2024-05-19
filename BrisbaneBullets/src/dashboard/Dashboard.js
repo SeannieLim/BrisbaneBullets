@@ -54,12 +54,6 @@ export default function Dashboard({navigation}) {
                             <Box style={styles.box}>
                                 <ToggleComponent tabs={dashBoardTabs}/>
                             </Box>
-
-                            {/*placeholder to test scrollview - please remove*/}
-                            <EStoreCarousel/>
-                            <EStoreCarousel/>
-                            <EStoreCarousel/>
-
                         </ScrollView>
                     </ImageBackground>
                 </View>
