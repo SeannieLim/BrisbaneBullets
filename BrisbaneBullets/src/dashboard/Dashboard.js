@@ -4,7 +4,7 @@ import {Ionicons} from '@expo/vector-icons';
 import {DashboardBanner} from "./components/DashboardBanner";
 import {GlobalStyles} from "../constants/GlobalStyles";
 import ToggleComponent from "../components/ToggleButton";
-import DashBoardStatsRound1 from '../components/DashBoardStats';
+import DashBoardStats from '../components/DashBoardStats';
 
 import {
     Dimensions,
@@ -39,7 +39,7 @@ export default function Dashboard({navigation}) {
 
     const dashBoardTabs = [
         {label: "Box Score", content: ''},
-        {label: "Statistics", content: <DashBoardStatsRound1/>},
+        {label: "Statistics", content: <DashBoardStats/>},
     ];
 
     return (
