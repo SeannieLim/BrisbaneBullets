@@ -4,6 +4,7 @@ import {Ionicons} from '@expo/vector-icons';
 import {DashboardBanner} from "./components/DashboardBanner";
 import {GlobalStyles} from "../constants/GlobalStyles";
 import ToggleComponent from "../components/ToggleButton";
+import DashBoardStatsRound1 from '../components/DashBoardStats';
 
 import {
     Dimensions,
@@ -36,9 +37,9 @@ export default function Dashboard({navigation}) {
         });
     }, [navigation]);
 
-    const videoTabs = [
-        {label: "Statistics", content: ''},
+    const dashBoardTabs = [
         {label: "Box Score", content: ''},
+        {label: "Statistics", content: <DashBoardStatsRound1/>},
     ];
 
     return (
@@ -51,7 +52,7 @@ export default function Dashboard({navigation}) {
                     >
                         <ScrollView style={styles.scrollView}>
                             <Box style={styles.box}>
-                                <ToggleComponent tabs={videoTabs}/>
+                                <ToggleComponent tabs={dashBoardTabs}/>
                             </Box>
 
                             {/*placeholder to test scrollview - please remove*/}

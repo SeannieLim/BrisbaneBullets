@@ -16,13 +16,13 @@ const windowWidth = Dimensions.get("window").width;
 const mockTeams = [
     {
         img: require("../../../assets/teamImages/BB.png"),
-        score: "97",
+        score: "96",
         team: 'Brisbane Bullets',
         alt: "team logo",
     },
     {
         img: require("../../../assets/teamImages/melb.png"),
-        score: "87",
+        score: "80",
         team: 'Melbourne United',
         alt: "team logo",
     }]
