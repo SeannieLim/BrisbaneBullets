@@ -16,6 +16,8 @@
     "@gluestack-ui/themed-native-base": "^0.1.107-alpha2",
     "@react-native-async-storage/async-storage": "^1.23.1",
     "@react-native-community/masked-view": "^0.1.11",
+    "@react-native-firebase/app": "^19.2.2",
+    "@react-native-firebase/messaging": "^19.2.2",
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/stack": "^6.3.29",
@@ -38,7 +40,8 @@
     "react-native-uuid": "^2.0.2",
     "react-native-view-more-text": "^2.2.0",
     "react-native-webview": "^13.8.6",
-    "version": "^0.0.1"
+    "version": "^0.0.1",
+    "expo-dev-client": "~4.0.14"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"
