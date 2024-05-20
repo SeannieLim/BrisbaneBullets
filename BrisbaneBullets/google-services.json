@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "858788435094",
+    "project_id": "brisbanebullets-4eyes",
+    "storage_bucket": "brisbanebullets-4eyes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858788435094:android:2815b33dde19329c05deb7",
+        "android_client_info": {
+          "package_name": "com.anonymous.BrisbaneBullets"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-4WGKhkh8yDj25k7Jo8VqXdtWPZS1Xg4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
