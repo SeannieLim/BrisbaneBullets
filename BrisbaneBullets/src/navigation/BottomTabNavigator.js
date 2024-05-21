@@ -7,7 +7,7 @@ import TicketScreen from "../screens/TicketScreen";
 import HomeStackScreen from "./HomeStack";
 import MoreStackScreen from "./MoreStack";
 import TeamStackScreen from "./TeamStackScreen";
-import DashBoardPlayerStats from "../components/DashBoardPlayerStats";
+import DashboardStackScreen from "./DashboardStack";
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = "Home";
@@ -76,8 +76,8 @@ export default function BottomTabNavigator({ navigation, route }) {
       />
 
       <BottomTab.Screen
-        name="DashBoardPlayerStats" 
-        component={DashBoardPlayerStats}
+        name="Dashboard" 
+        component={DashboardStackScreen}
         options={{
           headerShown: false,
           tabBarButton: () => null,

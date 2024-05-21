@@ -9,7 +9,6 @@ import NewsDetailScreen from "../screens/NewsDetailScreen";
 import NotiScreen from "../screens/NotificationScreen";
 import AllVideos from "../screens/AllVideos";
 import { Ionicons } from "@expo/vector-icons";
-import DashBoardPlayerStats from '../components/DashBoardPlayerStats'; 
 
 const HomeStack = createStackNavigator();
 
@@ -140,12 +139,6 @@ function HomeStackScreen() {
           ),
           headerBackTitleVisible: false,
         }}
-      />
-
-<HomeStack.Screen
-        name="DashBoardPlayerStats"
-        component={DashBoardPlayerStats}
-        options={{ headerShown: false }}
       />
     </HomeStack.Navigator>
   );
