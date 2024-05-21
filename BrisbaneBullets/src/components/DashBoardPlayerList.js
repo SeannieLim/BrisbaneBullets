@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { FlatList, ScrollView } from "react-native-gesture-handler";
+import { FlatList } from "react-native-gesture-handler";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -21,7 +21,7 @@ const players = [
     playerImage: require("../../assets/teamPageImages/RoccoZikarsky.png"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/RoccoZikarskyHead.jpg"),
-
+    playerDashboard: require("../../assets/Dashboard/playerStats.png")
   },
   {
     id: "2",
@@ -30,31 +30,34 @@ const players = [
     playerImage: require("../../assets/teamPageImages/AronBaynes.jpeg"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/AronBaynesHead.jpg"),
-    },
-    {
+    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+  },
+  {
     id: "3",
     jerseyNumber: 23,
     playerName: "Casey Prather",
     playerImage: require("../../assets/teamPageImages/CaseyPrather.jpeg"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
-    },
-    {
+    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+  },
+  {
     id: "4",
     jerseyNumber: 34,
     playerName: "Chris Smith",
     playerImage: require("../../assets/teamPageImages/ChrisSmith.png"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/ChrisSmithHead.jpg"),
+    playerDashboard: require("../../assets/Dashboard/playerStats.png")
   },
-    {
+  {
     id: "5",
     jerseyNumber: 0,
     playerName: "DJ Mitchell",
     playerImage: require("../../assets/teamPageImages/DJMitchell.png"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/DJMitchellHead.jpg"),
-    
-     },
+    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+  },
   {
     id: "6",
     jerseyNumber: 4,
@@ -62,7 +65,8 @@ const players = [
     playerImage: require("../../assets/teamPageImages/GabeHadley.jpeg"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/GabeHadleyHead.jpg"),
-   },
+    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+  },
   {
     id: "7",
     jerseyNumber: 2,
@@ -70,15 +74,16 @@ const players = [
     playerImage: require("../../assets/teamPageImages/IsaacWhite.jpeg"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/IsaacWhiteHead.jpg"),
-    },
+    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+  },
   {
     id: "8",
     jerseyNumber: 13,
     playerName: "Josh Bannan",
     playerImage: require("../../assets/teamPageImages/JoshBannan.png"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
-    
-     },
+    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+  },
   {
     id: "9",
     jerseyNumber: 8,
@@ -86,7 +91,8 @@ const players = [
     playerImage: require("../../assets/teamPageImages/MitchNorton.jpeg"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/MitchNortonHead.jpg"),
-     },
+    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+  },
   {
     id: "10",
     jerseyNumber: 20,
@@ -94,7 +100,8 @@ const players = [
     playerImage: require("../../assets/teamPageImages/NathanSobey.png"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/NathanSobeyHead.jpg"),
-    },
+    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+  },
   {
     id: "11",
     jerseyNumber: 26,
@@ -102,7 +109,8 @@ const players = [
     playerImage: require("../../assets/teamPageImages/SamMcDaniel.png"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/SamMcDanielHead.jpg"),
-    },
+    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+  },
   {
     id: "12",
     jerseyNumber: 32,
@@ -110,7 +118,8 @@ const players = [
     playerImage: require("../../assets/teamPageImages/MatthewJohns.png"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/MattJohnsHead.jpg"),
- },
+    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+  },
   {
     id: "13",
     jerseyNumber: 3,
@@ -118,6 +127,7 @@ const players = [
     playerImage: require("../../assets/teamPageImages/ShannonScott.jpeg"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/ShannonScottHead.jpg"),
+    playerDashboard: require("../../assets/Dashboard/playerStats.png")
   },
   {
     id: "14",
@@ -125,25 +135,26 @@ const players = [
     playerName: "Tristan Devers",
     playerImage: require("../../assets/teamPageImages/TristanDevers.png"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
-    },
+    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+  },
   {
     id: "15",
     jerseyNumber: 24,
     playerName: "Tyrell Harrison",
     playerImage: require("../../assets/teamPageImages/TyrrelHarrison.png"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
+    playerDashboard: require("../../assets/Dashboard/playerStats.png")
   }
-    
 ];
 
 const Square = ({ player }) => {
   const navigation = useNavigation();
   const navigateToProfile = () => {
-    navigation.navigate("PlayerProfile", { player });
+    navigation.navigate("DashBoardPlayerStats", { player });
   };
 
   return (
-    <TouchableOpacity onPress={''}>
+    <TouchableOpacity onPress={navigateToProfile}>
       <View style={styles.square}>
         <View style={styles.imageContainer}>
           <Image source={player.playerImage} style={styles.playerImage} />
@@ -170,46 +181,29 @@ const DashBoardPlayerList = () => {
     </View>
   );
 };
+
 export default DashBoardPlayerList;
 
 const styles = StyleSheet.create({
-  // container: {
-  //   flexDirection: "row",
-  //   marginTop: windowHeight * 0.015,
-  //   paddingBottom: windowHeight * 0.5,
-  //   flex: 1,
-  //   alignItems: "center",
-  // },
   container: {
     paddingBottom: windowHeight * 0.5,
   },
   columnWrapper: {
-    justifyContent: "space-between", // Ensures space between items horizontally
+    justifyContent: "space-between",
     marginTop: windowHeight * 0.01,
     marginHorizontal: windowWidth * 0.04,
   },
-  // leftColumn: {
-  //   flex: 1, // Take up 50% of the available space
-  //   // flexDirection: "column",
-  //   marginLeft: windowWidth * 0.001, // Adjust margin if needed
-  // },
-  // rightColumn: {
-  //   flex: 1, // Take up 50% of the available space
-  //   // flexDirection: "column",
-  //   marginLeft: windowWidth * 0.1,
-  // },
   square: {
     width: 140,
     height: 120,
     backgroundColor: "lightblue",
     marginVertical: windowHeight * 0.01,
-
     borderRadius: 15,
-    shadowColor: "#000", // Shadow color
-    shadowOffset: { width: 1, height: 2 }, // Shadow offset
-    shadowOpacity: 0.25, // Shadow opacity
-    shadowRadius: 4, // Shadow radius
-    elevation: 5, // Elevation for Android
+    shadowColor: "#000",
+    shadowOffset: { width: 1, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
     overflow: "hidden",
   },
   imageContainer: {
@@ -224,7 +218,7 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   textContainer: {
-    position: "absolute", // Position the text container absolutely within the container
+    position: "absolute",
     top: 15,
     left: 10,
     alignItems: "center",
@@ -234,5 +228,3 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
-
-
