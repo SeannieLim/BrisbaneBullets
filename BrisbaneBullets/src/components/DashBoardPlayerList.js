@@ -19,8 +19,8 @@ const players = [
     jerseyNumber: 11,
     playerName: "Rocco Zikarsky",
     playerImage: require("../../assets/teamPageImages/RoccoZikarsky.png"),
-    playerProfileImage: require(".././assets/teamPageImages/Image1.png"),
-    playerHeadShot: require(".././assets/teamPageImages/RoccoZikarskyHead.jpg"),
+    playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
+    playerHeadShot: require("../../assets/teamPageImages/RoccoZikarskyHead.jpg"),
 
   },
   {
