@@ -15,7 +15,7 @@
     "@gluestack-ui/themed-native-base": "^0.1.107-alpha2",
     "@react-native-async-storage/async-storage": "^1.23.1",
     "@react-native-community/masked-view": "^0.1.11",
-    "@react-native-firebase/app": "^19.2.2",
+    "@react-native-firebase/app": "^19.3.0",
     "@react-native-firebase/messaging": "^19.2.2",
     "@react-navigation/bottom-tabs": "^6.5.20",
     "@react-navigation/native": "^6.1.17",
@@ -24,13 +24,14 @@
     "dotenv": "^16.4.5",
     "expo": "~51.0.8",
     "expo-constants": "^16.0.1",
+    "expo-dev-client": "~4.0.14",
     "expo-linear-gradient": "^13.0.2",
     "expo-notifications": "~0.28.3",
     "expo-router": "~3.5.14",
     "expo-status-bar": "^1.12.1",
-    "react": "18.2.0",
+    "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-native": "0.74.1",
+    "react-native": "^0.74.1",
     "react-native-country-flag": "^2.0.2",
     "react-native-gesture-handler": "^2.16.1",
     "react-native-ionicons": "^4.6.5",
@@ -39,8 +40,7 @@
     "react-native-uuid": "^2.0.2",
     "react-native-view-more-text": "^2.2.0",
     "react-native-webview": "^13.8.6",
-    "version": "^0.0.1",
-    "expo-dev-client": "~4.0.14"
+    "version": "^0.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0"

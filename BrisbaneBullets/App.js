@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Platform, StyleSheet, View } from "react-native";
+import { Platform, StyleSheet, View, Alert } from "react-native";
 
 import {
   NavigationContainer,
@@ -16,8 +16,7 @@ import StandingsScreen from "./src/screens/StandingsScreen";
 import PrivacyPolicyScreen from "./src/screens/PrivacyPolicyScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { NotificationProvider } from "./src/notifications/notificationContext";
-import messaging from '@react-native-firebase/messaging';
-
+import messaging from "@react-native-firebase/messaging";
 
 export default function App(props) {
   const Stack = createStackNavigator();
@@ -29,47 +28,50 @@ export default function App(props) {
       authStatus === messaging.AuthorizationStatus.PROVISIONAL;
 
     if (enabled) {
-      console.log('Authorization status:', authStatus);
+      console.log("Authorization status:", authStatus);
     }
-  }
+  };
   useEffect(() => {
     if (requestUserPermission()) {
       // return fcm tocken
-      messaging().getToken().then(token => {
-        console.log('FCM Token:', token);
-      });
+      messaging()
+        .getToken()
+        .then((token) => {
+          console.log("FCM Token:", token);
+        });
     } else {
-      console.log('Failed. No permission to show notifications', authStatus);
+      console.log("Failed. No permission to show notifications", authStatus);
     }
     // check whether an initial notification is available
-    messaging().getInitialNotification()
+    messaging()
+      .getInitialNotification()
       .then(async (remoteMessage) => {
         if (remoteMessage) {
           console.log(
-            'Notification caused app to open from from quit state:',
-            remoteMessage.notification,
+            "Notification caused app to open from from quit state:",
+            remoteMessage.notification
           );
         }
       });
     // Assume a message-notification contains a "type" property in the data payload of the screen to open
-    messaging().onNotificationOpenedApp(remoteMessage => {
+    messaging().onNotificationOpenedApp((remoteMessage) => {
       console.log(
-        'Notification caused app to open from background state:',
-        remoteMessage.notification,
+        "Notification caused app to open from background state:",
+        remoteMessage.notification
       );
     });
 
     // Register background handler
-    messaging().setBackgroundMessageHandler(async remoteMessage => {
-      console.log('Message handled in the background!', remoteMessage);
+    messaging().setBackgroundMessageHandler(async (remoteMessage) => {
+      console.log("Message handled in the background!", remoteMessage);
     });
 
-    const unsubscribe = messaging().onMessage(async remoteMessage => {
-      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    const unsubscribe = messaging().onMessage(async (remoteMessage) => {
+      Alert.alert("A new FCM message arrived!");
+      console.log(remoteMessage);
     });
     return unsubscribe;
   }, []);
-
 
   return (
     <NotificationProvider>
