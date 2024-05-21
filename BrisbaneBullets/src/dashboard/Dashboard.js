@@ -5,6 +5,7 @@ import {DashboardBanner} from "./components/DashboardBanner";
 import {GlobalStyles} from "../constants/GlobalStyles";
 import ToggleComponent from "../components/ToggleButton";
 import DashBoardStats from '../components/DashBoardStats';
+import DashBoardPlayerList from '../components/DashBoardPlayerList';
 
 import {
     Dimensions,
@@ -38,7 +39,7 @@ export default function Dashboard({navigation}) {
     }, [navigation]);
 
     const dashBoardTabs = [
-        {label: "Box Score", content: ''},
+        {label: "Box Score", content: <DashBoardPlayerList/>},
         {label: "Statistics", content: <DashBoardStats/>},
     ];
 
