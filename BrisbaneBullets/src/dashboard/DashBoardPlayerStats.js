@@ -1,11 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Ionicons } from "@expo/vector-icons";
+import { useNavigation } from '@react-navigation/native';
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
 const DashBoardPlayerStats = ({ route }) => {
+  const navigation = useNavigation();
   const { player } = route.params;
 
   return (
@@ -17,28 +20,36 @@ const DashBoardPlayerStats = ({ route }) => {
       <Image source={player.playerDashboard} style={styles.playerImage} />
 
       <View style={styles.header}>
+        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
+          <Ionicons
+            name="chevron-back-outline"
+            size={27}
+            color="#FAB81B"
+          />
+        </TouchableOpacity>
         <Text style={styles.playerName}>{player.playerName}</Text>
-        <View style={styles.statsRow}>
-          <View style={styles.statItem}>
-            <Text style={styles.statRowValue}>00</Text>
-            <Text style={styles.statRowLabel}>MIN</Text>
-          </View>
-          <View style={styles.statItem}>
-            <Text style={styles.statRowValue}>00</Text>
-            <Text style={styles.statRowLabel}>APG</Text>
-          </View>
-          <View style={styles.statItem}>
-            <Text style={styles.statRowValue}>00</Text>
-            <Text style={styles.statRowLabel}>RPG</Text>
-          </View>
-          <View style={styles.statItem}>
-            <Text style={styles.statRowValue}>00</Text>
-            <Text style={styles.statRowLabel}>SPG</Text>
-          </View>
-          <View style={styles.statItem}>
-            <Text style={styles.statRowValue}>00</Text>
-            <Text style={styles.statRowLabel}>PPG</Text>
-          </View>
+      </View>
+
+      <View style={styles.statsRow}>
+        <View style={styles.statItem}>
+          <Text style={styles.statRowValue}>00</Text>
+          <Text style={styles.statRowLabel}>MIN</Text>
+        </View>
+        <View style={styles.statItem}>
+          <Text style={styles.statRowValue}>00</Text>
+          <Text style={styles.statRowLabel}>APG</Text>
+        </View>
+        <View style={styles.statItem}>
+          <Text style={styles.statRowValue}>00</Text>
+          <Text style={styles.statRowLabel}>RPG</Text>
+        </View>
+        <View style={styles.statItem}>
+          <Text style={styles.statRowValue}>00</Text>
+          <Text style={styles.statRowLabel}>SPG</Text>
+        </View>
+        <View style={styles.statItem}>
+          <Text style={styles.statRowValue}>00</Text>
+          <Text style={styles.statRowLabel}>PPG</Text>
         </View>
       </View>
 
@@ -102,38 +113,45 @@ const styles = StyleSheet.create({
     height: windowHeight * 0.6,
     resizeMode: 'cover',
     transform: [{ translateX: -windowWidth * 0.025 }], // Move the image slightly to the left
-    marginTop: windowHeight * 0.1
+    marginTop: windowHeight * 0.12
   },
   header: {
     position: 'absolute',
     top: windowHeight * 0.05, // Adjust top padding as needed
     width: windowWidth,
+    flexDirection: 'row',
     alignItems: 'center',
+    marginTop: windowHeight * 0.02,
+    
+    justifyContent: 'center',
+  },
+  backButton: {
+    position: 'absolute',
+    left: 20,
   },
   playerName: {
     color: '#fff',
     fontSize: 24,
     fontWeight: 'bold',
-    marginTop: windowHeight * 0.01
   },
   statsRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
     paddingHorizontal: 20,
-    marginTop: 10,
+    marginTop: windowHeight * 0.1,
   },
   statItem: {
     alignItems: 'center',
   },
-  statValue: {
+  statRowValue: {
     color: '#fff',
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
   },
-  statLabel: {
+  statRowLabel: {
     color: '#fff',
-    fontSize: 12,
+    fontSize: 20,
   },
   detailedStatsContainer: {
     backgroundColor: 'rgba(22, 76, 168, 0.4)', // blue with transparency
@@ -142,7 +160,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
-    marginTop: windowHeight * 0.6,
+    marginTop: windowHeight * 0.4,
   },
   statColumn: {
     width: '30%',
@@ -158,15 +176,4 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 20,
   },
-  statRowValue:{
-    color: '#fff',
-    fontSize: 17,
-    fontWeight: 'bold',
-  },
-
-  statRowLabel: {
-    color: '#fff',
-    fontSize: 17,
-  },
-
 });

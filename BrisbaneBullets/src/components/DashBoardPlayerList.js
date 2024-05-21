@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { FlatList } from "react-native-gesture-handler";
+import { FlatList, ScrollView } from "react-native-gesture-handler";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -169,6 +169,7 @@ const Square = ({ player }) => {
 
 const DashBoardPlayerList = () => {
   return (
+   
     <View style={styles.container}>
       <FlatList
         data={players}
@@ -179,6 +180,7 @@ const DashBoardPlayerList = () => {
         columnWrapperStyle={styles.columnWrapper}
       />
     </View>
+
   );
 };
 
@@ -205,6 +207,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     overflow: "hidden",
+    marginRight : windowWidth * 0.1
   },
   imageContainer: {
     width: "100%",
