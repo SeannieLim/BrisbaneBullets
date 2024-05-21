@@ -17,6 +17,8 @@ import PrivacyPolicyScreen from "./src/screens/PrivacyPolicyScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { NotificationProvider } from "./src/notifications/notificationContext";
 import Dashboard from "./src/dashboard/Dashboard";
+import DashBoardPlayerList from './src/components/DashBoardPlayerList';
+import DashBoardPlayerStats from './src/components/DashBoardPlayerStats';
 
 export default function App(props) {
   const Stack = createStackNavigator();
@@ -57,6 +59,8 @@ export default function App(props) {
               />
               <Stack.Screen name="Standings" component={StandingsScreen} />
                 <Stack.Screen name="Dashboard" component={Dashboard} />
+                <Stack.Screen name="DashBoardPlayerList" component={DashBoardPlayerList}  options={{ headerShown: false }}/>
+               <Stack.Screen name="DashBoardPlayerStats" component={DashBoardPlayerStats} options={{ headerShown: false }} />
             </Stack.Navigator>
           </NavigationContainer>
         </View>

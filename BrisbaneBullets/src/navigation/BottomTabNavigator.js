@@ -7,8 +7,7 @@ import TicketScreen from "../screens/TicketScreen";
 import HomeStackScreen from "./HomeStack";
 import MoreStackScreen from "./MoreStack";
 import TeamStackScreen from "./TeamStackScreen";
-import PlayerProfileScreen from "../screens/TeamScreens/PlayerProfile";
-import PlayerStatsScreen from "../screens/TeamScreens/PlayerStats";
+import DashBoardPlayerStats from "../components/DashBoardPlayerStats";
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = "Home";
@@ -75,6 +74,17 @@ export default function BottomTabNavigator({ navigation, route }) {
           ),
         }}
       />
+
+      <BottomTab.Screen
+        name="DashBoardPlayerStats" 
+        component={DashBoardPlayerStats}
+        options={{
+          headerShown: false,
+          tabBarButton: () => null,
+          tabBarVisible: true
+        }}
+      />
+      
       {/* <BottomTab.Screen
         name="PlayerProfile"
         component={PlayerProfileScreen}
@@ -93,6 +103,8 @@ export default function BottomTabNavigator({ navigation, route }) {
           tabBarVisible: true
         }}
       /> */}
+
+      
     </BottomTab.Navigator>
   );
 }

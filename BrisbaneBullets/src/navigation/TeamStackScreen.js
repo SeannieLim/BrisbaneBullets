@@ -3,6 +3,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import TeamScreen from "../screens/TeamScreen";
 import PlayerProfile from "../screens/TeamScreens/PlayerProfile.js";
 import AdvanceStatsWebview from "../screens/AdvanceStatsWebview.js";
+
 import { Ionicons } from "@expo/vector-icons";
 
 const TeamStack = createStackNavigator();
@@ -56,6 +57,7 @@ function TeamStackScreen() {
           headerBackTitleVisible: false,
         }}
       />
+     
     </TeamStack.Navigator>
   );
 }
