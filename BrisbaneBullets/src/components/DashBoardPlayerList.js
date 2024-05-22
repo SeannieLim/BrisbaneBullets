@@ -191,9 +191,9 @@ const styles = StyleSheet.create({
     paddingBottom: windowHeight * 0.5,
   },
   columnWrapper: {
-    justifyContent: "space-between",
+    justifyContent: "center",
     marginTop: windowHeight * 0.01,
-    marginHorizontal: windowWidth * 0.04,
+    marginHorizontal: windowWidth * 0.01,
   },
   square: {
     width: 140,
@@ -207,7 +207,7 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
     overflow: "hidden",
-    marginRight : windowWidth * 0.1
+    marginRight : windowWidth * 0.1,
   },
   imageContainer: {
     width: "100%",
