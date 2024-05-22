@@ -128,6 +128,64 @@ export function TopBanner() {
           showsHorizontalScrollIndicator={false}
           scrollEventThrottle={16}
         >
+
+          {/*Current game*/}
+          <View key={mockCurrentGame[0].id} style={styles.mainContainer}>
+            {/*Past game*/}
+            <View style={styles.itemContainer}>
+              {/*Left team*/}
+              <View style={styles.teamContainer}>
+                <Image
+                    source={mockTeams[3].img}
+                    style={[styles.image, styles.leftImage]}
+                    alt="Team Logo"
+                />
+                <Text
+                    style={[
+                      styles.score,
+                      (comparisonResult === 1 || comparisonResult === 0) &&
+                      boldTextStyle,
+                    ]}
+                >
+                  {mockTeams[3].score}
+                </Text>
+              </View>
+
+              {/*Game details*/}
+              <View style={styles.details}>
+                <Text style={styles.match}>{mockCurrentGame[0].match}</Text>
+                <Text style={styles.time}>{mockCurrentGame[0].time}</Text>
+              </View>
+
+              {/*Right team*/}
+              <View style={styles.teamContainer}>
+                <Text
+                    style={[
+                      styles.score,
+                      (comparisonResult === -1 || comparisonResult === 0) &&
+                      boldTextStyle,
+                    ]}
+                >
+                  {mockTeams[2].score}
+                </Text>
+                <Image
+                    source={mockTeams[2].img}
+                    style={[styles.image, styles.rightImage]}
+                    alt="Team Logo"
+                />
+              </View>
+            </View>
+            <View style={styles.liveStatus}>
+              <View style={styles.greenDot}></View>
+              <Text style={styles.liveText}>Live</Text>
+            </View>
+            <HStack>
+              <ActionButton value={"Game Centre"} />
+              <ActionButton value={"Watch"} onPress={handleWatchPress} />
+              <ActionButton value={"Crowd Canvas"} />
+            </HStack>
+          </View>
+
           {/*Past game*/}
           <View key={mockPastGame[0].id} style={styles.mainContainer}>
             <View style={styles.itemContainer}>
@@ -175,63 +233,6 @@ export function TopBanner() {
             </View>
             <HStack>
               <ActionButton value={"Recap"} />
-            </HStack>
-          </View>
-
-          {/*Current game*/}
-          <View key={mockCurrentGame[0].id} style={styles.mainContainer}>
-            {/*Past game*/}
-            <View style={styles.itemContainer}>
-              {/*Left team*/}
-              <View style={styles.teamContainer}>
-                <Image
-                  source={mockTeams[3].img}
-                  style={[styles.image, styles.leftImage]}
-                  alt="Team Logo"
-                />
-                <Text
-                  style={[
-                    styles.score,
-                    (comparisonResult === 1 || comparisonResult === 0) &&
-                      boldTextStyle,
-                  ]}
-                >
-                  {mockTeams[3].score}
-                </Text>
-              </View>
-
-              {/*Game details*/}
-              <View style={styles.details}>
-                <Text style={styles.match}>{mockCurrentGame[0].match}</Text>
-                <Text style={styles.time}>{mockCurrentGame[0].time}</Text>
-              </View>
-
-              {/*Right team*/}
-              <View style={styles.teamContainer}>
-                <Text
-                  style={[
-                    styles.score,
-                    (comparisonResult === -1 || comparisonResult === 0) &&
-                      boldTextStyle,
-                  ]}
-                >
-                  {mockTeams[2].score}
-                </Text>
-                <Image
-                  source={mockTeams[2].img}
-                  style={[styles.image, styles.rightImage]}
-                  alt="Team Logo"
-                />
-              </View>
-            </View>
-            <View style={styles.liveStatus}>
-              <View style={styles.greenDot}></View>
-              <Text style={styles.liveText}>Live</Text>
-            </View>
-            <HStack>
-              <ActionButton value={"Game Centre"} />
-              <ActionButton value={"Watch"} onPress={handleWatchPress} />
-              <ActionButton value={"Crowd Canvas"} />
             </HStack>
           </View>
 
