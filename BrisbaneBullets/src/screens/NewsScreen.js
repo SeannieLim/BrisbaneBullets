@@ -133,7 +133,7 @@ export default function NewsScreen({ navigation }) {
             </HStack>
           </Box>
           <VStack style={styles.description} py={10} px={15}>
-            <Text fontWeight="bold" numberOfLines={2} ellipsizeMode="tail" textAlign="center" >
+            <Text fontWeight="bold" numberOfLines={2} ellipsizeMode="tail">
               {item.title}
             </Text>
           </VStack>
