@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
         paddingBottom: windowWidth * 0.05,
         fontWeight: "600",
         color: 'black',
-        letterSpacing: '1'
+        letterSpacing: 1,
     },
     duration: {
         color: 'black',
