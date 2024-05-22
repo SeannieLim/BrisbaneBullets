@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
   statColumn: {
     width: '30%',
     alignItems: 'center',
-    marginVertical: 10,
+    marginVertical: 4,
   },
   statValue: {
     color: '#fff',
