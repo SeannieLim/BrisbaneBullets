@@ -180,7 +180,7 @@ export function TopBanner() {
               <Text style={styles.liveText}>Live</Text>
             </View>
             <HStack>
-              <ActionButton value={"Game Centre"} />
+              <ActionButton value={"Dashboard"} />
               <ActionButton value={"Watch"} onPress={handleWatchPress} />
               <ActionButton value={"Crowd Canvas"} />
             </HStack>
