@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
     paddingBottom: windowHeight * 0.5,
   },
   columnWrapper: {
-    justifyContent: "center",
+    justifyContent: "space-between",
     marginTop: windowHeight * 0.01,
     marginHorizontal: windowWidth * 0.01,
   },
