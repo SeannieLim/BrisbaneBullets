@@ -5,7 +5,7 @@ import {
   ScrollView,
   StyleSheet,
   TouchableOpacity,
-  SafeAreaView,
+  SafeAreaView, Platform, Linking
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { HStack, Image, Text, View, Box } from "@gluestack-ui/themed";
@@ -114,7 +114,26 @@ export function TopBanner() {
       animated: true,
     });
   };
+  const handleCrowdCanvas = () => {
+    const crowdCanvasUrl = "crowdcanvas://"; // Deep link to CrowdCanvas app (sample link)
+    const appStoreUrl = Platform.select({
+      ios: "https://apps.apple.com/au/app/crowdcanvas/id1526770094", //Crowd canvas App Store ID
+      android:
+        "https://play.google.com/store/apps/details?id=com.crowdcanvas.pixelplayer&hl=en_AU&gl=US&pli=1", // Google Play Store URL
+    });
 
+    // Try opening the CrowdCanvas app
+    Linking.canOpenURL(crowdCanvasUrl)
+      .then((supported) => {
+        if (supported) {
+          Linking.openURL(crowdCanvasUrl); // Open CrowdCanvas app
+        } else {
+          // If CrowdCanvas app is not installed, prompt user to download from App Store
+          Linking.openURL(appStoreUrl);
+        }
+      })
+      .catch((err) => console.error("Error checking CrowdCanvas app:", err));
+  };
   return (
     // <View style={styles.top}>
     <LinearGradient colors={["#164CA8", "#091E42"]} style={styles.container}>
@@ -136,16 +155,16 @@ export function TopBanner() {
               {/*Left team*/}
               <View style={styles.teamContainer}>
                 <Image
-                    source={mockTeams[3].img}
-                    style={[styles.image, styles.leftImage]}
-                    alt="Team Logo"
+                  source={mockTeams[3].img}
+                  style={[styles.image, styles.leftImage]}
+                  alt="Team Logo"
                 />
                 <Text
-                    style={[
-                      styles.score,
-                      (comparisonResult === 1 || comparisonResult === 0) &&
-                      boldTextStyle,
-                    ]}
+                  style={[
+                    styles.score,
+                    (comparisonResult === 1 || comparisonResult === 0) &&
+                    boldTextStyle,
+                  ]}
                 >
                   {mockTeams[3].score}
                 </Text>
@@ -160,18 +179,18 @@ export function TopBanner() {
               {/*Right team*/}
               <View style={styles.teamContainer}>
                 <Text
-                    style={[
-                      styles.score,
-                      (comparisonResult === -1 || comparisonResult === 0) &&
-                      boldTextStyle,
-                    ]}
+                  style={[
+                    styles.score,
+                    (comparisonResult === -1 || comparisonResult === 0) &&
+                    boldTextStyle,
+                  ]}
                 >
                   {mockTeams[2].score}
                 </Text>
                 <Image
-                    source={mockTeams[2].img}
-                    style={[styles.image, styles.rightImage]}
-                    alt="Team Logo"
+                  source={mockTeams[2].img}
+                  style={[styles.image, styles.rightImage]}
+                  alt="Team Logo"
                 />
               </View>
             </View>
@@ -182,7 +201,7 @@ export function TopBanner() {
             <HStack>
               <ActionButton value={"Dashboard"} />
               <ActionButton value={"Watch"} onPress={handleWatchPress} />
-              <ActionButton value={"Crowd Canvas"} />
+              <ActionButton value={"Crowd Canvas"} onPress={handleCrowdCanvas} />
             </HStack>
           </View>
 
@@ -200,7 +219,7 @@ export function TopBanner() {
                   style={[
                     styles.score,
                     (comparisonResult === 1 || comparisonResult === 0) &&
-                      boldTextStyle,
+                    boldTextStyle,
                   ]}
                 >
                   {mockTeams[0].score}
@@ -219,7 +238,7 @@ export function TopBanner() {
                   style={[
                     styles.score,
                     (comparisonResult === -1 || comparisonResult === 0) &&
-                      boldTextStyle,
+                    boldTextStyle,
                   ]}
                 >
                   {mockTeams[1].score}
