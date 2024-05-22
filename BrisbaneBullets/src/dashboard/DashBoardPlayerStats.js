@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   detailedStatsContainer: {
-    backgroundColor: 'rgba(22, 76, 168, 0.4)', // blue with transparency
+    backgroundColor: 'rgba(22, 76, 168, 0.8)', // blue with transparency
     width: '80%',
     paddingVertical: 20,
     flexDirection: 'row',
