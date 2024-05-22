@@ -1,4 +1,4 @@
-import { TopBanner } from "../components/topBanner";
+import { TopBanner } from "../components/TopBanner";
 import { View, Box, Heading } from "@gluestack-ui/themed";
 import EStoreCarousel from "../components/E-storeCarousel";
 import {
@@ -8,7 +8,6 @@ import {
   StyleSheet,
 } from "react-native";
 import ToggleComponent from "../components/ToggleButton";
-import CustomButton from "../components/CustomButton";
 import NewsCard from "../components/NewsCard";
 import { PartnersStack } from "../components/PartnersStack";
 import SocialMediaStack from "../components/SocialMediaStack";

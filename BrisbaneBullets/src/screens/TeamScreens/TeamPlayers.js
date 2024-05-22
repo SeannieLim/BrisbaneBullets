@@ -16,7 +16,7 @@ const windowHeight = Dimensions.get("window").height;
 const players = [
   {
     id: "1",
-    jerseyNumber: 17,
+    jerseyNumber: 11,
     playerName: "Rocco Zikarsky",
     playerImage: require("../../../assets/teamPageImages/RoccoZikarsky.png"),
     playerProfileImage: require("../../../assets/teamPageImages/Image1.png"),

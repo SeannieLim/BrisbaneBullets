@@ -1,14 +1,13 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import TabBarIcon from "../components/tabBarIcon";
+import TabBarIcon from "../components/TabBarIcon";
 import ScheduleScreen from "../screens/ScheduleScreen";
 import TicketScreen from "../screens/TicketScreen";
 import HomeStackScreen from "./HomeStack";
 import MoreStackScreen from "./MoreStack";
 import TeamStackScreen from "./TeamStackScreen";
-import PlayerProfileScreen from "../screens/TeamScreens/PlayerProfile";
-import PlayerStatsScreen from "../screens/TeamScreens/PlayerStats";
+import DashboardStackScreen from "./DashboardStack";
 
 const BottomTab = createBottomTabNavigator();
 const INITIAL_ROUTE_NAME = "Home";
@@ -75,6 +74,17 @@ export default function BottomTabNavigator({ navigation, route }) {
           ),
         }}
       />
+
+      <BottomTab.Screen
+        name="Dashboard" 
+        component={DashboardStackScreen}
+        options={{
+          headerShown: false,
+          tabBarButton: () => null,
+          tabBarVisible: true
+        }}
+      />
+      
       {/* <BottomTab.Screen
         name="PlayerProfile"
         component={PlayerProfileScreen}
@@ -93,6 +103,8 @@ export default function BottomTabNavigator({ navigation, route }) {
           tabBarVisible: true
         }}
       /> */}
+
+      
     </BottomTab.Navigator>
   );
 }
