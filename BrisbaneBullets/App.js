@@ -43,6 +43,7 @@ export default function App(props) {
       console.log("Failed. No permission to show notifications", authStatus);
     }
     // check whether an initial notification is available
+    // when the app is opened from a quit state(phone close state)
     messaging()
       .getInitialNotification()
       .then(async (remoteMessage) => {
@@ -53,7 +54,7 @@ export default function App(props) {
           );
         }
       });
-    // Assume a message-notification contains a "type" property in the data payload of the screen to open
+    // Tap on notification to open app when app is in background
     messaging().onNotificationOpenedApp((remoteMessage) => {
       console.log(
         "Notification caused app to open from background state:",
@@ -66,11 +67,13 @@ export default function App(props) {
       console.log("Message handled in the background!", remoteMessage);
     });
 
+    // Foreground message handler
     const unsubscribe = messaging().onMessage(async (remoteMessage) => {
       Alert.alert("A new FCM message arrived!");
       console.log(remoteMessage);
     });
     return unsubscribe;
+    //Returning unsubscribe ensures that the foreground message listener is removed when the component is unmounted, preventing memory leaks or unwanted behavior.
   }, []);
 
   return (

@@ -18,7 +18,7 @@ const AppSettings = () => {
   useEffect(() => {
     const handleAppStateChange = (nextAppState) => {
       if (appState.match(/inactive|background/) && nextAppState === "active") {
-        console.log("App has come to the foreground!");
+        // console.log("App has come to the foreground!");
         checkNotificationPermission();
       }
       setAppState(nextAppState);
@@ -43,18 +43,18 @@ const AppSettings = () => {
 
     if (enabled) {
       await getNotificationToken();
-      console.log("Notifications enabled and token set.");
+      // console.log("Notifications enabled and token set.");
     } else {
-      console.log("Notifications are disabled based on permissions.");
+      // console.log("Notifications are disabled based on permissions.");
     }
   };
 
   const getNotificationToken = async () => {
     try {
       const tokenData = await Notifications.getExpoPushTokenAsync();
-      console.log("Push notification token:", tokenData.data);
+      // console.log("Push notification token:", tokenData.data);
     } catch (error) {
-      console.error("Error getting a push token:", error);
+      // console.error("Error getting a push token:", error);
     }
   };
 

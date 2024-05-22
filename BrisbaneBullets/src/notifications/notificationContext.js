@@ -21,9 +21,9 @@ export const NotificationProvider = ({ children }) => {
 
   useEffect(() => {
     loadInitialSettings().then(() => {
-      console.log(
-        `Initial load: Notifications are ${isEnabled ? "enabled" : "disabled"}.`
-      );
+      // console.log(
+      //   `Initial load: Notifications are ${isEnabled ? "enabled" : "disabled"}.`
+      // );
     });
   }, []);
 
@@ -42,9 +42,9 @@ export const NotificationProvider = ({ children }) => {
     setNotifications(
       storedNotifications ? JSON.parse(storedNotifications) : []
     );
-    console.log(
-      `Notifications enabled state from storage: ${isNotificationsEnabled}`
-    );
+    // console.log(
+    //   `Notifications enabled state from storage: ${isNotificationsEnabled}`
+    // );
     if (isNotificationsEnabled) {
       await registerForPushNotificationsAsync();
     }
