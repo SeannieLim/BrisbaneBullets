@@ -9,12 +9,13 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { HStack, Image, Text, View, Box } from "@gluestack-ui/themed";
-import { ActionButton } from "./actionButton";
+import { ActionButton } from "./ActionButton";
 import { useNavigation } from "@react-navigation/native";
 import CustomButton from "./CustomButton";
 import NotificationIcon from "../notifications/notificationIcon";
 import { GlobalStyles } from "../constants/GlobalStyles";
 import { useNotifications } from "../notifications/notificationContext";
+import Dashboard from "../dashboard/Dashboard";
 
 const windowWidth = Dimensions.get("window").width;
 
@@ -81,6 +82,11 @@ export function TopBanner() {
   const handleWatchPress = () => {
     // Navigate to the LiveScreen with some params if necessary
     navigation.navigate("LiveScreen");
+  };
+
+  const handleDashboardPress = () => {
+    // Navigate to the Dashboard with some params if necessary
+    navigation.navigate("Dashboard");
   };
 
   // Need to update after getting data access
@@ -199,7 +205,7 @@ export function TopBanner() {
               <Text style={styles.liveText}>Live</Text>
             </View>
             <HStack>
-              <ActionButton value={"Dashboard"} />
+              <ActionButton value={"Dashboard"} onPress={handleDashboardPress} />
               <ActionButton value={"Watch"} onPress={handleWatchPress} />
               <ActionButton value={"Crowd Canvas"} onPress={handleCrowdCanvas} />
             </HStack>
