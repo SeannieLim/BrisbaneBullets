@@ -18,7 +18,6 @@ const AppSettings = () => {
   useEffect(() => {
     const handleAppStateChange = (nextAppState) => {
       if (appState.match(/inactive|background/) && nextAppState === "active") {
-        // console.log("App has come to the foreground!");
         checkNotificationPermission();
       }
       setAppState(nextAppState);
@@ -36,7 +35,7 @@ const AppSettings = () => {
   const checkNotificationPermission = async () => {
     const authStatus = await messaging().hasPermission();
     const storedSetting = await AsyncStorage.getItem("notificationsEnabled");
-    const isEnabledLocally = storedSetting !== "false";
+    const isEnabledLocally = storedSetting === "true";
     const enabled =
       authStatus === messaging.AuthorizationStatus.AUTHORIZED &&
       isEnabledLocally;
@@ -45,9 +44,6 @@ const AppSettings = () => {
 
     if (enabled) {
       await getNotificationToken();
-      // console.log("Notifications enabled and token set.");
-    } else {
-      // console.log("Notifications are disabled based on permissions.");
     }
   };
 
@@ -81,6 +77,7 @@ const AppSettings = () => {
       setIsEnabled(false);
     }
   };
+
   const showSettingsAlert = () => {
     Alert.alert(
       "Enable Notifications",

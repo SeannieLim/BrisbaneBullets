@@ -1,8 +1,8 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
-import messaging from '@react-native-firebase/messaging';
-import uuid from 'react-native-uuid';
-import { isYesterday, formatDistanceToNow } from 'date-fns';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { createContext, useState, useContext, useEffect } from "react";
+import messaging from "@react-native-firebase/messaging";
+import uuid from "react-native-uuid";
+import { isYesterday, formatDistanceToNow } from "date-fns";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const NotificationContext = createContext();
 
@@ -18,7 +18,14 @@ export const NotificationProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    const unsubscribe = messaging().onMessage(async remoteMessage => {
+    const unsubscribe = messaging().onMessage(async (remoteMessage) => {
+      const localSetting = await AsyncStorage.getItem("notificationsEnabled");
+      if (localSetting === "false") {
+        console.log(
+          "Notifications are disabled locally. Ignoring the message."
+        );
+        return;
+      }
       handleNotificationReceived(remoteMessage);
     });
 
@@ -26,11 +33,13 @@ export const NotificationProvider = ({ children }) => {
   }, [isEnabled]);
 
   async function loadInitialSettings() {
-    const localSetting = await AsyncStorage.getItem('notificationsEnabled');
-    const storedNotifications = await AsyncStorage.getItem('notifications');
-    const isNotificationsEnabled = localSetting !== 'false';
+    const localSetting = await AsyncStorage.getItem("notificationsEnabled");
+    const storedNotifications = await AsyncStorage.getItem("notifications");
+    const isNotificationsEnabled = localSetting !== "false";
     setIsEnabled(isNotificationsEnabled);
-    setNotifications(storedNotifications ? JSON.parse(storedNotifications) : []);
+    setNotifications(
+      storedNotifications ? JSON.parse(storedNotifications) : []
+    );
     if (isNotificationsEnabled) {
       registerForPushNotificationsAsync();
     }
@@ -38,37 +47,42 @@ export const NotificationProvider = ({ children }) => {
 
   const handleNotificationReceived = (notification) => {
     if (isEnabled) {
-      console.log('Processing notification.');
+      console.log("Processing notification.");
       addNotification(
         notification.notification.title,
+        notification.notification.body,
         notification.sentTime || Date.now()
       );
     } else {
-      console.log('Ignoring notification due to disabled state.');
+      console.log("Ignoring notification due to disabled state.");
     }
   };
 
-  const addNotification = async (title, rawTimeStamp) => {
-    console.log('Received raw timeStamp:', rawTimeStamp);
+  const addNotification = async (title, body, rawTimeStamp) => {
+    console.log("Received raw timeStamp:", rawTimeStamp);
 
     const timeStamp =
       rawTimeStamp > 1000000000000 ? rawTimeStamp : rawTimeStamp * 1000;
 
     const actualDate = new Date(timeStamp);
-    console.log('Normalized Date:', actualDate);
+    console.log("Normalized Date:", actualDate);
 
     const newNotification = {
       id: uuid.v4(),
       title,
+      body,
       actualDate,
       read: false,
     };
 
-    await AsyncStorage.getItem('notifications').then((data) => {
+    await AsyncStorage.getItem("notifications").then((data) => {
       const notifications = data ? JSON.parse(data) : [];
       const updatedNotifications = [newNotification, ...notifications];
-      AsyncStorage.setItem('notifications', JSON.stringify(updatedNotifications)).then(() => {
-        console.log('Notification added and AsyncStorage updated.');
+      AsyncStorage.setItem(
+        "notifications",
+        JSON.stringify(updatedNotifications)
+      ).then(() => {
+        console.log("Notification added and AsyncStorage updated.");
         setNotifications(updatedNotifications);
       });
     });
@@ -83,9 +97,9 @@ export const NotificationProvider = ({ children }) => {
     if (enabled) {
       const token = await messaging().getToken();
       setPushToken(token);
-      console.log('Push notification token:', token);
+      console.log("Push notification token:", token);
     } else {
-      console.log('Push notifications permission not granted');
+      console.log("Push notifications permission not granted");
       setIsEnabled(false);
     }
   };
@@ -95,23 +109,31 @@ export const NotificationProvider = ({ children }) => {
       ids = [ids];
     }
 
-    console.log('Attempting to mark notifications as read with IDs:', ids);
+    console.log("Attempting to mark notifications as read with IDs:", ids);
 
     setNotifications((currentNotifications) => {
       const updatedNotifications = currentNotifications.map((notification) => {
         if (ids.includes(notification.id)) {
-          console.log('Found notification with ID, updating read status:', notification.id);
+          console.log(
+            "Found notification with ID, updating read status:",
+            notification.id
+          );
           return { ...notification, read: true };
         }
         return notification;
       });
 
-      AsyncStorage.setItem('notifications', JSON.stringify(updatedNotifications))
+      AsyncStorage.setItem(
+        "notifications",
+        JSON.stringify(updatedNotifications)
+      )
         .then(() => {
-          console.log('AsyncStorage successfully updated with new read status.');
+          console.log(
+            "AsyncStorage successfully updated with new read status."
+          );
         })
         .catch((error) => {
-          console.error('Failed to update AsyncStorage:', error);
+          console.error("Failed to update AsyncStorage:", error);
         });
 
       return updatedNotifications;
@@ -123,19 +145,22 @@ export const NotificationProvider = ({ children }) => {
       ids = [ids];
     }
 
-    console.log('Attempting to delete notification with ID:', ids);
+    console.log("Attempting to delete notification with ID:", ids);
 
     setNotifications((currentNotifications) => {
       const filteredNotifications = currentNotifications.filter(
         (notification) => !ids.includes(notification.id)
       );
 
-      AsyncStorage.setItem('notifications', JSON.stringify(filteredNotifications))
+      AsyncStorage.setItem(
+        "notifications",
+        JSON.stringify(filteredNotifications)
+      )
         .then(() => {
-          console.log('AsyncStorage successfully updated after deletion.');
+          console.log("AsyncStorage successfully updated after deletion.");
         })
         .catch((error) => {
-          console.error('Failed to update AsyncStorage after deletion:', error);
+          console.error("Failed to update AsyncStorage after deletion:", error);
         });
 
       return filteredNotifications;
@@ -150,17 +175,17 @@ export const NotificationProvider = ({ children }) => {
     const diffMin = diffSec / 60;
     const diffHour = diffMin / 60;
 
-    const pluralize = (count, noun, suffix = 's') =>
-      `${count} ${noun}${count !== 1 ? suffix : ''}`;
+    const pluralize = (count, noun, suffix = "s") =>
+      `${count} ${noun}${count !== 1 ? suffix : ""}`;
 
     if (diffSec < 60) {
-      return 'Just now';
+      return "Just now";
     } else if (diffMin < 60) {
-      return pluralize(Math.floor(diffMin), 'minute') + ' ago';
+      return pluralize(Math.floor(diffMin), "minute") + " ago";
     } else if (diffHour < 24) {
-      return pluralize(Math.floor(diffHour), 'hour') + ' ago';
+      return pluralize(Math.floor(diffHour), "hour") + " ago";
     } else if (isYesterday(actualDate)) {
-      return 'Yesterday';
+      return "Yesterday";
     } else {
       return formatDistanceToNow(actualDate, { addSuffix: true });
     }

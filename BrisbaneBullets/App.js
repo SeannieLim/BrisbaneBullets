@@ -23,7 +23,6 @@ export default function App(props) {
     <NotificationProvider>
       <GluestackUIProvider config={config}>
         <View style={styles.container}>
-          {/*<SafeAreaView style={styles.container} customTheme> // from amber's*/}
           {Platform.OS === "ios" && <StatusBar barStyle="default" />}
           <NavigationContainer theme={DarkTheme}>
             {/* <BottomTabNavigator /> */}
@@ -58,7 +57,6 @@ export default function App(props) {
               <Stack.Screen name="Standings" component={StandingsScreen} />
             </Stack.Navigator>
           </NavigationContainer>
-          {/*</SafeAreaView>*/}
         </View>
       </GluestackUIProvider>
     </NotificationProvider>
