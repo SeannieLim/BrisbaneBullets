@@ -7,7 +7,7 @@ import {
   StyleSheet,
   AppState,
 } from "react-native";
-import * as Notifications from "expo-notifications";
+import messaging from "@react-native-firebase/messaging";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { NotificationContext } from "./notificationContext";
 
@@ -34,10 +34,12 @@ const AppSettings = () => {
   }, [appState]);
 
   const checkNotificationPermission = async () => {
-    const settings = await Notifications.getPermissionsAsync();
+    const authStatus = await messaging().hasPermission();
     const storedSetting = await AsyncStorage.getItem("notificationsEnabled");
     const isEnabledLocally = storedSetting !== "false";
-    const enabled = settings.granted && isEnabledLocally;
+    const enabled =
+      authStatus === messaging.AuthorizationStatus.AUTHORIZED &&
+      isEnabledLocally;
 
     setIsEnabled(enabled);
 
@@ -51,10 +53,9 @@ const AppSettings = () => {
 
   const getNotificationToken = async () => {
     try {
-      const tokenData = await Notifications.getExpoPushTokenAsync();
-      // console.log("Push notification token:", tokenData.data);
+      const token = await messaging().getToken();
     } catch (error) {
-      // console.error("Error getting a push token:", error);
+      console.error("Error getting a push token:", error);
     }
   };
 
@@ -66,8 +67,8 @@ const AppSettings = () => {
 
     // If trying to turn on, check system permissions.
     if (newValue) {
-      const settings = await Notifications.getPermissionsAsync();
-      if (!settings.granted) {
+      const authStatus = await messaging().hasPermission();
+      if (authStatus !== messaging.AuthorizationStatus.AUTHORIZED) {
         // System permissions not granted; show alert.
         showSettingsAlert();
       } else {

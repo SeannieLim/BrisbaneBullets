@@ -17,12 +17,7 @@ import { Button } from "react-native";
 const windowWidth = Dimensions.get("window").width;
 
 export default function NotiScreen() {
-  const {
-    notifications,
-    markAsRead,
-    deleteNotifications,
-    testAddNotification,
-  } = useNotifications();
+  const { notifications, markAsRead, deleteNotifications } = useNotifications();
   const [editMode, setEditMode] = useState(false);
   const [selectedIds, setSelectedIds] = useState([]);
 
@@ -69,7 +64,6 @@ export default function NotiScreen() {
 
   return (
     <Box style={styles.container}>
-      <Button title="Test Date Notifications" onPress={testAddNotification} />
       <TopButtonControl
         editMode={editMode}
         toggleEditMode={toggleEditMode}

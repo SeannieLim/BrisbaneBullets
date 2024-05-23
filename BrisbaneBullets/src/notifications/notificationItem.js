@@ -29,7 +29,7 @@ const NotificationItem = ({
       ]}
       onPress={() => (editMode ? toggleSelect(item.id) : markAsRead([item.id]))}
     >
-      <View style={styles.titleContainer}>
+      <View style={styles.msgContainer}>
         {editMode ? (
           <View style={styles.indicatorContainer}>
             <View
@@ -50,11 +50,16 @@ const NotificationItem = ({
             />
           </View>
         )}
-
-        <Text style={[styles.title, { color: item.read ? "#999" : "#000" }]}>
-          {item.title}
-        </Text>
+        <View style={styles.textContainer}>
+          <Text style={[styles.title, { color: item.read ? "#999" : "#000" }]}>
+            {item.title}
+          </Text>
+          <Text style={[styles.body, { color: item.read ? "#999" : "#000" }]}>
+            {item.body}
+          </Text>
+        </View>
       </View>
+
       <Text style={styles.timeStamp}>
         {displayTimeStamp(new Date(item.actualDate))}
       </Text>
@@ -82,7 +87,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: "lightgrey",
   },
-  titleContainer: {
+  msgContainer: {
     flex: 1,
     flexDirection: "row",
     alignItems: "center",
@@ -108,10 +113,22 @@ const styles = StyleSheet.create({
   selectedStyle: {
     backgroundColor: "#164CA8",
   },
+  textContainer: {
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "center",
+  },
   title: {
     fontSize: 16,
     color: "#333",
     flexShrink: 1,
+    marginVertical: 2,
+  },
+  body: {
+    fontSize: 12,
+    color: "#333",
+    flexShrink: 1,
+    marginVertical: 2,
   },
   timeStamp: {
     fontSize: 14,
