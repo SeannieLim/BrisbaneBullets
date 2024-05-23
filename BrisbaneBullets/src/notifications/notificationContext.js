@@ -3,6 +3,7 @@ import messaging from "@react-native-firebase/messaging";
 import uuid from "react-native-uuid";
 import { isYesterday, formatDistanceToNow } from "date-fns";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { PermissionsAndroid } from "react-native";
 
 export const NotificationContext = createContext();
 
@@ -22,12 +23,12 @@ export const NotificationProvider = ({ children }) => {
 
     if (isEnabled) {
       // Subscribe to incoming FCM messages
-      unsubscribe = messaging().onMessage(async remoteMessage => {
+      unsubscribe = messaging().onMessage(async (remoteMessage) => {
         handleNotificationReceived(remoteMessage);
       });
 
       // Set up background message handler
-      messaging().setBackgroundMessageHandler(async remoteMessage => {
+      messaging().setBackgroundMessageHandler(async (remoteMessage) => {
         handleNotificationReceived(remoteMessage);
       });
     }
@@ -39,7 +40,6 @@ export const NotificationProvider = ({ children }) => {
       }
     };
   }, [isEnabled]);
-
 
   async function loadInitialSettings() {
     const localSetting = await AsyncStorage.getItem("notificationsEnabled");
@@ -98,6 +98,15 @@ export const NotificationProvider = ({ children }) => {
   };
 
   const registerForPushNotificationsAsync = async () => {
+    const granted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS
+    );
+    if (granted !== PermissionsAndroid.RESULTS.GRANTED) {
+      console.log("Push notifications permission not granted");
+      setIsEnabled(false);
+      await AsyncStorage.setItem("notificationsEnabled", "false");
+      return;
+    }
     const authStatus = await messaging().requestPermission();
     const enabled =
       authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
@@ -106,11 +115,13 @@ export const NotificationProvider = ({ children }) => {
     if (enabled) {
       const token = await messaging().getToken();
       setPushToken(token);
-      console.log('Push notification token:', token);
+      console.log("Push notification token:", token);
       setIsEnabled(true);
+      await AsyncStorage.setItem("notificationsEnabled", "true");
     } else {
-      console.log('Push notifications permission not granted');
+      console.log("Push notifications permission not granted");
       setIsEnabled(false);
+      await AsyncStorage.setItem("notificationsEnabled", "false");
     }
   };
 
