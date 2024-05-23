@@ -16,66 +16,9 @@ import StandingsScreen from "./src/screens/StandingsScreen";
 import PrivacyPolicyScreen from "./src/screens/PrivacyPolicyScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { NotificationProvider } from "./src/notifications/notificationContext";
-import messaging from "@react-native-firebase/messaging";
 
 export default function App(props) {
   const Stack = createStackNavigator();
-
-  const requestUserPermission = async () => {
-    const authStatus = await messaging().requestPermission();
-    const enabled =
-      authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
-      authStatus === messaging.AuthorizationStatus.PROVISIONAL;
-
-    if (enabled) {
-      console.log("Authorization status:", authStatus);
-    }
-  };
-  useEffect(() => {
-    if (requestUserPermission()) {
-      // return fcm tocken
-      messaging()
-        .getToken()
-        .then((token) => {
-          console.log("FCM Token:", token);
-        });
-    } else {
-      console.log("Failed. No permission to show notifications", authStatus);
-    }
-    // check whether an initial notification is available
-    // when the app is opened from a quit state(phone close state)
-    messaging()
-      .getInitialNotification()
-      .then(async (remoteMessage) => {
-        if (remoteMessage) {
-          console.log(
-            "Notification caused app to open from from quit state:",
-            remoteMessage.notification
-          );
-        }
-      });
-    // Tap on notification to open app when app is in background
-    messaging().onNotificationOpenedApp((remoteMessage) => {
-      console.log(
-        "Notification caused app to open from background state:",
-        remoteMessage.notification
-      );
-    });
-
-    // Register background handler
-    messaging().setBackgroundMessageHandler(async (remoteMessage) => {
-      console.log("Message handled in the background!", remoteMessage);
-    });
-
-    // Foreground message handler
-    const unsubscribe = messaging().onMessage(async (remoteMessage) => {
-      Alert.alert("A new FCM message arrived!");
-      console.log(remoteMessage);
-    });
-    return unsubscribe;
-    //Returning unsubscribe ensures that the foreground message listener is removed when the component is unmounted, preventing memory leaks or unwanted behavior.
-  }, []);
-
   return (
     <NotificationProvider>
       <GluestackUIProvider config={config}>
