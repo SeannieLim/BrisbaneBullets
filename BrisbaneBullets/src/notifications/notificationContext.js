@@ -18,19 +18,28 @@ export const NotificationProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    const unsubscribe = messaging().onMessage(async (remoteMessage) => {
-      const localSetting = await AsyncStorage.getItem("notificationsEnabled");
-      if (localSetting === "false") {
-        console.log(
-          "Notifications are disabled locally. Ignoring the message."
-        );
-        return;
-      }
-      handleNotificationReceived(remoteMessage);
-    });
+    let unsubscribe;
 
-    return unsubscribe;
+    if (isEnabled) {
+      // Subscribe to incoming FCM messages
+      unsubscribe = messaging().onMessage(async remoteMessage => {
+        handleNotificationReceived(remoteMessage);
+      });
+
+      // Set up background message handler
+      messaging().setBackgroundMessageHandler(async remoteMessage => {
+        handleNotificationReceived(remoteMessage);
+      });
+    }
+
+    // Return a cleanup function to unsubscribe when isEnabled changes
+    return () => {
+      if (unsubscribe) {
+        unsubscribe();
+      }
+    };
   }, [isEnabled]);
+
 
   async function loadInitialSettings() {
     const localSetting = await AsyncStorage.getItem("notificationsEnabled");
@@ -97,9 +106,10 @@ export const NotificationProvider = ({ children }) => {
     if (enabled) {
       const token = await messaging().getToken();
       setPushToken(token);
-      console.log("Push notification token:", token);
+      console.log('Push notification token:', token);
+      setIsEnabled(true);
     } else {
-      console.log("Push notifications permission not granted");
+      console.log('Push notifications permission not granted');
       setIsEnabled(false);
     }
   };
