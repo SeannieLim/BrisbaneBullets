@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
 import { scaleFontSize } from "../constants/Layout";
+import { WebView } from 'react-native-webview'
 
 const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
@@ -116,6 +117,9 @@ const DashBoardStats = () => {
                     <Text style={styles.circleLabel}>FT%</Text>
                 </View>
             </View>
+            <View style={styles.webViewContainer}>
+                <WebView source={{uri: 'https://www.flashscore.com.au/match/xUoDDejA/#/match-summary/match-summary'}} style = {styles.webView} />
+            </View>
         </View>
     )
 }
@@ -208,6 +212,15 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontWeight: 'bold',
         textAlign: 'center'
+    },
+    webViewContainer: {
+        height: windowHeight * 0.5,
+        width: windowWidth,
+        marginTop: -windowHeight * 0.12,
+        marginLeft: -windowWidth * 0.08,
+    },
+    webView: {
+        flex: 1
     }
 })
 
