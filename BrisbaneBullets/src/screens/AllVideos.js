@@ -138,7 +138,7 @@ const AllVideos = () => {
         {index > 0 && (index + 1) % 3 === 0 && (
           <View style={styles.ad}>
           <AdsBanner 
-            imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png"
+            //imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png"
           />
           </View>
         )}

@@ -206,10 +206,10 @@ const Square = ({ player }) => {
           <Image source={player.playerImage} style={styles.playerImage} />
         </View>
         <View style={styles.textContainer}>
-          <Text style={styles.jerseyNumber}>{player.jerseyNumber}</Text>
+          <Text style={[styles.jerseyNumber, { fontWeight: 'bold' }]}>{player.jerseyNumber}</Text>
         </View>
         <View style={styles.info}>
-        <Text style={styles.name}>{player.playerName}</Text>
+        <Text style={[styles.name, { fontWeight: 'bold' }]}  >{player.playerName}</Text>
         <Text style={styles.stats}>assists:{player.assists} | rebound: {player.rebound}</Text>
         <Text style={styles.points}>{player.points}</Text>
         <Text style={styles.pts}>pts</Text>
@@ -297,7 +297,7 @@ const styles = StyleSheet.create({
     left: 120,
   },
   name: {
-    fontSize:14,
+    fontSize:15,
     color:"#164CA8",
   },
   stats:{
