@@ -25,7 +25,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     assists:"3",
     rebound:"1",
-    points:"10"
+    points:"11"
   },
   {
     id: "2",
@@ -37,7 +37,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     assists:"1",
     rebound:"2",
-    points:"8"
+    points:"9"
   },
   {
     id: "3",
@@ -48,7 +48,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     assists:"1",
     rebound:"0",
-    points:"7"
+    points:"8"
   },
   {
     id: "4",
@@ -60,7 +60,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     assists:"2",
     rebound:"0",
-    points:"10"
+    points:"6"
   },
   {
     id: "5",
@@ -72,7 +72,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     assists:"3",
     rebound:"1",
-    points:"12"
+    points:"6"
   },
   {
     id: "6",
@@ -84,7 +84,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     assists:"1",
     rebound:"2",
-    points:"8"
+    points:"6"
   },
   {
     id: "7",
@@ -119,7 +119,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     assists:"2",
     rebound:"3",
-    points:"9"
+    points:"6"
   },
   {
     id: "10",
@@ -131,7 +131,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     assists:"2",
     rebound:"0",
-    points:"9"
+    points:"6"
   },
   {
     id: "11",
@@ -155,7 +155,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     assists:"1",
     rebound:"2",
-    points:"8"
+    points:"5"
   },
   {
     id: "13",
@@ -167,7 +167,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     assists:"1",
     rebound:"3",
-    points:"8"
+    points:"5"
   },
   {
     id: "14",
@@ -189,7 +189,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     assists:"3",
     rebound:"0",
-    points:"8"
+    points:"5"
   }
 ];
 
