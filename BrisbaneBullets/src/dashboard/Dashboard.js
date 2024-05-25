@@ -40,7 +40,7 @@ export default function Dashboard({navigation}) {
 
     const dashBoardTabs = [
         {label: "Statistics", content: <DashBoardStats/>},
-        {label: "Box Score", content: <DashBoardPlayerList/>},
+        {label: "Individual stats", content: <DashBoardPlayerList/>},
     ];
 
     return (

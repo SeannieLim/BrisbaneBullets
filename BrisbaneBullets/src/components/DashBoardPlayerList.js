@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { FlatList, ScrollView } from "react-native-gesture-handler";
+import StatsToggleButton from '../dashboard/components/StatsToggleButton';
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -21,7 +22,10 @@ const players = [
     playerImage: require("../../assets/teamPageImages/RoccoZikarsky.png"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/RoccoZikarskyHead.jpg"),
-    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+    playerDashboard: require("../../assets/Dashboard/playerStats.png"),
+    assists:"3",
+    rebound:"1",
+    points:"10"
   },
   {
     id: "2",
@@ -30,7 +34,10 @@ const players = [
     playerImage: require("../../assets/teamPageImages/AronBaynes.jpeg"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/AronBaynesHead.jpg"),
-    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+    playerDashboard: require("../../assets/Dashboard/playerStats.png"),
+    assists:"1",
+    rebound:"2",
+    points:"8"
   },
   {
     id: "3",
@@ -38,7 +45,10 @@ const players = [
     playerName: "Casey Prather",
     playerImage: require("../../assets/teamPageImages/CaseyPrather.jpeg"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
-    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+    playerDashboard: require("../../assets/Dashboard/playerStats.png"),
+    assists:"1",
+    rebound:"0",
+    points:"7"
   },
   {
     id: "4",
@@ -47,7 +57,10 @@ const players = [
     playerImage: require("../../assets/teamPageImages/ChrisSmith.png"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/ChrisSmithHead.jpg"),
-    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+    playerDashboard: require("../../assets/Dashboard/playerStats.png"),
+    assists:"2",
+    rebound:"0",
+    points:"10"
   },
   {
     id: "5",
@@ -56,7 +69,10 @@ const players = [
     playerImage: require("../../assets/teamPageImages/DJMitchell.png"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/DJMitchellHead.jpg"),
-    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+    playerDashboard: require("../../assets/Dashboard/playerStats.png"),
+    assists:"3",
+    rebound:"1",
+    points:"12"
   },
   {
     id: "6",
@@ -65,7 +81,10 @@ const players = [
     playerImage: require("../../assets/teamPageImages/GabeHadley.jpeg"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/GabeHadleyHead.jpg"),
-    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+    playerDashboard: require("../../assets/Dashboard/playerStats.png"),
+    assists:"1",
+    rebound:"2",
+    points:"8"
   },
   {
     id: "7",
@@ -74,7 +93,10 @@ const players = [
     playerImage: require("../../assets/teamPageImages/IsaacWhite.jpeg"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/IsaacWhiteHead.jpg"),
-    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+    playerDashboard: require("../../assets/Dashboard/playerStats.png"),
+    assists:"2",
+    rebound:"1",
+    points:"6"
   },
   {
     id: "8",
@@ -82,7 +104,10 @@ const players = [
     playerName: "Josh Bannan",
     playerImage: require("../../assets/teamPageImages/JoshBannan.png"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
-    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+    playerDashboard: require("../../assets/Dashboard/playerStats.png"),
+    assists:"4",
+    rebound:"2",
+    points:"6"
   },
   {
     id: "9",
@@ -91,7 +116,10 @@ const players = [
     playerImage: require("../../assets/teamPageImages/MitchNorton.jpeg"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/MitchNortonHead.jpg"),
-    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+    playerDashboard: require("../../assets/Dashboard/playerStats.png"),
+    assists:"2",
+    rebound:"3",
+    points:"9"
   },
   {
     id: "10",
@@ -100,7 +128,10 @@ const players = [
     playerImage: require("../../assets/teamPageImages/NathanSobey.png"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/NathanSobeyHead.jpg"),
-    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+    playerDashboard: require("../../assets/Dashboard/playerStats.png"),
+    assists:"2",
+    rebound:"0",
+    points:"9"
   },
   {
     id: "11",
@@ -109,7 +140,10 @@ const players = [
     playerImage: require("../../assets/teamPageImages/SamMcDaniel.png"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/SamMcDanielHead.jpg"),
-    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+    playerDashboard: require("../../assets/Dashboard/playerStats.png"),
+    assists:"1",
+    rebound:"1",
+    points:"6"
   },
   {
     id: "12",
@@ -118,7 +152,10 @@ const players = [
     playerImage: require("../../assets/teamPageImages/MatthewJohns.png"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/MattJohnsHead.jpg"),
-    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+    playerDashboard: require("../../assets/Dashboard/playerStats.png"),
+    assists:"1",
+    rebound:"2",
+    points:"8"
   },
   {
     id: "13",
@@ -127,7 +164,10 @@ const players = [
     playerImage: require("../../assets/teamPageImages/ShannonScott.jpeg"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/ShannonScottHead.jpg"),
-    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+    playerDashboard: require("../../assets/Dashboard/playerStats.png"),
+    assists:"1",
+    rebound:"3",
+    points:"8"
   },
   {
     id: "14",
@@ -135,7 +175,10 @@ const players = [
     playerName: "Tristan Devers",
     playerImage: require("../../assets/teamPageImages/TristanDevers.png"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
-    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+    playerDashboard: require("../../assets/Dashboard/playerStats.png"),
+    assists:"1",
+    rebound:"2",
+    points:"5"
   },
   {
     id: "15",
@@ -143,7 +186,10 @@ const players = [
     playerName: "Tyrell Harrison",
     playerImage: require("../../assets/teamPageImages/TyrrelHarrison.png"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
-    playerDashboard: require("../../assets/Dashboard/playerStats.png")
+    playerDashboard: require("../../assets/Dashboard/playerStats.png"),
+    assists:"3",
+    rebound:"0",
+    points:"8"
   }
 ];
 
@@ -155,29 +201,43 @@ const Square = ({ player }) => {
 
   return (
     <TouchableOpacity onPress={navigateToProfile}>
-      <View style={styles.square}>
+      <View style={styles.list}>
         <View style={styles.imageContainer}>
           <Image source={player.playerImage} style={styles.playerImage} />
         </View>
         <View style={styles.textContainer}>
           <Text style={styles.jerseyNumber}>{player.jerseyNumber}</Text>
         </View>
+        <View style={styles.info}>
+        <Text style={styles.name}>{player.playerName}</Text>
+        <Text style={styles.stats}>assists:{player.assists} | rebound: {player.rebound}</Text>
+        <Text style={styles.points}>{player.points}</Text>
+        <Text style={styles.pts}>pts</Text>
+      </View>
       </View>
     </TouchableOpacity>
   );
 };
 
 const DashBoardPlayerList = () => {
+
+  const dashBoardTabs = [
+    {label: "Points", content: <DashBoardPlayerList/>},
+    {label: "Assists", content: <DashBoardPlayerList/>},
+    {label: "Rebound", content: <DashBoardPlayerList/>},
+
+];
   return (
    
     <View style={styles.container}>
+      <View style={styles.toggle}>
+        <StatsToggleButton tabs={dashBoardTabs}/>
+      </View>
       <FlatList
         data={players}
         renderItem={({ item }) => <Square player={item} />}
         keyExtractor={(item) => item.id}
-        numColumns={2}
         showsVerticalScrollIndicator={false}
-        columnWrapperStyle={styles.columnWrapper}
       />
     </View>
 
@@ -188,19 +248,19 @@ export default DashBoardPlayerList;
 
 const styles = StyleSheet.create({
   container: {
-    paddingBottom: windowHeight * 0.5,
+    paddingTop:windowHeight * 0.02,
+    paddingBottom: windowHeight * 0.1,
   },
-  columnWrapper: {
-    justifyContent: "space-between",
-    marginTop: windowHeight * 0.01,
-    marginHorizontal: windowWidth * 0.01,
+  toggle:{
+    alignItems: "center",
   },
-  square: {
-    width: 140,
-    height: 120,
-    backgroundColor: "lightblue",
+
+  list: {
+    width: 350,
+    height: 90,
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
     marginVertical: windowHeight * 0.01,
-    borderRadius: 15,
+    borderRadius: 25,
     shadowColor: "#000",
     shadowOffset: { width: 1, height: 2 },
     shadowOpacity: 0.25,
@@ -210,9 +270,10 @@ const styles = StyleSheet.create({
     marginRight : windowWidth * 0.1,
   },
   imageContainer: {
-    width: "100%",
+    width: "30%",
     height: "100%",
-    borderRadius: 15,
+    borderTopLeftRadius: 15,
+    borderBottomLeftRadius: 15,
     overflow: "hidden",
   },
   playerImage: {
@@ -230,4 +291,30 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 16,
   },
+  info:{
+    position: "absolute",
+    top: 15,
+    left: 120,
+  },
+  name: {
+    fontSize:14,
+    color:"#164CA8",
+  },
+  stats:{
+    fontSize:15,
+    color:"#164CA8",
+    top:20,
+  },
+  points:{
+    position: "absolute",
+    left:170,
+    top:10,
+    fontSize:29,
+    textAlign: "right",  // Align text to the left
+  },
+  pts:{
+    left:200,
+    fontSize:11,
+    top:3,
+  }
 });
