@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -225,9 +225,37 @@ const Square = ({ player }) => {
 
 
 const DashBoardPlayerList = () => {
+  const [selectedTab, setSelectedTab] = useState("points");
+
+  const handleTabChange = (tab) => {
+    setSelectedTab(tab);
+  };
+
+  // Filter players based on the selected tab
+  const filteredPlayers = players.filter(player => {
+    if (selectedTab === "points") {
+      return player.points > 0;
+    } else if (selectedTab === "assists") {
+      return player.assists > 0;
+    } else if (selectedTab === "rebounds") {
+      return player.rebounds > 0;
+    }
+  });
+
   return (
    
     <View style={styles.container}>
+      <View style={styles.tabContainer}>
+        <TouchableOpacity onPress={() => handleTabChange("points")} style={[styles.tab, selectedTab === "points" && styles.activeTab]}>
+          <Text style = {styles.toggleTabText}>Points</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => handleTabChange("assists")} style={[styles.tab, selectedTab === "assists" && styles.activeTab]}>
+          <Text style = {styles.toggleTabText}>Assists</Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => handleTabChange("rebounds")} style={[styles.tab, selectedTab === "rebounds" && styles.activeTab]}>
+          <Text style = {styles.toggleTabText}>Rebounds</Text>
+        </TouchableOpacity>
+      </View>
       <FlatList
         data={players}
         renderItem={({ item }) => <Square player={item}/>}
@@ -245,6 +273,30 @@ export default DashBoardPlayerList;
 const styles = StyleSheet.create({
   container: {
     paddingBottom: windowHeight * 0.5,
+  },
+  tabContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    marginBottom: windowHeight * 0.02,
+    marginTop: windowHeight * 0.03,
+    marginLeft: -windowWidth * 0.05
+  },
+  tab: {
+    paddingTop: 10,
+    paddingRight: 15, 
+    paddingBottom: 10, 
+    paddingLeft: 15,
+    borderBottomWidth: 2,
+    borderBottomColor: "white",
+  },
+  activeTab: {
+    backgroundColor: 'rgba(22, 76, 168, 0.72)',
+    borderBottomColor: 'rgba(22, 76, 168, 0.72)',
+  },
+  toggleTabText: {
+    color: "white",
+    fontWeight: "bold",
   },
   wrapper: {
     height: windowHeight * 0.11,
