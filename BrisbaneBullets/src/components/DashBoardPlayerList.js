@@ -151,7 +151,7 @@ const players = [
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/MattJohnsHead.jpg"),
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
-    points: 39,
+    points: 20,
     assists: 2,
     rebounds: 1
   },
@@ -185,7 +185,7 @@ const players = [
     playerImage: require("../../assets/teamPageImages/TyrrelHarrison.png"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
-    points: 45,
+    points: 20,
     assists: 2,
     rebounds: 10
   }
