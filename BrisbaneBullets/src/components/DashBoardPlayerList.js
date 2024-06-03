@@ -8,11 +8,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { FlatList, ScrollView } from "react-native-gesture-handler";
+import { FlatList } from "react-native-gesture-handler";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
-
 const players = [
   {
     id: "1",
@@ -34,7 +33,7 @@ const players = [
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/AronBaynesHead.jpg"),
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
-    points: 2,
+    points: 15,
     assists: 2,
     rebounds: 1
   },
@@ -57,7 +56,7 @@ const players = [
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/ChrisSmithHead.jpg"),
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
-    points: 1,
+    points: 30,
     assists: 2,
     rebounds: 1
   },
@@ -152,7 +151,7 @@ const players = [
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerHeadShot: require("../../assets/teamPageImages/MattJohnsHead.jpg"),
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
-    points: 0,
+    points: 39,
     assists: 2,
     rebounds: 1
   },
@@ -176,7 +175,7 @@ const players = [
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     points: 0,
-    assists: 2,
+    assists: 13,
     rebounds: 1
   },
   {
@@ -186,17 +185,32 @@ const players = [
     playerImage: require("../../assets/teamPageImages/TyrrelHarrison.png"),
     playerProfileImage: require("../../assets/teamPageImages/Image1.png"),
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
-    points: 0,
+    points: 45,
     assists: 2,
-    rebounds: 1
+    rebounds: 10
   }
 ];
 
-const Square = ({ player }) => {
+const Square = ({ player, selectedTab }) => {
   const navigation = useNavigation();
   const navigateToProfile = () => {
     navigation.navigate("DashBoardPlayerStats", { player });
   };
+
+  // Determine which stat to display based on the selected tab
+  let statValue = player.points;
+  let statLabel = "pts";
+  let smallStatsText = `assist ${player.assists} | rebound ${player.rebounds}`;
+
+  if (selectedTab === "assists") {
+    statValue = player.assists;
+    statLabel = "ast";
+    smallStatsText = `points ${player.points} | rebound ${player.rebounds}`;
+  } else if (selectedTab === "rebounds") {
+    statValue = player.rebounds;
+    statLabel = "reb";
+    smallStatsText = `points ${player.points} | assist ${player.assists}`;
+  }
 
   return (
     <TouchableOpacity onPress={navigateToProfile}>
@@ -210,19 +224,16 @@ const Square = ({ player }) => {
           <Text style={styles.playerName}>{player.playerName}</Text>
         </View>
         <View style={styles.smallStatsContainer}>
-          <Text style={styles.smallStats}>assist 2 | rebound 1</Text>
+          <Text style={styles.smallStats}>{smallStatsText}</Text>
         </View>
-        <View style={styles.bigStatsContainer}>
-          <Text style={styles.bigStats}>{player.points}</Text>
-        </View>
-        <View style={styles.pointContainer}>
-          <Text style={styles.pointText}>pt</Text>
+        <View style={styles.bigStatsWrapper}>
+          <Text style={styles.bigStats}>{statValue}</Text>
+          <Text style={styles.pointText}>{statLabel}</Text>
         </View>
       </View>
     </TouchableOpacity>
   );
 };
-
 
 const DashBoardPlayerList = () => {
   const [selectedTab, setSelectedTab] = useState("points");
@@ -231,40 +242,47 @@ const DashBoardPlayerList = () => {
     setSelectedTab(tab);
   };
 
-  // Filter players based on the selected tab
-  const filteredPlayers = players.filter(player => {
+  // Sort players based on the selected tab
+  const sortedPlayers = [...players].sort((a, b) => {
     if (selectedTab === "points") {
-      return player.points > 0;
+      return b.points - a.points;
     } else if (selectedTab === "assists") {
-      return player.assists > 0;
+      return b.assists - a.assists;
     } else if (selectedTab === "rebounds") {
-      return player.rebounds > 0;
+      return b.rebounds - a.rebounds;
     }
   });
 
   return (
-   
     <View style={styles.container}>
       <View style={styles.tabContainer}>
-        <TouchableOpacity onPress={() => handleTabChange("points")} style={[styles.tab, selectedTab === "points" && styles.activeTab]}>
-          <Text style = {styles.toggleTabText}>Points</Text>
+        <TouchableOpacity
+          onPress={() => handleTabChange("points")}
+          style={[styles.tab, selectedTab === "points" && styles.activeTab]}
+        >
+          <Text style={styles.toggleTabText}>Points</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleTabChange("assists")} style={[styles.tab, selectedTab === "assists" && styles.activeTab]}>
-          <Text style = {styles.toggleTabText}>Assists</Text>
+        <TouchableOpacity
+          onPress={() => handleTabChange("assists")}
+          style={[styles.tab, selectedTab === "assists" && styles.activeTab]}
+        >
+          <Text style={styles.toggleTabText}>Assists</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => handleTabChange("rebounds")} style={[styles.tab, selectedTab === "rebounds" && styles.activeTab]}>
-          <Text style = {styles.toggleTabText}>Rebounds</Text>
+        <TouchableOpacity
+          onPress={() => handleTabChange("rebounds")}
+          style={[styles.tab, selectedTab === "rebounds" && styles.activeTab]}
+        >
+          <Text style={styles.toggleTabText}>Rebounds</Text>
         </TouchableOpacity>
       </View>
       <FlatList
-        data={players}
-        renderItem={({ item }) => <Square player={item}/>}
+        data={sortedPlayers}
+        renderItem={({ item }) => <Square player={item} selectedTab={selectedTab} />}
         keyExtractor={(item) => item.id}
         numColumns={1}
         showsVerticalScrollIndicator={false}
       />
     </View>
-
   );
 };
 
@@ -280,19 +298,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: windowHeight * 0.02,
     marginTop: windowHeight * 0.03,
-    marginLeft: -windowWidth * 0.05
+    marginLeft: -windowWidth * 0.05,
   },
   tab: {
     paddingTop: 10,
-    paddingRight: 15, 
-    paddingBottom: 10, 
+    paddingRight: 15,
+    paddingBottom: 10,
     paddingLeft: 15,
     borderBottomWidth: 2,
     borderBottomColor: "white",
   },
   activeTab: {
-    backgroundColor: 'rgba(22, 76, 168, 0.72)',
-    borderBottomColor: 'rgba(22, 76, 168, 0.72)',
+    backgroundColor: "rgba(22, 76, 168, 0.72)",
+    borderBottomColor: "rgba(22, 76, 168, 0.72)",
   },
   toggleTabText: {
     color: "white",
@@ -302,7 +320,7 @@ const styles = StyleSheet.create({
     height: windowHeight * 0.11,
     width: windowWidth * 0.85,
     marginTop: windowHeight * 0.02,
-    backgroundColor: 'rgba(255, 255, 255, 0.75)',
+    backgroundColor: "rgba(255, 255, 255, 0.75)",
     borderRadius: 30,
   },
   columnWrapper: {
@@ -355,13 +373,15 @@ const styles = StyleSheet.create({
     color: "#113B81",
     letterSpacing: 0.5,
   },
-  bigStatsContainer: {
+  bigStatsWrapper: {
     position: "absolute",
-    marginTop: windowHeight * 0.014,
-    marginLeft: windowWidth * 0.7,
+    marginTop: windowHeight * 0.025,
+    marginLeft: windowWidth * 0.66,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   bigStats: {
-    fontSize: 50,
+    fontSize: 30,
     fontWeight: "bold",
     color: "#113B81",
     letterSpacing: 0.5,
@@ -369,11 +389,12 @@ const styles = StyleSheet.create({
   pointContainer: {
     position: "absolute",
     marginTop: windowHeight * 0.055,
-    marginLeft: windowWidth * 0.78,
+    marginLeft: windowWidth * 0.73,
   },
   pointText: {
     fontSize: 15,
     fontWeight: "bold",
     color: "#113B81",
+    marginLeft: 4, // Adjust spacing as needed
   },
 });
