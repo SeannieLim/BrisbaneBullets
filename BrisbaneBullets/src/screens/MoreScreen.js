@@ -51,7 +51,7 @@ export default function MoreScreen({ navigation }) {
       .catch((err) => console.error("Error checking CrowdCanvas app:", err));
   };
   return (
-    <View style={styles.container}>
+    <View style={GlobalStyles.mainContainer}>
       <SafeAreaView style={GlobalStyles.safeArea}>
         <Box style={GlobalStyles.screenHeader}>
           <Text style={GlobalStyles.screenHeading}>More</Text>
@@ -137,11 +137,6 @@ export default function MoreScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: windowWidth * 0.08,
-    backgroundColor: "white",
-  },
   header: {
     paddingTop: windowWidth * 0.03,
     flexDirection: "row",

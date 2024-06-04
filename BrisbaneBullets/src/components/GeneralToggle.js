@@ -9,7 +9,7 @@ import {
   HStack,
 } from "@gluestack-ui/themed-native-base";
 
-const ToggleTest = ({ tabs }) => {
+const GeneralToggle = ({ tabs }) => {
   const [activeTab, setActiveTab] = useState(tabs[0]?.label);
   const navigation = useNavigation();
 
@@ -91,4 +91,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ToggleTest;
+export default GeneralToggle;

@@ -1,8 +1,15 @@
-import React from 'react';
-import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import React from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  Dimensions,
+  TouchableOpacity,
+} from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -14,18 +21,17 @@ const DashBoardPlayerStats = ({ route }) => {
   return (
     <View style={styles.container}>
       <LinearGradient
-        colors={['#000000', '#858484']} // Dark to grey gradient
+        colors={["#000000", "#858484"]} // Dark to grey gradient
         style={styles.gradientBackground}
       />
       <Image source={player.playerDashboard} style={styles.playerImage} />
 
       <View style={styles.header}>
-        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
-          <Ionicons
-            name="chevron-back-outline"
-            size={27}
-            color="#FAB81B"
-          />
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => navigation.goBack()}
+        >
+          <Ionicons name="chevron-back-outline" size={27} color="#FAB81B" />
         </TouchableOpacity>
         <Text style={styles.playerName}>{player.playerName}</Text>
       </View>
@@ -100,80 +106,80 @@ export default DashBoardPlayerStats;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   gradientBackground: {
     ...StyleSheet.absoluteFillObject,
   },
   playerImage: {
-    position: 'absolute',
+    position: "absolute",
     top: windowHeight * 0.2, // Adjust this value to position the image correctly
     width: windowWidth,
     height: windowHeight * 0.6,
-    resizeMode: 'cover',
-    transform: [{ translateX: -windowWidth * 0.025 }], // Move the image slightly to the left
-    marginTop: windowHeight * 0.12
+    resizeMode: "cover",
+    // transform: [{ translateX: -windowWidth * 0.025 }], // Move the image slightly to the left
+    marginTop: windowHeight * 0.12,
   },
   header: {
-    position: 'absolute',
+    position: "absolute",
     top: windowHeight * 0.05, // Adjust top padding as needed
     width: windowWidth,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginTop: windowHeight * 0.02,
-    
-    justifyContent: 'center',
+
+    justifyContent: "center",
   },
   backButton: {
-    position: 'absolute',
+    position: "absolute",
     left: 20,
   },
   playerName: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   statsRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%',
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "100%",
     paddingHorizontal: 20,
     marginTop: windowHeight * 0.1,
   },
   statItem: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   statRowValue: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   statRowLabel: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 20,
   },
   detailedStatsContainer: {
-    backgroundColor: 'rgba(22, 76, 168, 0.8)', // blue with transparency
-    width: '80%',
+    backgroundColor: "rgba(22, 76, 168, 0.8)", // blue with transparency
+    width: "80%",
     paddingVertical: 20,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
     marginTop: windowHeight * 0.4,
   },
   statColumn: {
-    width: '30%',
-    alignItems: 'center',
+    width: "30%",
+    alignItems: "center",
     marginVertical: 4,
   },
   statValue: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 30,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   statLabel: {
-    color: '#fff',
+    color: "#fff",
     fontSize: 20,
   },
 });
