@@ -11,8 +11,8 @@ const MyStyles = StyleSheet.create({
     width: windowWidth,
   },
   toggleContainer: {
-    // marginHorizontal: windowWidth * 0.08,
-    flexGrow: 1
+    marginHorizontal: windowWidth * 0.08,
+    flexGrow: 1,
   },
   headerContainer: {
     flexDirection: "row",
@@ -73,7 +73,7 @@ const MyStyles = StyleSheet.create({
     height: "100%",
     alignSelf: "center",
     overflow: "visible",
-    marginTop: windowHeight* 0.2,
+    marginTop: windowHeight * 0.2,
   },
   playerProfileGif: {
     width: "100%",
