@@ -51,8 +51,9 @@ export default function ScheduleScreen({ navigation }) {
             </Box>
           </HStack>
         </Box>
-
-        <TeamToggle tabs={scheduleTabs} />
+        <Box style={styles.toggle}>
+          <TeamToggle tabs={scheduleTabs} />
+        </Box>
       </SafeAreaView>
     </View>
   );
@@ -71,7 +72,6 @@ const styles = StyleSheet.create({
   },
   toggle: {
     paddingVertical: windowWidth * 0.02,
-    marginHorizontal: windowWidth * 0.08,
     flex: 1,
     overflowY: "scroll",
   },
