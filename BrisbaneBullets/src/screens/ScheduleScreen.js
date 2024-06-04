@@ -8,14 +8,14 @@ import {
 import { scaleFontSize } from "../constants/Layout";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
-import TeamToggle from "../components/GeneralToggle";
+import ToggleComponent from "../components/ToggleButton";
 import UpcomingGames from "../components/UpcomingGames";
 import PastGames from "../components/PastGames";
 import { GlobalStyles } from "../constants/GlobalStyles";
 
 const windowWidth = Dimensions.get("window").width;
 
-const scheduleTabs = [
+const videoTabs = [
   { label: "Upcoming Games", content: <UpcomingGames /> },
   { label: "Past Games", content: <PastGames /> },
 ];
@@ -52,7 +52,9 @@ export default function ScheduleScreen({ navigation }) {
           </HStack>
         </Box>
         <Box style={styles.toggle}>
-          <TeamToggle tabs={scheduleTabs} />
+          <Box style={styles.toggle}>
+            <ToggleComponent tabs={videoTabs} />
+          </Box>
         </Box>
       </SafeAreaView>
     </View>
@@ -60,7 +62,6 @@ export default function ScheduleScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {},
   circleBackground: {
     alignItems: "center",
     justifyContent: "center",

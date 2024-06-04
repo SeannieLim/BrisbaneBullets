@@ -7,7 +7,7 @@ import {
   ScrollView,
   StyleSheet,
 } from "react-native";
-import ToggleComponent from "../components/HomeToggleButton";
+import ToggleComponent from "../components/ToggleButton";
 import NewsCard from "../components/NewsCard";
 import { PartnersStack } from "../components/PartnersStack";
 import SocialMediaStack from "../components/SocialMediaStack";
@@ -64,41 +64,38 @@ export default function HomeScreen({ navigation }) {
               <AdsBanner
               // imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png"
               />
+              <Box style={styles.headingContainer}>
+                <Heading style={styles.heading}>Latest News</Heading>
+                <AllButton onPress={handleAllPress} />
+              </Box>
+              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                {mockNews.map((newsItem) => (
+                  <NewsCard key={newsItem.id} news={newsItem} />
+                ))}
+              </ScrollView>
+              <Box style={styles.headingContainer}>
+                <Heading style={styles.heading}>Latest Videos</Heading>
+                <AllButton onPress={handleAllVideoPress} />
+              </Box>
+
+              <ToggleComponent tabs={videoTabs} />
             </Box>
-            <Box style={styles.headingContainer}>
-              <Heading style={styles.heading}>Latest News</Heading>
-              <AllButton onPress={handleAllPress} />
-            </Box>
-            <ScrollView
-              horizontal
-              showsHorizontalScrollIndicator={false}
-              style={styles.slideContainer}
-            >
-              {mockNews.map((newsItem) => (
-                <NewsCard key={newsItem.id} news={newsItem} />
-              ))}
-            </ScrollView>
-            <Box style={styles.headingContainer}>
-              <Heading style={styles.heading}>Latest Videos</Heading>
-              <AllButton onPress={handleAllVideoPress} />
-            </Box>
-            <ToggleComponent tabs={videoTabs} />
 
             <EStoreCarousel />
 
-            <Box style={styles.headingContainer}>
-              <Heading style={styles.heading}>Follow Us</Heading>
-            </Box>
-            <SocialMediaStack />
-            <Box style={styles.box}>
+            <Box style={styles.lowerBox}>
+              <Box style={styles.headingContainer}>
+                <Heading style={styles.heading}>Follow Us</Heading>
+              </Box>
+              <Box style={styles.socialMedia}>
+                <SocialMediaStack />
+              </Box>
               <AdsBanner
               // imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png"
               />
-            </Box>
-            <Box style={styles.headingContainer}>
-              <Heading style={styles.heading}>Partners</Heading>
-            </Box>
-            <Box style={styles.box}>
+              <Box style={styles.headingContainer}>
+                <Heading style={styles.heading}>Partners</Heading>
+              </Box>
               <PartnersStack />
             </Box>
 
@@ -129,13 +126,12 @@ const styles = StyleSheet.create({
     top: 0,
   },
   box: {
-    marginHorizontal: windowWidth * 0.08,
+    marginLeft: windowWidth * 0.08,
     marginTop: windowWidth * 0.05,
   },
   headingContainer: {
     flexDirection: "row",
     marginVertical: windowWidth * 0.04,
-    marginHorizontal: windowWidth * 0.08,
     alignContent: "center",
   },
   heading: {
@@ -143,7 +139,14 @@ const styles = StyleSheet.create({
     paddingRight: windowWidth * 0.03,
     fontSize: scaleFontSize(20),
   },
-  slideContainer: {
+  lowerBox: {
     marginLeft: windowWidth * 0.08,
+    marginBottom: windowWidth * 0.05,
+  },
+  socialMedia: {
+    marginBottom: windowWidth * 0.05,
+  },
+  spacing: {
+    marginTop: windowWidth * 0.04,
   },
 });

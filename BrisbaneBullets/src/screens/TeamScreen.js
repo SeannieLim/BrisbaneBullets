@@ -6,7 +6,7 @@ import {
   ImageBackground,
 } from "react-native";
 import MyStyles from "../screens/TeamScreens/TeamStyles";
-import GeneralToggle from "../components/GeneralToggle";
+import TeamToggle from "../components/TeamToggle";
 import TeamPlayers from "../screens/TeamScreens/TeamPlayers";
 import { GlobalStyles } from "../constants/GlobalStyles";
 import { Box } from "@gluestack-ui/themed-native-base";
@@ -29,7 +29,9 @@ export default function TeamScreen({ navigation }) {
             <Box style={GlobalStyles.screenHeader}>
               <Text style={GlobalStyles.screenHeading}>Team</Text>
             </Box>
-            <GeneralToggle tabs={teamTabs} />
+            <View style={MyStyles.toggleContainer}>
+              <TeamToggle tabs={teamTabs} />
+            </View>
           </View>
         </ImageBackground>
       </SafeAreaView>

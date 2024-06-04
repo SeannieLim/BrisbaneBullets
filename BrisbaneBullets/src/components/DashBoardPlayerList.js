@@ -23,7 +23,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     points: 3,
     assists: 2,
-    rebounds: 1,
+    rebounds: 1
   },
   {
     id: "2",
@@ -35,7 +35,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     points: 15,
     assists: 2,
-    rebounds: 1,
+    rebounds: 1
   },
   {
     id: "3",
@@ -46,7 +46,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     points: 2,
     assists: 2,
-    rebounds: 1,
+    rebounds: 1
   },
   {
     id: "4",
@@ -58,7 +58,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     points: 30,
     assists: 2,
-    rebounds: 1,
+    rebounds: 1
   },
   {
     id: "5",
@@ -70,7 +70,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     points: 0,
     assists: 2,
-    rebounds: 1,
+    rebounds: 1
   },
   {
     id: "6",
@@ -82,7 +82,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     points: 0,
     assists: 2,
-    rebounds: 1,
+    rebounds: 1
   },
   {
     id: "7",
@@ -94,7 +94,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     points: 0,
     assists: 2,
-    rebounds: 1,
+    rebounds: 1
   },
   {
     id: "8",
@@ -105,7 +105,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     points: 0,
     assists: 2,
-    rebounds: 1,
+    rebounds: 1
   },
   {
     id: "9",
@@ -117,7 +117,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     points: 0,
     assists: 2,
-    rebounds: 1,
+    rebounds: 1
   },
   {
     id: "10",
@@ -129,7 +129,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     points: 0,
     assists: 2,
-    rebounds: 1,
+    rebounds: 1
   },
   {
     id: "11",
@@ -141,7 +141,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     points: 0,
     assists: 2,
-    rebounds: 1,
+    rebounds: 1
   },
   {
     id: "12",
@@ -153,7 +153,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     points: 20,
     assists: 2,
-    rebounds: 1,
+    rebounds: 1
   },
   {
     id: "13",
@@ -165,7 +165,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     points: 0,
     assists: 2,
-    rebounds: 1,
+    rebounds: 1
   },
   {
     id: "14",
@@ -176,7 +176,7 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     points: 0,
     assists: 13,
-    rebounds: 1,
+    rebounds: 1
   },
   {
     id: "15",
@@ -187,8 +187,8 @@ const players = [
     playerDashboard: require("../../assets/Dashboard/playerStats.png"),
     points: 20,
     assists: 2,
-    rebounds: 10,
-  },
+    rebounds: 10
+  }
 ];
 
 const Square = ({ player, selectedTab }) => {
@@ -213,27 +213,25 @@ const Square = ({ player, selectedTab }) => {
   }
 
   return (
-    <View style={styles.listContainer}>
-      <TouchableOpacity onPress={navigateToProfile}>
-        <View style={styles.wrapper}>
-          <View style={styles.square}>
-            <View style={styles.imageContainer}>
-              <Image source={player.playerImage} style={styles.playerImage} />
-            </View>
-          </View>
-          <View style={styles.textContainer}>
-            <Text style={styles.playerName}>{player.playerName}</Text>
-          </View>
-          <View style={styles.smallStatsContainer}>
-            <Text style={styles.smallStats}>{smallStatsText}</Text>
-          </View>
-          <View style={styles.bigStatsWrapper}>
-            <Text style={styles.bigStats}>{statValue}</Text>
-            <Text style={styles.pointText}>{statLabel}</Text>
+    <TouchableOpacity onPress={navigateToProfile}>
+      <View style={styles.wrapper}>
+        <View style={styles.square}>
+          <View style={styles.imageContainer}>
+            <Image source={player.playerImage} style={styles.playerImage} />
           </View>
         </View>
-      </TouchableOpacity>
-    </View>
+        <View style={styles.textContainer}>
+          <Text style={styles.playerName}>{player.playerName}</Text>
+        </View>
+        <View style={styles.smallStatsContainer}>
+          <Text style={styles.smallStats}>{smallStatsText}</Text>
+        </View>
+        <View style={styles.bigStatsWrapper}>
+          <Text style={styles.bigStats}>{statValue}</Text>
+          <Text style={styles.pointText}>{statLabel}</Text>
+        </View>
+      </View>
+    </TouchableOpacity>
   );
 };
 
@@ -279,9 +277,7 @@ const DashBoardPlayerList = () => {
       </View>
       <FlatList
         data={sortedPlayers}
-        renderItem={({ item }) => (
-          <Square player={item} selectedTab={selectedTab} />
-        )}
+        renderItem={({ item }) => <Square player={item} selectedTab={selectedTab} />}
         keyExtractor={(item) => item.id}
         numColumns={1}
         showsVerticalScrollIndicator={false}
@@ -302,11 +298,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: windowHeight * 0.02,
     marginTop: windowHeight * 0.03,
-    // marginLeft: -windowWidth * 0.05,
+    marginLeft: -windowWidth * 0.05,
   },
   tab: {
-    paddingVertical: 10,
-    paddingHorizontal: 15,
+    paddingTop: 10,
+    paddingRight: 15,
+    paddingBottom: 10,
+    paddingLeft: 15,
     borderBottomWidth: 2,
     borderBottomColor: "white",
   },
@@ -317,9 +315,6 @@ const styles = StyleSheet.create({
   toggleTabText: {
     color: "white",
     fontWeight: "bold",
-  },
-  listContainer: {
-    alignItems: "center",
   },
   wrapper: {
     height: windowHeight * 0.11,
@@ -382,8 +377,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     marginTop: windowHeight * 0.025,
     marginLeft: windowWidth * 0.66,
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   bigStats: {
     fontSize: 30,

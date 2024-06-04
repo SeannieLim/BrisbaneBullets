@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Dimensions } from "react-native";
+import { StyleSheet, View } from "react-native";
 
 import {
   Box,
@@ -8,40 +8,35 @@ import {
   HStack,
 } from "@gluestack-ui/themed-native-base";
 
-const windowWidth = Dimensions.get("window").width;
 const ToggleComponent = ({ tabs }) => {
   // Use the first tab as the default active tab
   const [activeTab, setActiveTab] = useState(tabs[0]?.label);
 
   return (
     <View>
-      <View style={styles.tabContainer}>
-        <Container width="100%" key={activeTab}>
-          <Box
-            bg="#FCFDFF"
-            width="100%"
-            borderRadius={50}
-            padding="0"
-            style={styles.shadow}
-          >
-            <HStack space={0}>
-              {tabs.map((tab) => (
-                <CustomButton
-                  key={tab.label}
-                  active={activeTab === tab.label}
-                  onPress={() => setActiveTab(tab.label)}
-                >
-                  {tab.label}
-                </CustomButton>
-              ))}
-            </HStack>
-          </Box>
-        </Container>
-      </View>
-      <View style={styles.contentContainer}>
-        {/* Render content based on active tab */}
-        <Content activeTab={activeTab} tabs={tabs} />
-      </View>
+      <Container width="90%" key={activeTab}>
+        <Box
+          bg="#FCFDFF"
+          width="100%"
+          borderRadius={50}
+          padding="0"
+          style={styles.shadow}
+        >
+          <HStack space={0}>
+            {tabs.map((tab) => (
+              <CustomButton
+                key={tab.label}
+                active={activeTab === tab.label}
+                onPress={() => setActiveTab(tab.label)}
+              >
+                {tab.label}
+              </CustomButton>
+            ))}
+          </HStack>
+        </Box>
+      </Container>
+      {/* Render content based on active tab */}
+      <Content activeTab={activeTab} tabs={tabs} />
     </View>
   );
 };
@@ -75,13 +70,6 @@ const Content = ({ activeTab, tabs }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // width: windowWidth,
-  },
-  tabContainer: {
-    marginHorizontal: windowWidth * 0.08,
-  },
   shadow: {
     backgroundColor: "white",
     shadowColor: "#000", // Shadow color

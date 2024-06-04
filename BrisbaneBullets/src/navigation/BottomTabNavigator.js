@@ -76,14 +76,35 @@ export default function BottomTabNavigator({ navigation, route }) {
       />
 
       <BottomTab.Screen
-        name="Dashboard"
+        name="Dashboard" 
         component={DashboardStackScreen}
         options={{
           headerShown: false,
           tabBarButton: () => null,
-          tabBarVisible: true,
+          tabBarVisible: true
         }}
       />
+      
+      {/* <BottomTab.Screen
+        name="PlayerProfile"
+        component={PlayerProfileScreen}
+        options={{
+          headerShown: false,
+          tabBarButton: () => null,
+          tabBarVisible: true
+        }}
+      />
+      <BottomTab.Screen
+        name="PlayerStats"
+        component={PlayerStatsScreen}
+        options={{
+          headerShown: false,
+          tabBarButton: () => null,
+          tabBarVisible: true
+        }}
+      /> */}
+
+      
     </BottomTab.Navigator>
   );
 }
