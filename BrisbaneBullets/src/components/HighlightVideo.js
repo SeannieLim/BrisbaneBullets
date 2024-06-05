@@ -6,7 +6,7 @@ import {
   Share,
   Dimensions,
   FlatList,
-  View,
+  View, Linking
 } from "react-native";
 import { HStack, VStack, Box, Image } from "@gluestack-ui/themed";
 import { Entypo } from "@expo/vector-icons";
@@ -23,6 +23,7 @@ const mockVideo = [
     time: "Jan 25, 2024",
     img: require("../../assets/Videos/highlight1.png"),
     imgAlt: "newsImage",
+    url: "https://www.youtube.com/watch?v=_G1wBLCeqEU"
   },
   {
     id: 2,
@@ -30,27 +31,20 @@ const mockVideo = [
     time: "Feb 4, 2024",
     img: require("../../assets/Videos/highlight2.png"),
     imgAlt: "newsImage",
+    url: "https://www.youtube.com/watch?v=Ff5VEdBQlB0"
   },
 ];
 
 const HighlightVideo = () => {
   const navigation = useNavigation();
 
-  const handleVideoCardPress = () => {
-    // Uncomment and provide the appropriate screen name or route
-    // navigation.navigate('VideoDetailScreen');
+  const handleVideoCardPress = (url) => {
+    Linking.openURL(url).catch((err) => console.error("An error occurred", err));
   };
 
   const handleShare = async (videos) => {
     try {
-      // Base URL
-      const baseUrl = "https://www.brisbanebullets.com.au/videos/";
-      // Replace spaces in the news title with hyphens (-)
-      const formattedTitle = videos.title
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "-");
-      // Construct the final URL
-      const url = `${baseUrl}${formattedTitle}`;
+      const url = videos.url
       // Share the URL
       await Share.share({
         url: url,
@@ -61,7 +55,7 @@ const HighlightVideo = () => {
   };
 
   const renderItem = ({ item }) => (
-    <TouchableOpacity onPress={handleVideoCardPress}>
+    <TouchableOpacity onPress={() => handleVideoCardPress(item.url)}>
       <Box
         style={{ ...styles.box, ...styles.videoCardContainer }}
         bg="#164CA8"
