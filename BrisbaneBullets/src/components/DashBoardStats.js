@@ -220,7 +220,6 @@ const styles = StyleSheet.create({
     fontSize: scaleFontSize(16),
     textAlign: "center",
     color: "#FFFFFF",
-    textAlign: "center",
     letterSpacing: 1.1,
     marginBottom: windowHeight * 0.02,
   },
