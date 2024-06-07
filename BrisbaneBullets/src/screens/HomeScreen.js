@@ -1,12 +1,7 @@
 import { TopBanner } from "../components/TopBanner";
 import { View, Box, Heading } from "@gluestack-ui/themed";
 import EStoreCarousel from "../components/E-storeCarousel";
-import {
-  Dimensions,
-  ImageBackground,
-  ScrollView,
-  StyleSheet,
-} from "react-native";
+import { Dimensions, ImageBackground, ScrollView, StyleSheet } from "react-native";
 import ToggleComponent from "../components/HomeToggleButton";
 import NewsCard from "../components/NewsCard";
 import { PartnersStack } from "../components/PartnersStack";
@@ -62,7 +57,6 @@ export default function HomeScreen({ navigation }) {
           <ScrollView>
             <Box style={styles.box}>
               <AdsBanner
-              // imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png"
               />
             </Box>
             <Box style={styles.headingContainer}>
@@ -92,7 +86,6 @@ export default function HomeScreen({ navigation }) {
             <SocialMediaStack />
             <Box style={styles.box}>
               <AdsBanner
-              // imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png"
               />
             </Box>
             <Box style={styles.headingContainer}>
@@ -101,12 +94,6 @@ export default function HomeScreen({ navigation }) {
             <Box style={styles.box}>
               <PartnersStack />
             </Box>
-
-            {/*//add to test components*/}
-            {/*<><NewsCard /><Box>*/}
-            {/*    <CustomButton btnText='Ticket' />*/}
-            {/*    <CustomButton btnText='Shop Now' />*/}
-            {/*</Box></>*/}
           </ScrollView>
         </ImageBackground>
       </View>

@@ -1,13 +1,7 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Linking } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-
-import {
-  Box,
-  Button,
-  Container,
-  HStack,
-} from "@gluestack-ui/themed-native-base";
+import { Box, Button, Container, HStack, } from "@gluestack-ui/themed-native-base";
 
 const DashBoardToggle = ({ tabs }) => {
   const [activeTab, setActiveTab] = useState(tabs[0]?.label);

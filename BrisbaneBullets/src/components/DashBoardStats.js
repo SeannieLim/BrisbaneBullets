@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  Dimensions,
-  ScrollView,
-} from "react-native";
+import { View, Text, Image, StyleSheet, Dimensions, ScrollView, } from "react-native";
 import { scaleFontSize } from "../constants/Layout";
 import { WebView } from "react-native-webview";
 
@@ -193,12 +186,11 @@ const styles = StyleSheet.create({
     color: "#164CA8",
     letterSpacing: 1,
     alignItems: "center",
-    // marginLeft: -windowWidth * 0.03,
     marginTop: windowHeight * 0.02,
   },
   teamIcon: {
-    width: 35, // Set width of the icon
-    height: 35, // Set height of the icon
+    width: 35,
+    height: 35,
     marginTop: windowHeight * 0.013,
 
     marginBottom: windowHeight * 0.01,

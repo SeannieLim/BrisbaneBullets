@@ -3,7 +3,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import HomeScreen from "../screens/HomeScreen";
 import B_StoreScreen from "../screens/B-StoreScreen";
 import LiveScreen from "../screens/LiveScreen";
-// import StandingsScreen from "../screens/StandingsScreen";
 import NewsScreen from "../screens/NewsScreen";
 import NewsDetailScreen from "../screens/NewsDetailScreen";
 import NotiScreen from "../screens/NotificationScreen";

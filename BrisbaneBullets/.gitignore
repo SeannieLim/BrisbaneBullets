@@ -15,6 +15,7 @@ web-build/
 *.p12
 *.key
 *.mobileprovision
+*android
 
 # Metro
 .metro-health-check*
@@ -31,6 +32,7 @@ yarn-error.*
 # local env files
 .env*.local
 .env
+brisbanebullets-4eyes-firebase-adminsdk-g95qk-b38b7e5c8c.json
 
 # typescript
 *.tsbuildinfo

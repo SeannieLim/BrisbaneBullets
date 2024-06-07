@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-  Share,
-  Dimensions,
-  FlatList,
-  View,
-} from "react-native";
+import { StyleSheet, TouchableOpacity, Text, Share, Dimensions, FlatList, View, Linking } from "react-native";
 import { HStack, VStack, Box, Image } from "@gluestack-ui/themed";
 import { Entypo } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
@@ -23,6 +15,7 @@ const mockVideo = [
     time: "Mar 13, 2024",
     img: require("../../assets/Videos/PressC1.png"),
     imgAlt: "newsImage",
+    url: "https://www.youtube.com/watch?v=BbgCIOvQAJE"
   },
   {
     id: 2,
@@ -30,27 +23,20 @@ const mockVideo = [
     time: "Feb 18, 2024",
     img: require("../../assets/Videos/PressC2.png"),
     imgAlt: "newsImage",
+    url: "https://www.youtube.com/watch?v=9j9tXzd35D0"
   },
 ];
 
 const HighlightVideo = () => {
   const navigation = useNavigation();
 
-  const handleVideoCardPress = () => {
-    // Uncomment and provide the appropriate screen name or route
-    // navigation.navigate('VideoDetailScreen');
+  const handleVideoCardPress = (url) => {
+    Linking.openURL(url).catch((err) => console.error("An error occurred", err));
   };
 
   const handleShare = async (videos) => {
     try {
-      // Base URL
-      const baseUrl = "https://www.brisbanebullets.com.au/videos/";
-      // Replace spaces in the news title with hyphens (-)
-      const formattedTitle = videos.title
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "-");
-      // Construct the final URL
-      const url = `${baseUrl}${formattedTitle}`;
+      const url = videos.url
       // Share the URL
       await Share.share({
         url: url,
@@ -61,7 +47,7 @@ const HighlightVideo = () => {
   };
 
   const renderItem = ({ item }) => (
-    <TouchableOpacity onPress={handleVideoCardPress}>
+    <TouchableOpacity onPress={() => handleVideoCardPress(item.url)}>
       <Box
         style={{ ...styles.box, ...styles.videoCardContainer }}
         bg="#164CA8"

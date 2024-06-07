@@ -1,14 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import {
-  ScrollView,
-  View,
-  Image,
-  TouchableOpacity,
-  StyleSheet,
-  Dimensions,
-} from "react-native";
-import { useNavigation } from "@react-navigation/native";
-// import ShopNowButton from "../components/ShopNowButton";
+import { ScrollView, View, Image, TouchableOpacity, StyleSheet, Dimensions, } from "react-native";
 import CustomButton from "../components/CustomButton";
 
 const WindowWidth = Dimensions.get("window").width;

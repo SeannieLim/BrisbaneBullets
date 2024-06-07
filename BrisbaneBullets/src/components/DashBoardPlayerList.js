@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {useState} from "react";
 import {
     View,
@@ -10,6 +11,12 @@ import {
 import {useNavigation} from "@react-navigation/native";
 import {FlatList} from "react-native-gesture-handler";
 import { Platform } from 'react-native';
+=======
+import React, { useState } from "react";
+import { View, Text, Image, StyleSheet, Dimensions, TouchableOpacity, } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { FlatList } from "react-native-gesture-handler";
+>>>>>>> preview
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -298,6 +305,7 @@ const DashBoardPlayerList = () => {
 export default DashBoardPlayerList;
 
 const styles = StyleSheet.create({
+<<<<<<< HEAD
     container: {
         paddingBottom: windowHeight * 0.5,
     },
@@ -410,4 +418,115 @@ const styles = StyleSheet.create({
     flatListContainer: {
         height: Platform.OS === 'android' ? windowHeight * 0.5 : windowHeight * 0.45,
     },
+=======
+  container: {
+    paddingTop: windowHeight * 0.02,
+    paddingBottom: windowHeight * 0.1,
+  },
+  tabContainer: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "center",
+    marginBottom: windowHeight * 0.02,
+    marginTop: windowHeight * 0.03,
+  },
+  tab: {
+    paddingVertical: 10,
+    paddingHorizontal: 15,
+    borderBottomWidth: 2,
+    borderBottomColor: "white",
+  },
+  activeTab: {
+    backgroundColor: "rgba(22, 76, 168, 0.72)",
+    borderBottomColor: "rgba(22, 76, 168, 0.72)",
+  },
+  toggleTabText: {
+    color: "white",
+    fontWeight: "bold",
+  },
+  listContainer: {
+    alignItems: "center",
+  },
+  wrapper: {
+    height: windowHeight * 0.11,
+    width: windowWidth * 0.85,
+    marginTop: windowHeight * 0.02,
+    backgroundColor: "rgba(255, 255, 255, 0.75)",
+    borderRadius: 30,
+  },
+  columnWrapper: {
+    justifyContent: "space-between",
+    marginTop: windowHeight * 0.01,
+    marginHorizontal: windowWidth * 0.01,
+  },
+  square: {
+    height: windowHeight * 0.11,
+    width: windowWidth * 0.35,
+    borderTopLeftRadius: 30,
+    borderBottomLeftRadius: 30,
+    borderTopRightRadius: 0,
+    borderBottomRightRadius: 0,
+    shadowColor: "#000",
+    shadowOffset: { width: 1, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    overflow: "hidden",
+  },
+  imageContainer: {
+    width: "95%",
+    height: "100%",
+    overflow: "hidden",
+  },
+  playerImage: {
+    width: "95%",
+    height: "100%",
+    resizeMode: "cover",
+  },
+  textContainer: {
+    position: "absolute",
+    marginTop: windowHeight * 0.011,
+    marginLeft: windowWidth * 0.35,
+  },
+  playerName: {
+    fontWeight: "bold",
+    fontSize: 20,
+    color: "#113B81",
+    letterSpacing: 0.5,
+  },
+  smallStatsContainer: {
+    position: "absolute",
+    marginTop: windowHeight * 0.07,
+    marginLeft: windowWidth * 0.35,
+  },
+  smallStats: {
+    fontSize: 12,
+    color: "#113B81",
+    letterSpacing: 0.5,
+  },
+  bigStatsWrapper: {
+    position: "absolute",
+    marginTop: windowHeight * 0.025,
+    marginLeft: windowWidth * 0.66,
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  bigStats: {
+    fontSize: 30,
+    fontWeight: "bold",
+    color: "#113B81",
+    letterSpacing: 0.5,
+  },
+  pointContainer: {
+    position: "absolute",
+    marginTop: windowHeight * 0.055,
+    marginLeft: windowWidth * 0.73,
+  },
+  pointText: {
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "#113B81",
+    marginLeft: 4,
+  },
+>>>>>>> preview
 });

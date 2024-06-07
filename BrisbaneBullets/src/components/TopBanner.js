@@ -1,12 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { scaleFontSize } from "../constants/Layout";
-import {
-  Dimensions,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-  SafeAreaView,
-} from "react-native";
+import { Dimensions, ScrollView, StyleSheet, TouchableOpacity, SafeAreaView, Platform, Linking } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { HStack, Image, Text, View, Box } from "@gluestack-ui/themed";
 import { ActionButton } from "./ActionButton";
@@ -15,6 +9,7 @@ import CustomButton from "./CustomButton";
 import NotificationIcon from "../notifications/notificationIcon";
 import { GlobalStyles } from "../constants/GlobalStyles";
 import { useNotifications } from "../notifications/notificationContext";
+import Dashboard from "../dashboard/Dashboard";
 
 const windowWidth = Dimensions.get("window").width;
 
@@ -83,7 +78,8 @@ export function TopBanner() {
     navigation.navigate("LiveScreen");
   };
 
-  const handlePress = () => {
+  const handleDashboardPress = () => {
+    // Navigate to the Dashboard with some params if necessary
     navigation.navigate("Dashboard");
   };
 
@@ -118,8 +114,28 @@ export function TopBanner() {
       animated: true,
     });
   };
+  const handleCrowdCanvas = () => {
+    const crowdCanvasUrl = "crowdcanvas://"; // Deep link to CrowdCanvas app (sample link)
+    const appStoreUrl = Platform.select({
+      ios: "https://apps.apple.com/au/app/crowdcanvas/id1526770094", //Crowd canvas App Store ID
+      android:
+        "https://play.google.com/store/apps/details?id=com.crowdcanvas.pixelplayer&hl=en_AU&gl=US&pli=1", // Google Play Store URL
+    });
 
+    // Try opening the CrowdCanvas app
+    Linking.canOpenURL(crowdCanvasUrl)
+      .then((supported) => {
+        if (supported) {
+          Linking.openURL(crowdCanvasUrl); // Open CrowdCanvas app
+        } else {
+          // If CrowdCanvas app is not installed, prompt user to download from App Store
+          Linking.openURL(appStoreUrl);
+        }
+      })
+      .catch((err) => console.error("Error checking CrowdCanvas app:", err));
+  };
   return (
+    // <View style={styles.top}>
     <LinearGradient colors={["#164CA8", "#091E42"]} style={styles.container}>
       <SafeAreaView style={GlobalStyles.safeArea}>
         <NotificationIcon unreadCount={unreadCount} navigation={navigation} />
@@ -131,55 +147,6 @@ export function TopBanner() {
           showsHorizontalScrollIndicator={false}
           scrollEventThrottle={16}
         >
-          {/*Past game*/}
-          <View key={mockPastGame[0].id} style={styles.mainContainer}>
-            <View style={styles.itemContainer}>
-              {/*Left team*/}
-              <View style={styles.teamContainer}>
-                <Image
-                  source={mockTeams[0].img}
-                  style={[styles.image, styles.leftImage]}
-                  alt="Team Logo"
-                />
-                <Text
-                  style={[
-                    styles.score,
-                    (comparisonResult === 1 || comparisonResult === 0) &&
-                      boldTextStyle,
-                  ]}
-                >
-                  {mockTeams[0].score}
-                </Text>
-              </View>
-
-              {/*Game details*/}
-              <View style={styles.details}>
-                <Text style={styles.date}>{mockPastGame[0].date}</Text>
-                <Text style={styles.match}>{mockPastGame[0].match}</Text>
-              </View>
-
-              {/*Right team*/}
-              <View style={styles.teamContainer}>
-                <Text
-                  style={[
-                    styles.score,
-                    (comparisonResult === -1 || comparisonResult === 0) &&
-                      boldTextStyle,
-                  ]}
-                >
-                  {mockTeams[1].score}
-                </Text>
-                <Image
-                  source={mockTeams[1].img}
-                  style={[styles.image, styles.rightImage]}
-                  alt="Team Logo"
-                />
-              </View>
-            </View>
-            <HStack>
-              <ActionButton value={"Recap"} />
-            </HStack>
-          </View>
 
           {/*Current game*/}
           <View key={mockCurrentGame[0].id} style={styles.mainContainer}>
@@ -196,7 +163,7 @@ export function TopBanner() {
                   style={[
                     styles.score,
                     (comparisonResult === 1 || comparisonResult === 0) &&
-                      boldTextStyle,
+                    boldTextStyle,
                   ]}
                 >
                   {mockTeams[3].score}
@@ -215,7 +182,7 @@ export function TopBanner() {
                   style={[
                     styles.score,
                     (comparisonResult === -1 || comparisonResult === 0) &&
-                      boldTextStyle,
+                    boldTextStyle,
                   ]}
                 >
                   {mockTeams[2].score}
@@ -232,9 +199,59 @@ export function TopBanner() {
               <Text style={styles.liveText}>Live</Text>
             </View>
             <HStack>
-              <ActionButton value={"Game Centre"} onPress={handlePress} />
+              <ActionButton value={"Dashboard"} onPress={handleDashboardPress} />
               <ActionButton value={"Watch"} onPress={handleWatchPress} />
-              <ActionButton value={"Crowd Canvas"} />
+              <ActionButton value={"Crowd Canvas"} onPress={handleCrowdCanvas} />
+            </HStack>
+          </View>
+
+          {/*Past game*/}
+          <View key={mockPastGame[0].id} style={styles.mainContainer}>
+            <View style={styles.itemContainer}>
+              {/*Left team*/}
+              <View style={styles.teamContainer}>
+                <Image
+                  source={mockTeams[0].img}
+                  style={[styles.image, styles.leftImage]}
+                  alt="Team Logo"
+                />
+                <Text
+                  style={[
+                    styles.score,
+                    (comparisonResult === 1 || comparisonResult === 0) &&
+                    boldTextStyle,
+                  ]}
+                >
+                  {mockTeams[0].score}
+                </Text>
+              </View>
+
+              {/*Game details*/}
+              <View style={styles.details}>
+                <Text style={styles.date}>{mockPastGame[0].date}</Text>
+                <Text style={styles.match}>{mockPastGame[0].match}</Text>
+              </View>
+
+              {/*Right team*/}
+              <View style={styles.teamContainer}>
+                <Text
+                  style={[
+                    styles.score,
+                    (comparisonResult === -1 || comparisonResult === 0) &&
+                    boldTextStyle,
+                  ]}
+                >
+                  {mockTeams[1].score}
+                </Text>
+                <Image
+                  source={mockTeams[1].img}
+                  style={[styles.image, styles.rightImage]}
+                  alt="Team Logo"
+                />
+              </View>
+            </View>
+            <HStack>
+              <ActionButton value={"Recap"} />
             </HStack>
           </View>
 
@@ -250,7 +267,6 @@ export function TopBanner() {
                   alt="Team Logo"
                 />
               </View>
-
               {/*Game details*/}
               <View style={styles.details}>
                 <Text style={styles.date}>{mockUpcomingGame[0].date}</Text>
@@ -259,7 +275,6 @@ export function TopBanner() {
                   {mockUpcomingGame[0].location}
                 </Text>
               </View>
-
               {/*Right team*/}
               <View style={styles.teamContainer}>
                 <Image
@@ -300,14 +315,13 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     alignItems: "center",
-    // paddingTop: 100,
     width: windowWidth,
     height: "100%",
   },
   itemContainer: {
-    flexDirection: "row", // Align children horizontally
-    alignItems: "flex-start", // Center items vertically
-    justifyContent: "center", // Center items horizontally
+    flexDirection: "row",
+    alignItems: "flex-start",
+    justifyContent: "center",
   },
   teamContainer: {
     flexDirection: "row",

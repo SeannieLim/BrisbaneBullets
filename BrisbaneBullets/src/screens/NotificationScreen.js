@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import { Box, Text } from "@gluestack-ui/themed";
-import {
-  Dimensions,
-  ImageBackground,
-  StyleSheet,
-  FlatList,
-} from "react-native";
+import { Dimensions, ImageBackground, StyleSheet, FlatList } from "react-native";
 import { useNotifications } from "../notifications/notificationContext";
 import NotificationItem from "../notifications/notificationItem";
 import {

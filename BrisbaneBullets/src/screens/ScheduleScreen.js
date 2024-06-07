@@ -1,11 +1,5 @@
 import { View, Text, Box, HStack } from "@gluestack-ui/themed";
-import {
-  Dimensions,
-  SafeAreaView,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
-import { scaleFontSize } from "../constants/Layout";
+import { Dimensions, SafeAreaView, StyleSheet, TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import TeamToggle from "../components/GeneralToggle";
@@ -51,7 +45,6 @@ export default function ScheduleScreen({ navigation }) {
             </Box>
           </HStack>
         </Box>
-
         <TeamToggle tabs={scheduleTabs} />
       </SafeAreaView>
     </View>

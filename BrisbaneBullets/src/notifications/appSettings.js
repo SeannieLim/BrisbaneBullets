@@ -1,12 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import {
-  View,
-  Switch,
-  Alert,
-  Linking,
-  StyleSheet,
-  AppState,
-} from "react-native";
+import { View, Switch, Alert, Linking, StyleSheet, AppState, } from "react-native";
 import * as Notifications from "expo-notifications";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { NotificationContext } from "./notificationContext";

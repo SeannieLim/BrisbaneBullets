@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Dimensions,
-  TouchableOpacity,
-  View,
-  Text,
-  StyleSheet,
-} from "react-native";
+import { Dimensions, TouchableOpacity, View, Text, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 import { useNotifications } from "./notificationContext";
@@ -19,7 +13,6 @@ const NotificationItem = ({
   selectedIds,
 }) => {
   const { displayTimeStamp } = useNotifications(); // Access the function from context
-
   return (
     <TouchableOpacity
       style={[
@@ -50,7 +43,6 @@ const NotificationItem = ({
             />
           </View>
         )}
-
         <Text style={[styles.title, { color: item.read ? "#999" : "#000" }]}>
           {item.title}
         </Text>
@@ -101,7 +93,7 @@ const styles = StyleSheet.create({
     height: 25,
     borderWidth: 1,
     borderColor: "#ccc",
-    borderRadius: 12.5, // Making it circular
+    borderRadius: 12.5,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -125,7 +117,6 @@ const styles = StyleSheet.create({
     height: 10,
     borderRadius: 5,
     backgroundColor: "#fab81b",
-    // marginRight: 10,
   },
 });
 
