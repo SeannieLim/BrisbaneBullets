@@ -1,15 +1,5 @@
 import React, { useState } from "react";
-import {
-  SafeAreaView,
-  Dimensions,
-  ImageBackground,
-  View,
-  StyleSheet,
-  Text,
-  Image,
-  Platform,
-  Linking,
-} from "react-native";
+import { SafeAreaView, Dimensions, ImageBackground, View, StyleSheet, Text, Image, Platform, Linking } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { scaleFontSize } from "../constants/Layout";
@@ -56,7 +46,6 @@ export default function MoreScreen({ navigation }) {
         <Box style={GlobalStyles.screenHeader}>
           <Text style={GlobalStyles.screenHeading}>More</Text>
         </Box>
-
         <View style={styles.contentContainer}>
           <ImageBackground
             source={require("../../assets/Logo/BB-logo.png")}
@@ -164,21 +153,21 @@ const styles = StyleSheet.create({
   shadowBox1: {
     backgroundColor: "white",
     borderRadius: 10,
-    shadowColor: "#000", // Shadow color
-    shadowOffset: { width: 3, height: 5 }, // Shadow offset
-    shadowOpacity: 0.25, // Shadow opacity
-    shadowRadius: 4, // Shadow radius
-    elevation: 10, // Elevation for Android
+    shadowColor: "#000",
+    shadowOffset: { width: 3, height: 5 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 10,
     marginVertical: 5,
   },
   shadowBox2: {
     backgroundColor: "white",
     borderRadius: 20,
-    shadowColor: "#000", // Shadow color
-    shadowOffset: { width: 3, height: 5 }, // Shadow offset
-    shadowOpacity: 0.25, // Shadow opacity
-    shadowRadius: 4, // Shadow radius
-    elevation: 10, // Elevation for Android
+    shadowColor: "#000",
+    shadowOffset: { width: 3, height: 5 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 10,
     margin: 5,
   },
   item: {

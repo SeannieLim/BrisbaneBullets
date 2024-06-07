@@ -1,21 +1,11 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  ScrollView,
-  SafeAreaView,
-} from "react-native";
-import { useRoute, useNavigation } from "@react-navigation/native";
+import { View, Text, Image, ScrollView, SafeAreaView, } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import MyStyles from "./TeamStyles";
 import { GlobalStyles } from "../../constants/GlobalStyles";
-import { AntDesign } from "@expo/vector-icons";
 import ProfileStatsToggle from "../../components/ProfileStatsToggle";
-import CountryFlag from "react-native-country-flag";
 import PlayerDetails from "./PlayerDetails";
 import PlayerStats from "./PlayerStats";
-import { Box } from "@gluestack-ui/themed-native-base";
 
 const PlayerProfile = ({ route }) => {
   const { player } = route.params;
@@ -45,12 +35,6 @@ const PlayerProfile = ({ route }) => {
   return (
     <View style={GlobalStyles.mainContainer}>
       <SafeAreaView style={GlobalStyles.safeArea}>
-        {/* <TouchableOpacity onPress={goBackToTeamScreen}>
-          <AntDesign name="left" size={32} style={MyStyles.BackArrow} />
-        </TouchableOpacity> */}
-        {/* <Box style={GlobalStyles.screenHeader}>
-          <Text style={MyStyles.playerName}>{player.playerName}</Text>
-        </Box> */}
         <ScrollView
           contentContainerStyle={{ flexGrow: 1 }}
           showsVerticalScrollIndicator={false}
@@ -58,20 +42,19 @@ const PlayerProfile = ({ route }) => {
           <View style={MyStyles.imageBox}>
             {showGif ? (
               <Image
-                source={require("../../../assets/teamPageImages/gif1.gif")} // Replace with the path to your GIF
+                source={require("../../../assets/teamPageImages/gif1.gif")} // Replace with the path to GIF
                 style={MyStyles.playerProfileGif}
               />
             ) : (
               <Image
-              source={player.playerHeadShot ? player.playerHeadShot : player.playerProfileImage}
-              style={player.playerHeadShot ? MyStyles.playerHeadShot : MyStyles.playerProfileImage}
+                source={player.playerHeadShot ? player.playerHeadShot : player.playerProfileImage}
+                style={player.playerHeadShot ? MyStyles.playerHeadShot : MyStyles.playerProfileImage}
               />
             )}
             <View style={MyStyles.textContainer}>
               <Text style={MyStyles.jerseyNumber}>{player.jerseyNumber}</Text>
             </View>
           </View>
-
           {/* Data pass through player */}
           <ProfileStatsToggle
             tabs={ProfileStats}

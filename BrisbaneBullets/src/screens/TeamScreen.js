@@ -1,10 +1,4 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  ScrollView,
-  ImageBackground,
-} from "react-native";
+import { View, Text, SafeAreaView, ImageBackground } from "react-native";
 import MyStyles from "../screens/TeamScreens/TeamStyles";
 import GeneralToggle from "../components/GeneralToggle";
 import TeamPlayers from "../screens/TeamScreens/TeamPlayers";

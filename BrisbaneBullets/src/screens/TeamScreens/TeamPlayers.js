@@ -1,14 +1,7 @@
 import React from "react";
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, Image, StyleSheet, Dimensions, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { FlatList, ScrollView } from "react-native-gesture-handler";
+import { FlatList } from "react-native-gesture-handler";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -187,7 +180,7 @@ const players = [
     playerName: "Josh Bannan",
     playerImage: require("../../../assets/teamPageImages/JoshBannan.png"),
     playerProfileImage: require("../../../assets/teamPageImages/Image1.png"),
-    
+
     CountryCode: "AU",
     Country: "Australia",
     positionCode: "C",
@@ -395,21 +388,6 @@ const Square = ({ player }) => {
 
 const TeamPlayers = () => {
   return (
-    // <ScrollView showsVerticalScrollIndicator={false}>
-    //   <View style={styles.container}>
-    //     {/* Map over the array of data and render each square */}
-    //     <View style={styles.leftColumn}>
-    //       {players.slice(0, 8).map((player, index) => (
-    //         <Square key={index} player={player} />
-    //       ))}
-    //     </View>
-    //     <View style={styles.rightColumn}>
-    //       {players.slice(8).map((player, index) => (
-    //         <Square key={index + 8} player={player} />
-    //       ))}
-    //     </View>
-    //   </View>
-    // </ScrollView>
     <View style={styles.container}>
       <FlatList
         data={players}
@@ -424,31 +402,14 @@ const TeamPlayers = () => {
 };
 
 const styles = StyleSheet.create({
-  // container: {
-  //   flexDirection: "row",
-  //   marginTop: windowHeight * 0.015,
-  //   paddingBottom: windowHeight * 0.5,
-  //   flex: 1,
-  //   alignItems: "center",
-  // },
   container: {
     paddingBottom: windowHeight * 0.5,
   },
   columnWrapper: {
-    justifyContent: "space-between", // Ensures space between items horizontally
+    justifyContent: "space-between",
     marginTop: windowHeight * 0.01,
     marginHorizontal: windowWidth * 0.04,
   },
-  // leftColumn: {
-  //   flex: 1, // Take up 50% of the available space
-  //   // flexDirection: "column",
-  //   marginLeft: windowWidth * 0.001, // Adjust margin if needed
-  // },
-  // rightColumn: {
-  //   flex: 1, // Take up 50% of the available space
-  //   // flexDirection: "column",
-  //   marginLeft: windowWidth * 0.1,
-  // },
   square: {
     width: 140,
     height: 120,
@@ -456,11 +417,11 @@ const styles = StyleSheet.create({
     marginVertical: windowHeight * 0.01,
 
     borderRadius: 15,
-    shadowColor: "#000", // Shadow color
-    shadowOffset: { width: 1, height: 2 }, // Shadow offset
-    shadowOpacity: 0.25, // Shadow opacity
-    shadowRadius: 4, // Shadow radius
-    elevation: 5, // Elevation for Android
+    shadowColor: "#000",
+    shadowOffset: { width: 1, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
     overflow: "hidden",
   },
   imageContainer: {
@@ -475,7 +436,7 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   textContainer: {
-    position: "absolute", // Position the text container absolutely within the container
+    position: "absolute",
     top: 15,
     left: 10,
     alignItems: "center",

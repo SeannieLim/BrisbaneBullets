@@ -44,7 +44,6 @@ function PlayerDetails({ player }) {
           </View>
         </ScrollView>
       </View>
-
       <View>
         <Text style={MyStyles.socialMedia}>Social Media</Text>
         <TouchableOpacity
@@ -56,7 +55,6 @@ function PlayerDetails({ player }) {
             style={MyStyles.icon}
           />
         </TouchableOpacity>
-
         <Text style={MyStyles.socialMedia}>Bio</Text>
         <TextTruncate text={player.Bio} numberOfLines={3} />
       </View>

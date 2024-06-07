@@ -16,7 +16,10 @@ function MoreStackScreen() {
       <MoreStack.Screen
         name="MembershipScreen"
         component={MembershipScreen}
-        options={{ headerShown: true }}
+        options={{
+          headerShown: true,
+          headerBackTitleVisible: false,
+        }}
       />
     </MoreStack.Navigator>
   );

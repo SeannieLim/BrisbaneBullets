@@ -1,12 +1,6 @@
 import React from "react";
 import { View, Box, Image, VStack, Text, HStack } from "@gluestack-ui/themed";
-import {
-  Dimensions,
-  StyleSheet,
-  FlatList,
-  TouchableOpacity,
-  Share,
-} from "react-native";
+import { Dimensions, StyleSheet, FlatList, TouchableOpacity, Share } from "react-native";
 import AdsBanner from "../components/AdsBanner";
 import { FontAwesome5 } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
@@ -69,7 +63,6 @@ export default function NewsScreen({ navigation }) {
   };
   const handleShare = async (news) => {
     try {
-      // Base URL
       const baseUrl = "https://www.brisbanebullets.com.au/news/";
       // Replace spaces in the news title with hyphens (-)
       const formattedTitle = news.title
@@ -142,7 +135,6 @@ export default function NewsScreen({ navigation }) {
 
       {index > 0 && (index + 1) % 3 === 0 && (
         <AdsBanner
-        // imageUrl="https://www.interprint-services.co.uk/wp-content/uploads/2019/04/placeholder-banner.png"
         />
       )}
     </React.Fragment>
