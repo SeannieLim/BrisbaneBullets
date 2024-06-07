@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from "react";
-import { View, Box } from "@gluestack-ui/themed";
+import { View } from "@gluestack-ui/themed";
 import { Ionicons } from "@expo/vector-icons";
 import { DashboardBanner } from "./components/DashboardBanner";
 import ToggleComponent from "../components/HomeToggleButton";
@@ -58,8 +58,6 @@ const styles = StyleSheet.create({
   backgroundImageContainer: {
     width: windowWidth,
     marginTop: 150,
-    // backgroundColor: "white",
-    // position: 'relative',
   },
   banner: {
     position: "absolute",

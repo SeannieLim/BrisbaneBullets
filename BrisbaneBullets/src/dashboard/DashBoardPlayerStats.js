@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, StyleSheet, Image, Dimensions, TouchableOpacity, } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -114,21 +107,19 @@ const styles = StyleSheet.create({
   },
   playerImage: {
     position: "absolute",
-    top: windowHeight * 0.2, // Adjust this value to position the image correctly
+    top: windowHeight * 0.2,
     width: windowWidth,
     height: windowHeight * 0.6,
     resizeMode: "cover",
-    // transform: [{ translateX: -windowWidth * 0.025 }], // Move the image slightly to the left
     marginTop: windowHeight * 0.12,
   },
   header: {
     position: "absolute",
-    top: windowHeight * 0.05, // Adjust top padding as needed
+    top: windowHeight * 0.05,
     width: windowWidth,
     flexDirection: "row",
     alignItems: "center",
     marginTop: windowHeight * 0.02,
-
     justifyContent: "center",
   },
   backButton: {

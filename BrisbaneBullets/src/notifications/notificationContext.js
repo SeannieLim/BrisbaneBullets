@@ -3,7 +3,6 @@ import * as Notifications from "expo-notifications";
 import Constants from "expo-constants";
 import uuid from "react-native-uuid"; // Import the UUID generator
 import { isYesterday, formatDistanceToNow } from "date-fns";
-import { Button } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const NotificationContext = createContext();
@@ -209,23 +208,23 @@ export const NotificationProvider = ({ children }) => {
       {
         title: "Test 1 min ago",
         date: currentTimestamp - 60000,
-      }, // 1 min ago
+      },
       {
         title: "Test 2 mins ago",
         date: currentTimestamp - 120000,
-      }, // 2 mins ago
+      },
       {
         title: "Test 59 mins ago",
         date: currentTimestamp - 3550000,
-      }, // 29 mins ago
+      },
       {
         title: "Test 1 hour ago",
         date: currentTimestamp - 3600000,
-      }, // 1 hour ago
+      },
       {
         title: "Test 23 hours ago",
         date: currentTimestamp - 82800000,
-      }, // 23 hours ago
+      },
       { title: "Test Yesterday", date: currentTimestamp - 86400000 }, // 24 hours ago
       { title: "Test Two Days Ago", date: currentTimestamp - 172800000 }, // 48 hours ago
       {
@@ -267,15 +266,6 @@ export const NotificationProvider = ({ children }) => {
     >
       {children}
 
-      {/* <Button
-        title="Log Current Notifications"
-        onPress={() => {
-          console.log(notifications);
-          AsyncStorage.getItem("notifications").then((data) => {
-            console.log("AsyncStorage:", JSON.parse(data));
-          });
-        }}
-      /> */}
     </NotificationContext.Provider>
   );
 };

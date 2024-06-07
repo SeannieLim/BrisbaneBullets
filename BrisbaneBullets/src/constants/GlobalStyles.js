@@ -24,7 +24,6 @@ export const GlobalStyles = StyleSheet.create({
     fontWeight: "600",
     fontSize: scaleFontSize(33),
     justifyContent: "center",
-    // textAlign: "center",
     letterSpacing: 1,
   },
 });
