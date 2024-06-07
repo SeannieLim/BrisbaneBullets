@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, ButtonText } from "@gluestack-ui/themed";
 import { scaleFontSize } from "../constants/Layout";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 const CustomButton = ({ btnText, routeName }) => {

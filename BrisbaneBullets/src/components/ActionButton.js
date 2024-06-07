@@ -1,11 +1,6 @@
 import React from "react";
 import { scaleFontSize } from "../constants/Layout";
-import {
-  StyleSheet,
-  Dimensions,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, Dimensions, TouchableOpacity } from "react-native";
 import { View, Box, Text } from "@gluestack-ui/themed";
 
 const windowWidth = Dimensions.get("window").width;

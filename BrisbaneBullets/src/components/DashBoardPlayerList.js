@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  Dimensions,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, Image, StyleSheet, Dimensions, TouchableOpacity, } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { FlatList } from "react-native-gesture-handler";
 
@@ -303,7 +296,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: windowHeight * 0.02,
     marginTop: windowHeight * 0.03,
-    // marginLeft: -windowWidth * 0.05,
   },
   tab: {
     paddingVertical: 10,
@@ -401,6 +393,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: "bold",
     color: "#113B81",
-    marginLeft: 4, // Adjust spacing as needed
+    marginLeft: 4,
   },
 });

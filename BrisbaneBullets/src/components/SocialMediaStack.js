@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  StyleSheet,
-  ScrollView,
-  View,
-  Image,
-  TouchableOpacity,
-  Linking,
-} from "react-native";
+import { StyleSheet, ScrollView, View, Image, TouchableOpacity, Linking, } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 
 export default function SocialMediaStack() {
