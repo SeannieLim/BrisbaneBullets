@@ -117,18 +117,15 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     justifyContent: "center",
+    color: "#333",
+    flexShrink: 1,
+    marginVertical: 2,
   },
   title: {
     fontSize: 16,
-    color: "#333",
-    flexShrink: 1,
-    marginVertical: 2,
   },
   body: {
     fontSize: 12,
-    color: "#333",
-    flexShrink: 1,
-    marginVertical: 2,
   },
   timeStamp: {
     fontSize: 14,
@@ -142,7 +139,6 @@ const styles = StyleSheet.create({
     height: 10,
     borderRadius: 5,
     backgroundColor: "#fab81b",
-    // marginRight: 10,
   },
 });
 
