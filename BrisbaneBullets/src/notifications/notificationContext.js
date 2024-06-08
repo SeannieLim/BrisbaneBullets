@@ -54,6 +54,7 @@ export const NotificationProvider = ({ children }) => {
       console.log("Processing notification.");
       addNotification(
         notification.request.content.title,
+        notification.request.content.body,
         notification.date || Date.now()
       );
     } else {
@@ -61,7 +62,7 @@ export const NotificationProvider = ({ children }) => {
     }
   };
 
-  const addNotification = async (title, rawTimeStamp) => {
+  const addNotification = async (title, body, rawTimeStamp) => {
     console.log("Received raw timeStamp:", rawTimeStamp);
 
     // Determine if the timestamp is in seconds (iOS) or milliseconds (Android), ensure the timestamp is in milliseconds
@@ -74,6 +75,7 @@ export const NotificationProvider = ({ children }) => {
     const newNotification = {
       id: uuid.v4(), // Use current timestamp as a unique ID
       title,
+      body,
       actualDate,
       read: false,
     };
@@ -265,7 +267,6 @@ export const NotificationProvider = ({ children }) => {
       }}
     >
       {children}
-
     </NotificationContext.Provider>
   );
 };
