@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
   },
   toggle: {
     paddingVertical: windowWidth * 0.02,
-    marginHorizontal: windowWidth * 0.08,
     flex: 1,
     overflowY: "scroll",
   },
