@@ -47,24 +47,24 @@ const mockTeams = [
   },
 ];
 
-export default function PastGames({navigation}) {
+export default function PastGames({ navigation }) {
 
-    return (
-        <ScrollView contentContainerStyle={{flexGrow: 1}} showsVerticalScrollIndicator={false}>
-            <VStack pt={25}>
-                {data.map((item, index) => (
-                    <Box key={index} pb={20}>
-                        <HStack justifyContent='center'>
-                            <Box flex={1}>
-                                <Text style={styles.details}>{data[index].date}</Text>
-                            </Box>
-                            <Box style={styles.matchBackground}>
-                                <Text style={styles.title}>{data[index].match}</Text>
-                            </Box>
-                            <Box flex={1} alignItems='flex-end'>
-                                <Text style={styles.details}>{data[index].time}</Text>
-                            </Box>
-                        </HStack>
+  return (
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }} showsVerticalScrollIndicator={false}>
+      <VStack pt={25}>
+        {data.map((item, index) => (
+          <Box key={index} pb={20}>
+            <HStack justifyContent='center'>
+              <Box flex={1}>
+                <Text style={styles.details}>{data[index].date}</Text>
+              </Box>
+              <Box style={styles.matchBackground}>
+                <Text style={styles.title}>{data[index].match}</Text>
+              </Box>
+              <Box flex={1} alignItems='flex-end'>
+                <Text style={styles.details}>{data[index].time}</Text>
+              </Box>
+            </HStack>
 
             <Box style={styles.gameBackground}>
               <HStack alignItems="center" pt={5}>
@@ -82,7 +82,7 @@ export default function PastGames({navigation}) {
                     </HStack>
                     <VStack flexBasis="33%">
                       {parseInt(mockTeams[index].scoreLeft) >
-                      parseInt(mockTeams[index].scoreRight) ? (
+                        parseInt(mockTeams[index].scoreRight) ? (
                         <Text style={[styles.score, styles.scoreBold]}>
                           {mockTeams[index].scoreLeft}
                         </Text>
@@ -106,7 +106,7 @@ export default function PastGames({navigation}) {
                     </HStack>
                     <VStack flexBasis="33%">
                       {parseInt(mockTeams[index].scoreRight) >
-                      parseInt(mockTeams[index].scoreLeft) ? (
+                        parseInt(mockTeams[index].scoreLeft) ? (
                         <Text style={[styles.score, styles.scoreBold]}>
                           {mockTeams[index].scoreRight}
                         </Text>

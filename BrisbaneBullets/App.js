@@ -1,11 +1,6 @@
-import React, { useEffect } from "react";
-import { Platform, StyleSheet, View, Alert } from "react-native";
-
-import {
-  NavigationContainer,
-  DarkTheme,
-  DefaultTheme,
-} from "@react-navigation/native";
+import React from "react";
+import { Platform, StyleSheet, View } from "react-native";
+import { NavigationContainer, DarkTheme } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import BottomTabNavigator from "./src/navigation/BottomTabNavigator";
 import "react-native-gesture-handler";
@@ -43,6 +38,7 @@ export default function App(props) {
                   headerTitleStyle: {
                     fontSize: 20,
                   },
+                  headerBackTitleVisible: false,
                   headerTintColor: "#113B81",
                   headerBackImage: () => (
                     <Ionicons

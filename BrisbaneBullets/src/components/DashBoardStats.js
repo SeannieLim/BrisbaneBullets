@@ -20,32 +20,22 @@ const DashBoardStats = () => {
         <View style={styles.DashBoardBox}>
           <View style={styles.textBox}>
             <View style={{ flex: 1 }}>
-              <Text style={[styles.statsText, { textAlign: "center" }]}></Text>
+              <Text style={styles.statsText}></Text>
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={[styles.statsText, { textAlign: "center" }]}>
-                Q1
-              </Text>
+              <Text style={styles.statsText}>Q1</Text>
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={[styles.statsText, { textAlign: "center" }]}>
-                Q2
-              </Text>
+              <Text style={styles.statsText}>Q2</Text>
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={[styles.statsText, { textAlign: "center" }]}>
-                Q3
-              </Text>
+              <Text style={styles.statsText}>Q3</Text>
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={[styles.statsText, { textAlign: "center" }]}>
-                Q4
-              </Text>
+              <Text style={styles.statsText}>Q4</Text>
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={[styles.statsText, { textAlign: "center" }]}>
-                Total
-              </Text>
+              <Text style={styles.statsText}>Total</Text>
             </View>
           </View>
           <View style={styles.textBox}>
@@ -56,29 +46,19 @@ const DashBoardStats = () => {
               />
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={[styles.statsNumber, { textAlign: "center" }]}>
-                20
-              </Text>
+              <Text style={styles.statsNumber}>20</Text>
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={[styles.statsNumber, { textAlign: "center" }]}>
-                20
-              </Text>
+              <Text style={styles.statsNumber}>20</Text>
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={[styles.statsNumber, { textAlign: "center" }]}>
-                30
-              </Text>
+              <Text style={styles.statsNumber}>30</Text>
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={[styles.statsNumber, { textAlign: "center" }]}>
-                26
-              </Text>
+              <Text style={styles.statsNumber}>26</Text>
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={[styles.statsText, { textAlign: "center" }]}>
-                96
-              </Text>
+              <Text style={styles.statsText}>96</Text>
             </View>
           </View>
           <View style={styles.textBox}>
@@ -89,33 +69,23 @@ const DashBoardStats = () => {
               />
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={[styles.statsNumber, { textAlign: "center" }]}>
-                10
-              </Text>
+              <Text style={styles.statsNumber}>10</Text>
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={[styles.statsNumber, { textAlign: "center" }]}>
-                22
-              </Text>
+              <Text style={styles.statsNumber}>22</Text>
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={[styles.statsNumber, { textAlign: "center" }]}>
-                22
-              </Text>
+              <Text style={styles.statsNumber}>22</Text>
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={[styles.statsNumber, { textAlign: "center" }]}>
-                26
-              </Text>
+              <Text style={styles.statsNumber}>26</Text>
             </View>
             <View style={{ flex: 1 }}>
-              <Text style={[styles.statsText, { textAlign: "center" }]}>
-                80
-              </Text>
+              <Text style={styles.statsText}>80</Text>
             </View>
           </View>
         </View>
-        <View style={[styles.bigStatsBanner, { flexDirection: "row" }]}>
+        <View style={styles.bigStatsBanner}>
           <View style={{ flex: 1 }}>
             <Text style={[styles.bannerNumber]}>20</Text>
             <Text style={[styles.bannerText]}>Rebounds</Text>
@@ -129,7 +99,7 @@ const DashBoardStats = () => {
             <Text style={[styles.bannerText]}>Steals</Text>
           </View>
         </View>
-        <View style={[styles.circleRow, { flexDirection: "row" }]}>
+        <View style={styles.circleRow}>
           <View style={styles.circleContainer}>
             <View style={styles.circle}>
               <Text style={styles.circleText}>90.0</Text>
@@ -161,6 +131,7 @@ const DashBoardStats = () => {
               uri: "https://www.flashscore.com.au/match/xUoDDejA/#/match-summary/match-summary",
             }}
             style={styles.webView}
+            nestedScrollEnabled={true}
           />
         </View>
       </View>
@@ -187,20 +158,20 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     alignItems: "center",
     marginTop: windowHeight * 0.02,
+    textAlign: "center",
   },
   statsNumber: {
     fontSize: scaleFontSize(16),
     color: "#164CA8",
     letterSpacing: 1,
     alignItems: "center",
-    // marginLeft: -windowWidth * 0.03,
     marginTop: windowHeight * 0.02,
+    textAlign: "center",
   },
   teamIcon: {
-    width: 35, // Set width of the icon
-    height: 35, // Set height of the icon
+    width: 35,
+    height: 35,
     marginTop: windowHeight * 0.013,
-
     marginBottom: windowHeight * 0.01,
     alignItems: "center",
   },
@@ -208,6 +179,7 @@ const styles = StyleSheet.create({
     width: windowWidth,
     flexGrow: 1,
     backgroundColor: "#164CA8",
+    flexDirection: "row",
   },
   bannerNumber: {
     fontSize: scaleFontSize(30),
@@ -220,7 +192,6 @@ const styles = StyleSheet.create({
     fontSize: scaleFontSize(16),
     textAlign: "center",
     color: "#FFFFFF",
-    textAlign: "center",
     letterSpacing: 1.1,
     marginBottom: windowHeight * 0.02,
   },
@@ -229,6 +200,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexGrow: 1,
     marginVertical: windowHeight * 0.03,
+    flexDirection: "row",
   },
   circleContainer: {
     alignItems: "center",
@@ -256,9 +228,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   webViewContainer: {
-    height: windowHeight,
+    height: windowHeight * 0.45,
     width: windowWidth,
-    marginBottom: windowWidth * 0.6,
+    marginBottom: windowWidth * 0.8,
   },
   webView: {
     flex: 1,

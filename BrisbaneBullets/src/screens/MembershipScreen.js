@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from "react";
+import React from "react";
 import B_WebViewTemplate from "../components/b-WebViewTemplate";
 
 const MembershipScreen = () => {

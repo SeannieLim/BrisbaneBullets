@@ -1,15 +1,7 @@
-import {useEffect, useRef, useState} from "react";
-import {
-    Dimensions,
-    ScrollView,
-    StyleSheet,
-    TouchableOpacity,
-    SafeAreaView,
-} from "react-native";
-import {HStack, Image, Text, View, Box, VStack} from "@gluestack-ui/themed";
-import {Ionicons} from "@expo/vector-icons";
-import {GlobalStyles} from "../../constants/GlobalStyles";
-import {scaleFontSize} from "../../constants/Layout";
+import { Dimensions, StyleSheet, SafeAreaView, } from "react-native";
+import { HStack, Image, Text, View, VStack } from "@gluestack-ui/themed";
+import { GlobalStyles } from "../../constants/GlobalStyles";
+import { scaleFontSize } from "../../constants/Layout";
 
 const windowWidth = Dimensions.get("window").width;
 

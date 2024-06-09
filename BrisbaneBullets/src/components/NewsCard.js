@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  StyleSheet, TouchableOpacity, Text, Dimensions, Share
-} from 'react-native';
+import { StyleSheet, TouchableOpacity, Text, Dimensions, Share } from 'react-native';
 import { HStack, VStack, Box, Image } from "@gluestack-ui/themed";
 import { Entypo } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';

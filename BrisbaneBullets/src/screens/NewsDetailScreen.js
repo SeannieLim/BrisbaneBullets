@@ -76,9 +76,6 @@ export default function NewsDetailScreen({ route, navigation }) {
   const { newsId } = route.params; // Extracting newsId from route params
   // Assuming you have a function to fetch news by ID
   const newsItem = mockNewsDetails.find((news) => news.id === newsId); // Find news item by id
-  const handleShare = () => {
-    // Implement your share functionality here
-  };
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>

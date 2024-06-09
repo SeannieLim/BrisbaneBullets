@@ -280,7 +280,6 @@ export function TopBanner() {
                   alt="Team Logo"
                 />
               </View>
-
               {/*Game details*/}
               <View style={styles.details}>
                 <Text style={styles.date}>{mockUpcomingGame[0].date}</Text>
@@ -289,7 +288,6 @@ export function TopBanner() {
                   {mockUpcomingGame[0].location}
                 </Text>
               </View>
-
               {/*Right team*/}
               <View style={styles.teamContainer}>
                 <Image
@@ -319,7 +317,6 @@ export function TopBanner() {
         ))}
       </View>
     </LinearGradient>
-    // </View>
   );
 }
 
@@ -331,14 +328,13 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     alignItems: "center",
-    // paddingTop: 100,
     width: windowWidth,
     height: "100%",
   },
   itemContainer: {
-    flexDirection: "row", // Align children horizontally
-    alignItems: "flex-start", // Center items vertically
-    justifyContent: "center", // Center items horizontally
+    flexDirection: "row",
+    alignItems: "flex-start",
+    justifyContent: "center",
   },
   teamContainer: {
     flexDirection: "row",

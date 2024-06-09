@@ -70,6 +70,7 @@ export const NotificationProvider = ({ children }) => {
   const addNotification = async (title, body, rawTimeStamp) => {
     console.log("Received raw timeStamp:", rawTimeStamp);
 
+    // Determine if the timestamp is in seconds (iOS) or milliseconds (Android), ensure the timestamp is in milliseconds
     const timeStamp =
       rawTimeStamp > 1000000000000 ? rawTimeStamp : rawTimeStamp * 1000;
 
@@ -77,7 +78,7 @@ export const NotificationProvider = ({ children }) => {
     console.log("Normalized Date:", actualDate);
 
     const newNotification = {
-      id: uuid.v4(),
+      id: uuid.v4(), // Use current timestamp as a unique ID
       title,
       body,
       actualDate,
@@ -96,7 +97,7 @@ export const NotificationProvider = ({ children }) => {
       });
     });
   };
-
+  // Function to register for push notifications
   const registerForPushNotificationsAsync = async () => {
     const granted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.POST_NOTIFICATIONS

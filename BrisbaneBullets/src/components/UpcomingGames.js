@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Text, Box, HStack, VStack, Image } from "@gluestack-ui/themed";
 import { Dimensions, ScrollView, StyleSheet } from "react-native";
 import { scaleFontSize } from "../constants/Layout";

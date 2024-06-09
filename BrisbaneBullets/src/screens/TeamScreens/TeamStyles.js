@@ -1,5 +1,4 @@
-import React from "react";
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import { scaleFontSize } from "../../constants/Layout";
 
 const windowWidth = Dimensions.get("window").width;
@@ -17,7 +16,6 @@ const MyStyles = StyleSheet.create({
   headerContainer: {
     flexDirection: "row",
     alignItems: "center",
-    // marginLeft: windowWidth * 0.02,
     marginTop: windowHeight * 0.07,
   },
 
@@ -36,22 +34,22 @@ const MyStyles = StyleSheet.create({
 
   imageBox: {
     flex: 1,
-    width: "100%", // Width of the box
-    height: windowHeight * 0.3, // Height of the box
-    backgroundColor: "#164CA8", // Background color of the box
-    borderRadius: 15, // Border radius (optional)
+    width: "100%",
+    height: windowHeight * 0.3,
+    backgroundColor: "#164CA8",
+    borderRadius: 15,
     marginTop: windowHeight * 0.03,
-    shadowColor: "#000", // Shadow color
-    shadowOffset: { width: 3, height: 6 }, // Shadow offset
-    shadowOpacity: 0.25, // Shadow opacity
-    shadowRadius: 4, // Shadow radius
-    elevation: 5, // Elevation for Android
-    position: "relative", // Add relative positioning to the square container
-    overflow: "hidden", // Hide the overflowing content
-    justifyContent: "flex-start", // Align content to the top
+    shadowColor: "#000",
+    shadowOffset: { width: 3, height: 6 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    position: "relative",
+    overflow: "hidden",
+    justifyContent: "flex-start",
   },
   textContainer: {
-    position: "absolute", // Position the text container absolutely within the container
+    position: "absolute",
     left: 15,
     alignItems: "center",
   },
@@ -86,31 +84,31 @@ const MyStyles = StyleSheet.create({
   ProfileStatsToggle: {
     flex: 1,
     marginTop: windowHeight * 0.03,
-    shadowColor: "#000", // Shadow color
-    shadowOffset: { width: 0, height: 4 }, // Shadow offset
-    shadowOpacity: 0.25, // Shadow opacity
-    shadowRadius: 4, // Shadow radius
-    elevation: 5, // Elevation for Android
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
   },
   scrollViewContent: {
     flexGrow: 1,
-    flexDirection: "row", // Arrange containers horizontally
+    flexDirection: "row",
   },
   container: {
-    width: 107, // Set a fixed width for each container
-    justifyContent: "center", // Align items vertically at the center
-    alignItems: "center", // Align items horizontally at the center
+    width: 107,
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "#FFFFFF",
-    height: 107, // Set a fixed height for each container
+    height: 107,
     borderRadius: 15,
     marginTop: windowHeight * 0.03,
     marginRight: windowWidth * 0.01,
-    shadowColor: "#000", // Shadow color
-    shadowOffset: { width: 2, height: 1 }, // Shadow offset
-    shadowOpacity: 0.25, // Shadow opacity
-    shadowRadius: 4, // Shadow radius
-    elevation: 5, // Elevation for Android
-    position: "relative", // Add relative positioning to the square container
+    shadowColor: "#000",
+    shadowOffset: { width: 2, height: 1 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    position: "relative",
     marginBottom: windowHeight * 0.01,
   },
   playerDetailsText: {
@@ -121,7 +119,7 @@ const MyStyles = StyleSheet.create({
     marginTop: windowHeight * 0.002,
   },
   countryIconContainer: {
-    alignItems: "center", // Center the icon horizontally
+    alignItems: "center",
   },
 
   countryIcon: {
@@ -130,7 +128,7 @@ const MyStyles = StyleSheet.create({
     borderRadius: 3,
   },
   Country: {
-    alignItems: "center", // Center the icon horizontally
+    alignItems: "center",
     color: "#686060",
     fontSize: scaleFontSize(9),
     fontWeight: "bold",
@@ -138,11 +136,11 @@ const MyStyles = StyleSheet.create({
   },
 
   circle: {
-    width: 45, // Set the width of the circle
-    height: 45, // Set the height of the circle
-    borderRadius: 25, // Half of the width and height to create a perfect circle
-    justifyContent: "center", // Center the content vertically
-    alignItems: "center", // Center the content horizontally
+    width: 45,
+    height: 45,
+    borderRadius: 25,
+    justifyContent: "center",
+    alignItems: "center",
     backgroundColor: "#164CA7",
     marginTop: windowHeight * 0.008,
     marginBottom: windowHeight * 0.006,
@@ -154,7 +152,7 @@ const MyStyles = StyleSheet.create({
     fontWeight: "bold",
   },
   positionText: {
-    alignItems: "center", // Center the icon horizontally
+    alignItems: "center",
     color: "#686060",
     fontSize: scaleFontSize(9),
     fontWeight: "bold",
@@ -163,8 +161,8 @@ const MyStyles = StyleSheet.create({
   },
   playerTextContainer: {
     flex: 1,
-    justifyContent: "center", // Center vertically
-    alignItems: "center", // Center horizontally
+    justifyContent: "center",
+    alignItems: "center",
     marginTop: windowHeight * 0.012,
     color: "#113B81",
     fontSize: scaleFontSize(12),
@@ -172,37 +170,37 @@ const MyStyles = StyleSheet.create({
     letterSpacing: 1,
   },
   PlayerText: {
-    fontSize: scaleFontSize(18), // Adjust font size as needed
+    fontSize: scaleFontSize(18),
     color: "#000000",
     fontWeight: "bold",
     letterSpacing: 1,
     marginBottom: windowHeight * 0.04,
   },
   buttonContainer: {
-    flexDirection: "row", // Arrange items horizontally
-    alignItems: "center", // Align items vertically
-    backgroundColor: "#164CA8", // Transparent background
-    borderRadius: 25, // Round border
-    paddingVertical: 8, // Vertical padding
-    paddingHorizontal: 10, // Horizontal padding
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#164CA8",
+    borderRadius: 25,
+    paddingVertical: 8,
+    paddingHorizontal: 10,
     height: 35,
     marginTop: windowHeight * 0.015,
-    shadowColor: "#000", // Shadow color
-    shadowOffset: { width: 2, height: 1 }, // Shadow offset
-    shadowOpacity: 0.25, // Shadow opacity
-    shadowRadius: 4, // Shadow radius
-    elevation: 5, // Elevation for Android
-    position: "relative", // Add relative positioning to the square container
+    shadowColor: "#000",
+    shadowOffset: { width: 2, height: 1 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+    position: "relative",
   },
   buttonText: {
     fontSize: scaleFontSize(10),
-    color: "#FFFFFF", // Text color
+    color: "#FFFFFF",
     fontWeight: "bold",
   },
   icon: {
-    width: 13, // Set width of the icon
-    height: 13, // Set height of the icon
-    marginLeft: 2, // Add some space between icon and text
+    width: 13,
+    height: 13,
+    marginLeft: 2,
   },
   socialMedia: {
     fontSize: scaleFontSize(17),
@@ -213,27 +211,22 @@ const MyStyles = StyleSheet.create({
   bio: {
     fontSize: scaleFontSize(17),
     letterSpacing: 1,
-    // marginLeft: windowWidth * 0.01,
     marginTop: windowHeight * 0.0,
   },
   statsText: {
-    fontSize: scaleFontSize(18), // Adjust font size as needed
+    fontSize: scaleFontSize(18),
     color: "#000000",
     fontWeight: "bold",
     letterSpacing: 1,
     alignItems: "center",
   },
   statsValueText: {
-    fontSize: scaleFontSize(18), // Adjust font size as needed
+    fontSize: scaleFontSize(18),
     color: "#000000",
     letterSpacing: 1,
     alignItems: "center",
     left: 3,
     marginBottom: windowHeight * 0.04,
-  },
-
-  statsContainer: {
-    // MarginLeft: windowWidth * 0.02,
   },
 });
 

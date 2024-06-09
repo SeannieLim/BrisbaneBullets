@@ -1,11 +1,5 @@
 import React, { useState } from "react";
-import {
-  Container,
-  Box,
-  HStack,
-  Button,
-  Text,
-} from "@gluestack-ui/themed-native-base";
+import { Container, Box, HStack, Button } from "@gluestack-ui/themed-native-base";
 import { useNavigation } from "@react-navigation/native";
 
 const ProfileStatsToggle = ({ tabs, style }) => {

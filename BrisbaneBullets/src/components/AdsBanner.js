@@ -2,7 +2,7 @@ import React from "react";
 import { View, Image, StyleSheet, Dimensions } from "react-native";
 
 const windowWidth = Dimensions.get("window").width;
-const adPlaceHolder = require("../../assets/Hostplus_ad.gif");
+const adPlaceHolder = require("../../assets/AdsBanner.gif");
 
 const AdBox = ({ imageUrl }) => {
   return (

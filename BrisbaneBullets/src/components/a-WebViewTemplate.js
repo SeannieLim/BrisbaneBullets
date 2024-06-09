@@ -1,6 +1,6 @@
 import React, { useRef, useLayoutEffect } from "react";
 import { WebView } from "react-native-webview";
-import { View, StyleSheet, TouchableOpacity, Text, Share } from "react-native";
+import { View, StyleSheet, TouchableOpacity, Share } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign, Entypo } from "@expo/vector-icons";
 import { scaleFontSize } from "../constants/Layout";
@@ -19,9 +19,6 @@ const A_WebViewTemplate = ({ uri, title }) => {
         fontSize: scaleFontSize(20),
       },
       headerTintColor: "#fab81b",
-      // headerLeftContainerStyle: { paddingLeft: 10 },
-      // headerRightContainerStyle: { paddingRight: 10 },
-
       headerRight: () => (
         <View style={styles.headerButtons}>
           <TouchableOpacity onPress={goBack} style={styles.headerButton}>
@@ -55,7 +52,6 @@ const A_WebViewTemplate = ({ uri, title }) => {
       console.error("Error sharing", error);
     }
   };
-
   return (
     <WebView ref={webviewRef} source={{ uri: uri }} style={styles.webview} />
   );

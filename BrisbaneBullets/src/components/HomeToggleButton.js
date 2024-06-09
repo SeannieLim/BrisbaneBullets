@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import { StyleSheet, View, Dimensions } from "react-native";
-
-import {
-  Box,
-  Button,
-  Container,
-  HStack,
-} from "@gluestack-ui/themed-native-base";
+import { Box, Button, Container, HStack } from "@gluestack-ui/themed-native-base";
 
 const windowWidth = Dimensions.get("window").width;
 const ToggleComponent = ({ tabs }) => {
@@ -59,10 +53,7 @@ const CustomButton = ({ active, onPress, children }) => {
         textAlign: "center",
       }}
       onPress={onPress}
-      width="auto"
-      // Optionally, you can add padding to the button to provide some space around the text
-      py={2} // Adjust the vertical padding as needed
-      px={2} // Adjust the horizontal padding as needed
+      width="auto" py={2} px={2}
     >
       {children}
     </Button>
@@ -77,17 +68,16 @@ const Content = ({ activeTab, tabs }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // width: windowWidth,
   },
   tabContainer: {
     marginHorizontal: windowWidth * 0.08,
   },
   shadow: {
     backgroundColor: "white",
-    shadowColor: "#000", // Shadow color
-    shadowOffset: { width: 3, height: 5 }, // Shadow offset
-    shadowOpacity: 0.25, // Shadow opacity
-    shadowRadius: 4, // Shadow radius
+    shadowColor: "#000",
+    shadowOffset: { width: 3, height: 5 },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
     elevation: 5, // Elevation for Android
   },
 });

@@ -2,8 +2,6 @@ import * as React from "react";
 import { FontAwesome } from '@expo/vector-icons';
 import { DarkTheme } from "@react-navigation/native";
 import { Feather } from '@expo/vector-icons';
-import { Entypo } from '@expo/vector-icons';
-
 
 export default function TabBarIcon(props) {
 

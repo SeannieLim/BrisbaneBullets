@@ -6,7 +6,8 @@ import {
   Share,
   Dimensions,
   FlatList,
-  View, Linking
+  View,
+  Linking,
 } from "react-native";
 import { HStack, VStack, Box, Image } from "@gluestack-ui/themed";
 import { Entypo } from "@expo/vector-icons";
@@ -23,7 +24,7 @@ const mockVideo = [
     time: "Jan 25, 2024",
     img: require("../../assets/Videos/highlight1.png"),
     imgAlt: "newsImage",
-    url: "https://www.youtube.com/watch?v=_G1wBLCeqEU"
+    url: "https://www.youtube.com/watch?v=_G1wBLCeqEU",
   },
   {
     id: 2,
@@ -31,7 +32,7 @@ const mockVideo = [
     time: "Feb 4, 2024",
     img: require("../../assets/Videos/highlight2.png"),
     imgAlt: "newsImage",
-    url: "https://www.youtube.com/watch?v=Ff5VEdBQlB0"
+    url: "https://www.youtube.com/watch?v=Ff5VEdBQlB0",
   },
 ];
 
@@ -39,12 +40,14 @@ const HighlightVideo = () => {
   const navigation = useNavigation();
 
   const handleVideoCardPress = (url) => {
-    Linking.openURL(url).catch((err) => console.error("An error occurred", err));
+    Linking.openURL(url).catch((err) =>
+      console.error("An error occurred", err)
+    );
   };
 
   const handleShare = async (videos) => {
     try {
-      const url = videos.url
+      const url = videos.url;
       // Share the URL
       await Share.share({
         url: url,

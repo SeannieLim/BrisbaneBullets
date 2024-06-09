@@ -5,7 +5,6 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import { scaleFontSize } from "../constants/Layout";
 import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import TeamToggle from "../components/GeneralToggle";
